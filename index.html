@@ -3,6 +3,18 @@ layout: default
 ---
 
 <div class="home">
+  <h1 class="page-heading">Sections</h1>
+  <ul class="category-list">
+    {% for category in site.pages %}
+    {% if !category.title %}
+      <li>
+        <h2>
+          <a class="section-link" href="{{ category.url | prepend: site.baseurl }}">{{ category.title }}</a>
+        </h2>
+      </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
 
   <h1 class="page-heading">Recent posts</h1>
 
