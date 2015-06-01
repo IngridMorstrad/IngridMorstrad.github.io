@@ -5,7 +5,7 @@ email: f2009755@pilani.bits-pilani.ac.in
 description: > # this means to ignore newlines until "baseurl:"
   Ashwin Menon's personal blog where he details what he's up to. His ideas, thoughts and his actions.
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://ingridmorstrad.github.io/" # the base hostname & protocol for your site
+url: "http://ingridmorstrad.github.io" # the base hostname & protocol for your site
 logourl: /assets/images/logo.png # Site logo
 author: "Ashwin Menon"
 author_thumbnail: "/assets/images/avatar.jpg" # Author avatar
