@@ -63,7 +63,7 @@ A little further down the evolutionary tree, we meet another split in the group 
 
 Continuing our journey down the tree of evolution, we meet Sinornis, an enantiornithine (opposite bird). While it had teeth, Sinornis could fly and perch! Ichthyornis, a little further down, had no teeth at the tip of its "beak" (although it did have teeth further back) and more importantly - it was capable of flapping flight. It could fly! Could this mean...? Yes, a few steps ahead in the tree and we meet "Aves" - or as most of us know them, birds.
 
-{% include image.html url="/assets/images/tree1.jpg" description="The phylogenetic tree we covered (more or less). We went from the bottom-up and hit most of these groups." %}
+{% include image.html url="/assets/images/tree1phy.jpg" description="The phylogenetic tree we covered (more or less). We went from the bottom-up and hit most of these groups." %}
 
 ## Birds (Epilogue)
 I found it interesting to note the small mutations over generations that built on each other to give us the animals we see around us today. As they are in the group Dinosauria, birds are dinosaurs. In fact, they are the only living dinosaurs today. All other dinosaurs went extinct during the meteor impact that ended the Cretaceous era. There is reason to believe that true birds (in Aves) lived before the meteor impact and lived through it. Of all the vertebrates, birds have hte largest number of different species.
