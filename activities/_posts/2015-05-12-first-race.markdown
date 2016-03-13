@@ -2,6 +2,7 @@
 layout: post
 title:  "First race"
 date:   2015-05-12 22:09:00
+comments: true
 categories: activities
 ---
 

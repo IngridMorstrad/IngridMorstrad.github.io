@@ -2,6 +2,7 @@
 layout: post
 title:  "Learning how to Learn"
 date:   2015-03-08 12:35:32
+comments: true
 categories: reviews
 ---
 

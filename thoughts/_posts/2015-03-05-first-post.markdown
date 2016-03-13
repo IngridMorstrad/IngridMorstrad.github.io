@@ -2,6 +2,7 @@
 layout: post
 title:  "First post"
 date:   2015-03-05 19:35:32
+comments: true
 categories: thoughts
 ---
 

@@ -2,6 +2,7 @@
 layout: post
 title:  "Probability and tennis"
 date:   2015-05-31 18:09:00
+comments: true
 categories: activities
 ---
 
