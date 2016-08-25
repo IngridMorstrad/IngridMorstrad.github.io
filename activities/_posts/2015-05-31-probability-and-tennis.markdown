@@ -6,13 +6,13 @@ comments: true
 categories: activities
 ---
 
-#The idea
+## The idea
 The other day, while surfing Reddit, I came across a few comments that said having a 55% chance of winning a point would give you a 99% chance of winning the game. I'd heard this before, but this time I thought, "Hey! I can simulate that and see if it makes sense." Seemed a bit unrealistic to me, that 50% would mean dead-even whereas 55% would mean a blowout.
 
-#Testing the "theory"
+## Testing the "theory"
 So, I went ahead and opened up python and wrote a little program to simulate a tennis match. I varied the probability of winning a point from 0.00 to 1.00, in steps of 0.01, and simulated 10000 matches for each probability. Matches were best of 5, with no tiebreaks - you had to be two games clear<sup>[^1]</sup>.
 
-#The results
+## The results
 Here are the results plotted in R:
 <img src="{{ site.url }}/assets/images/tennis_graph.png">
 
@@ -20,7 +20,7 @@ The line graph<sup>[^2]</sup> shows that clearly there is a small range of proba
 <img src="{{ site.url }}/assets/images/tennis_table.png">
 we can see that this range varies from 0.38 to 0.63, or 0.15 above and below a 50% chance to win a point. All values below 0.38 led to all matches being lost and all values above 0.63 lead to all matches being won. The data also shows that having a probability of around 0.57 of winning a point (slightly higher than what I'd seen on Reddit) would give you a 99% chance to win the match. 
 
-#Further investigation
+## Further investigation
 To use this information, we need to estimate the probability of winning a point. This can be done by taking the percentage of points won from previous matches and using that as the probability. Is that a reasonable assumption? To verify, I used the data from the simulations I ran earlier. A straight line at a 45-degree angle would indicate that this was a reasonable assumption. Since the range of interest for probabilities was between 0.38 to 0.50, I re-ran the simulations in that - smaller - range (python is slow). Thankfully, the data agreed:
 
 <img src="{{ site.url }}/assets/images/tennis_points.png">
@@ -37,7 +37,7 @@ As a final task, I calculated the theoretical minimum points won ratio that coul
 
 This would occur when the loser wins 2 sets 6-0 and goes either 6-4 (without tiebreaks) or 6-6 (5) in the other 3 sets, while winning 2 points in each game the winner wins. The first half shows the ratios without tie-breaks, the second one considers a match with tiebreaks. The minimum points won ratio is 0.3529, and this scenario is rare enough that it didn't occur even once in 10000 simulations.
 
-#Codebook
+## Codebook
 
 Python program for simulating tennis matches
 {% highlight python %}
