@@ -38,12 +38,12 @@ However, dopamine is also released by a wide variety of other activities. For in
 All these different sources of dopamine release give me pause - might it be possible to replace the craving caused by a negatively addicting source (like cocaine) with a positively addicting one (like exercise)? The answer is left as an exercise to the reader.
 
 ## Appendix
-\*I also enjoy 500 Days of Summer and Before Sunrise  
-\*Specifically, for early-stage romantic love  
-\*Although the name "dope"amine may seem fitting, the connection is coincidental. Dopamine comes from DOPA (DiOxypPhenylAlanine) + amine  
+\*I also enjoy 500 Days of Summer and Before Sunrise
+\*Specifically, for early-stage romantic love
+\*Although the name "dope"amine may seem fitting, the connection is coincidental. Dopamine comes from DOPA (DiOxypPhenylAlanine) + amine.
 \*There are other factors that contribute to causing addictive behaviour as well  
-\*If not for anything else, for this article  
-\*The levels of dopamine are controlled by other hormones like ghrelin, insulin, leptin, etc.  
+\*If not for anything else, for this article.
+\*The levels of dopamine are controlled by other hormones like ghrelin, insulin, leptin, etc.
 
 ## References
 http://link.springer.com/article/10.1007/s00213-006-0578-x#/page-1  
