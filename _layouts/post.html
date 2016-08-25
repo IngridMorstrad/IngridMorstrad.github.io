@@ -2,6 +2,8 @@
 layout: default
 ---
 
+{% include fb-init.html %}
+
 <div class="post">
 
   {% if page.banner_image %}
@@ -71,5 +73,6 @@ layout: default
         <div id="g-comments"></div>
     </div>
   {% endif %}
+  <div class="fb-comments" data-href="{{ site.url }}{{ page.url }}" data-numposts="5"></div>
 </div>
 
