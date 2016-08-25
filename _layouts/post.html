@@ -66,13 +66,16 @@ layout: default
     {% endif %}  
   </div>
   
-  <h4> Comments </h4>
-    {% if page.comments %}
-      <div class="comments">
-          <a href="javascript:;" class="load-view">View Comments...</a>
-          <div id="disqus_thread"></div>
-          <div id="g-comments"></div>
-      </div>
-    {% endif %}
+  <div class="all_comments">
+    <h4> Comments </h4>
+      {% if page.comments %}
+        <div class="comments">
+            <a href="javascript:;" class="load-view">View Disqus comments</a>
+            <div id="disqus_thread"></div>
+            <div id="g-comments"></div>
+        </div>
+      {% endif %}
     <div class="fb-comments" data-href="http://www.ashwinmenon.com{{ page.url }}" data-numposts="5" data-width="706"></div>
+  </div>
 </div>
+
