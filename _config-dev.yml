@@ -10,7 +10,7 @@ logourl: /assets/images/logo.png # Site logo
 author: "Ashwin Menon"
 author_thumbnail: "/assets/images/avatar.jpg" # Author avatar
 # Theme customization - please change from the defaults!
-theme:
+style:
   # Color for sidebar bar, links, etc
   highlight_color: "#205081" #205081" # "#272935"
   # Social media links, leave blank to ignore
