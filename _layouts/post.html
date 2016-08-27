@@ -34,6 +34,8 @@ layout: default
     </p>
   </header>
 
+  <div class="fb-share-button" data-href="{{ site.url }}{{ page.url }}" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.ashwinmenon.com%2F&amp;src=sdkpreparse">Compartir</a></div>
+
   <article class="post-content">
     {{ content }}    
   </article>
@@ -66,14 +68,15 @@ layout: default
     {% endif %}  
   </div>
   
-  <h4>Comments</h4>
-  {% if page.comments %}
-    <div class="comments">
-        <a href="javascript:;" class="load-view">View Disqus comments</a>
-        <div id="disqus_thread"></div>
-        <div id="g-comments"></div>
-    </div>
-  {% endif %}
-  <div class="fb-comments" data-href="{{ site.url }}{{ page.url }}" data-numposts="5"></div>
+  <div class="all-comments">
+    <div class="fb-comments" data-href="{{ site.url }}{{ page.url }}" data-numposts="5"></div>
+    {% if page.comments %}
+      <div class="comments">
+          <a href="javascript:;" class="load-view">View Disqus comments</a>
+          <div id="disqus_thread"></div>
+          <div id="g-comments"></div>
+      </div>
+    {% endif %}
+  </div>
 </div>
 
