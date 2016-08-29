@@ -35,7 +35,7 @@ Love is a feeling so ubiquitous that it has inspired decades of music - from [20
 
 However, dopamine is also released by a wide variety of other activities. For instance, dopamine plays a central role in gambling addiction. And the compulsive need you feel to check your cellphone or Facebook? That's driven by dopamine too. The "high" you felt (or will feel) during endless sleepless nights in college is due to sleep deprivation increasing dopamine levels.
 
-All these different sources of dopamine release give me pause - might it be possible to replace the craving caused by a negatively addicting source (like cocaine) with a positively addicting one (like exercise)? The answer is left as an exercise to the reader.
+All these different sources of dopamine release give me pause - might it be possible to replace the craving caused by a negatively addicting source (like cocaine) with a positively addicting one (like music)? The answer is left as an exercise to the reader.
 
 ## Appendix
 \*I also enjoy 500 Days of Summer and Before Sunrise  
