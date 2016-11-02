@@ -11,3 +11,4 @@ pocket: true
 email: false
 
 # Disqus
+disqus_shortname: 'ashwinmenon'
