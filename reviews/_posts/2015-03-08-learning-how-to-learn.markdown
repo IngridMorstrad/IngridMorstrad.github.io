@@ -3,6 +3,7 @@ layout: post
 title:  "Learning how to Learn"
 date:   2015-03-08 12:35:32
 comments: true
+thumb: http://ashwinmenon.com/assets/images/learning.jpg
 categories: reviews
 ---
 

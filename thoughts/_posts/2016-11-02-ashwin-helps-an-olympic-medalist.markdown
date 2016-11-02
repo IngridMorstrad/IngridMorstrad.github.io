@@ -1,8 +1,9 @@
 ---
 layout: post
 title:  "Ashwin helps an Olympic medalist"
-date:   2016-11-01 00:21:00
+date:   2016-11-02 00:21:00
 comments: true
+thumb: http://ashwinmenon.com/assets/images/medal.jpg
 categories: thoughts
 ---
 

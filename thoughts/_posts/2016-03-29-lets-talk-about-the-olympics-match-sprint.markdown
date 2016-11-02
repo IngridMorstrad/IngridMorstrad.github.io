@@ -3,6 +3,7 @@ layout: post
 title:  "Let's talk about: The Olympics (Match Sprint)"
 date:   2016-03-29 08:00:00
 comments: true
+thumb: http://ashwinmenon.com/assets/images/matchsprint.jpg
 categories: thoughts
 ---
 

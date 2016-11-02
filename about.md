@@ -2,19 +2,10 @@
 layout: page
 title: About
 permalink: /about/
-banner_image: sample-banner-image-2.jpg
-banner_image_alt: About
 ---
 
-I am a 23 year old software developer currently working for Epic, Madison, WI.
+Ashwin works as a software developer in Madison, WI. He is 25.  
 
-### Contact me
+He likes a lot of things - some may say *too* many. This blog may contain his thoughts on some of these things, or an explanation of what he most recently found interesting and why. He likes burgers and thinks the Big Mac is one of the best burgers around. He likes medium-to-large sized dogs.
 
-[Mail]({{ site.email }}) me
-
----
-
-{% include social.html %}
-
-[pw]: http://processwire.com
-[jekyll]: http://jekyllrb.com
+He would love to hear your thoughts and comments and engage in mindless discussions.

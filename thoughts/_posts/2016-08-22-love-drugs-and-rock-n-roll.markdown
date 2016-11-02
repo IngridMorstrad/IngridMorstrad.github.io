@@ -3,6 +3,7 @@ layout: post
 title:  "Love, Drugs And Rock N' Roll"
 date:   2016-08-22 23:41:00
 comments: true
+thumb: http://ashwinmenon.com/assets/images/rocknroll.jpg
 categories: thoughts
 ---
 
