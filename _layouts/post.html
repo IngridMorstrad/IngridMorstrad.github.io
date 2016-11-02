@@ -1,82 +1,67 @@
 ---
 layout: default
 ---
-
-{% include fb-init.html %}
-
 <div class="post">
-
-  {% if page.banner_image %}
-  <div class="banner-image">
-    <img 
-        src="{{ "/assets/images/" | append: page.banner_image | prepend: site.baseurl | prepend: site.url }}" 
-        alt="{{ page.banner_image_alt }}">
-  </div>
-  {% endif %}
-
-  {% if page.banner_video %}
-    <div class="banner_video">
-      {{ page.banner_video }}
-    </div>
-  {% endif %}
-
-  <header class="post-header">
-    <h1 class="post-title">{{ page.title }}</h1>
-    <p class="post-meta">
-    {% if page.categories.size > 0 %}
-      <span class="categories">
-      {{ page.categories | array_to_sentence_string }}
-      </span> |
-    {% endif %}
-    <span class="post-date">
-    {{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}  
-    </span>
+    {% if page.reading_time %}
+    <p class="post-reading-time">&#126;
+        {% capture words %}
+          {{ content | number_of_words | minus: 180 }}
+        {% endcapture %}
+        {% unless words contains "-" %}
+          {{ words | plus: 180 | divided_by: 180 | append: " min" }}
+        {% endunless %}
     </p>
-  </header>
-
-  <div class="fb-like" data-href="{{ site.url }}{{ page.url }}" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
-
-  <article class="post-content">
-    {{ content }}    
-  </article>
-
-  {% if site.related_posts %}
-    <div class="related-posts">
-      <h4>Related Posts</h4>
-      <ul>
-        {% for post in site.related_posts limit:3 %}
-          <li>
-            <h5>
-              <a href="{{ post.url | prepend: site.baseurl | prepend: site.url }}">
-                {{ post.title }}
-                <small>{{ post.date | date_to_string }}</small>
-              </a>
-            </h5>
-          </li>
-        {% endfor %}
-      </ul>
-    </div>
-  {% endif %}
-
-  <div class="author-info">
-    {% if site.style.show_author_info %}
-      {% include author.html %}
     {% endif %}
-  
-    {% if site.style.show_share_buttons %}
-      {% include share-buttons.html %}
-    {% endif %}  
-  </div>
-  
-  <div class="all-comments">
-    <div class="fb-comments" data-href="{{ site.url }}{{ page.url }}" data-numposts="5"></div>
-    {% if page.comments %}
-      <div class="comments">
-          <a href="javascript:;" class="load-view">View Disqus comments</a>
-          <div id="disqus_thread"></div>
-          <div id="g-comments"></div>
-      </div>
-    {% endif %}
-  </div>
+
+    <header class="post-header">
+        {% if page.thumb %}
+        <img src="{{ page.thumb }}" alt="{{ page.title }}" class="post-thumb" />
+        {% endif %}
+
+        <h1 class="post-title">{{ page.title }}</h1>
+    </header>
+
+    <article class="post-content">
+        {{ content }}
+    </article>
+
+    <footer class="post-meta">
+        {% if page.date %}
+        <div class="meta">
+            <h3 class="meta-title">Date</h3>
+            <span class="meta-content">{{ page.date | date: "%B %-d, %Y" }}</span>
+        </div>
+        {% endif %}
+        {% if page.author %}
+        <div class="meta">
+            <h3 class="meta-title">Author</h3>
+            <span class="meta-content">{{ page.author }}</span>
+        </div>
+        {% endif %}
+        {% if page.show_categories %}
+        <div class="meta">
+            <h3 class="meta-title">Categories</h3>
+            <span class="meta-content">
+                {% for category in page.categories %}
+                    {{ category | capitalize }}&nbsp;
+                {% endfor %}
+            </span>
+        </div>
+        {% endif %}
+        {% if page.show_tags %}
+        <div class="meta">
+            <h3 class="meta-title">Tags</h3>
+            <span class="meta-content">
+                {% for tag in page.tags %}
+                    {{ tag | capitalize }}&nbsp;
+                {% endfor %}
+            </span>
+        </div>
+        {% endif %}
+    </footer>
+
+    {% include share.html %}
+
+    {% include disqus.html %}
+
 </div>
-

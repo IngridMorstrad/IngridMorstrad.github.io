@@ -3,6 +3,7 @@ layout: post
 title:  "Dino 101"
 date:   2015-03-16 23:35:32
 comments: true
+thumb: http://ashwinmenon.com/assets/images/dinocourse.jpg
 categories: reviews
 ---
 

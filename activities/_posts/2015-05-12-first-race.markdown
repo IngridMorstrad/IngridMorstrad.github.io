@@ -3,6 +3,7 @@ layout: post
 title:  "First race"
 date:   2015-05-12 22:09:00
 comments: true
+thumb: http://ashwinmenon.com/assets/images/marathon.jpg
 categories: activities
 ---
 

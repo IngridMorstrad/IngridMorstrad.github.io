@@ -3,6 +3,7 @@ layout: post
 title:  "The joy of tennis"
 date:   2015-10-01 03:08:00
 comments: true
+thumb: http://ashwinmenon.com/assets/images/federer.png
 categories: thoughts
 ---
 

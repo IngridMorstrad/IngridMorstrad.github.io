@@ -3,6 +3,7 @@ layout: post
 title:  "Let's talk about: Dinosaurs"
 date:   2016-03-10 02:08:00
 comments: true
+thumb: http://ashwinmenon.com/assets/images/dinosaurs.png
 categories: thoughts
 ---
 

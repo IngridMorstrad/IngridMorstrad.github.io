@@ -3,6 +3,7 @@ layout: post
 title:  "Linear circuits"
 date:   2015-04-05 23:40:00
 comments: true
+thumb: http://ashwinmenon.com/assets/images/linearcircuits.jpg
 categories: reviews
 ---
 
