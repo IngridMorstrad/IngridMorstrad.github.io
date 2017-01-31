@@ -33,7 +33,7 @@ Q: Which fund should I invest in?
 A: You could invest in a retirement fund (these will have dates in their names, for e.g. [Vanguard's 2060 retirement fund](https://personal.vanguard.com/us/funds/snapshot?FundIntExt=INT&FundId=1691), choose one that matches your intended year of retirement). Retirement funds will ensure that your cash is moved from stocks to bonds (high-risk/profit to low-risk/profit) as you grow older. If you're young (below 35), you could put a significant chunk ([Warren Buffett says 90%](http://www.berkshirehathaway.com/letters/2013ltr.pdf)) in an S&P 500 (or stock market) mutal fund or index fund.
 
 Q: What's the difference between an index fund and a mutual fund?  
-A: I'm not entirely sure, but one difference is that you can only buy whole shares (you can't buy fractional shares) of index funds whereas you can put any monetary amount into a mutual fund. So, if you want to invest a certain fixed amount every month, that would be possible with mutual funds. [Vanguard](www.vanguard.com) has lower charges for their mutual funds once you invest $10,000. Also, an index fund essentially tries to "track" the market and follow it as closely as possible, but sometimes there may be a lag and that can cause concern.
+A: I'm not entirely sure, but one difference is that you can only buy whole shares (you can't buy fractional shares) of index funds whereas you can put any monetary amount into a mutual fund. So, if you want to invest a certain fixed amount every month, that would be possible with mutual funds. [Vanguard](http://www.vanguard.com) has lower charges for their mutual funds once you invest $10,000. Also, an index fund essentially tries to "track" the market and follow it as closely as possible, but sometimes there may be a lag and that can cause concern.
 
 Q: Why the S&P 500?  
 A: A total stock market fund may be better, as it doesn't discriminate by only picking stocks of large companies. The S&P 500 invests in the 500 largest companies by market capitalization (which is just number of shares multiplied by share/stock price). In effect, you can think of it as investing in the 500 largest companies, which should be reflective of the market (I think I read somewhere that they reflect 86% of the market). Also, [Warren Buffett](https://www.bloomberg.com/gadfly/articles/2016-05-05/inside-warren-buffett-s-love-affair-with-the-s-p-500) is a fan.
@@ -105,6 +105,13 @@ A: Yes, but only on select categories every quarter. The Citi Double Cash back g
 
 ## <a name="NRI">NRI</a>
 As banks in India offer a high interest rate (earlier around 10%, currently they offer around 8%) on fixed deposits (FDs), investing in India may seem an incredibly tempting option compared to the low US savings rates (around 1%). However, the Rupee has been falling steadily compared to the dollar. Five years ago, in 2012, 1 USD would get you around 53 INR. In 2017, you'd get around 68 INR for a dollar. Doing the math, that means if you invested the equivalent of 1000$ in both places, assuming a conservative 5.5% annual return for the S&P 500 investment in the US, you would end up with 1307$ in the US and only 1255$ if you had invested in an FD in India. When you adjust for the lower FD rates and the exchange fees, it makes more sense (to me) to invest in the US.
+
+## Where do I learn more?
+(Alternative title: How did you learn this?)  
+Having an interest: 20%.  
+Having friends who like talking about this: 30%.  
+Reading reddit's [personal finance](http://www.reddit.com/r/personalfinance) and [investing](http://www.reddit.com/r/investing) subreddits: 15%.  
+Realizing [Warren Buffett](https://www.youtube.com/watch?v=ldPh0_zEykU) has more personality and money than you'll ever have: [percentage-less](https://www.youtube.com/watch?v=GofscoXnpDw).
 
 ## <a name="end">I don't want to read all this</a>  
 Long story short, keep 6-9 months of expenses in an emergency fund, contribute enough to your 401(k) to get your employer's match and (if you're below 35) put the rest in a fund that tracks the S&P 500 or tracks the stock market.
