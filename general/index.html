@@ -1,0 +1,24 @@
+---
+layout: default
+home: true
+---
+
+<div class="home">
+    <ul>
+        {% for collection in site.collections %}
+            {% if collection.label != "posts" %}
+                <li>
+                    <a href="{{ site.url }}/{{ collection.label }}"> {{ collection.label }} </a>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+    <!-- <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p> -->
+    <!-- <p class="rss-subscribe">
+        <a href="{{ "/feed.xml" | prepend: site.baseurl }}">
+            Subscribe via RSS
+            <i class="icon ion-social-rss"></i>
+        </a>
+    </p> -->
+</div>
