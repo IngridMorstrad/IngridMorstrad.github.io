@@ -25,7 +25,7 @@ However, an unintentional(?) side-effect of giving based on effective allocation
 #### Goal 2: Causes you care about
 Charities exist not just to save human lives, but also to improve lives at every "standard of living". While it should be unlikely that people will want to donate to multi-millionaires, people may still want to donate to causes that aren't just about saving lives. For example, people may donate to help people find jobs or to help children get education. Charities that address these issues are unlikely to feature on GiveWell, but you can vet many of these on Charity Navigator (link above).
 
-For supporting online creators, I generally use [Patreon](https://www.patreon.org). I try and ensure that I donate to quality creators who have a very small number of donors (Patreons). Patreon allows you to pay per product created, which allows you to ensure you get your money's worth.
+For supporting online creators, I generally use [Patreon](https://www.patreon.com). I try and ensure that I donate to quality creators who have a very small number of donors (Patreons). Patreon allows you to pay per product created, which allows you to ensure you get your money's worth.
 
 I've also heard people enquire about charities that will benefit communities they are a part of (from local to national levels). For example, Indians asking about charities that benefit people in India. I choose not to factor this in when making a decision as I think optimizing for the world as a whole would lead to greater and quicker improvements in the long-term.
 
