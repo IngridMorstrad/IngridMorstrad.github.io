@@ -1,74 +1,73 @@
----
-layout: default
----
-
+<!-- 博文的布局-Layout -->
+<!DOCTYPE html>
+<html>
+<head>
+<!-- 引入head标签 -->
+{% include head.html %}
+{% include androidColor.html %}
 {% include fb-init.html %}
+</head>
+<body>
 
-<div class="post">
-    {% if page.reading_time %}
-    <p class="post-reading-time">&#126;
-        {% capture words %}
-          {{ content | number_of_words | minus: 180 }}
-        {% endcapture %}
-        {% unless words contains "-" %}
-          {{ words | plus: 180 | divided_by: 180 | append: " min" }}
-        {% endunless %}
-    </p>
+<!-- 顶部锚点 -->
+<a id="htmlup" name="htmlup"></a>
+<!-- 引入博文顶部选项 -->
+{% include post-header.html %}
+<!-- 引入移动下拉选项 -->
+{% include boot.html %}
+<!-- 引入博文顶部样式 -->
+{% include post-title.html %}
+<div class="markdown-body fadeInUp animated">
+
+  {% if page.subtitle %}
+    {% if page.color.size==0 or page.color==nil %}
+      <div class="postpage-subtitle" style="border-left: 8px solid #9A85FF; border-right: 8px solid #9A85FF;">
+        {{ page.subtitle }}
+      </div>
+    {% else %}
+      <div class="postpage-subtitle" style="border-left: 8px solid {{ page.color }}; border-right: 8px solid {{ page.color }}">
+        {{ page.subtitle }}
+      </div>
     {% endif %}
+  {% endif %}
 
-    <header class="post-header">
-        {% if page.thumb %}
-        <img src="{{ page.thumb }}" alt="{{ page.title }}" class="post-thumb" />
-        {% endif %}
-
-        <h1 class="post-title">{{ page.title }}</h1>
-    </header>
-
-    <div class="fb-like" data-href="{{ site.url }}{{ page.url }}" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
-
-    <article class="post-content">
-        {{ content }}
-    </article>
-
-    <footer class="post-meta">
-        {% if page.date %}
-        <div class="meta">
-            <h3 class="meta-title">Date</h3>
-            <span class="meta-content">{{ page.date | date: "%B %-d, %Y" }}</span>
-        </div>
-        {% endif %}
-        {% if page.author %}
-        <div class="meta">
-            <h3 class="meta-title">Author</h3>
-            <span class="meta-content">{{ page.author }}</span>
-        </div>
-        {% endif %}
-        {% if page.show_categories %}
-        <div class="meta">
-            <h3 class="meta-title">Categories</h3>
-            <span class="meta-content">
-                {% for category in page.categories %}
-                    {{ category | capitalize }}&nbsp;
-                {% endfor %}
-            </span>
-        </div>
-        {% endif %}
-        {% if page.show_tags %}
-        <div class="meta">
-            <h3 class="meta-title">Tags</h3>
-            <span class="meta-content">
-                {% for tag in page.tags %}
-                    {{ tag | capitalize }}&nbsp;
-                {% endfor %}
-            </span>
-        </div>
-        {% endif %}
-    </footer>
-
-    {% include share.html %}
-    
-    <div class="fb-comments" data-href="{{ site.url }}{{ page.url }}" data-numposts="5"></div>
-
-    {% include disqus.html %}
-
+  <!-- 引入share模块 -->
+  {% include share.html %}
+  <!-- 文章内容 -->
+  {{ page.content }}
+  <!-- 引入share模块 -->
+  {% include share.html %}
 </div>
+
+<!-- 底部锚点 -->
+<a id="htmldown" name="htmldown"></a>
+<!-- 引入评论模块 -->
+{% include comment.html %}
+<!-- 引入goto模块 -->
+{% include goto.html %}
+<!-- 引入页面底部模块 -->
+{% include footer.html %}
+
+<!-- 引用wow.js的动画效果 -->
+<script src="/assets/js/wow.js"></script>
+<script>
+    var wow = new WOW({
+        boxClass: 'wow',
+        animateClass: 'animated',
+        // offset: 600,
+        mobile: true,
+        live: true
+    });
+    wow.init();
+</script>
+<!-- 页面刷新回到顶部 -->
+<script>
+    window.onbeforeunload = function(){
+        //刷新后页面自动回到顶部
+        document.documentElement.scrollTop = 0;  //ie下
+        document.body.scrollTop = 0;  //非ie
+    }
+</script>
+<script src="/assets/js/main.js"></script>
+</body>
+</html>

@@ -1,48 +1,79 @@
 # Site settings
-name: Ashwin's Blog
-description: Ashwin Menon's personal blog where he details what he's up to. His ideas, thoughts and actions.
+title: "Ashwin's blog"
+description: "Blog of Ashwin Menon's blog"
+keywords: 'tech, sports, activities, fun, dinosaurs'
+url: 'http://www.ashwinmenon.com' # your host
 
-baseurl: '' # the subpath of your site, e.g. /blog
-url: 'http://ashwinmenon.com' # the base hostname & protocol for your site
+# nav 
+nav: # 
+  home: '/'
+  tags: '/tags'
+  timeline: '/timeline'
+  about: '/about'
+  #friendLink: '/friendLink.html'
+  
+# Author info
+author: true
+name: 'Ashwin Menon'
+NickName: 'IngridMorstrad'
+webtitle: "Ashwin's blog"
+bio: 'A software developer, musician and footballer living in Seattle, WA. Over 25.'
+about: true
+aboutyou: 'I like a lot of things - some may say *too* many. This blog may contain my thoughts on some of these things, or a dive into something that piqued my interest recently. I like burgers and thinks the Big Mac is one of the best burgers around. Animals are cool as well.
 
-# Build settings
-markdown:            kramdown
-relative_permalinks: false
-permalink:           :title/
+He would love to hear your thoughts and comments and engage in discussions. Feel free to comment on the blogs.'
+portraits: '/assets/profile.jpeg' # your portraits image file path
 
-pagination:          true
-paginate:            8
-paginate_path:       page/:num/
+# SNS
+SNS: true
+SNS-icon: #['Facebook', 'weibo', 'qq', 'github', 'Dribbble', 'Twitter', 'instagram', 'weixin', 'Codepen']
+  #mail: 'mailto:abc@gmail.com'
+  github: 'https://github.com/IngridMorstrad'
+  #Codepen: ''
+  #instagram: ''
+  Twitter: 'https://twitter.com/IngridMorstrad'
+  #Dribbble: ''
+  #Facebook: ''
+  #Google: ''
 
-author:
-    name: 'Ashwin Menon'
-    email: 'silent_nemesis2710@hotmail.com'
-    uri: ''
+paginate: 8
+paginatepath: ['page:num']
 
-sass:
-    sass_dir: _sass
-    style:    compressed
+# since
+footer:
+  since: 2016
 
-defaults:
-  -
-      scope:
-        path: '_posts'
-        type: 'posts'
-      values:
-        reading_time: true
-        # Meta
-        show_tags: true
-        show_categories: true
-        # Social
-        share_buttons: true
-        disqus: true
+# Markdown
+markdown: kramdown
+kramdown:
+  input: GFM
+highlighter: rouge
+pygmentsTheme: 'default'
 
-plugins:
-    - jekyll-feed
-    - jekyll-sitemap
-    - jekyll-paginate
+#friends:
+#  jekyll: 'https://www.jekyll.com.cn/'
 
-collections:
-    - thoughts
-    - activities
-    - reviews
+# comments
+# FB
+FBComment: true
+# disqus
+disqus: false #user: ashwinmenon
+disqus_url: '' # https://abc.disqus.com/embed.js
+livere: false
+#livere_uid: 'MTAyMC8zNDI2OS8xMDgwNg==' # MTAyMC8zNDI2OS8xMDgwNg==
+# Gitment OAuth Application
+Gitment: false
+Gitment_owner: ''  # github
+Gitment_repo: ''  # github博客存放的仓库名
+client_id: ''  # 注册 OAuth Application 后获得的 client_id
+client_secret: ''  # 注册 OAuth Application 后获得的 client_secret
+
+social-share: true
+social-share-items: ['twitter', 'facebook', 'linkedin', 'qq', 'wechat', 'weibo']
+
+baidu: false
+baidu-url: ''
+google: true
+google-ID: 'UA-75060729-1'
+
+color: rgb(154,133,255) rgb(255,90,90) rgb(255,210,32) rgb(98,170,255)
