@@ -32,7 +32,9 @@ Firstly, asymmetric key encryption may sound like magic, and it is tough to give
 
 ## Uses
 Now that we know about asymmetric key encryption, how can we use it to help solve Red Riding Hood's conundrum?  
+
 --Feel free to take a break here and think about solutions to this if you wish--  
+
 Well, anytime you (or Red Riding Hood) want to say you yourself wrote a message, you can encrypt the message with your private key and add it as a "signature" (technical term, used to refer to the encrypted message) to the message. Your recipient (Grandma) knows your public key and should be able to decrypt your signature to see that it matches the original message. The big, bad wolf will not be able to sign the message (as he does not know your private key) with the same signature. Grandma will immediately know it is a fake when she is unable to decrypt the wolf's false signature with your public key!
 
 ## End
