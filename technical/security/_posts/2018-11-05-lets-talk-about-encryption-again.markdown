@@ -7,7 +7,9 @@ thumb: http://ashwinmenon.com/assets/images/code.jpg
 categories: technical
 ---
 
-This post is part of a series. For part 1, click [here](../05/lets-talk-about-encryption.html).
+This post is part of a multi-part series.
+
+For part 1, click [here](../05/lets-talk-about-encryption.html).
 
 ## Wolf Einstein
 The wolf has realized you've foiled his initial plans, and he's decided to up his game. Now, he knows you encrypt your message with your private key. He decides he will decrypt the message with your public key, which will let him know exactly when you plan to visit. THen, he plans to intercept you on the way to your grandmother's house - just like the fairytale foretold.

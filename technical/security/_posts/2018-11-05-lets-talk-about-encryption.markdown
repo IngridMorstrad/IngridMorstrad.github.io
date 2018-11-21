@@ -8,6 +8,7 @@ categories: technical
 ---
 
 ## The better to write you with
+
 Let's say you are Red Riding Hood, and you want to write a letter to your grandmother telling her you will be visiting. However, the big bad wolf is aware of your plans, and he decides he will *also* write a letter to your grandmother (pretending to be you) saying you won't be visiting. If only there was a way you could let your grandmother know your letter was from you *and* the wolf's letter was a fake. What if I tell you, little Red Riding Hood, that there **is** a way you can do this!
 
 ## Now you're just some terms that I used to know
