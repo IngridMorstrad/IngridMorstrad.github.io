@@ -23,8 +23,8 @@ He explained that he had just returned from Australia, after joining a training 
 “So, did you have to apply for a program?” It wasn’t every day that I got to talk to a pilot in training.  
 “I had to give an exam. I got through on the second try.”  
 “Oh, what are the exams like?”  
-“Well, there are lots of components. There are a bunch of papers you have to write. In fact, I’m back here now to give another exam. They have a viva too with the examiner and a psychologist present.”  
-“A psychologist?”  
+“Well, there are lots of components. There are a bunch of papers you have to write. They have a simulator session too where they assess how you perform under stress, and another with a psychologist present. In fact, I’m back here now to give another exam.”  
+“Wait, a psychologist?”  
 “Yeah, ever since they had that...”  
 “Ah, the plane that crashed off the coast of Nice,” I interrupted. As a closet aviophobe, I had spent some time reading about incidents in aviation. The crash we were talking about happened due to a pilot intentionally crashing the flight as he was suffering from depression.  
 “Yes, so they have to make sure you’re not depressed or suffering from some other condition.”  
@@ -49,7 +49,7 @@ He explained that he had just returned from Australia, after joining a training 
 “Cause the plane to dive and gain speed.” I interjected, eager to put on display what little I knew.  
 “Yes, and the pilots weren’t informed of this.”  
 “But, why would it dive unnecessarily?” I then answered my own question, "Oh. Faulty sensors.”  
-“Yeah. Have you noticed there are these veins on the side of the wing? They measure the angle of attack.”  
+“Yeah. Have you noticed there are these vanes on the side of the wing? They measure the angle of attack.”  
 “Pitot tubes?”  
 “No, not Pitot tubes...”  
 “Oh, sorry they measure airspeed.” I corrected myself.  
@@ -60,11 +60,11 @@ I couldn’t recollect reading about any storms in this incident.
 “There was a storm too during take off?”  
 “No, not here.”  
 
-We had reached our destination - Tapioca Cafe in Cochin. After exiting the car and taking a few minutes to stretch his legs, Ashish resumed, “I think Air Asia had some incidents where they had to deal with a storm as well. When you fly over this region, close to the equator, there are a lot of storms and unpredictable weather patterns.”  
+We had reached our destination - Tonico Cafe in Cochin. After exiting the car and taking a few minutes to stretch his legs, Ashish resumed, “I think Air Asia had some incidents where they had to deal with a storm as well. When you fly over this region, close to the equator, there are a lot of storms and unpredictable weather patterns.”  
 He paused.  
 "If you look up, you’ll see cumulus clou...”, the sentence lay incomplete with Ashish unable to spot the clouds he wanted. “Where are they? They’re usually everywhere in the sky here” He seemed slightly miffed that some clouds had spoiled his lovely anecdote. “Anyway, as pilots we always try to fly at least 10 nautical miles wide of a storm. The captain of this Air Asia flight had requested clearance from the ATC to take a different flight path, but was denied. This meant he had to go around the storm. We have a display on the panel that shows how high the storm is, but not how wide. In the storm cloud, there are huge updrafts and downdrafts that pull you in and throw you around. They tried to go around, but couldn’t. And once you get caught...” He didn’t need to say the last few words: you were finished.  
 
-The cafe served a variety of snacks and drinks - from sandwiches and coffee to pasta and smoothies. As we settled into our seats in Tapioca Cafe, I restarted a conversation we began outside.  
+The cafe served a variety of snacks and drinks - from sandwiches and coffee to pasta and smoothies. As we settled into our seats in Tonico Cafe, I restarted a conversation we began outside.  
 “What airlines would you say are safe?” I rattled off some names of airlines I would be flying soon.  
 “These Indonesian airlines are infamous for their maintenance. Indian airlines are much better. DGCA (Directorate General of Civil Aviation) does a good job - it is a pain to get certified. Captains have the power to make a no-go call though."  
 “Do pilots get to see all the details about the aircraft?”  
