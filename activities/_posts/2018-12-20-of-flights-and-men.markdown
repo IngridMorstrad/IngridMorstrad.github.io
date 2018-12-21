@@ -15,7 +15,7 @@ I hadn’t seen Ashish for quite some time. We went to the same school, but only
 
 “So, what have you been up to?” I said. Ruffling through the sheaves of my memory, I seemed to faintly recall a post on Facebook about Ashish undergoing pilot training. “Are you a pilot or something now?”
 
-He explained that he had just returned from Australia, after joining a training program with IndiGo, a domestic airline in India.
+He explained that he had just returned from Australia, after joining a training program with a domestic airline in India.
 
 “How did you get into that?” I probed.  
 “Well, I used to work as ground staff at the Bengaluru airport. And I had built up a social circle involving captains and first officers. And at one point they asked me: Why don’t you try to become a pilot? We think you’ll enjoy it.”  
