@@ -43,7 +43,7 @@ He explained that he had just returned from Australia, after joining a training 
 "That didn’t yield much", I thought. But then, he continued, “Between us, Boeing has been cutting costs for some time now. Ever since the...”  
 “Ever since the what?” I had zoned out.  
 “Ever since the 787, Boeing has been cutting costs.” I could see he was implying that this had continued to the new plane - the 737 Max 8, which was involved in the accident.  
-“So, when they released the 737 Max 8, they told airlines that instead of sending the plane out for tests, they would send out a ground module - a simulator of sorts. The thinking there was that as there weren’t many significant changes, training on the simulator would save costs.”  
+“So, when they released the 737 Max 8, they told airlines that pilots wouldn't need to be re-trained to be type-rated (pilot speak for "allowed to fly") for this aircraft as long as they were type-rated for the 737. Instead, they would send out a ground module - a simulator of sorts. The thinking there was that as there weren’t many significant changes, training on the simulator would save costs, which in turn would make selling aircrafts to airlines easier.”  
 “Then, what went wrong?”  
 “The 737 Max 8 had installed some new features, like a mechanism to recover from a [stall](https://en.wikipedia.org/wiki/Stall_(flight)). There is this thing called the angle of attack, and if it is too high, the plane begins to stall. To recover from that, they installed an automated system that would...”  
 “Cause the plane to dive and gain speed.” I interjected, eager to put on display what little I knew.  
