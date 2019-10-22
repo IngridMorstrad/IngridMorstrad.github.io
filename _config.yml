@@ -1,8 +1,10 @@
+permalink: /:title
+
 # Site settings
 title: "Ashwin's blog"
 description: "Blog of Ashwin Menon's blog"
 keywords: 'tech, sports, activities, fun, dinosaurs'
-url: 'http://www.ashwinmenon.com' # your host
+url: 'http://www.ashwinmenon.com'
 
 # nav 
 nav: # 
