@@ -30,3 +30,9 @@ Reading more is almost never a bad idea. You can read the (pretty dry) [IPCC rep
 You should search the web for [how your city powers itself](https://lmgtfy.com/?q=how+does+seattle+get+its+power) as this will change what you need to do to help. For example, if your city is powered mostly by renewables (unlikely to be the case right now, but over the next few years hopefully we see more cities power themselves with renewable sources), then switching to electric cars will make much more sense. It will also mean you don't need to find solutions to go off-the-grid. However, if your city is powered using fossil fuels (most are), then you may want to invest in some kind of solar setup - maybe small like a [USB charger](https://smile.amazon.com/s?k=solar+powered+charger&ref=nb_sb_noss) or larger like a [solar generator](https://smile.amazon.com/s?k=solar+generator+jackery&ref=nb_sb_noss_2). Tesla's [impact report](https://www.tesla.com/ns_videos/tesla-impact-report-2019.pdf) is also interesting.
 
 You can always find out how much different activites impact climate change by googling "XYZ carbon footprint" where XYZ is the activity you're concerned about (like aviation, for example).
+
+## Resources
+States adjusted by use of renewable energy from [lowdowndata](https://www.instagram.com/p/B3mxaDFgmAI/)  
+Nuclear energy use from [lowdowndata](https://www.instagram.com/p/B4zzOr2g4_r/)  
+Founder's pledge [recommendations](https://founderspledge.com/research/fp-climate-change)
+

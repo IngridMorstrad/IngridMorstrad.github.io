@@ -5,7 +5,7 @@ comments: true
 categories: thoughts
 ---
 
-Drug prices are similar to the points in "Whose Line is it Anyway?" - they're made up. The price that is shown in the infographic (250$) is purely artificial, considering the drug maker gives a $62.50 debate, meaning the actual cost to the drug maker is only $187.5.
+Drug prices are similar to the points in "Whose Line is it Anyway?" - they're made up. The price that is shown in the infographic (250$) is purely artificial, considering the drug maker gives a $62.50 rebate, meaning the actual cost to the drug maker is only $187.5.
 
 <img src="https://khn.org/wp-content/uploads/sites/2/2016/10/drug-pipeline-final_1498.jpg?resize=1200,2346">
 
@@ -17,7 +17,7 @@ What happens is, the company that makes the drug sets a price, let's say 250$ (t
 Now the employer pays 232$ to the pharmacy, of which the Pharmacy Benefit Managers (PBMs) pocket 3$. The pharmacy gets 229$ + another 25$ from the patient, giving the pharmacies 254$, or a 14$ profit. What's hilarious is that the drugmaker ends up paying a 62.50$ rebate! It's the same as someone selling you a bridge for 250$ and immediately offering you a 100$ "discount". Assuming the drug maker never charged you the "fake" price up front, the wholesaler would be charged only 175$. Then, the wholesaler could charge the pharmacy 177.5$, meaning the pharmacy could charge 191.5$ and still get the same profit (14$) as before. This would require employers/insurers to pay just 166.5$ instead of (effectively) 182$. The 15.5$ saved by the employer comes from removing the 12.5$ "rebate" to PBMs and the 3$ profit they make. You'll notice the 12.5$ is not really a "rebate", but rather is profit the PBMs make.
 
 ## Fixing the system
-Now, how can society get to a world where the system works better than the current state? To disrupt this in a capitalistic system (meaning everyone still operates trying to make a profit) in a way that the end-customer pays lower sums, employers/insurers need to go directly to pharmacies (cut out the PBMs). Even more efficient would be cutting out the pharmacies and going to the wholesellers. The most "cost-efficient" approach would be for employers/insurers to start making drugs themselves. PBMs not adding anything to the process is why [Hasan Minhaj focuses on them](https://www.youtube.com/watch?v=z7LgT4_jkLA&feature=youtu.be) in his segment on drug pricing.
+Now, how can society get to a world where the system works better than the current state? To disrupt this in a capitalistic system (meaning everyone still operates trying to make a profit) in a way that the end-customer pays lower sums, employers/insurers need to go directly to pharmacies (cut out the PBMs). Even more efficient would be cutting out the pharmacies by having employers act as "pharmacies" and buying from the wholesellers. The most "cost-efficient" approach would be for employers/insurers to start making drugs themselves. PBMs not adding anything to the process is why [Hasan Minhaj focuses on them](https://www.youtube.com/watch?v=z7LgT4_jkLA&feature=youtu.be) in his segment on drug pricing.
 
 Another way would be for the employers to operate a "competing pharmacy" that sells medicines to their employees. As employers would be saving costs, they wouldn't need to make as much profits as these pharmacies for this to be a good decision financially for them. This may be what [Amazon is doing with Pillpack](https://www.amazon.com/stores/page/5C6C0A16-CE60-4998-B799-A746AE18E19B).
 
