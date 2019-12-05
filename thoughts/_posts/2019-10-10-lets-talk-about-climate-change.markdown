@@ -34,5 +34,6 @@ You can always find out how much different activites impact climate change by go
 ## Resources
 States adjusted by use of renewable energy from [lowdowndata](https://www.instagram.com/p/B3mxaDFgmAI/)  
 Nuclear energy use from [lowdowndata](https://www.instagram.com/p/B4zzOr2g4_r/)  
-Founder's pledge [recommendations](https://founderspledge.com/research/fp-climate-change)
+Founder's pledge [recommendations](https://founderspledge.com/research/fp-climate-change)  
+Tech & [big oil](https://logicmag.io/nature/oil-is-the-new-data/)
 
