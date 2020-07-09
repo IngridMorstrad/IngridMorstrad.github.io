@@ -1,5 +1,6 @@
 _site
 .sass-cache
 *.ignore
+BlogRemove
 
 bower_components/
