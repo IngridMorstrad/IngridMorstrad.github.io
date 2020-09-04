@@ -65,3 +65,9 @@ I want to donate to:
 * Lend money since I don't want to donate: Just donating would be more efficient & impactful.
 * Save money for the future, so I can donate big then: While I haven't done a mathematical breakdown yet, I assume the interest you earn on the money would not make up for the difference in people's lives you could achieve (and the corresponding change in society those people would cause by the time you decide to donate in the future).
 * Research organizations well before donating: You should. This post should aid with that. As an example of suspicious activity in charities, [Propublica](https://www.propublica.org/series/red-cross) advises against donating to Red Cross as they have a sketchy record with past missions.
+
+## Notable charities
+
+[GiveWell](www.givewell.org)
+[FortifyHealth](https://www.fortifyhealth.global/)
+[NewIncentives](https://www.newincentives.org/)
