@@ -68,6 +68,6 @@ I want to donate to:
 
 ## Notable charities
 
-[GiveWell](www.givewell.org)
-[FortifyHealth](https://www.fortifyhealth.global/)
+[GiveWell](www.givewell.org)  
+[FortifyHealth](https://www.fortifyhealth.global/)  
 [NewIncentives](https://www.newincentives.org/)
