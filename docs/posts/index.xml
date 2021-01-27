@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on </title>
+    <link>/posts/</link>
+    <description>Recent content in Posts on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 21 Oct 2019 00:00:00 +0000</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Let&#39;s talk about: Health Costs</title>
+      <link>/posts/thoughts/2019-10-21-lets-talk-about-health-costs/</link>
+      <pubDate>Mon, 21 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/thoughts/2019-10-21-lets-talk-about-health-costs/</guid>
+      <description>Drug prices are similar to the points in &amp;ldquo;Whose Line is it Anyway?&amp;rdquo; - they&amp;rsquo;re made up. The price that is shown in the infographic (250$) is purely artificial, considering the drug maker gives a $62.50 rebate, meaning the actual cost to the drug maker is only $187.5.
+Image from Kaiser Health News shared under a CC license.
+Textual description What happens is, the company that makes the drug sets a price, let&amp;rsquo;s say 250$ (this is a &amp;ldquo;fake&amp;rdquo; price as you will see).</description>
+    </item>
+    
+    <item>
+      <title>Let&#39;s talk about: Climate Change</title>
+      <link>/posts/thoughts/2019-10-10-lets-talk-about-climate-change/</link>
+      <pubDate>Thu, 10 Oct 2019 21:08:00 +0000</pubDate>
+      
+      <guid>/posts/thoughts/2019-10-10-lets-talk-about-climate-change/</guid>
+      <description>With all the recent news and coverage that climate change is getting, it is easy for one to get a sense of ennui, to develop a numbness to each new report that paints a grimmer version of the future compared to the previous one. It is easy to feel helpless, as if relying on the ability of a captain on a sinking ship. This post is written as an attempt to try and get you to disavow that notion.</description>
+    </item>
+    
+    <item>
+      <title>Of flights and men</title>
+      <link>/posts/activities/2018-12-20-of-flights-and-men/</link>
+      <pubDate>Thu, 20 Dec 2018 23:22:00 +0000</pubDate>
+      
+      <guid>/posts/activities/2018-12-20-of-flights-and-men/</guid>
+      <description>“Woah!” he chortled.
+“I look different, I guess.”
+“You look like a writer.”
+I hadn’t seen Ashish for quite some time. We went to the same school, but only struck up a friendship towards the end of high school. We lived awfully close (less than a km away from each other), but it was only by the eleventh grade that my parents deemed I could walk a kilometer safely by myself.</description>
+    </item>
+    
+    <item>
+      <title>Let&#39;s talk about encryption - again!</title>
+      <link>/posts/technical/security/2018-11-05-lets-talk-about-encryption-again/</link>
+      <pubDate>Tue, 20 Nov 2018 23:51:00 +0000</pubDate>
+      
+      <guid>/posts/technical/security/2018-11-05-lets-talk-about-encryption-again/</guid>
+      <description>This post is part of a multi-part series.
+For part 1, click here.
+Wolf Einstein The wolf has realized you&amp;rsquo;ve foiled his initial plans, and he&amp;rsquo;s decided to up his game. Now, he knows you encrypt your message with your private key. He decides he will decrypt the message with your public key, which will let him know exactly when you plan to visit. THen, he plans to intercept you on the way to your grandmother&amp;rsquo;s house - just like the fairytale foretold.</description>
+    </item>
+    
+    <item>
+      <title>Let&#39;s talk about encryption</title>
+      <link>/posts/technical/security/2018-11-05-lets-talk-about-encryption/</link>
+      <pubDate>Mon, 05 Nov 2018 23:51:00 +0000</pubDate>
+      
+      <guid>/posts/technical/security/2018-11-05-lets-talk-about-encryption/</guid>
+      <description>The better to write you with Let&amp;rsquo;s say you are Red Riding Hood, and you want to write a letter to your grandmother telling her you will be visiting. However, the big bad wolf is aware of your plans, and he decides he will also write a letter to your grandmother (pretending to be you) saying you won&amp;rsquo;t be visiting. If only there was a way you could let your grandmother know your letter was from you and the wolf&amp;rsquo;s letter was a fake.</description>
+    </item>
+    
+    <item>
+      <title>A guide to charity</title>
+      <link>/posts/activities/2018-09-18-a-guide-to-charity/</link>
+      <pubDate>Tue, 18 Sep 2018 19:22:00 +0000</pubDate>
+      
+      <guid>/posts/activities/2018-09-18-a-guide-to-charity/</guid>
+      <description>Intro I&amp;rsquo;ve always had a few thoughts about charity floating around in my head. This post is a way for me to record some of those thoughts.
+Deciding where to give For me, this has been the most important question when donating any money/time/effort. If you have X dollars to donate, where should you donate this money?
+Goal 1: Effective allocation No one wants to see their money wasted. The primary concerns I had were that the money would not be used appropriately (either the charity is a front for a scam, or just inefficient in the way it utilizes funds).</description>
+    </item>
+    
+    <item>
+      <title>Optimizing Outlook</title>
+      <link>/posts/activities/2018-04-11-optimizing-outlook/</link>
+      <pubDate>Wed, 11 Apr 2018 19:29:00 +0000</pubDate>
+      
+      <guid>/posts/activities/2018-04-11-optimizing-outlook/</guid>
+      <description>Introduction They say &amp;ldquo;necessity is the mother of invention&amp;rdquo;. It&amp;rsquo;s incredible the power programming gives you. Maybe if the power-hungry learned how to program they could be constructive rather than destructive. Then again, the recent Facebook scandal makes you wonder.
+The problem Stepping down a few rungs and we&amp;rsquo;re back to the little world I live in. For the past few days/weeks, I had been frustrated by the lack of mailbox space at work.</description>
+    </item>
+    
+    <item>
+      <title>A rating system for table tennis</title>
+      <link>/posts/activities/2018-03-12-a-rating-system-for-table-tennis/</link>
+      <pubDate>Mon, 12 Mar 2018 17:29:00 +0000</pubDate>
+      
+      <guid>/posts/activities/2018-03-12-a-rating-system-for-table-tennis/</guid>
+      <description>Background At work, during breaks, most of my team plays table-tennis. This weekend, I decided to spend some time writing up a rating system that I could use to keep track of how good (or bad) I (and everyone else) was. This is a writeup of how that exercise went. I&amp;rsquo;ve hidden a few lines to act as spoiler (indicated by an arrowhead to the left of the line). If you wish to exercise your mathematical skills, try making a guess and then click the line to reveal how I solved the problem.</description>
+    </item>
+    
+    <item>
+      <title>The quiz-biz</title>
+      <link>/posts/activities/2018-02-07-quiz-biz/</link>
+      <pubDate>Wed, 07 Feb 2018 23:17:00 +0000</pubDate>
+      
+      <guid>/posts/activities/2018-02-07-quiz-biz/</guid>
+      <description>Intro For a large part of my life, from when I was about 10 years old till I left college, I used to take part in quizzing competitions. A couple of times, I&amp;rsquo;ve had people ask me how they could start quizzing, or what preparing for a quiz would entail. This is a question I have some difficulty answering, because I have never really prepared for a quiz. In fact, procrastinating while trying to prepare is pretty much how I learned some of the different tidbits that have helped me win different quizzing competitions.</description>
+    </item>
+    
+    <item>
+      <title>A guide to code reviews</title>
+      <link>/posts/technical/2018-01-29-a-guide-to-code-reviews/</link>
+      <pubDate>Mon, 29 Jan 2018 01:34:00 +0000</pubDate>
+      
+      <guid>/posts/technical/2018-01-29-a-guide-to-code-reviews/</guid>
+      <description>This here is a collection of things I&amp;rsquo;ve learned about reviewing code in the few years that I&amp;rsquo;ve worked as a software developer. As these are my thoughts, you should take them with at least a pinch of salt instead of at face value, as with most subjective things in life.
+When I first started, I reviewed code very differently from how I review code now. Despite this being a very important skill, it is not taught in high school or even college.</description>
+    </item>
+    
+    <item>
+      <title>My weird walk to work</title>
+      <link>/posts/activities/2017-10-10-my-weird-walk-to-work/</link>
+      <pubDate>Tue, 10 Oct 2017 19:01:00 +0000</pubDate>
+      
+      <guid>/posts/activities/2017-10-10-my-weird-walk-to-work/</guid>
+      <description>The walk Intro I&amp;rsquo;m sure a few other people do, or try to do this, so I&amp;rsquo;m not sure how unusual it is, but I thought I&amp;rsquo;d post about it regardless. I walk to work. Almost everyday. And usually (like a good engineer ;) ), if I do something repeatedly, I try toptimize it. With code, with life. So, now that it&amp;rsquo;s been a few months of walking to work in Seattle, I think I can present my learnings.</description>
+    </item>
+    
+    <item>
+      <title>H*cking around</title>
+      <link>/posts/technical/security/2017-09-23-hacking-around/</link>
+      <pubDate>Sat, 23 Sep 2017 22:29:00 +0000</pubDate>
+      
+      <guid>/posts/technical/security/2017-09-23-hacking-around/</guid>
+      <description>Intro People think hacking requires a great deal of skill (on the part of the attacker) and/or a great deal of skill (on the part of the defender). This is quite clearly false. There are many simple ways to exploit a system. In this post, I detail some of the times I got access to accounts I shouldn&amp;rsquo;t have been able to get access to. While these are not the specific ways that a system&amp;rsquo;s bugs are taken advantage of, in general the principles hold true.</description>
+    </item>
+    
+    <item>
+      <title>2FA, phishing and U2F</title>
+      <link>/posts/technical/security/2017-09-06-2fa-phishing-and-yubikey/</link>
+      <pubDate>Wed, 06 Sep 2017 23:50:00 +0000</pubDate>
+      
+      <guid>/posts/technical/security/2017-09-06-2fa-phishing-and-yubikey/</guid>
+      <description>Intro As part of efforts to improve security, my workplace has issued us Yubikeys. What is a Yubikey? It&amp;rsquo;s a device you plug into your computer&amp;rsquo;s USB port and when you touch it for a few seconds, it spits out a string. This string is used for authentication (to identify you). The device has a capacitive sensor to detect touch, just like most phones today (old phones that used a &amp;ldquo;stylus&amp;rdquo; use resistive-touch based on resistors).</description>
+    </item>
+    
+    <item>
+      <title>A guide to finances</title>
+      <link>/posts/activities/2017-01-30-a-guide-to-finances/</link>
+      <pubDate>Mon, 30 Jan 2017 19:22:00 +0000</pubDate>
+      
+      <guid>/posts/activities/2017-01-30-a-guide-to-finances/</guid>
+      <description>Intro I write this article to provide an easy way for people just entering the workforce (many of my friends) to manage their finances. I also think this article would also be a good reference for me, and may prove interesting (in hindsight) in a few years. If you want to spend as little time as possible, skip to the end. I would appreciate comments if you find this useful.</description>
+    </item>
+    
+    <item>
+      <title>Ashwin helps an Olympic medalist</title>
+      <link>/posts/thoughts/2016-11-02-ashwin-helps-an-olympic-medalist/</link>
+      <pubDate>Wed, 02 Nov 2016 00:21:00 +0000</pubDate>
+      
+      <guid>/posts/thoughts/2016-11-02-ashwin-helps-an-olympic-medalist/</guid>
+      <description>Part 1 As an Indian watching the Olympics, there is not much to look forward to. The best in our one billion-strong nation don&amp;rsquo;t make it past the qualification criteria for most sports. And, when they do, they are usually found at the bottom of the standings - forming a solid base from which, every Olympics, we moan the dearth of infrastructure and the deluge of corruption in India.
+The list of medals won per capita at the Summer Olympics has India finishing last in Total Medals per Capita, Gold Medals per Capita and second-to-last (woot!</description>
+    </item>
+    
+    <item>
+      <title>Love, Drugs And Rock N&#39; Roll</title>
+      <link>/posts/thoughts/2016-08-22-love-drugs-and-rock-n-roll/</link>
+      <pubDate>Mon, 22 Aug 2016 23:41:00 +0000</pubDate>
+      
+      <guid>/posts/thoughts/2016-08-22-love-drugs-and-rock-n-roll/</guid>
+      <description>[Disclaimer: I have no degrees in Psychology, Biology or Anthropology. I would love to receive comments, clarifications or corrections.]
+Love  I was never insane except upon occasions when my heart was touched
+ Edgar Allan Poe   Love - a feeling succinctly defined by the Oxford dictionary as &amp;ldquo;an intense liking for another person&amp;rdquo;. An emotion intense enough to form the backdrop of literary and cinematic tragedies - Romeo and Juliet, Joel and Clementine and my personal favourite, Eloisa to Abelard*.</description>
+    </item>
+    
+    <item>
+      <title>Let&#39;s talk about: The Olympics (Match Sprint)</title>
+      <link>/posts/thoughts/2016-03-29-lets-talk-about-the-olympics-match-sprint/</link>
+      <pubDate>Tue, 29 Mar 2016 08:00:00 +0000</pubDate>
+      
+      <guid>/posts/thoughts/2016-03-29-lets-talk-about-the-olympics-match-sprint/</guid>
+      <description>Sprint: To race or move at full speed (Dictionary.com)
+Given the above definition, it shouldn&amp;rsquo;t surprise you that the fastest cyclists in a match sprint reach speeds as high as 70 km/h. Watching the event may leave you confused - it looks like they are fighting to lose the race. The sprint shown below looks, at times, like a slow-cycling event:
+  What&amp;rsquo;s happening here is that being in second-place, right behind the leader, reduces drag (friction with the air) by quite a large amount - around 30%.</description>
+    </item>
+    
+    <item>
+      <title>Let&#39;s talk about: Dinosaurs</title>
+      <link>/posts/thoughts/2016-03-10-lets-talk-about-dinosaurs/</link>
+      <pubDate>Thu, 10 Mar 2016 02:08:00 +0000</pubDate>
+      
+      <guid>/posts/thoughts/2016-03-10-lets-talk-about-dinosaurs/</guid>
+      <description>Dinosaurs.
+Intro - Archosaurs We begin the journey around 250 million years ago, at the end of the Permian era, marked by the largest mass extinction in Earth&amp;rsquo;s history. The Permian-Triassic extinction event was catastrophic, claiming around 90 percent of marine life and 70 percent of life on land. Synapsids, animals that dominated the Permian landscape, were all but wiped out. A few trickled through, biding their time to regain their kingdom in a later era, but for now what was important was that life had entered the Triassic era - albeit barely.</description>
+    </item>
+    
+    <item>
+      <title>The joy of tennis</title>
+      <link>/posts/thoughts/2015-10-02-the-joy-of-tennis/</link>
+      <pubDate>Thu, 01 Oct 2015 03:08:00 +0000</pubDate>
+      
+      <guid>/posts/thoughts/2015-10-02-the-joy-of-tennis/</guid>
+      <description>Asterisks are explained at the bottom.
+Intro Sports - activities where people try to prove they are better than others at an activity they wouldn&amp;rsquo;t be caught dead doing otherwise. Outside the world of sports, it would be ludicrous to find 11 people running behind a ball, but say you can do it better than any other set of 11 people, and the world will throw millions at you. While they might seem stupid if you try thinking about the higher purpose in the purpose of sports, you would be hard pressed to find someone not tuning in for the big final.</description>
+    </item>
+    
+    <item>
+      <title>Probability and tennis</title>
+      <link>/posts/activities/2015-05-31-probability-and-tennis/</link>
+      <pubDate>Sun, 31 May 2015 18:09:00 +0000</pubDate>
+      
+      <guid>/posts/activities/2015-05-31-probability-and-tennis/</guid>
+      <description>The idea The other day, while surfing Reddit, I came across a few comments that said having a 55% chance of winning a point would give you a 99% chance of winning the game. I&amp;rsquo;d heard this before, but this time I thought, &amp;ldquo;Hey! I can simulate that and see if it makes sense.&amp;rdquo; Seemed a bit unrealistic to me, that 50% would mean dead-even whereas 55% would mean a blowout.</description>
+    </item>
+    
+    <item>
+      <title>First race</title>
+      <link>/posts/activities/2015-05-12-first-race/</link>
+      <pubDate>Tue, 12 May 2015 22:09:00 +0000</pubDate>
+      
+      <guid>/posts/activities/2015-05-12-first-race/</guid>
+      <description>Ran my first race on May 2nd. A 20 km run around Lake Monona.
+Started off too fast - too confident despite not having trained since the end of March. Soon, I was tired enough that I would end up walking not insignificant distances throughout the race. Even with all the walking and the pleasant weather, 20 km was really exhausting. Not sure if it&amp;rsquo;s a Wisconsin thing, but two pints of beer is what you get after you cross the finish line.</description>
+    </item>
+    
+    <item>
+      <title>Linear circuits</title>
+      <link>/posts/reviews/2015-04-05-linear-circuits/</link>
+      <pubDate>Sun, 05 Apr 2015 23:40:00 +0000</pubDate>
+      
+      <guid>/posts/reviews/2015-04-05-linear-circuits/</guid>
+      <description>Link to course
+University: Georgia Institute of Technology
+Overall rating: 4/5
+Recommended if: You want to know what would be taught in your first circuits course in college or are just interested in refreshing what you learned about circuits.
+Level: Intro
+Good: Covers and explains the basics in an easy to understand manner. Discussion forums were helpful. Lots of numerical problems to ensure you understand a decent amount.
+Bad: Some topics are glossed over - like transformers and the wheatstone bridge.</description>
+    </item>
+    
+    <item>
+      <title>Dino 101</title>
+      <link>/posts/reviews/2015-03-16-dino-101/</link>
+      <pubDate>Mon, 16 Mar 2015 23:35:32 +0000</pubDate>
+      
+      <guid>/posts/reviews/2015-03-16-dino-101/</guid>
+      <description>Link to course
+University: University of Alberta
+Overall rating: 4/5
+Recommended if: You are mildly interested in dinosaurs, evolution or animals. Also, if you would like to know what paleontologists do.
+Level: Intro
+Good: A great intro to dinosaurs and paleontology. The instructors take feedback seriously and have changed the course since the first offering.
+Bad: Wish it went into more detail and was more challenging. It felt like a course without a lot of college level content.</description>
+    </item>
+    
+    <item>
+      <title>Learning how to Learn</title>
+      <link>/posts/reviews/2015-03-08-learning-how-to-learn/</link>
+      <pubDate>Sun, 08 Mar 2015 12:35:32 +0000</pubDate>
+      
+      <guid>/posts/reviews/2015-03-08-learning-how-to-learn/</guid>
+      <description>Link to course (Now self-paced)
+University: UCSD
+Overall rating: 2/5
+Recommended if: you like self-help.
+Level: Easier than an intro
+Good: Organized, has a structure.
+Bad: Nothing that can&amp;rsquo;t be learned by browsing the web while procrastinating.
+Interaction with other students: (3/5) Fair amount of discussion on the forums.
+Work assigned: (1/5) Just some written assignments. Don&amp;rsquo;t feel like it really helped you learn the content (oddly enough).
+Lectures: (2/5) A bit like watching a documentary, except a little more academic.</description>
+    </item>
+    
+    <item>
+      <title>First post</title>
+      <link>/posts/thoughts/2015-03-05-first-post/</link>
+      <pubDate>Thu, 05 Mar 2015 19:35:32 +0000</pubDate>
+      
+      <guid>/posts/thoughts/2015-03-05-first-post/</guid>
+      <description>Hi, and welcome to my blog.
+Here, I will keep you up to date on the things I am working on. Hope you enjoy your stay.</description>
+    </item>
+    
+  </channel>
+</rss>

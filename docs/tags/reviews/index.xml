@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>reviews on </title>
+    <link>/tags/reviews/</link>
+    <description>Recent content in reviews on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 05 Apr 2015 23:40:00 +0000</lastBuildDate><atom:link href="/tags/reviews/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linear circuits</title>
+      <link>/posts/reviews/2015-04-05-linear-circuits/</link>
+      <pubDate>Sun, 05 Apr 2015 23:40:00 +0000</pubDate>
+      
+      <guid>/posts/reviews/2015-04-05-linear-circuits/</guid>
+      <description>Link to course
+University: Georgia Institute of Technology
+Overall rating: 4/5
+Recommended if: You want to know what would be taught in your first circuits course in college or are just interested in refreshing what you learned about circuits.
+Level: Intro
+Good: Covers and explains the basics in an easy to understand manner. Discussion forums were helpful. Lots of numerical problems to ensure you understand a decent amount.
+Bad: Some topics are glossed over - like transformers and the wheatstone bridge.</description>
+    </item>
+    
+    <item>
+      <title>Dino 101</title>
+      <link>/posts/reviews/2015-03-16-dino-101/</link>
+      <pubDate>Mon, 16 Mar 2015 23:35:32 +0000</pubDate>
+      
+      <guid>/posts/reviews/2015-03-16-dino-101/</guid>
+      <description>Link to course
+University: University of Alberta
+Overall rating: 4/5
+Recommended if: You are mildly interested in dinosaurs, evolution or animals. Also, if you would like to know what paleontologists do.
+Level: Intro
+Good: A great intro to dinosaurs and paleontology. The instructors take feedback seriously and have changed the course since the first offering.
+Bad: Wish it went into more detail and was more challenging. It felt like a course without a lot of college level content.</description>
+    </item>
+    
+    <item>
+      <title>Learning how to Learn</title>
+      <link>/posts/reviews/2015-03-08-learning-how-to-learn/</link>
+      <pubDate>Sun, 08 Mar 2015 12:35:32 +0000</pubDate>
+      
+      <guid>/posts/reviews/2015-03-08-learning-how-to-learn/</guid>
+      <description>Link to course (Now self-paced)
+University: UCSD
+Overall rating: 2/5
+Recommended if: you like self-help.
+Level: Easier than an intro
+Good: Organized, has a structure.
+Bad: Nothing that can&amp;rsquo;t be learned by browsing the web while procrastinating.
+Interaction with other students: (3/5) Fair amount of discussion on the forums.
+Work assigned: (1/5) Just some written assignments. Don&amp;rsquo;t feel like it really helped you learn the content (oddly enough).
+Lectures: (2/5) A bit like watching a documentary, except a little more academic.</description>
+    </item>
+    
+  </channel>
+</rss>

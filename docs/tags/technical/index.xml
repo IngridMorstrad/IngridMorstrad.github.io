@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>technical on </title>
+    <link>/tags/technical/</link>
+    <description>Recent content in technical on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 20 Nov 2018 23:51:00 +0000</lastBuildDate><atom:link href="/tags/technical/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Let&#39;s talk about encryption - again!</title>
+      <link>/posts/technical/security/2018-11-05-lets-talk-about-encryption-again/</link>
+      <pubDate>Tue, 20 Nov 2018 23:51:00 +0000</pubDate>
+      
+      <guid>/posts/technical/security/2018-11-05-lets-talk-about-encryption-again/</guid>
+      <description>This post is part of a multi-part series.
+For part 1, click here.
+Wolf Einstein The wolf has realized you&amp;rsquo;ve foiled his initial plans, and he&amp;rsquo;s decided to up his game. Now, he knows you encrypt your message with your private key. He decides he will decrypt the message with your public key, which will let him know exactly when you plan to visit. THen, he plans to intercept you on the way to your grandmother&amp;rsquo;s house - just like the fairytale foretold.</description>
+    </item>
+    
+    <item>
+      <title>Let&#39;s talk about encryption</title>
+      <link>/posts/technical/security/2018-11-05-lets-talk-about-encryption/</link>
+      <pubDate>Mon, 05 Nov 2018 23:51:00 +0000</pubDate>
+      
+      <guid>/posts/technical/security/2018-11-05-lets-talk-about-encryption/</guid>
+      <description>The better to write you with Let&amp;rsquo;s say you are Red Riding Hood, and you want to write a letter to your grandmother telling her you will be visiting. However, the big bad wolf is aware of your plans, and he decides he will also write a letter to your grandmother (pretending to be you) saying you won&amp;rsquo;t be visiting. If only there was a way you could let your grandmother know your letter was from you and the wolf&amp;rsquo;s letter was a fake.</description>
+    </item>
+    
+  </channel>
+</rss>

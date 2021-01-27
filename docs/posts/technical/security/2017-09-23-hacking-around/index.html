@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> H*cking around | </title>
+  <meta name="description" content="Hi, I&#39;m Ashwin. This is my little corner of the web. Hope you enjoy your stay. Feel free to leave a comment or tweet.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="H*cking around" />
+<meta property="og:description" content="Intro People think hacking requires a great deal of skill (on the part of the attacker) and/or a great deal of skill (on the part of the defender). This is quite clearly false. There are many simple ways to exploit a system. In this post, I detail some of the times I got access to accounts I shouldn&rsquo;t have been able to get access to. While these are not the specific ways that a system&rsquo;s bugs are taken advantage of, in general the principles hold true." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/technical/security/2017-09-23-hacking-around/" />
+<meta property="article:published_time" content="2017-09-23T22:29:00+00:00" />
+<meta property="article:modified_time" content="2017-09-23T22:29:00+00:00" />
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="H*cking around"/>
+<meta name="twitter:description" content="Intro People think hacking requires a great deal of skill (on the part of the attacker) and/or a great deal of skill (on the part of the defender). This is quite clearly false. There are many simple ways to exploit a system. In this post, I detail some of the times I got access to accounts I shouldn&rsquo;t have been able to get access to. While these are not the specific ways that a system&rsquo;s bugs are taken advantage of, in general the principles hold true."/>
+
+  
+  
+  
+  <link rel="stylesheet" href="css/style-white.css">
+  
+  
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="images/favicon.ico" />
+
+  
+  
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+  <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">All posts</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li>
+          <a class="icon" href=" /posts/technical/security/2017-09-06-2fa-phishing-and-yubikey/">
+            <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
+          </a>
+        </li>
+        
+        
+        <li>
+          <a class="icon" href="/posts/activities/2017-10-10-my-weird-walk-to-work/">
+            <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
+          </a>
+        </li>
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=%2fposts%2ftechnical%2fsecurity%2f2017-09-23-hacking-around%2f">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=%2fposts%2ftechnical%2fsecurity%2f2017-09-23-hacking-around%2f&text=H%2acking%20around">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=%2fposts%2ftechnical%2fsecurity%2f2017-09-23-hacking-around%2f&title=H%2acking%20around">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=%2fposts%2ftechnical%2fsecurity%2f2017-09-23-hacking-around%2f&is_video=false&description=H%2acking%20around">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=H%2acking%20around&body=Check out this article: %2fposts%2ftechnical%2fsecurity%2f2017-09-23-hacking-around%2f">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=%2fposts%2ftechnical%2fsecurity%2f2017-09-23-hacking-around%2f&title=H%2acking%20around">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=%2fposts%2ftechnical%2fsecurity%2f2017-09-23-hacking-around%2f&title=H%2acking%20around">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.stumbleupon.com/submit?url=%2fposts%2ftechnical%2fsecurity%2f2017-09-23-hacking-around%2f&title=H%2acking%20around">
+      <i class="fab fa-stumbleupon " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://digg.com/submit?url=%2fposts%2ftechnical%2fsecurity%2f2017-09-23-hacking-around%2f&title=H%2acking%20around">
+      <i class="fab fa-digg " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=%2fposts%2ftechnical%2fsecurity%2f2017-09-23-hacking-around%2f&name=H%2acking%20around&description=Intro%20People%20think%20hacking%20requires%20a%20great%20deal%20of%20skill%20%28on%20the%20part%20of%20the%20attacker%29%20and%2for%20a%20great%20deal%20of%20skill%20%28on%20the%20part%20of%20the%20defender%29.%20This%20is%20quite%20clearly%20false.%20There%20are%20many%20simple%20ways%20to%20exploit%20a%20system.%20In%20this%20post%2c%20I%20detail%20some%20of%20the%20times%20I%20got%20access%20to%20accounts%20I%20shouldn%26rsquo%3bt%20have%20been%20able%20to%20get%20access%20to.%20While%20these%20are%20not%20the%20specific%20ways%20that%20a%20system%26rsquo%3bs%20bugs%20are%20taken%20advantage%20of%2c%20in%20general%20the%20principles%20hold%20true.">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=%2fposts%2ftechnical%2fsecurity%2f2017-09-23-hacking-around%2f&t=H%2acking%20around">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#intro">Intro</a></li>
+    <li><a href="#attack-1-too-much-trust">Attack 1: Too much trust</a></li>
+    <li><a href="#attack-2-outdated-info">Attack 2: Outdated info</a></li>
+    <li><a href="#attack-3-poor-id-mechanism">Attack 3: Poor ID mechanism</a></li>
+    <li><a href="#attack-4-crappy-userpass-combinations">Attack 4: Crappy user/pass combinations</a></li>
+    <li><a href="#attack-5-trust-no-one">Attack 5: Trust no-one</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        H*cking around
+      </h1>
+      <div class="meta">
+        
+        <div class="postdate">
+          
+          <time datetime="2017-09-23 22:29:00 &#43;0000 UTC" itemprop="datePublished">2017-09-23</time>
+          
+        </div>
+        
+        
+      </div>
+    </header>
+
+  
+    <div class="content" itemprop="articleBody">
+      <h2 id="intro">Intro</h2>
+<p>People think hacking requires a great deal of skill (on the part of the attacker) and/or a great deal of skill (on the part of the defender). This is quite clearly false. There are many simple ways to exploit a system. In this post, I detail some of the times I got access to accounts I shouldn&rsquo;t have been able to get access to. While these are not the specific ways that a system&rsquo;s bugs are taken advantage of, in general the principles hold true.</p>
+<h2 id="attack-1-too-much-trust">Attack 1: Too much trust</h2>
+<p>The first &ldquo;attack&rdquo; that I describe is probably the one that took the least effort from me. One of my friends logged in to his Facebook account from my computer, and I guess he must have checked the box that says &ldquo;trust this device&rdquo; (or something similar). He was just visiting me on vacation, but after he left, when I went to Facebook, it turned out I still had access to his account. Insane. I kept checking back a few weeks/months later and I still always had access. Finally, after many months, I clicked logout (ideally, Facebook should have logged me out or asked me for some form of ID - either a password or a security token or SOMETHING before this point) and reported this to him. Not as scary when it&rsquo;s a friend who has access, but what if it was a public net cafe, or a device you lost, etc. ?</p>
+<p>To mitigate this: check your recent sign-ins. Periodically logout of all sessions regardless. Facebook should identify active sessions from suspicious locations and warn you about it. If you do get those mails from Facebook (or other site), DO NOT ignore them!</p>
+<h2 id="attack-2-outdated-info">Attack 2: Outdated info</h2>
+<p>In a recent attack on another friend&rsquo;s Facebook account, I clicked on &ldquo;Forgot Password&rdquo;. This allowed me to send a code to his email account, which I chose to do. Now, I had to get access to his email account (Hotmail). So, I went to hotmail and repeated the process. I clicked on &ldquo;Forgot Password&rdquo; and Hotmail was very nice to tell me that an email with that user ID did not exist&hellip;! What? Did not exist? Well, let me try registering one with that user ID then. Less than 10 minutes later, I had a hotmail account with that person&rsquo;s email ID. I asked Facebook to mail me the code, which they did (not knowing I was now the owner of the email account) and I was allowed to then reset the Facebook password. Instead of following through on that, I let my friend know, and gave him access to his Hotmail account (letting him know how this attack was done as well).</p>
+<p>To mitigate this: Check what other accounts have access to your email/Facebook account. Delete ones that are old (mobile numbers too!).</p>
+<h2 id="attack-3-poor-id-mechanism">Attack 3: Poor ID mechanism</h2>
+<p>Another account was compromised by Facebook&rsquo;s awful ID mechanism. After clicking &ldquo;Forgot Password&rdquo;, I had to answer 5 questions about this person&rsquo;s friends to get access. The questions were somewhat specific (which of these friends went to high school with you) and they didn&rsquo;t reveal too many details about your friends (just a photo, if I remember right). Seems solid, right? The issue was that there was no limit on the number of retries. After around 10 attempts, I fluked through all 5 questions and gained access. Facebook has now removed this and replaced it with the &ldquo;Trusted Friends&rdquo; feature, which is much safer (IMO).</p>
+<p>To mitigate this: This specific case is a tough one to mitigate, but looks like Facebook doesn&rsquo;t allow this type of ID mechanism anymore. However, many sites still let you use a &ldquo;Secret Question/Answer&rdquo; option. The key is to LIE to the answer (or just enter a random string that makes no sense, but you remember with a password manager like LastPass). Everyone knows where you were born &amp; where you went to high school, and even if they don&rsquo;t, the answer is just a web search away.</p>
+<h2 id="attack-4-crappy-userpass-combinations">Attack 4: Crappy user/pass combinations</h2>
+<p>One day when I was bored, I tried logging into Reddit with random user/pass combinations. A Reddit account isn&rsquo;t worth much, but I was surprised to get hold of an account in my first five tries. I&rsquo;m not sure exactly what the fault was - either the user/pass was the same, or the password was something common like &ldquo;password&rdquo; - but it shocked me that five manual attempts got me an account. I changed the password and have lost access to the account myself (forgot the user/pass). Most attackers would run a script that tries many, many different username/password combinations, obtained from a better source (a database leak).</p>
+<p>To mitigate this: Pretty simple really, use a long password. No, it doesn&rsquo;t need to necessarily have complicated characters like #, $, ! that most sites love to enforce. As long as it is long, it works <a href="https://xkcd.com/936/">Relevant XKCD</a>.</p>
+<h2 id="attack-5-trust-no-one">Attack 5: Trust no-one</h2>
+<p>The last attack I&rsquo;ll describe is probably the most boring, but has the best mitigation. I installed a keylogger on my computer and when a couple of friends logged in from my computer, I had their passwords. This was extremely low-effort and boring and after confirming that the keylogger worked, I never bothered to log-in. However, a similar software could be installed on public computers (net cafes, etc.) and your account could be compromised, so I&rsquo;ll mention it here.</p>
+<p>To mitigate this: USE 2FA (two-factor authentication)! I&rsquo;ve blogged in another post about how this can help - even if someone knows your password, they won&rsquo;t be able to sign-in unless they have access to your second factor. Enable 2FA on all major accounts (emails, facebooks, etc.). Also, when installed on my laptop, the keylogger introduce a somewhat noticeable lag (although I guess this could be mitigated by using a faster processor/better computer).</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>For someone who wants to, getting hold of your account is easier than you think, especially if you haven&rsquo;t taken care to safeguard your account (2FA, etc.). The incidents I&rsquo;ve described above don&rsquo;t even use some of the (slightly) more complicated techniques - using leaked databases, using phishing sites, etc. In short, stop being so insecure!</p>
+
+    </div>
+  </article>
+
+  
+  
+
+
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/posts">All posts</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#intro">Intro</a></li>
+    <li><a href="#attack-1-too-much-trust">Attack 1: Too much trust</a></li>
+    <li><a href="#attack-2-outdated-info">Attack 2: Outdated info</a></li>
+    <li><a href="#attack-3-poor-id-mechanism">Attack 3: Poor ID mechanism</a></li>
+    <li><a href="#attack-4-crappy-userpass-combinations">Attack 4: Crappy user/pass combinations</a></li>
+    <li><a href="#attack-5-trust-no-one">Attack 5: Trust no-one</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=%2fposts%2ftechnical%2fsecurity%2f2017-09-23-hacking-around%2f">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=%2fposts%2ftechnical%2fsecurity%2f2017-09-23-hacking-around%2f&text=H%2acking%20around">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=%2fposts%2ftechnical%2fsecurity%2f2017-09-23-hacking-around%2f&title=H%2acking%20around">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=%2fposts%2ftechnical%2fsecurity%2f2017-09-23-hacking-around%2f&is_video=false&description=H%2acking%20around">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=H%2acking%20around&body=Check out this article: %2fposts%2ftechnical%2fsecurity%2f2017-09-23-hacking-around%2f">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=%2fposts%2ftechnical%2fsecurity%2f2017-09-23-hacking-around%2f&title=H%2acking%20around">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=%2fposts%2ftechnical%2fsecurity%2f2017-09-23-hacking-around%2f&title=H%2acking%20around">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.stumbleupon.com/submit?url=%2fposts%2ftechnical%2fsecurity%2f2017-09-23-hacking-around%2f&title=H%2acking%20around">
+      <i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://digg.com/submit?url=%2fposts%2ftechnical%2fsecurity%2f2017-09-23-hacking-around%2f&title=H%2acking%20around">
+      <i class="fab fa-digg fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=%2fposts%2ftechnical%2fsecurity%2f2017-09-23-hacking-around%2f&name=H%2acking%20around&description=Intro%20People%20think%20hacking%20requires%20a%20great%20deal%20of%20skill%20%28on%20the%20part%20of%20the%20attacker%29%20and%2for%20a%20great%20deal%20of%20skill%20%28on%20the%20part%20of%20the%20defender%29.%20This%20is%20quite%20clearly%20false.%20There%20are%20many%20simple%20ways%20to%20exploit%20a%20system.%20In%20this%20post%2c%20I%20detail%20some%20of%20the%20times%20I%20got%20access%20to%20accounts%20I%20shouldn%26rsquo%3bt%20have%20been%20able%20to%20get%20access%20to.%20While%20these%20are%20not%20the%20specific%20ways%20that%20a%20system%26rsquo%3bs%20bugs%20are%20taken%20advantage%20of%2c%20in%20general%20the%20principles%20hold%20true.">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=%2fposts%2ftechnical%2fsecurity%2f2017-09-23-hacking-around%2f&t=H%2acking%20around">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2021   
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">All posts</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+
+
+
+</html>
