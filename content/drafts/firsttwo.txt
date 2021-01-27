@@ -1,0 +1,19 @@
+First 2 years:
+Know what a client-server is
++ Thin client
+How they communicate
+How the server talks to the database
+How indices work and why they speed up queries on the DB
+Basic security attacks - XSS, injections, etc.
+What environments are
+Connecting with customers -> roles responsible for maintenance, issue rectification, deployment & sales
+Practical performance - disk reads
+MVVM pattern, MVC pattern
+static methods, instance methods
+why globals are awful
+how to review code: solve for yourself
+how to write designs: end-user changes, end-user problem, code problem, code changes
+
+Q: Why they are needed? How many of them would be required?
+
+http://www.browserauth.net/tls-client-authentication

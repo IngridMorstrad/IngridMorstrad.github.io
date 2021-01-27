@@ -1,0 +1,29 @@
+theme = "cactus"
+[[menu.main]]
+
+name = "Home"
+url = "/"
+weight = 1
+
+[[menu.main]]
+name = "All posts"
+url = "/posts"
+weight = 2
+
+[[menu.main]]
+name = "Tags"
+url = "/tags"
+weight = 3
+
+[params]
+  description = "Hi, I'm Ashwin. This is my little corner of the web. Hope you enjoy your stay. Feel free to leave a comment or tweet."
+
+  mainSection = "posts"
+  showAllPostsOnHomePage = true
+  rss = true
+  tagsOverview = true
+
+[[params.social]]
+  name = "twitter"
+  link = "https://www.twitter.com/TheAshwinMenon"
+
