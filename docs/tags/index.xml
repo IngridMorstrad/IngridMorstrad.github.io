@@ -5,7 +5,16 @@
     <link>/tags/</link>
     <description>Recent content in Tags on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 21 Oct 2019 00:00:00 +0000</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 28 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>reviews</title>
+      <link>/tags/reviews/</link>
+      <pubDate>Thu, 28 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/reviews/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>thoughts</title>
       <link>/tags/thoughts/</link>
@@ -39,15 +48,6 @@
       <pubDate>Sat, 23 Sep 2017 22:29:00 +0000</pubDate>
       
       <guid>/tags/security/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>reviews</title>
-      <link>/tags/reviews/</link>
-      <pubDate>Sun, 05 Apr 2015 23:40:00 +0000</pubDate>
-      
-      <guid>/tags/reviews/</guid>
       <description></description>
     </item>
     
