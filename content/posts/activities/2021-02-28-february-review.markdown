@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "February review"
-date:   2021-02-07
+date:   2021-02-21
 comments: true
 tags: activities
 ---
@@ -10,20 +10,21 @@ Started the February "review" a bit early this time, stated my goals, and tracke
 
 ## Habit goals
 
-- 22 minutes of reading every day. [Drop from Jan] Down from 30 minutes in January, which was a little too much for me. Again, counting only time spent reading books, not articles. Modified to read 1 chapter (of DDIA) per day on Feb 13.    
+- 22 minutes of reading every day. [Drop from Jan] Down from 30 minutes in January, which was a little too much for me. Again, counting only time spent reading books, not articles. Modified to read 1 chapter (of DDIA) per day on Feb 13. Modified to read 1 chapter every 2 days (on Feb 22).
 - 10 minutes of walking per day. Decided not to change this one; added a running goal instead.
 - 2 times a week running (for varying times). [New] Aim is to do 10 mins first week (continuing from January), 15 the second, 22 the third and 25 the fourth.  
-- 5 chess puzzles in a row every day. [Same as Jan]
+- 5 chess puzzles in a row every day. [Same as Jan]. Dropped as a goal for the last week, can still do in free time (on Feb 22).
 - 3 sets of push-ups every other day. [Change from Jan] Weighted, 3x11 with 2:00 rest between sets.
 - 3 sets of squats every other day. [Change from Jan] Weighted, 3x15 with 2:00 rest between sets.
-- [Secret goal]. Will be revealed later.
-- 1 design article per day. [New] Added on Feb 10.
+- [Secret goal]. Will be revealed later. Upped from 2/0 to 4/1 (on Feb 22).
+- 1 design article per day. [New] Added on Feb 10. Reduced to 2 per week (on Feb 22).
 
 ## Non-habit targets
 
 - 500 correct chessCom puzzles for the month. Total of 2744.
   - *Week 1: At 2603*
   - *Week 2: At 2770*
+  - *Week 3: At 2999*
 - [Added end of week 1] Finish reading & paste notes for Designing Data-Intensive Applications
 
 And now,
@@ -42,5 +43,9 @@ To be filled.
 - Continued to get a 100% on exercise, chess and surprisingly, even running despite snow for half the wee.
 - Struggling with the design/reading goals. Wish to ramp up, but will have to stick with the current levels (or dial down the others first).
 
+### Week 3
+- Similar to week 2, exercise was consistent, but missed out on the technical goals. Missed a few days of chess after enforcing a lower limit on rating above which the streak has to be maintained. Without that, I was getting many problems wrong before hitting the streak.
+- Many chess puzzles are getting repeated and I'm solving them from memory instead of calculating the solution.
+- Able to see that solving slowly/persisting slowly is a challenge (very visible with chess). My mood also influences the progress (a rushed mood leaves little time/energy/willingness to think).
 
 Overall, To be filled.
