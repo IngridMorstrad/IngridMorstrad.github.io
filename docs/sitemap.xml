@@ -1,209 +1,125 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>/</loc>
-    <lastmod>2021-02-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2021-02-21T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>/tags/activities/</loc>
-    <lastmod>2021-02-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2021-02-21T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>/posts/activities/2021-02-28-february-review/</loc>
-    <lastmod>2021-02-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2021-02-21T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>/posts/</loc>
-    <lastmod>2021-02-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2021-02-21T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>/tags/</loc>
-    <lastmod>2021-02-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2021-02-21T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>/posts/activities/2021-01-31-january-review/</loc>
     <lastmod>2021-01-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/posts/reviews/2021-01-28-a-little-history-of-philosophy/</loc>
     <lastmod>2021-01-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/tags/reviews/</loc>
     <lastmod>2021-01-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/posts/thoughts/2019-10-21-lets-talk-about-health-costs/</loc>
     <lastmod>2019-10-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/tags/thoughts/</loc>
     <lastmod>2019-10-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/posts/thoughts/2019-10-10-lets-talk-about-climate-change/</loc>
     <lastmod>2019-10-10T21:08:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/posts/activities/2018-12-20-of-flights-and-men/</loc>
     <lastmod>2018-12-20T23:22:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/posts/technical/security/2018-11-05-lets-talk-about-encryption-again/</loc>
     <lastmod>2018-11-20T23:51:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/tags/technical/</loc>
     <lastmod>2018-11-20T23:51:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/posts/technical/security/2018-11-05-lets-talk-about-encryption/</loc>
     <lastmod>2018-11-05T23:51:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/posts/activities/2018-09-18-a-guide-to-charity/</loc>
     <lastmod>2018-09-18T19:22:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/posts/activities/2018-04-11-optimizing-outlook/</loc>
     <lastmod>2018-04-11T19:29:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/posts/activities/2018-03-12-a-rating-system-for-table-tennis/</loc>
     <lastmod>2018-03-12T17:29:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/posts/activities/2018-02-07-quiz-biz/</loc>
     <lastmod>2018-02-07T23:17:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/posts/technical/2018-01-29-a-guide-to-code-reviews/</loc>
     <lastmod>2018-01-29T01:34:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/posts/activities/2017-10-10-my-weird-walk-to-work/</loc>
     <lastmod>2017-10-10T19:01:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/posts/technical/security/2017-09-23-hacking-around/</loc>
     <lastmod>2017-09-23T22:29:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/tags/security/</loc>
     <lastmod>2017-09-23T22:29:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/posts/technical/security/2017-09-06-2fa-phishing-and-yubikey/</loc>
     <lastmod>2017-09-06T23:50:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/posts/activities/2017-01-30-a-guide-to-finances/</loc>
     <lastmod>2017-01-30T19:22:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/posts/thoughts/2016-11-02-ashwin-helps-an-olympic-medalist/</loc>
     <lastmod>2016-11-02T00:21:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/posts/thoughts/2016-08-22-love-drugs-and-rock-n-roll/</loc>
     <lastmod>2016-08-22T23:41:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/posts/thoughts/2016-03-29-lets-talk-about-the-olympics-match-sprint/</loc>
     <lastmod>2016-03-29T08:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/posts/thoughts/2016-03-10-lets-talk-about-dinosaurs/</loc>
     <lastmod>2016-03-10T02:08:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/posts/thoughts/2015-10-02-the-joy-of-tennis/</loc>
     <lastmod>2015-10-01T03:08:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/posts/activities/2015-05-31-probability-and-tennis/</loc>
     <lastmod>2015-05-31T18:09:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/posts/activities/2015-05-12-first-race/</loc>
     <lastmod>2015-05-12T22:09:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/posts/reviews/2015-04-05-linear-circuits/</loc>
     <lastmod>2015-04-05T23:40:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/posts/reviews/2015-03-16-dino-101/</loc>
     <lastmod>2015-03-16T23:35:32+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/posts/reviews/2015-03-08-learning-how-to-learn/</loc>
     <lastmod>2015-03-08T12:35:32+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/posts/thoughts/2015-03-05-first-post/</loc>
     <lastmod>2015-03-05T19:35:32+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/drafts/future-post-ideas/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/drafts/indianenglish/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/drafts/quotes/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/drafts/songcategorization/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/categories/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/drafts/</loc>
   </url>
-  
 </urlset>
