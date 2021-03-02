@@ -55,7 +55,7 @@ Running went well as well, ran twice a week. Aim/Done went 10/12, 15/17, 20/22, 
 - Running went better than expected, managed 14 & 15 mins, instead of 10. Could have run even more.
 
 ### Week 2
-- Continued to get a 100% on exercise, chess and surprisingly, even running despite snow for half the wee.
+- Continued to get a 100% on exercise, chess and surprisingly, even running despite snow for half the week.
 - Struggling with the design/reading goals. Wish to ramp up, but will have to stick with the current levels (or dial down the others first).
 
 ### Week 3
