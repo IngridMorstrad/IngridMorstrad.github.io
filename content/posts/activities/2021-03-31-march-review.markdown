@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "March review"
-date:   2021-03-01
+date:   2021-03-09
 comments: true
 tags: activities
 ---
@@ -28,6 +28,9 @@ And now,
 TBF
 
 ### Week 1
+
+- Went better than I thought it did. Feeling like I might need a break, so taking the next week "off".    
+- Will try to focus more on design/reading in week 2, although not sure how successful I'll be.
 
 ### Week 2
 
