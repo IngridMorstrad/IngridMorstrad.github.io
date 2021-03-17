@@ -34,7 +34,12 @@ TBF
 
 ### Week 2
 
+- Break week.
+
 ### Week 3
+
+- Trying something new. Rather than setting goals, will log what I do without any goals.
+
 
 ### Week 4
 
