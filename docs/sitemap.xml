@@ -3,18 +3,24 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>/</loc>
-    <lastmod>2021-03-09T00:00:00+00:00</lastmod>
+    <lastmod>2021-03-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/technical/2021-03-24-a-guide-to-code-reviews-reviewed/</loc>
+    <lastmod>2021-03-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/</loc>
+    <lastmod>2021-03-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/</loc>
+    <lastmod>2021-03-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/technical/</loc>
+    <lastmod>2021-03-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/activities/</loc>
     <lastmod>2021-03-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/activities/2021-03-31-march-review/</loc>
-    <lastmod>2021-03-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/posts/</loc>
-    <lastmod>2021-03-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/tags/</loc>
     <lastmod>2021-03-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/activities/2021-02-28-february-review/</loc>
@@ -44,9 +50,6 @@
     <loc>/posts/technical/security/2018-11-05-lets-talk-about-encryption-again/</loc>
     <lastmod>2018-11-20T23:51:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/technical/</loc>
-    <lastmod>2018-11-20T23:51:00+00:00</lastmod>
-  </url><url>
     <loc>/posts/technical/security/2018-11-05-lets-talk-about-encryption/</loc>
     <lastmod>2018-11-05T23:51:00+00:00</lastmod>
   </url><url>
@@ -69,9 +72,6 @@
     <lastmod>2017-10-10T19:01:00+00:00</lastmod>
   </url><url>
     <loc>/posts/technical/security/2017-09-23-hacking-around/</loc>
-    <lastmod>2017-09-23T22:29:00+00:00</lastmod>
-  </url><url>
-    <loc>/tags/security/</loc>
     <lastmod>2017-09-23T22:29:00+00:00</lastmod>
   </url><url>
     <loc>/posts/technical/security/2017-09-06-2fa-phishing-and-yubikey/</loc>

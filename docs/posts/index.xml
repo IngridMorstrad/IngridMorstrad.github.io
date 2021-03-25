@@ -5,7 +5,17 @@
     <link>/posts/</link>
     <description>Recent content in Posts on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 09 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 24 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A guide to code reviews - reviewed!</title>
+      <link>/posts/technical/2021-03-24-a-guide-to-code-reviews-reviewed/</link>
+      <pubDate>Wed, 24 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/technical/2021-03-24-a-guide-to-code-reviews-reviewed/</guid>
+      <description>Over my career as a software developer, I&amp;rsquo;ve changed how I approach code reviews. Simply put, I think of code in more practical terms and less as an &amp;ldquo;art&amp;rdquo;. Concepts of beauty, and perfection are best left to be incrementally achieved, and should always be considered with the end goal in mind (delivering value to the customer). Below, I&amp;rsquo;ve included my post from 3 years ago, with edits.
+This here is a collection of things I&amp;rsquo;ve learned about reviewing code in the few years that I&amp;rsquo;ve worked as a software developer.</description>
+    </item>
+    
     <item>
       <title>March review</title>
       <link>/posts/activities/2021-03-31-march-review/</link>

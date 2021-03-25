@@ -5,7 +5,17 @@
     <link>/tags/technical/</link>
     <description>Recent content in technical on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 20 Nov 2018 23:51:00 +0000</lastBuildDate><atom:link href="/tags/technical/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 24 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="/tags/technical/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A guide to code reviews - reviewed!</title>
+      <link>/posts/technical/2021-03-24-a-guide-to-code-reviews-reviewed/</link>
+      <pubDate>Wed, 24 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/technical/2021-03-24-a-guide-to-code-reviews-reviewed/</guid>
+      <description>Over my career as a software developer, I&amp;rsquo;ve changed how I approach code reviews. Simply put, I think of code in more practical terms and less as an &amp;ldquo;art&amp;rdquo;. Concepts of beauty, and perfection are best left to be incrementally achieved, and should always be considered with the end goal in mind (delivering value to the customer). Below, I&amp;rsquo;ve included my post from 3 years ago, with edits.
+This here is a collection of things I&amp;rsquo;ve learned about reviewing code in the few years that I&amp;rsquo;ve worked as a software developer.</description>
+    </item>
+    
     <item>
       <title>Let&#39;s talk about encryption - again!</title>
       <link>/posts/technical/security/2018-11-05-lets-talk-about-encryption-again/</link>
@@ -24,6 +34,34 @@ Wolf Einstein The wolf has realized you&amp;rsquo;ve foiled his initial plans, a
       
       <guid>/posts/technical/security/2018-11-05-lets-talk-about-encryption/</guid>
       <description>The better to write you with Let&amp;rsquo;s say you are Red Riding Hood, and you want to write a letter to your grandmother telling her you will be visiting. However, the big bad wolf is aware of your plans, and he decides he will also write a letter to your grandmother (pretending to be you) saying you won&amp;rsquo;t be visiting. If only there was a way you could let your grandmother know your letter was from you and the wolf&amp;rsquo;s letter was a fake.</description>
+    </item>
+    
+    <item>
+      <title>A guide to code reviews</title>
+      <link>/posts/technical/2018-01-29-a-guide-to-code-reviews/</link>
+      <pubDate>Mon, 29 Jan 2018 01:34:00 +0000</pubDate>
+      
+      <guid>/posts/technical/2018-01-29-a-guide-to-code-reviews/</guid>
+      <description>This here is a collection of things I&amp;rsquo;ve learned about reviewing code in the few years that I&amp;rsquo;ve worked as a software developer. As these are my thoughts, you should take them with at least a pinch of salt instead of at face value, as with most subjective things in life.
+When I first started, I reviewed code very differently from how I review code now. Despite this being a very important skill, it is not taught in high school or even college.</description>
+    </item>
+    
+    <item>
+      <title>H*cking around</title>
+      <link>/posts/technical/security/2017-09-23-hacking-around/</link>
+      <pubDate>Sat, 23 Sep 2017 22:29:00 +0000</pubDate>
+      
+      <guid>/posts/technical/security/2017-09-23-hacking-around/</guid>
+      <description>Intro People think hacking requires a great deal of skill (on the part of the attacker) and/or a great deal of skill (on the part of the defender). This is quite clearly false. There are many simple ways to exploit a system. In this post, I detail some of the times I got access to accounts I shouldn&amp;rsquo;t have been able to get access to. While these are not the specific ways that a system&amp;rsquo;s bugs are taken advantage of, in general the principles hold true.</description>
+    </item>
+    
+    <item>
+      <title>2FA, phishing and U2F</title>
+      <link>/posts/technical/security/2017-09-06-2fa-phishing-and-yubikey/</link>
+      <pubDate>Wed, 06 Sep 2017 23:50:00 +0000</pubDate>
+      
+      <guid>/posts/technical/security/2017-09-06-2fa-phishing-and-yubikey/</guid>
+      <description>Intro As part of efforts to improve security, my workplace has issued us Yubikeys. What is a Yubikey? It&amp;rsquo;s a device you plug into your computer&amp;rsquo;s USB port and when you touch it for a few seconds, it spits out a string. This string is used for authentication (to identify you). The device has a capacitive sensor to detect touch, just like most phones today (old phones that used a &amp;ldquo;stylus&amp;rdquo; use resistive-touch based on resistors).</description>
     </item>
     
   </channel>
