@@ -4,7 +4,7 @@ title:  "2FA, phishing and U2F"
 date:   2017-09-06 23:50:00
 comments: true
 thumb: http://ashwinmenon.com/assets/images/yubikey.png
-tags: security 
+tags: technical 
 ---
 
 ## Intro

@@ -4,7 +4,7 @@ title:  "H*cking around"
 date:   2017-09-23 22:29:00
 comments: true
 thumb: http://ashwinmenon.com/assets/images/login.png
-tags: security 
+tags: technical 
 ---
 
 ## Intro

@@ -4,6 +4,7 @@ comments: true
 date: "2018-01-29T01:34:00Z"
 thumb: http://ashwinmenon.com/assets/images/code.jpg
 title: A guide to code reviews
+tags: technical 
 ---
 
 This here is a collection of things I've learned about reviewing code in the few years that I've worked as a software developer. As these are my thoughts, you should take them with at least a pinch of salt instead of at face value, as with most subjective things in life.
