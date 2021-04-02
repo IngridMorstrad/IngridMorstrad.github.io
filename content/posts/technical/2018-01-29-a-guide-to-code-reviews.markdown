@@ -1,5 +1,4 @@
 ---
-tags: activities
 comments: true
 date: "2018-01-29T01:34:00Z"
 thumb: http://ashwinmenon.com/assets/images/code.jpg

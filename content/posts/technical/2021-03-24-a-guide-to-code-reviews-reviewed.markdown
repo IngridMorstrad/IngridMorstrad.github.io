@@ -1,5 +1,4 @@
 ---
-tags: activities
 comments: true
 date: "2021-03-24"
 title: A guide to code reviews - reviewed!
