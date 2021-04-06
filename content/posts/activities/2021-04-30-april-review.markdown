@@ -20,7 +20,7 @@ After basically taking all of March "off" (only did Week 1, and lost my records 
 
 ## Non-habit targets
 
-- Complete Designing Data-Intensive Applications (DDIA) by 03/10. Mid-chapter 7 as of 03/01.
+- Complete Designing Data-Intensive Applications (DDIA) by 03/10. Mid-chapter 7 as of 03/01. [To be updated]
 - Complete Martin Kleppmann's lecture studies.
 - Complete FreeCodeCamp's courses on APIs & microservices.
 - Write 3 blog articles (can be private).
@@ -32,7 +32,11 @@ TBF
 
 ### Week 1
 
-- log week results here
+- Ran only once. Feeling somewhat unwell.
+- Interestingly I skipped squats but did all the push-ups (always thought squats were harder).
+- Missed walking as well, on more than a couple of days.
+- Made some progress on the FreeCodeCamp course. Project remains.
+- Overall, a 'so-so' week. Can improve a lot.
 
 ### Week 2
 
