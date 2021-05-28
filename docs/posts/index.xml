@@ -5,7 +5,27 @@
     <link>/posts/</link>
     <description>Recent content in Posts on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 18 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 27 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Reflections on my career</title>
+      <link>/posts/thoughts/2021-05-27-reflections-on-my-career/</link>
+      <pubDate>Thu, 27 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/thoughts/2021-05-27-reflections-on-my-career/</guid>
+      <description>Having worked for a little over six and a half years as a professional software engineer, now may be a good time to reflect on what I&amp;rsquo;ve learned and how I&amp;rsquo;ve grown.
+Company 1 In my first role, I primarily worked on implementing bug fixes and small features. While I feel bug fixes are not well considered by the industry, I really enjoyed working on them. They work as great on-boarding tools, allowing developers to come in and simply implement the fix or can also be great tools for learning the code-base.</description>
+    </item>
+    
+    <item>
+      <title>April review</title>
+      <link>/posts/activities/2021-04-30-april-review/</link>
+      <pubDate>Fri, 30 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/activities/2021-04-30-april-review/</guid>
+      <description>After basically taking all of March &amp;ldquo;off&amp;rdquo; (only did Week 1, and lost my records for that week), hoping for a more productive April. Mostly porting March&amp;rsquo;s goals over.
+Habit goals  10 minutes of walking per day. [Same as Feb]. Third month in a row. 2 times a week running (for varying times). [Slight change from Feb]. Tracking two 5Ks a week by week 3. [Paused] 3 chess puzzles in a row every day.</description>
+    </item>
+    
     <item>
       <title>Science content on YouTube</title>
       <link>/posts/reviews/2021-04-18-science-content-on-youtube/</link>

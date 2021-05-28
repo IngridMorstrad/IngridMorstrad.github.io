@@ -5,7 +5,17 @@
     <link>/tags/thoughts/</link>
     <description>Recent content in thoughts on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 21 Oct 2019 00:00:00 +0000</lastBuildDate><atom:link href="/tags/thoughts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 27 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="/tags/thoughts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Reflections on my career</title>
+      <link>/posts/thoughts/2021-05-27-reflections-on-my-career/</link>
+      <pubDate>Thu, 27 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/thoughts/2021-05-27-reflections-on-my-career/</guid>
+      <description>Having worked for a little over six and a half years as a professional software engineer, now may be a good time to reflect on what I&amp;rsquo;ve learned and how I&amp;rsquo;ve grown.
+Company 1 In my first role, I primarily worked on implementing bug fixes and small features. While I feel bug fixes are not well considered by the industry, I really enjoyed working on them. They work as great on-boarding tools, allowing developers to come in and simply implement the fix or can also be great tools for learning the code-base.</description>
+    </item>
+    
     <item>
       <title>Let&#39;s talk about: Health Costs</title>
       <link>/posts/thoughts/2019-10-21-lets-talk-about-health-costs/</link>
