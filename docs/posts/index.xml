@@ -5,7 +5,17 @@
     <link>/posts/</link>
     <description>Recent content in Posts on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 27 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 12 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Open AI Codex - coding with AI</title>
+      <link>/posts/technical/2021-08-12-open-ai-codex/</link>
+      <pubDate>Thu, 12 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/technical/2021-08-12-open-ai-codex/</guid>
+      <description>I got to use the Open AI Codex API today, as part of the Open AI codex challenge. The challenge consisted of 5 problems, meant to be solved as quickly as possible, with the Codex available for help.
+Clicking the &amp;ldquo;Codex it&amp;rdquo; button would get Codex to parse the problem statement, the comments in code and the method signature and write code that solved the problem. The code either solved the problem completely, or required only minor changes (&amp;lt;= 3 lines).</description>
+    </item>
+    
     <item>
       <title>Reflections on my career</title>
       <link>/posts/thoughts/2021-05-27-reflections-on-my-career/</link>

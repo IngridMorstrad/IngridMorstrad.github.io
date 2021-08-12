@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> Open AI Codex - coding with AI | </title>
+  <meta name="description" content="Hi, I&#39;m Ashwin. This is my little corner of the web. Hope you enjoy your stay. Feel free to leave a comment or tweet.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="Open AI Codex - coding with AI" />
+<meta property="og:description" content="I got to use the Open AI Codex API today, as part of the Open AI codex challenge. The challenge consisted of 5 problems, meant to be solved as quickly as possible, with the Codex available for help.
+Clicking the &ldquo;Codex it&rdquo; button would get Codex to parse the problem statement, the comments in code and the method signature and write code that solved the problem. The code either solved the problem completely, or required only minor changes (&lt;= 3 lines)." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/technical/2021-08-12-open-ai-codex/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-08-12T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-08-12T00:00:00+00:00" />
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Open AI Codex - coding with AI"/>
+<meta name="twitter:description" content="I got to use the Open AI Codex API today, as part of the Open AI codex challenge. The challenge consisted of 5 problems, meant to be solved as quickly as possible, with the Codex available for help.
+Clicking the &ldquo;Codex it&rdquo; button would get Codex to parse the problem statement, the comments in code and the method signature and write code that solved the problem. The code either solved the problem completely, or required only minor changes (&lt;= 3 lines)."/>
+
+  
+  
+  
+  <link rel="stylesheet" href="/css/style-white.css">
+  
+  
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="images/favicon.ico" />
+
+  
+  
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+  <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">All posts</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li>
+          <a class="icon" href=" /posts/thoughts/2021-05-27-reflections-on-my-career/">
+            <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
+          </a>
+        </li>
+        
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=%2fposts%2ftechnical%2f2021-08-12-open-ai-codex%2f">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=%2fposts%2ftechnical%2f2021-08-12-open-ai-codex%2f&text=Open%20AI%20Codex%20-%20coding%20with%20AI">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=%2fposts%2ftechnical%2f2021-08-12-open-ai-codex%2f&title=Open%20AI%20Codex%20-%20coding%20with%20AI">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=%2fposts%2ftechnical%2f2021-08-12-open-ai-codex%2f&is_video=false&description=Open%20AI%20Codex%20-%20coding%20with%20AI">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Open%20AI%20Codex%20-%20coding%20with%20AI&body=Check out this article: %2fposts%2ftechnical%2f2021-08-12-open-ai-codex%2f">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=%2fposts%2ftechnical%2f2021-08-12-open-ai-codex%2f&title=Open%20AI%20Codex%20-%20coding%20with%20AI">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=%2fposts%2ftechnical%2f2021-08-12-open-ai-codex%2f&title=Open%20AI%20Codex%20-%20coding%20with%20AI">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.stumbleupon.com/submit?url=%2fposts%2ftechnical%2f2021-08-12-open-ai-codex%2f&title=Open%20AI%20Codex%20-%20coding%20with%20AI">
+      <i class="fab fa-stumbleupon " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://digg.com/submit?url=%2fposts%2ftechnical%2f2021-08-12-open-ai-codex%2f&title=Open%20AI%20Codex%20-%20coding%20with%20AI">
+      <i class="fab fa-digg " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=%2fposts%2ftechnical%2f2021-08-12-open-ai-codex%2f&name=Open%20AI%20Codex%20-%20coding%20with%20AI&description=I%20got%20to%20use%20the%20Open%20AI%20Codex%20API%20today%2c%20as%20part%20of%20the%20Open%20AI%20codex%20challenge.%20The%20challenge%20consisted%20of%205%20problems%2c%20meant%20to%20be%20solved%20as%20quickly%20as%20possible%2c%20with%20the%20Codex%20available%20for%20help.%0aClicking%20the%20%26ldquo%3bCodex%20it%26rdquo%3b%20button%20would%20get%20Codex%20to%20parse%20the%20problem%20statement%2c%20the%20comments%20in%20code%20and%20the%20method%20signature%20and%20write%20code%20that%20solved%20the%20problem.%20The%20code%20either%20solved%20the%20problem%20completely%2c%20or%20required%20only%20minor%20changes%20%28%26lt%3b%3d%203%20lines%29.">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=%2fposts%2ftechnical%2f2021-08-12-open-ai-codex%2f&t=Open%20AI%20Codex%20-%20coding%20with%20AI">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#results">&ldquo;Results&rdquo;</a></li>
+    <li><a href="#thoughts">Thoughts</a>
+      <ul>
+        <li><a href="#regrets">Regrets</a></li>
+      </ul>
+    </li>
+    <li><a href="#the-future">The future</a></li>
+    <li><a href="#challenge-website-problems">Challenge website problems</a></li>
+    <li><a href="#problem-details">Problem details</a>
+      <ul>
+        <li><a href="#problem-1">Problem 1</a></li>
+        <li><a href="#problem-2">Problem 2</a></li>
+        <li><a href="#problem-3">Problem 3</a></li>
+        <li><a href="#problem-4">Problem 4</a></li>
+        <li><a href="#problem-5">Problem 5</a></li>
+      </ul>
+    </li>
+    <li><a href="#notes">Notes</a></li>
+  </ul>
+</nav>
+    </div>
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        Open AI Codex - coding with AI
+      </h1>
+      <div class="meta">
+        
+        <div class="postdate">
+          
+          <time datetime="2021-08-12 00:00:00 &#43;0000 UTC" itemprop="datePublished">2021-08-12</time>
+          
+        </div>
+        
+        
+      </div>
+    </header>
+
+  
+    <div class="content" itemprop="articleBody">
+      <p>I got to use the Open AI Codex API today, as part of the Open AI codex challenge. The challenge consisted of 5 problems, meant to be solved as quickly as possible, with the Codex available for help.</p>
+<p>Clicking the &ldquo;Codex it&rdquo; button would get Codex to parse the problem statement, the comments in code and the method signature and write code that solved the problem. The code either solved the problem completely, or required only minor changes (&lt;= 3 lines).</p>
+<h2 id="results">&ldquo;Results&rdquo;</h2>
+<p>I finished in 120th place, though this is one of those cases where you should definitely not trust the metrics. The website faced enough issues (see section below) that finishing the problems and getting a rank was more a measure of luck and persistence, and less of skill.</p>
+<p><img src="/assets/images/CodexLeaderboard.jpeg" alt=""></p>
+<h2 id="thoughts">Thoughts</h2>
+<p>Overall, the Codex did a decent job in some areas (including code from modules; parsing; rough logic), and a not-so-decent job in others (getting logic 100% right; tests).</p>
+<p>###My process for solving the problems
+Since I was interested in how the Codex would do, I would hit &ldquo;Codex it&rdquo; even if I knew how to solve the problem. From this point, I usually tried &ldquo;debugging&rdquo; the Codex code. This new programming vision that Open AI paints, points to a need for stronger code-reading and debugging skills, with code-writing skills shrinking in importance. However, this will depend a lot on how Codex performs - if Codex feels unreliable, developers may prefer writing code by themselves, as even with the googling &amp; copy-pasting from Stack Overflow, the total time spent would be lower.</p>
+<p>Codex is clearly great at parsing problem statements and coming up with code that aims to address the problem. I was caught a little off-guard with how Codex picked methods. Many methods were quite different from those I&rsquo;d have chosen, and this made it a little harder for me to read and debug the code (more in problem details).</p>
+<p>For problems that I could see the solution quickly to, the code-writing exercise was now effectively a code-review exercise! I would expect the same pitfalls exist as with normal code-reviews (bugs may not be caught; tests must be written).</p>
+<p>Where Codex &ldquo;shines&rdquo;^ is its ability to quickly digest a large number of modules and libraries and write code using those. I&rsquo;d be interested in learning how much manual effort is involved in getting a new library &ldquo;digested&rdquo; by Codex. For example, in problem 2, &ldquo;difflib&rdquo; was recommended in the problem statement - did difflib have to be explicitly &ldquo;ingested&rdquo; by Codex at some point prior? Lastly, in some cases, Codex doesn&rsquo;t save much time - if you are unfamiliar with the library, you have to read up on it to debug effectively, and this forms the bottleneck, not the code-writing process.</p>
+<h3 id="regrets">Regrets</h3>
+<p>Unfortunately, I didn&rsquo;t really use Codex to &ldquo;help&rdquo; me code <em>(Open AI has recommended using Codex as a &ldquo;helper&rdquo;, for example, by defining helper function signatures and having Codex implement it)</em>. This is partly because I wasn&rsquo;t sure how long I had to work on the problems and, with the website constantly crashing, I wasn&rsquo;t sure how long I would have access to Codex. In addition, once a problem was &ldquo;solved&rdquo;, I was not allowed to edit the code (or access Codex) any longer.</p>
+<h2 id="the-future">The future</h2>
+<p>I&rsquo;d love to see what can be done with some curation/manual involvement to &ldquo;direct&rdquo; Codex. For example, Wikipedia &ldquo;digests&rdquo; a large amount of information with manual effort disributed across many humans. Can a similar model help Codex?</p>
+<p>Can Codex &ldquo;learn&rdquo; from reviews? How portable is it (can it be used on a laptop? on a mobile?)? Codex could really change the world if it allowed users to code from mobile (as the typing experience is horrid) - even if the code is rough.</p>
+<p>Codex&rsquo;s true value probably lies in its ability to inspire and stretch the limits programmers set on their vision.</p>
+<h2 id="challenge-website-problems">Challenge website problems</h2>
+<p>Almost as soon as the challenge started (at 10 AM PST), the website was failing to serve requests. Users got a lot of 503 (internal server error) and 504 (gateway timeout) errors, indicating that the Open AI servers were likely experiencing far more load than they were prepared for. As users likely quit trying to grapple with the system, the website slowly recovered.</p>
+<p>Initially, nothing was displayed.<br>
+Then, the editor was displayed, but without the problem statement.<br>
+Then, the problem statement was discovered, but hitting &ldquo;Codex it&rdquo; would cause the website to hang (or respond <em>very</em> slowly).<br>
+Finally, with some luck, hitting submit may get you a response (or you might have to hit refresh and hope your code wasn&rsquo;t lost). Needless to say, this led to a very frustrating experience for many (including myself) and allowed some to post some snarky tweets announcing that those &ldquo;the death of programming&rdquo; declarations were a bit premature.</p>
+<h2 id="problem-details">Problem details</h2>
+<p><em>Time to solve is given in minutes (approximated)</em></p>
+<h3 id="problem-1">Problem 1</h3>
+<p><strong>Statement</strong><br>
+Given a(sic) the contents of a CSV file as csv_contents, return the difference in days between the date of the earliest and the oldest entry.</p>
+<p><strong>Code</strong></p>
+<pre><code>from datetime import date
+
+import pandas
+
+
+def diff_days(csv_contents: str) -&gt; int:
+    # TODO: your implementation here
+    lines = csv_contents.split(&quot;\n&quot;)
+    header = lines[0]
+    data = pandas.read_csv(io.StringIO(csv_contents))
+    oldest = data[&quot;Date&quot;].min()
+    newest = data[&quot;Date&quot;].max()
+    return (
+        date.fromisoformat(newest) - date.fromisoformat(oldest)
+    ).days
+
+# Examples
+print(diff_days(&quot;Date,Price,Volume\n2014-01-27,550.50,1387\n2014-06-23,910.83,4361\n2014-05-20,604.51,5870&quot;))
+print(diff_days('Date\n2000-01-01\n2000-01-01\n'))
+
+# The last expression evaluated is always shown when
+# you run your code, just like a Jupyter notebook cell.
+&quot;Good luck!&quot;
+</code></pre>
+<p><strong>Modifications needed</strong><br>
+None!</p>
+<p><strong>Comments</strong><br>
+I was caught off-guard by the use of the &ldquo;fromisoformat&rdquo; and &ldquo;io.StringIO&rdquo; methods. I&rsquo;d almost certainly have had to look up a way to do it, but this seems to work, so I didn&rsquo;t look further. Also, the &ldquo;header&rdquo; variable isn&rsquo;t used. I like that the read_csv method was used (rather than splitting by &ldquo;,&rdquo; - which could fail in some cases), which Open AI&rsquo;s problem statement suggesting pandas usage might have helped with.</p>
+<p><strong>Time to solve</strong><br>
+1 &lt; x &lt; 5</p>
+<h3 id="problem-2">Problem 2</h3>
+<p><strong>Statement</strong><br>
+source and target are two strings each containing file contents. Return the number of lines you would need to insert and the number of lines you would need to delete to get to target from source.</p>
+<p><strong>Code</strong></p>
+<pre><code>import difflib
+from typing import Tuple
+
+
+def diff_files(source: str, target: str) -&gt; Tuple[int, int]:
+    &quot;&quot;&quot;
+    Returns the number of lines to add and delete to turn source into target.
+    &quot;&quot;&quot;
+    lines_to_insert = list()
+    lines_to_delete = list()
+    for group in difflib.SequenceMatcher(None, source.splitlines(), target.splitlines()).get_grouped_opcodes():
+        for tag, i1, i2, j1, j2 in group:
+            if tag == 'insert':
+                lines_to_insert += target.splitlines()[j1:j2]
+            elif tag == 'delete':
+                lines_to_delete += source.splitlines()[i1:i2]
+            elif tag == 'replace':
+                lines_to_delete += source.splitlines()[i1:i2]
+                lines_to_insert += target.splitlines()[j1:j2]
+            #print(tag)
+            #print(lines_to_insert)
+            #print(lines_to_delete)
+    return len(lines_to_insert), len(lines_to_delete)
+
+# Examples
+print(diff_files('Apple\nOrange\nPear', 'Apple\nPear\nBanana\nMango'))
+print(diff_files('Apple\nOrange\nPear', 'Apple\nPear\nBanana'))
+
+print(diff_files('\nz\ncW\nFe1by\n6X5\n\nsqFzv\nb', 'S\nxb3\n1\nlfJ1\nt9sqW\nUUUZE\n\n\n\nw\nqjT\ngGVBL\n\n'))
+</code></pre>
+<p><strong>Modifications needed</strong><br>
+Needed to add the &ldquo;replace&rdquo; branch.</p>
+<p><strong>Comments</strong><br>
+This took a significant amount of time, as I initially assumed Open AI would have included the necessary code, with only logic bugs (this assumption held for other question coincidentally). This meant I didn&rsquo;t look up how the method was meant to be used immediately, rather trying to interpret it from code. As a result, my initial attempts involved trying to use a list instead of a set, etc. Interestingly the code that &ldquo;OpenAI Codex&rdquo; used (not sure why this is different than simply hitting the &ldquo;Codex it&rdquo; button) was much simpler.</p>
+<p><strong>Time to solve</strong><br>
+15 &lt; x &lt; 60</p>
+<h3 id="problem-3">Problem 3</h3>
+<p><strong>Statement</strong><br>
+Given a compressed message compressed and the prefix code tree used to encode it, decode and return the original message.</p>
+<p><strong>Code</strong></p>
+<pre><code>from typing import Dict, Union
+
+Tree = Dict[str, Union[str, &quot;Tree&quot;]]
+
+
+def decompress(compressed: str, origTree: Tree) -&gt; str:
+    # create a stack that will hold characters for the decoded message
+    result = []
+    tree = origTree
+    # iterate through the compressed message
+    for bit in compressed:
+        # move down the tree based on the bit
+        tree = tree[bit]
+        # if we've reached a leaf, add the character to the message
+        if isinstance(tree, str):
+            result.append(tree)
+            # start over at the root of the tree
+            tree = origTree
+    # return the final decoded message
+    return &quot;&quot;.join(result)
+    
+
+# Examples
+print(decompress('110100100', {'0': 'a', '1': {'0': 'n', '1': 'b'}}))
+print(decompress('0111010100', {'0': {'0': 'x', '1': 'z'}, '1': 'y'}))
+</code></pre>
+<p><strong>Modifications needed</strong><br>
+Needed to replace some of the references to the &ldquo;tree&rdquo; variable with &ldquo;origTree&rdquo; (origTree was introduced by me; did not exist with the Codex code).</p>
+<p><strong>Comments</strong><br>
+This surprisingly (to me) resulted in a compile error on the first run after &ldquo;Codex it&rdquo;. The fix was fairly simple once I had figure out how to parse the problem (thanks to having done similar problems earlier).</p>
+<p><strong>Time to solve</strong><br>
+1 &lt; x &lt; 5</p>
+<h3 id="problem-4">Problem 4</h3>
+<p><strong>Statement</strong><br>
+Parse the given Python source code and return the list of full-qualified paths for all imported symbols, sorted in ascending lexicographic order.</p>
+<p><strong>Code</strong></p>
+<pre><code>import ast
+from typing import List
+
+
+def parse_imports(code: str) -&gt; List[str]:
+    &quot;&quot;&quot;Parse the given Python source code and return the list of full-qualified paths for all imported symbols, sorted in ascending lexicographic order.&quot;&quot;&quot;
+    tree = ast.parse(code)
+    imports = []
+    for statement in tree.body:
+        if isinstance(statement, ast.Import):
+            for name in statement.names:
+                imports.append(name.name)
+        elif isinstance(statement, ast.ImportFrom):
+            for name in statement.names:
+                imports.append(statement.module + &quot;.&quot; + name.name)
+    return sorted(imports)
+
+# Examples
+print(parse_imports('import os'))
+print(parse_imports('import os\nfrom typing import List'))
+print(parse_imports('import os\nimport concurrent.futures\nfrom os import path as renamed_path\nfrom typing import (\n    List, Tuple\n)'))
+</code></pre>
+<p><strong>Modifications needed</strong><br>
+Needed to delete an if branch (or some code under the &ldquo;ImportFrom&rdquo; branch).</p>
+<p><strong>Comments</strong><br>
+I felt very thankful to have Codex to handle this problem. I would have likely approached it by parsing text, as I was not familiar with Python&rsquo;s ast library. Having the code go through and use the right methods from the ast library to parse the code made this fairly simple. To me, the code is near pefect.</p>
+<p><strong>Time to solve</strong><br>
+1 &lt; x &lt; 5</p>
+<h3 id="problem-5">Problem 5</h3>
+<p><strong>Statement</strong><br>
+You have several buckets whose sizes are represented by the list sizes. Find the number of different ways to arrange the buckets such that the first bucket&rsquo;s size is greater than the second bucket&rsquo;s size.</p>
+<p><strong>Code</strong></p>
+<pre><code>import itertools
+from typing import List
+
+
+def count_arrangements(sizes: List[int]) -&gt; int:
+    if len(sizes) &lt; 2: return 0
+    arrangements = list(itertools.permutations(sizes))
+    return len([x for x in arrangements if x[0] &gt; x[1]])
+
+# Examples
+print(count_arrangements([1, 3, 1]))
+print(count_arrangements([1, 2]))
+</code></pre>
+<p><strong>Modifications needed</strong><br>
+Added the if condition (base case).</p>
+<p><strong>Comments</strong><br>
+I was surprised at how well Codex handled this. Only the base-case needed to be handled, and again, the code is near perfect - the only change I might make is to use a generator instead of a list in the return.</p>
+<p><strong>Time to solve</strong><br>
+1 &lt; x &lt; 2</p>
+<h2 id="notes">Notes</h2>
+<p>^: &ldquo;shines&rdquo; as depending on how much manual effort is involved, I&rsquo;m not convinced I can say it shines.</p>
+
+    </div>
+  </article>
+
+  
+  
+
+
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/posts">All posts</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#results">&ldquo;Results&rdquo;</a></li>
+    <li><a href="#thoughts">Thoughts</a>
+      <ul>
+        <li><a href="#regrets">Regrets</a></li>
+      </ul>
+    </li>
+    <li><a href="#the-future">The future</a></li>
+    <li><a href="#challenge-website-problems">Challenge website problems</a></li>
+    <li><a href="#problem-details">Problem details</a>
+      <ul>
+        <li><a href="#problem-1">Problem 1</a></li>
+        <li><a href="#problem-2">Problem 2</a></li>
+        <li><a href="#problem-3">Problem 3</a></li>
+        <li><a href="#problem-4">Problem 4</a></li>
+        <li><a href="#problem-5">Problem 5</a></li>
+      </ul>
+    </li>
+    <li><a href="#notes">Notes</a></li>
+  </ul>
+</nav>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=%2fposts%2ftechnical%2f2021-08-12-open-ai-codex%2f">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=%2fposts%2ftechnical%2f2021-08-12-open-ai-codex%2f&text=Open%20AI%20Codex%20-%20coding%20with%20AI">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=%2fposts%2ftechnical%2f2021-08-12-open-ai-codex%2f&title=Open%20AI%20Codex%20-%20coding%20with%20AI">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=%2fposts%2ftechnical%2f2021-08-12-open-ai-codex%2f&is_video=false&description=Open%20AI%20Codex%20-%20coding%20with%20AI">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Open%20AI%20Codex%20-%20coding%20with%20AI&body=Check out this article: %2fposts%2ftechnical%2f2021-08-12-open-ai-codex%2f">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=%2fposts%2ftechnical%2f2021-08-12-open-ai-codex%2f&title=Open%20AI%20Codex%20-%20coding%20with%20AI">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=%2fposts%2ftechnical%2f2021-08-12-open-ai-codex%2f&title=Open%20AI%20Codex%20-%20coding%20with%20AI">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.stumbleupon.com/submit?url=%2fposts%2ftechnical%2f2021-08-12-open-ai-codex%2f&title=Open%20AI%20Codex%20-%20coding%20with%20AI">
+      <i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://digg.com/submit?url=%2fposts%2ftechnical%2f2021-08-12-open-ai-codex%2f&title=Open%20AI%20Codex%20-%20coding%20with%20AI">
+      <i class="fab fa-digg fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=%2fposts%2ftechnical%2f2021-08-12-open-ai-codex%2f&name=Open%20AI%20Codex%20-%20coding%20with%20AI&description=I%20got%20to%20use%20the%20Open%20AI%20Codex%20API%20today%2c%20as%20part%20of%20the%20Open%20AI%20codex%20challenge.%20The%20challenge%20consisted%20of%205%20problems%2c%20meant%20to%20be%20solved%20as%20quickly%20as%20possible%2c%20with%20the%20Codex%20available%20for%20help.%0aClicking%20the%20%26ldquo%3bCodex%20it%26rdquo%3b%20button%20would%20get%20Codex%20to%20parse%20the%20problem%20statement%2c%20the%20comments%20in%20code%20and%20the%20method%20signature%20and%20write%20code%20that%20solved%20the%20problem.%20The%20code%20either%20solved%20the%20problem%20completely%2c%20or%20required%20only%20minor%20changes%20%28%26lt%3b%3d%203%20lines%29.">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=%2fposts%2ftechnical%2f2021-08-12-open-ai-codex%2f&t=Open%20AI%20Codex%20-%20coding%20with%20AI">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2021   
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">All posts</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+
+
+
+</html>
