@@ -208,6 +208,7 @@ Clicking the &ldquo;Codex it&rdquo; button would get Codex to parse the problem 
 <p>Clicking the &ldquo;Codex it&rdquo; button would get Codex to parse the problem statement, the comments in code and the method signature and write code that solved the problem. The code either solved the problem completely, or required only minor changes (&lt;= 3 lines).</p>
 <h2 id="results">&ldquo;Results&rdquo;</h2>
 <p>I finished in 120th place, though this is one of those cases where you should definitely not trust the metrics. The website faced enough issues (see section below) that finishing the problems and getting a rank was more a measure of luck and persistence, and less of skill.</p>
+<p>The time taken (by me and &ldquo;average player&rdquo;(s)) in the graph below is greatly exaggerated, thanks to the website issues documented in later sections.</p>
 <p><img src="/assets/images/CodexLeaderboard.jpeg" alt=""></p>
 <h2 id="thoughts">Thoughts</h2>
 <p>Overall, the Codex did a decent job in some areas (including code from modules; parsing; rough logic), and a not-so-decent job in others (getting logic 100% right; tests).</p>
@@ -228,6 +229,7 @@ Since I was interested in how the Codex would do, I would hit &ldquo;Codex it&rd
 Then, the editor was displayed, but without the problem statement.<br>
 Then, the problem statement was discovered, but hitting &ldquo;Codex it&rdquo; would cause the website to hang (or respond <em>very</em> slowly).<br>
 Finally, with some luck, hitting submit may get you a response (or you might have to hit refresh and hope your code wasn&rsquo;t lost). Needless to say, this led to a very frustrating experience for many (including myself) and allowed some to post some snarky tweets announcing that those &ldquo;the death of programming&rdquo; declarations were a bit premature.</p>
+<p>These issues lasted throughout (at least until I finished all problems).</p>
 <h2 id="problem-details">Problem details</h2>
 <p><em>Time to solve is given in minutes (approximated)</em></p>
 <h3 id="problem-1">Problem 1</h3>
@@ -369,7 +371,8 @@ print(parse_imports('import os\nimport concurrent.futures\nfrom os import path a
 <p><strong>Modifications needed</strong><br>
 Needed to delete an if branch (or some code under the &ldquo;ImportFrom&rdquo; branch).</p>
 <p><strong>Comments</strong><br>
-I felt very thankful to have Codex to handle this problem. I would have likely approached it by parsing text, as I was not familiar with Python&rsquo;s ast library. Having the code go through and use the right methods from the ast library to parse the code made this fairly simple. To me, the code is near pefect.</p>
+I felt grateful that I had Codex to handle this problem. I would have likely approached it by parsing text, as I was not familiar with Python&rsquo;s ast library. Having Codex write code that traversed the abstract syntax tree (AST) to solve the issue meant that the final product was more bug-proof than the text-parsing version I would have written.<br>
+I was pretty impressed by how the code solved the problem so well, and although a devloper more experience with the library <em>may</em> have written it differently, I was happy with the result.</p>
 <p><strong>Time to solve</strong><br>
 1 &lt; x &lt; 5</p>
 <h3 id="problem-5">Problem 5</h3>
