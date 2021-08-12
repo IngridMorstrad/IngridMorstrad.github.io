@@ -206,7 +206,8 @@ Parse the given Python source code and return the list of full-qualified paths f
 Needed to delete an if branch (or some code under the "ImportFrom" branch).
 
 **Comments**  
-I felt very thankful to have Codex to handle this problem. I would have likely approached it by parsing text, as I was not familiar with Python's ast library. Having the code go through and use the right methods from the ast library to parse the code made this fairly simple. To me, the code is near pefect.
+I felt grateful that I had Codex to handle this problem. I would have likely approached it by parsing text, as I was not familiar with Python's ast library. Having Codex write code that traversed the abstract syntax tree (AST) to solve the issue meant that the final product was more bug-proof than the text-parsing version I would have written.  
+I was pretty impressed by how the code solved the problem so well, and although a devloper more experience with the library _may_ have written it differently, I was happy with the result.
 
 **Time to solve**  
 1 < x < 5
