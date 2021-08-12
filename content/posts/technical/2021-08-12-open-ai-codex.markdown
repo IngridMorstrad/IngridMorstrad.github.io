@@ -12,6 +12,8 @@ Clicking the "Codex it" button would get Codex to parse the problem statement, t
 ## "Results"
 I finished in 120th place, though this is one of those cases where you should definitely not trust the metrics. The website faced enough issues (see section below) that finishing the problems and getting a rank was more a measure of luck and persistence, and less of skill.
 
+The time taken (by me and "average player"(s)) in the graph below is greatly exaggerated, thanks to the website issues documented in later sections.
+
 ![](/assets/images/CodexLeaderboard.jpeg)
 
 ## Thoughts
@@ -44,6 +46,8 @@ Initially, nothing was displayed.
 Then, the editor was displayed, but without the problem statement.  
 Then, the problem statement was discovered, but hitting "Codex it" would cause the website to hang (or respond _very_ slowly).  
 Finally, with some luck, hitting submit may get you a response (or you might have to hit refresh and hope your code wasn't lost). Needless to say, this led to a very frustrating experience for many (including myself) and allowed some to post some snarky tweets announcing that those "the death of programming" declarations were a bit premature.
+
+These issues lasted throughout (at least until I finished all problems).
 
 ## Problem details
 _Time to solve is given in minutes (approximated)_
