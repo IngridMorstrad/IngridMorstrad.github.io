@@ -7,7 +7,7 @@ tags: technical
 
 I got to use the Open AI Codex API today, as part of the Open AI codex challenge. The challenge consisted of 5 problems, meant to be solved as quickly as possible, with the Codex available for help.
 
-Clicking the "Codex it" button would get Codex to parse the problem statement, the comments in code and the method signature and write code that solved the problem. The code either solved the problem completely, or required only minor changes (<= 3 lines).
+Clicking the "Codex it" button would get Codex to "parse" the problem statement, the comments in code and the method signature. Following that, it would write code that solved the problem. For the problems in the contest, the generated code either solved the problem completely or required only minor changes (<= 3 lines).
 
 ## "Results"
 I finished in 120th place, though this is one of those cases where you should definitely not trust the metrics. The website faced enough issues (see section below) that finishing the problems and getting a rank was more a measure of luck and persistence, and less of skill.
@@ -26,13 +26,13 @@ Codex is clearly great at parsing problem statements and coming up with code tha
 
 For problems that I could see the solution quickly to, the code-writing exercise was now effectively a code-review exercise! I would expect the same pitfalls exist as with normal code-reviews (bugs may not be caught; tests must be written).
 
-Where Codex "shines"^ is its ability to quickly digest a large number of modules and libraries and write code using those. I'd be interested in learning how much manual effort is involved in getting a new library "digested" by Codex. For example, in problem 2, "difflib" was recommended in the problem statement - did difflib have to be explicitly "ingested" by Codex at some point prior? Lastly, in some cases, Codex doesn't save much time - if you are unfamiliar with the library, you have to read up on it to debug effectively, and this forms the bottleneck, not the code-writing process.
+Where Codex "shines"^ is in its ability to quickly digest a large number of modules and libraries and write code using those. I'd be interested in learning how much manual effort is involved in getting a new library "digested" by Codex. For example, in problem 2, "difflib" was recommended in the problem statement - did difflib have to be explicitly "ingested" by Codex at some point prior? Lastly, in some cases, Codex doesn't save much time - if you are unfamiliar with the library, you have to read up on it to debug effectively, and this forms the bottleneck, not the code-writing process.
 
 ### Regrets
 Unfortunately, I didn't really use Codex to "help" me code _(Open AI has recommended using Codex as a "helper", for example, by defining helper function signatures and having Codex implement it)_. This is partly because I wasn't sure how long I had to work on the problems and, with the website constantly crashing, I wasn't sure how long I would have access to Codex. In addition, once a problem was "solved", I was not allowed to edit the code (or access Codex) any longer.
 
 ## The future
-I'd love to see what can be done with some curation/manual involvement to "direct" Codex. For example, Wikipedia "digests" a large amount of information with manual effort disributed across many humans. Can a similar model help Codex?
+I'd love to see what can be done with some curation/manual involvement to "direct" Codex. For example, Wikipedia "digests" a large amount of information with manual effort distributed across many humans. Can a similar model help Codex?
 
 Can Codex "learn" from reviews? How portable is it (can it be used on a laptop? on a mobile?)? Codex could really change the world if it allowed users to code from mobile (as the typing experience is horrid) - even if the code is rough.
 
@@ -131,14 +131,14 @@ source and target are two strings each containing file contents. Return the numb
 Needed to add the "replace" branch.
 
 **Comments**  
-This took a significant amount of time, as I initially assumed Open AI would have included the necessary code, with only logic bugs (this assumption held for other question coincidentally). This meant I didn't look up how the method was meant to be used immediately, rather trying to interpret it from code. As a result, my initial attempts involved trying to use a list instead of a set, etc. Interestingly the code that "OpenAI Codex" used (not sure why this is different than simply hitting the "Codex it" button) was much simpler.
+This took a significant amount of time, as I initially assumed Open AI would have included the necessary code, with only logic bugs (this assumption held for other questions coincidentally). This meant I didn't look up how the method was meant to be used immediately, rather trying to interpret it from code. As a result, my initial attempts involved trying to use a list instead of a set, etc. Interestingly the code that "OpenAI Codex" used (not sure why this is different than simply hitting the "Codex it" button) was much simpler.
 
 **Time to solve**  
 15 < x < 60
 
 ### Problem 3
 **Statement**  
-Given a compressed message compressed and the prefix code tree used to encode it, decode and return the original message.
+Given a compressed message compressed (sic) and the prefix code tree used to encode it, decode and return the original message.
 
 **Code**  
 
@@ -172,7 +172,7 @@ Given a compressed message compressed and the prefix code tree used to encode it
 Needed to replace some of the references to the "tree" variable with "origTree" (origTree was introduced by me; did not exist with the Codex code).
 
 **Comments**  
-This surprisingly (to me) resulted in a compile error on the first run after "Codex it". The fix was fairly simple once I had figure out how to parse the problem (thanks to having done similar problems earlier).
+This surprisingly (to me) resulted in a compile error on the first run after "Codex it". The fix was fairly simple once I had figured out how to parse the problem (thanks to having done similar problems earlier).
 
 **Time to solve**  
 1 < x < 5
@@ -211,7 +211,7 @@ Needed to delete an if branch (or some code under the "ImportFrom" branch).
 
 **Comments**  
 I felt grateful that I had Codex to handle this problem. I would have likely approached it by parsing text, as I was not familiar with Python's ast library. Having Codex write code that traversed the abstract syntax tree (AST) to solve the issue meant that the final product was more bug-proof than the text-parsing version I would have written.  
-I was pretty impressed by how the code solved the problem so well, and although a devloper more experience with the library _may_ have written it differently, I was happy with the result.
+I was pretty impressed by how the code solved the problem so well, and although a developer with more experience with the library _may_ have written it differently, I was happy with the result.
 
 **Time to solve**  
 1 < x < 5
