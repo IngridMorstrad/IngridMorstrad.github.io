@@ -13,7 +13,7 @@
       
       <guid>/posts/technical/2021-08-12-open-ai-codex/</guid>
       <description>I got to use the Open AI Codex API today, as part of the Open AI codex challenge. The challenge consisted of 5 problems, meant to be solved as quickly as possible, with the Codex available for help.
-Clicking the &amp;ldquo;Codex it&amp;rdquo; button would get Codex to parse the problem statement, the comments in code and the method signature and write code that solved the problem. The code either solved the problem completely, or required only minor changes (&amp;lt;= 3 lines).</description>
+Clicking the &amp;ldquo;Codex it&amp;rdquo; button would get Codex to &amp;ldquo;parse&amp;rdquo; the problem statement, the comments in code and the method signature. Following that, it would write code that solved the problem. For the problems in the contest, the generated code either solved the problem completely or required only minor changes (&amp;lt;= 3 lines).</description>
     </item>
     
     <item>
