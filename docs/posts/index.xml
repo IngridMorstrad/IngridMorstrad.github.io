@@ -5,7 +5,16 @@
     <link>/posts/</link>
     <description>Recent content in Posts on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 12 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>100 days of chess</title>
+      <link>/posts/activities/2021-10-12-100-days-of-chess/</link>
+      <pubDate>Tue, 12 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/activities/2021-10-12-100-days-of-chess/</guid>
+      <description>Header Test page to see if I can upload posts easily</description>
+    </item>
+    
     <item>
       <title>Open AI Codex - coding with AI</title>
       <link>/posts/technical/2021-08-12-open-ai-codex/</link>
