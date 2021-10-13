@@ -1,9 +1,10 @@
 ---
 layout: post
 title:  "100 days of chess"
-date:   2022-10-12
+date: "2021-10-12"
 comments: true
 tags: activities
 ---
 
+## Header
 Test page to see if I can upload posts easily
