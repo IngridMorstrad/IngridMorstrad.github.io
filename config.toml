@@ -1,4 +1,7 @@
 theme = "cactus"
+
+googleAnalytics = "UA-75060729-1"
+
 [[menu.main]]
 
 name = "Home"
