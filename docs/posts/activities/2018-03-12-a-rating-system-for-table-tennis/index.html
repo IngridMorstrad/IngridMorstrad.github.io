@@ -230,15 +230,13 @@ if (!doNotTrack) {
 <!-- raw HTML omitted -->
 <p>you can score lower than your expected score (as predicted by Elo), even if you score more than 0.5. This would cause you to lose rating points.</p>
 <!-- raw HTML omitted -->
-<p><!-- raw HTML omitted -->
-We can also easily see another desirable property the score should have.</p>
+<!-- raw HTML omitted -->
 <blockquote>
 <p>Property 2: A win with a larger po difference should lead to a larger rating increase than one with a smaller score difference (other factors remaining constant).</p>
 </blockquote>
 <p>The &ldquo;other factors remaining constant&rdquo; here refers to the fact that a rating increase/decrease when working with Elo will depend on both opponents' initial ratings. The second property would require a 11-3 win to garner the victor a bigger rating increase than a 11-7 win. Notice that this places no restrictions on how the rating increase should decrease as the loser scores more points. Specifically, we don&rsquo;t tie ourselves to saying that a 11-3 win versus a 11-2 win should see the same decrease in rating increase that a 11-4 win versus a 11-3 win would see. In other words, the function need not be linear.</p>
 <!-- raw HTML omitted -->
-<p><!-- raw HTML omitted -->
-This function satisfies both of the above properties. It also highlights another interesting aspect of games like table tennis - the total number of points is unbounded (due to tiebreaks). Theoretically, you could have a game that ends 999999-999997, although this is highly unlikely (proof left as exercise to reader). However, games can end 17-15, 15-13, etc. often enough to be considered. This means we cannot assume a fixed &ldquo;maximum total number of points&rdquo; to use in our rating function (the existence of such a metric would have allowed us to get nice, linear functions). Also, this gives us another property we would require. A &ldquo;closer&rdquo; game (17-15) should give fewer points to the winner than one that is not as close (12-10), even if the point difference is the same. Concretely:</p>
+<!-- raw HTML omitted -->
 <blockquote>
 <p>Property 3: In games with the same score difference, the one with the higher point total should lead to a smaller rating increase.</p>
 </blockquote>
@@ -253,8 +251,7 @@ This function satisfies both of the above properties. It also highlights another
 <p>I started off with the sigmoid and then spent two hours trying to figure out how to reflect a line. My mathematics is a bit rusty, so if you have a better (or an alternative) method, please do share! First, I had to find the equation of the line connecting the end-points. That&rsquo;s pretty simple - the y-intercept is 1 and the x-intercept is 11 (or 21) times 2 since the line extends 11 points for half the y-axis (0.5 to 1).</p>
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
-<p><!-- raw HTML omitted -->
-<img src="/assets/images/with_line.png" alt=""></p>
+<!-- raw HTML omitted -->
 <p>Now, to reflect the function across this line. I really struggled with this - not sure if we learned it in school, but I didn&rsquo;t want to look it up. I finally did it by considering a point on the x-axis (let&rsquo;s say point A) where we want to plot a point of the reflected function somewhere on the y dimension. We can &ldquo;drop a perpendicular&rdquo; at point A. This line will intersect both the reflected point as well as the line y = 1 - x/22.  If we drop another perpendicular at the intersection of the line and the first perpendicular, then we should intersect the curve representing our function at the point to be reflected.</p>
 <!-- raw HTML omitted -->
 <p><!-- raw HTML omitted -->f(x) = line(A) [where x is the opponent&rsquo;s score]<!-- raw HTML omitted -->
@@ -268,20 +265,17 @@ x = player_points*(22 - 22 + A)/(22-A)<!-- raw HTML omitted -->
 x = player_points*A/(22-A)<!-- raw HTML omitted -->
 <!-- raw HTML omitted --></p>
 <!-- raw HTML omitted -->
-<p><!-- raw HTML omitted -->
-Once we have the value of x,</p>
+<!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 <p>A, line(x)</p>
 <!-- raw HTML omitted -->
-<p><!-- raw HTML omitted -->
-Now, to get the reflected line, we plot line(x) for every value of opponent_score (the x axis), getting the following graph:</p>
+<!-- raw HTML omitted -->
 <p><img src="/assets/images/with_reflected.png" alt=""></p>
 <p>I now know this can be expressed as a much simpler function (although I just found it coincidentally - I didn&rsquo;t come to it by attempting to find a reflection).</p>
 <!-- raw HTML omitted -->
 <p>0.5 + opponent_score/(opponent_score + player_score)</p>
 <!-- raw HTML omitted -->
-<p><!-- raw HTML omitted -->
-On the bright side, I guess I got to think about reflecting across a line. Oh well.</p>
+<!-- raw HTML omitted -->
 <h2 id="the-sigmoid">The sigmoid</h2>
 <p>For the sigmoid, I used the reflected function as the input. The reflected function needed to be offset and scaled before it could be used as the input. Au gout du jour, I did this by randomly tweaking parameters till the graph looked fairly alright. I wanted the dip to be when the opponent had won around 70% of points (7-8 points out of 11). Then, I wanted it to drop steeply to near 0.5 around 9.</p>
 <p>Since the sigmoid gives a result between 0 and 1, I had to divide by 2 and add 0.5 to push it up the y-axis. Done!</p>
@@ -290,8 +284,7 @@ On the bright side, I guess I got to think about reflecting across a line. Oh we
 <!-- raw HTML omitted -->
 <p>O*(1-expected_Elo) + expected_Elo</p>
 <!-- raw HTML omitted -->
-<p><!-- raw HTML omitted -->
-Since 0.5 effectively represents a tie, I used max(0.5, expected_Elo) instead. This seems to work fairly well.</p>
+<!-- raw HTML omitted -->
 <h2 id="other-issues-or-future-work">Other issues (or &ldquo;Future work&rdquo;)</h2>
 <p>With the current function, we probably want the dropoff to move with the expected_Elo (as the expected_Elo goes to 1, we want the dropoff to move to the left). Since we don&rsquo;t want it to move further than let&rsquo;s say around 4 (in a game to 11), only games that have scores between 4-8 will be affected. I haven&rsquo;t calculated how much the scores will be off by.</p>
 <p>Another property we would like to have (but I haven&rsquo;t checked for) is:</p>
