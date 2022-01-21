@@ -19,5 +19,3 @@ Will pull from a list of resources I have. Will add books below as I decide to s
 ## Day-by-day logs
 Day 1: 10/10 - First two games/chapters from Logical Chess Move by Move (by Irving Chernev). Both games were in the Giucco Piano.  
 Day 2: 10/13 - IM Sowmya's explanation of Fischer's game against Sherwin https://www.youtube.com/watch?v=x2QGuK2dLsA. Featuring the Sicilian, with white playing d3.
-
-John Bartholomew's Chess Fundamentals: 4/5 done. The concepts are "known" to me, but for example, I fail to see hanging pieces, or misjudge if a trade is good or not during the game.
