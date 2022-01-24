@@ -4,4 +4,4 @@
 s/<img src="{{ site.url }}\([^"]*\)">/![](\1)/g
 # To replace multiple files
 # sed -i 's/a/b/g' $(find . -name '*.markdown')
-# Minor change to trigger build
+# Minor change to trigger build 2
