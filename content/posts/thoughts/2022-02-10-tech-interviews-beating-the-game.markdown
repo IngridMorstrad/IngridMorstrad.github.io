@@ -1,6 +1,6 @@
 ---
 layout: post
-date: "2022-01-21"
+date: "2022-02-10"
 title:  "Tech interviews: beating the game"
 comments: true
 tags: thoughts
