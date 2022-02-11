@@ -5,7 +5,16 @@
     <link>/posts/</link>
     <description>Recent content in Posts on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 21 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 10 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tech interviews: beating the game</title>
+      <link>/posts/thoughts/2022-02-10-tech-interviews-beating-the-game/</link>
+      <pubDate>Thu, 10 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/thoughts/2022-02-10-tech-interviews-beating-the-game/</guid>
+      <description>Disclaimer/Foreword: The aim of writing this series of posts is to allow our modern interview processes to be viewed through the lens of history (chronicling the process) and science (identifying problems and inferring improvements from process changes). This is part two in the series, which will focus on how to maximize your chances given the current state of the system. The rest of this post assumes you&amp;rsquo;ve read part 1, and are interested in interviewing for tech/big tech companies.</description>
+    </item>
+    
     <item>
       <title>Tech interviews: an origin story</title>
       <link>/posts/thoughts/2022-01-21-tech-interviews-an-origin-story/</link>
@@ -218,7 +227,7 @@ When I first started, I reviewed code very differently from how I review code no
       <pubDate>Tue, 10 Oct 2017 19:01:00 +0000</pubDate>
       
       <guid>/posts/activities/2017-10-10-my-weird-walk-to-work/</guid>
-      <description>The walk Intro I&amp;rsquo;m sure a few other people do, or try to do this, so I&amp;rsquo;m not sure how unusual it is, but I thought I&amp;rsquo;d post about it regardless. I walk to work. Almost everyday. And usually (like a good engineer ;) ), if I do something repeatedly, I try toptimize it. With code, with life. So, now that it&amp;rsquo;s been a few months of walking to work in Seattle, I think I can present my learnings.</description>
+      <description>The walk Intro I&amp;rsquo;m sure a few other people do, or try to do this, so I&amp;rsquo;m not sure how unusual it is, but I thought I&amp;rsquo;d post about it regardless. I walk to work. Almost everyday. And usually (like a good engineer ;) ), if I do something repeatedly, I try to optimize it. With code, with life. So, now that it&amp;rsquo;s been a few months of walking to work in Seattle, I think I can present my learnings.</description>
     </item>
     
     <item>

@@ -5,7 +5,16 @@
     <link>/tags/thoughts/</link>
     <description>Recent content in thoughts on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 21 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="/tags/thoughts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 10 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="/tags/thoughts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tech interviews: beating the game</title>
+      <link>/posts/thoughts/2022-02-10-tech-interviews-beating-the-game/</link>
+      <pubDate>Thu, 10 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/thoughts/2022-02-10-tech-interviews-beating-the-game/</guid>
+      <description>Disclaimer/Foreword: The aim of writing this series of posts is to allow our modern interview processes to be viewed through the lens of history (chronicling the process) and science (identifying problems and inferring improvements from process changes). This is part two in the series, which will focus on how to maximize your chances given the current state of the system. The rest of this post assumes you&amp;rsquo;ve read part 1, and are interested in interviewing for tech/big tech companies.</description>
+    </item>
+    
     <item>
       <title>Tech interviews: an origin story</title>
       <link>/posts/thoughts/2022-01-21-tech-interviews-an-origin-story/</link>
