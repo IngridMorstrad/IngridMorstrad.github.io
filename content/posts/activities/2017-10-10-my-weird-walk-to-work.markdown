@@ -11,7 +11,7 @@ tags: activities
 ![](/assets/images/walk.png)
 
 ## Intro
-I'm sure a few other people do, or try to do this, so I'm not sure how unusual it is, but I thought I'd post about it regardless. I walk to work. Almost everyday. And usually (like a good engineer ;) ), if I do something repeatedly, I try toptimize it. With code, with life. So, now that it's been a few months of walking to work in Seattle, I think I can present my learnings.
+I'm sure a few other people do, or try to do this, so I'm not sure how unusual it is, but I thought I'd post about it regardless. I walk to work. Almost everyday. And usually (like a good engineer ;) ), if I do something repeatedly, I try to optimize it. With code, with life. So, now that it's been a few months of walking to work in Seattle, I think I can present my learnings.
 
 ## The process
 I began by timing myself, so I have a fair idea of how long I take to get to work. This lets me leave as late as possible (not a morning person) while hopefully making it for meetings. After a few days of timing myself, I realized that traffic lights were the biggest factor in how much time it takes me to get to work. I could walk slowly or run, but if I didn't make the light, I was blocked.
@@ -24,7 +24,6 @@ The only other useful decision is deciding between stop signs that let you throu
 Now, on to the specific intersections. The first useful intersection is the blue dot. If I get on the other side of this road (north of E Pike St), then I can avoid the light at Boren & Pike. If I miss this (and walk at normal pace), I incur a delay of around 10-15 seconds. That's boring. Now, for the fun part.
 
 It might seem like taking every traffic light that is open is going to be optimal (greedy approach), but the world doesn't work that way (as stated earlier). This brings us to the second interesting intersection - the green dot. Here, if I stay to the east of Boren, I get to cross Pine BEFORE I would have if I was on the west of Boren. That's because cars on Boren take a left turn and so, the signal for pedestrians changes later. So, it is always beneficial to stay on the east of Boren (going north) at this intersection.
-
 
 Next up is the black squiggly line, which until recently was blocked due to construction. This meant I had to get on the west of Boren before this. That can usually be achieved at either of the two intersections prior to it (on Pine or Olive Way). Then, you might have to cross at a red light (no idea why the light is red for both vehicles & pedestrians).
 
