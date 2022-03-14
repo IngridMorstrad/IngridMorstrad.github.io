@@ -42,11 +42,13 @@ In another case, a man who could barely speak and smelled absolutely foul walked
 For those wondering why homeless people don't just move into shelters, there are a [few reasons](https://www.npr.org/2012/12/06/166666265/why-some-homeless-choose-the-streets-over-shelters): shelters aren't always that great, and the ones that are, don't always have room.
 
 ## Other notes
+The best way to donate large amounts of money (over $5000) is to set up a donor-advised fund (DAF), and disburse money from the fund to charities you want to. This will allow the money to stay invested over time (meaning it can grow tax-free) and you can also get a tax credit on donation. Charities will also not have to pay a tax to receive this money (or stocks).
+
 When possible, donate through companies that will match your donations. Big corporations like Microsoft, Facebook, Google (but notably NOT Amazon) will match your donations to these causes. If your company doesn't match your donation, try donating through a friend (provided this is legal)
 
 Another easy way to donate some money is to shop through smile.amazon.com instead of amazon.com (just type in smile.amazon.com instead of www.amazon.com). Initial impact may be minimal, but you can increase the impact you have by spreading the word about this (and donating effectively in general). For example, Susan Fowler used to tweet links to books on Amazon. I reached out and asked her to use smile.amazon.com instead. After the second tweet, all her links were to smile.amazon.com instead! The impact may not be huge, but it is something.
 
-Interestingly, the charity [Give Directly](https://givedirectly.org/research-at-give-directly) performed randomized controlled trials and found that just giving money to poor people does not increase their expenditure on vices like alcohol and tobacco. To elaborate, they found that when money was given to poor families, they only spent as much of the money given on vices as an average family would. Further, there was no impact on crime nor inflation.
+Interestingly, the charity [Give Directly](https://givedirectly.org/research-at-give-directly) performed randomized controlled trials and found that just giving money to poor people does not increase their expenditure on vices like alcohol and tobacco. The trial found that when money was given to poor families, they spent the smae amount on vices (alcohol/cigs/other) as an average family would. Further, there was no impact on crime nor inflation.
 
 Charities that provide loans to rural folk/entrepreneurs are [not recommended](https://blog.givewell.org/2009/12/28/celebrated-charities-that-we-dont-recommend/) as a [good use of your money](https://blog.givewell.org/2009/12/25/where-we-stand-on-microfinance-charity/). However, they do serve some purpose as people who don't want to part with their money may yet donate through these charities. It may be that these people assume they aren't losing money, but they are losing interest they could earn on that money.
 
@@ -54,8 +56,8 @@ I usually avoid giving on social media like Facebook or GoFundMe as it leads to 
 
 It's also a good idea to set up regular donations so that you budget for the donations and ensure donations are being made.
 
-## Listified
-I want to donate to:
+## If-guide
+If I want to donate to:
 * A charity that benefits people I identify with (for example: countrymen) : For example, I wanted to donate to charities that benefit Indians. While a personal choice, it should be noted that this is not the most impactful donation possible. If you consider humanity to be one, without borders, then you can probably reconcile yourself with the idea of donating to the most needed causes.  
 * An organization that then donates to charities: I'd prefer donating to the charity in question (or even the people that need it) directly, but there is one important exception.
 * People on the street: Tugs at your heartstrings, but again, remember, it's not the most efficient way to donate. Most cities (in the US) have shelters set up. Some (NOT ALL) people refuse to go there because they have a no alcohol policy. Many cities don't have enough shelters.
