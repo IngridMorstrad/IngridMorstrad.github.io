@@ -233,80 +233,77 @@ matches = [(99,62),(80,71),(69,55),(97,89),(59,48),(82,75),(63,51),(73,58),(59,3
 <p>This would occur when the loser wins 2 sets 6-0 and goes either 6-4 (without tiebreaks) or 6-6 (5) in the other 3 sets, while winning 2 points in each game the winner wins. The first half shows the ratios without tie-breaks, the second one considers a match with tiebreaks. The minimum points won ratio is 0.3529, and this scenario is rare enough that it didn&rsquo;t occur even once in 10000 simulations.</p>
 <h2 id="codebook">Codebook</h2>
 <p>Python program for simulating tennis matches</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
-<span style="color:#f92672">import</span> random 
-
-<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Match</span>:
-    <span style="color:#66d9ef">def</span> __init__(self, sets_to_win):
-        self<span style="color:#f92672">.</span>to_win <span style="color:#f92672">=</span> sets_to_win
-        self<span style="color:#f92672">.</span>player1 <span style="color:#f92672">=</span> []
-        self<span style="color:#f92672">.</span>player2 <span style="color:#f92672">=</span> []
-        self<span style="color:#f92672">.</span>curr_game <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>]
-        self<span style="color:#f92672">.</span>games <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>]
-        self<span style="color:#f92672">.</span>sets <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>]
-
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">update</span>(self, pointTo):
-        self<span style="color:#f92672">.</span>curr_game[pointTo] <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
-        <span style="color:#66d9ef">if</span> (self<span style="color:#f92672">.</span>curr_game[pointTo] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">and</span> self<span style="color:#f92672">.</span>curr_game[(pointTo<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">%</span><span style="color:#ae81ff">2</span>] <span style="color:#f92672">&lt;</span> self<span style="color:#f92672">.</span>curr_game[pointTo] <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>):
-            self<span style="color:#f92672">.</span>games[pointTo]<span style="color:#f92672">+=</span><span style="color:#ae81ff">1</span>
-            self<span style="color:#f92672">.</span>curr_game <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>]
-        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>games[pointTo] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">5</span> <span style="color:#f92672">and</span> self<span style="color:#f92672">.</span>games[(pointTo<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">%</span><span style="color:#ae81ff">2</span>] <span style="color:#f92672">&lt;</span> self<span style="color:#f92672">.</span>games[pointTo] <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>:
-            self<span style="color:#f92672">.</span>sets[pointTo] <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
-            <span style="color:#75715e"># Uncomment to see the match results</span>
-            <span style="color:#75715e"># print self.games</span>
-            self<span style="color:#f92672">.</span>games <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>]
-
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">Over</span>(self):
-        <span style="color:#66d9ef">return</span> max(self<span style="color:#f92672">.</span>sets[<span style="color:#ae81ff">0</span>],self<span style="color:#f92672">.</span>sets[<span style="color:#ae81ff">1</span>]) <span style="color:#f92672">&gt;=</span> self<span style="color:#f92672">.</span>to_win
-
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">Winner</span>(self):
-        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>sets[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">&gt;</span> self<span style="color:#f92672">.</span>sets[<span style="color:#ae81ff">1</span>] <span style="color:#66d9ef">else</span> <span style="color:#ae81ff">1</span>
-
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">playPoint</span>(threshhold):
-    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">if</span> random<span style="color:#f92672">.</span>random() <span style="color:#f92672">&gt;</span> threshhold <span style="color:#66d9ef">else</span> <span style="color:#ae81ff">1</span>
-
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">playMatch</span>(prob):
-    match <span style="color:#f92672">=</span> Match(<span style="color:#ae81ff">3</span>)
-    points <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>]
-    <span style="color:#66d9ef">while</span> <span style="color:#f92672">not</span> match<span style="color:#f92672">.</span>Over():
-        pointTo <span style="color:#f92672">=</span> playPoint(prob)
-        match<span style="color:#f92672">.</span>update(pointTo)
-        points[pointTo] <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
-<span style="color:#75715e">#    Percentage of points won by each player</span>
-<span style="color:#75715e">#    if points[match.Over()-1] &lt; points[match.Over()%2]:</span>
-<span style="color:#75715e">#        print points[0]*1./(points[0] + points[1])</span>
-<span style="color:#75715e">#        print points[1]*1./(points[0] + points[1])</span>
-<span style="color:#75715e">#        print match.Over()</span>
-    <span style="color:#66d9ef">return</span> match<span style="color:#f92672">.</span>Winner()
-
-<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
-    <span style="color:#66d9ef">for</span> prob <span style="color:#f92672">in</span> xrange(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">101</span>):
-        wins <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>]
-        <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> xrange(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">100000</span>):
-            wins[playMatch(prob<span style="color:#f92672">/</span><span style="color:#ae81ff">100.</span>)] <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
-        print prob<span style="color:#f92672">/</span><span style="color:#ae81ff">100.</span>, <span style="color:#e6db74">&#34;, &#34;</span>,wins[<span style="color:#ae81ff">0</span>], <span style="color:#e6db74">&#34;, &#34;</span>, wins[<span style="color:#ae81ff">1</span>]
-
-</code></pre></div><p>R program to generate the plot</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">
-<span style="color:#a6e22e">install.packages</span>(<span style="color:#e6db74">&#34;ggplot2&#34;</span>)
-<span style="color:#a6e22e">library</span>(ggplot2)
-
-prob <span style="color:#f92672">=</span> <span style="color:#a6e22e">read.csv</span>(<span style="color:#e6db74">&#34;tennisoutput.csv&#34;</span>)
-
-<span style="color:#75715e">## Remove matches lost - Cleaning data</span>
-prob[,<span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">NULL</span>
-
-<span style="color:#75715e">## Change matches won to percentage of matches won</span>
-prob[,<span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> prob[,<span style="color:#ae81ff">2</span>]<span style="color:#f92672">/</span><span style="color:#ae81ff">1000.00</span>
-
-<span style="color:#75715e">## Assign column names</span>
-<span style="color:#a6e22e">names</span>(prob)[1] <span style="color:#f92672">&lt;-</span> <span style="color:#e6db74">&#34;PointProb&#34;</span>
-<span style="color:#a6e22e">names</span>(prob)[2] <span style="color:#f92672">&lt;-</span> <span style="color:#e6db74">&#34;MatchProb&#34;</span>
-
-<span style="color:#a6e22e">ggplot</span>(data<span style="color:#f92672">=</span>prob,<span style="color:#a6e22e">aes</span>(x<span style="color:#f92672">=</span>PointProb, y<span style="color:#f92672">=</span>MatchProb)) <span style="color:#f92672">+</span> <span style="color:#a6e22e">geom_line</span>() <span style="color:#f92672">+</span> <span style="color:#a6e22e">geom_point</span>() <span style="color:#f92672">+</span> <span style="color:#a6e22e">xlab</span>(<span style="color:#e6db74">&#34;Probability of winning a point&#34;</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">ylab</span>(<span style="color:#e6db74">&#34;Percentage of matches won&#34;</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">ggtitle</span>(<span style="color:#e6db74">&#34;Line graph of percentage of matches won vs. probability of winning a point&#34;</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">geom_text</span>(<span style="color:#a6e22e">aes</span>(label<span style="color:#f92672">=</span><span style="color:#a6e22e">ifelse</span>(PointProb<span style="color:#f92672">==</span><span style="color:#ae81ff">0.57</span>,<span style="color:#a6e22e">paste</span>(PointProb,MatchProb,sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;, &#34;</span>),<span style="color:#e6db74">&#39;&#39;</span>)),hjust <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, size <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>, vjust <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.4</span>, colour <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;brown&#34;</span>)
-
-
-</code></pre></div><section class="footnotes" role="doc-endnotes">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> random 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Match</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, sets_to_win):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>to_win <span style="color:#f92672">=</span> sets_to_win
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>player1 <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>player2 <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>curr_game <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>games <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>sets <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">update</span>(self, pointTo):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>curr_game[pointTo] <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (self<span style="color:#f92672">.</span>curr_game[pointTo] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">and</span> self<span style="color:#f92672">.</span>curr_game[(pointTo<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">%</span><span style="color:#ae81ff">2</span>] <span style="color:#f92672">&lt;</span> self<span style="color:#f92672">.</span>curr_game[pointTo] <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>games[pointTo]<span style="color:#f92672">+=</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>curr_game <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>games[pointTo] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">5</span> <span style="color:#f92672">and</span> self<span style="color:#f92672">.</span>games[(pointTo<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">%</span><span style="color:#ae81ff">2</span>] <span style="color:#f92672">&lt;</span> self<span style="color:#f92672">.</span>games[pointTo] <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>sets[pointTo] <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># Uncomment to see the match results</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># print self.games</span>
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>games <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">Over</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> max(self<span style="color:#f92672">.</span>sets[<span style="color:#ae81ff">0</span>],self<span style="color:#f92672">.</span>sets[<span style="color:#ae81ff">1</span>]) <span style="color:#f92672">&gt;=</span> self<span style="color:#f92672">.</span>to_win
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">Winner</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>sets[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">&gt;</span> self<span style="color:#f92672">.</span>sets[<span style="color:#ae81ff">1</span>] <span style="color:#66d9ef">else</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">playPoint</span>(threshhold):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">if</span> random<span style="color:#f92672">.</span>random() <span style="color:#f92672">&gt;</span> threshhold <span style="color:#66d9ef">else</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">playMatch</span>(prob):
+</span></span><span style="display:flex;"><span>    match <span style="color:#f92672">=</span> Match(<span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>    points <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> <span style="color:#f92672">not</span> match<span style="color:#f92672">.</span>Over():
+</span></span><span style="display:flex;"><span>        pointTo <span style="color:#f92672">=</span> playPoint(prob)
+</span></span><span style="display:flex;"><span>        match<span style="color:#f92672">.</span>update(pointTo)
+</span></span><span style="display:flex;"><span>        points[pointTo] <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#    Percentage of points won by each player</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#    if points[match.Over()-1] &lt; points[match.Over()%2]:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#        print points[0]*1./(points[0] + points[1])</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#        print points[1]*1./(points[0] + points[1])</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#        print match.Over()</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> match<span style="color:#f92672">.</span>Winner()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> prob <span style="color:#f92672">in</span> xrange(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">101</span>):
+</span></span><span style="display:flex;"><span>        wins <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> xrange(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">100000</span>):
+</span></span><span style="display:flex;"><span>            wins[playMatch(prob<span style="color:#f92672">/</span><span style="color:#ae81ff">100.</span>)] <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>        print prob<span style="color:#f92672">/</span><span style="color:#ae81ff">100.</span>, <span style="color:#e6db74">&#34;, &#34;</span>,wins[<span style="color:#ae81ff">0</span>], <span style="color:#e6db74">&#34;, &#34;</span>, wins[<span style="color:#ae81ff">1</span>]
+</span></span></code></pre></div><p>R program to generate the plot</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">install.packages</span>(<span style="color:#e6db74">&#34;ggplot2&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">library</span>(ggplot2)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>prob <span style="color:#f92672">=</span> <span style="color:#a6e22e">read.csv</span>(<span style="color:#e6db74">&#34;tennisoutput.csv&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Remove matches lost - Cleaning data</span>
+</span></span><span style="display:flex;"><span>prob[,<span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">NULL</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Change matches won to percentage of matches won</span>
+</span></span><span style="display:flex;"><span>prob[,<span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> prob[,<span style="color:#ae81ff">2</span>]<span style="color:#f92672">/</span><span style="color:#ae81ff">1000.00</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Assign column names</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">names</span>(prob)[1] <span style="color:#f92672">&lt;-</span> <span style="color:#e6db74">&#34;PointProb&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">names</span>(prob)[2] <span style="color:#f92672">&lt;-</span> <span style="color:#e6db74">&#34;MatchProb&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ggplot</span>(data<span style="color:#f92672">=</span>prob,<span style="color:#a6e22e">aes</span>(x<span style="color:#f92672">=</span>PointProb, y<span style="color:#f92672">=</span>MatchProb)) <span style="color:#f92672">+</span> <span style="color:#a6e22e">geom_line</span>() <span style="color:#f92672">+</span> <span style="color:#a6e22e">geom_point</span>() <span style="color:#f92672">+</span> <span style="color:#a6e22e">xlab</span>(<span style="color:#e6db74">&#34;Probability of winning a point&#34;</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">ylab</span>(<span style="color:#e6db74">&#34;Percentage of matches won&#34;</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">ggtitle</span>(<span style="color:#e6db74">&#34;Line graph of percentage of matches won vs. probability of winning a point&#34;</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">geom_text</span>(<span style="color:#a6e22e">aes</span>(label<span style="color:#f92672">=</span><span style="color:#a6e22e">ifelse</span>(PointProb<span style="color:#f92672">==</span><span style="color:#ae81ff">0.57</span>,<span style="color:#a6e22e">paste</span>(PointProb,MatchProb,sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;, &#34;</span>),<span style="color:#e6db74">&#39;&#39;</span>)),hjust <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, size <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>, vjust <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.4</span>, colour <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;brown&#34;</span>)
+</span></span></code></pre></div><section class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
 <li id="fn:1" role="doc-endnote">
