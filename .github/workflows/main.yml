@@ -20,4 +20,4 @@ jobs:
         with:
           fetch-depth: 1
       - name: 🚀 Build and deploy
-        uses: IngridMorstrad/hugo-latest-cd@master
+        uses: IngridMorstrad/hugo-latest-cd@patch-1
