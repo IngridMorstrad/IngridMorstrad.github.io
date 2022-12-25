@@ -21,6 +21,12 @@ Kapil Dev at ~4:45 [here](https://youtu.be/9h-l_uBr7dE
 Sunil Chhetri at ~5:00 [here](https://youtu.be/sBj_JQWTqw8?t=300).
 - At 7:47 as well.
 
+Conan O'Brien at 4:04 [here](https://youtu.be/AcF1OoWqXBc?t=244) "If you work really hard and you're kind, amazing things will happen."
+
+Novak Djokovic at ~1:20 [here](https://youtu.be/L-HSSU0rvRo?t=79) "you work repetitively maybe sometimes on certain things"
+
+Jimmy Buttler, going without the internet to train more, as described [here](https://www.businessinsider.com/jimmy-butler-went-all-summer-without-cable-and-internet-to-train-more-2014-11) and [here](https://www.nba.com/bulls/features/jimmy-butler-story).
+
 ### About proving people wrong
 
 Kapil Dev at ~1:00 [here](https://youtu.be/9h-l_uBr7dE?t=53)
