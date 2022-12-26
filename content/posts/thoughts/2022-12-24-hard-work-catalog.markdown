@@ -27,6 +27,8 @@ Novak Djokovic at ~1:20 [here](https://youtu.be/L-HSSU0rvRo?t=79) "you work repe
 
 Jimmy Buttler, going without the internet to train more, as described [here](https://www.businessinsider.com/jimmy-butler-went-all-summer-without-cable-and-internet-to-train-more-2014-11) and [here](https://www.nba.com/bulls/features/jimmy-butler-story).
 
+Ben White (Arsenal defender), All Or Nothing S1E6 26:10: "I don't think I was ever talented [...] I just worked so much harder than everyone else."
+
 ### About proving people wrong
 
 Kapil Dev at ~1:00 [here](https://youtu.be/9h-l_uBr7dE?t=53)
