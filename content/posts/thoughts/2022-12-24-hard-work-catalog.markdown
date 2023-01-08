@@ -6,9 +6,9 @@ comments: true
 tags: thoughts
 ---
 
-### Ongoing list of people talking about
+## Ongoing list of people talking
 
-## hard work, practice and preparation
+### about hard work, practice and preparation
 
 Rahul Dravid
 - at ~1:30 [here](https://youtu.be/mN1M0zs3YAk?t=90).
@@ -29,6 +29,6 @@ Jimmy Buttler, going without the internet to train more, as described [here](htt
 
 Ben White (Arsenal defender), All Or Nothing S1E6 26:10: "I don't think I was ever talented [...] I just worked so much harder than everyone else."
 
-### About proving people wrong
+### about proving people wrong
 
 Kapil Dev at ~1:00 [here](https://youtu.be/9h-l_uBr7dE?t=53)
