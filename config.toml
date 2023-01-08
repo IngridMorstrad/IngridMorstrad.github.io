@@ -21,7 +21,7 @@ url = "/tags"
 weight = 3
 
 [params]
-  description = "Hi, I'm Ashwin. This is my little corner of the web. Hope you enjoy your stay. Feel free to leave a comment or [subscribe for updates](https://tinyletter.com/9sy9ll9f)! RSS available [here](https://www.ashwinmenon.com/index.xml)"
+  description = "Hi, I'm Ashwin. This is my little corner of the web. Hope you enjoy your stay. Feel free to leave a comment or <a href="https://tinyletter.com/9sy9ll9f">subscribe for updates</a>! RSS available [here](https://www.ashwinmenon.com/index.xml)"
 
   mainSection = "posts"
   showAllPostsOnHomePage = true
