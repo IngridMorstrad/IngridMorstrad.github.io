@@ -2,6 +2,8 @@ theme = "cactus"
 
 googleAnalytics = "UA-75060729-1"
 
+copyright = "Ashwin Menon"
+
 [[menu.main]]
 
 name = "Home"
@@ -29,4 +31,8 @@ weight = 3
 [[params.social]]
   name = "twitter"
   link = "https://www.twitter.com/TheAshwinMenon"
+
+[[params.social]]
+  name = "mailchimp"
+  link = "https://tinyletter.com/9sy9ll9f"
 
