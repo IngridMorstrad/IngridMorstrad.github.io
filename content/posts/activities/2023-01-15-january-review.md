@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "January review"
-date:   2023-01-31
+date:   2023-01-15
 comments: true
 tags: activities
 ---
