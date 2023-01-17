@@ -56,7 +56,7 @@ jobs:
           hugo \
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/" \
-          && echo "!!!!!!!!!!!!!!!!!!!" \ 
+          && echo "!!!!!!!!!!!!!!!!!!!" \
           && echo "${{ steps.pages.outputs.base_url }}/" \
           && echo "$(pwd)" \ 
           && echo "$(ls)"
