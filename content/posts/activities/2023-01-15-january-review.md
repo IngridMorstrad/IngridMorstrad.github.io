@@ -12,11 +12,11 @@ This time around I decided to set resolution again, with the hope of more discip
 
 For January, I set the following goals:
 
-- Run at least 1 mile every day (need to do some exercise consistently).
-- Every other day, 3 sets of 8 push-ups (a solid, easy to do exercise).
-- Every other day, 30 minutes of guitar practice (I like playing music, I want to be a better guitarist).
-- Every other day, 1 pull-up (can't do more, want to shore up my weaknesses).
-- Every other day, 30 minutes of chess practice (have been improving at the game, would like to improve some more).
+- **Running:** Run at least 1 mile every day (need to do some exercise consistently).
+- **Push-ups:** Every other day, 3 sets of 8 push-ups (a solid, easy to do exercise).
+- **Pull-ups:** Every other day, 1 pull-up (can't do more, want to shore up my weaknesses).
+- **Guitar:** Every other day, 30 minutes of guitar practice (I like playing music, I want to be a better guitarist).
+- **Chess:** Every other day, 30 minutes of chess practice (have been improving at the game, would like to improve some more).
 
 ### Goals and goal-setting
 I decided to go for simple goals that I could do everyday no matter what. Many recent books on habits (like Tiny Habits and Atomic Habits) recommend this.
@@ -37,11 +37,11 @@ Getting to the same consistency and delivery in other spheres of life (intention
 
 Completed every goal 100%, which I'm happy with.  
 3 habits per day is VERY achievable. The two exercises (running + push-ups/pull-ups) can be clubbed together, which leaves only 1 habit, which isn't really too much to ask for.
-Rather than set a reading goal, setting a goal to learn a technical skill through reading a book & implementing worked really well. Books take really long to read, which makes me realize I should budget more time for such goals. I tend to underestimate and feel deflated when the goal isn't achieved.
+Rather than set a reading goal, setting a goal to learn a technical skill through reading a book & implementing worked really well. Books take really long to read, which makes me realize I should budget more time for reading goals. I tend to underestimate and feel deflated when the goal isn't achieved.
 
-**Warm-ups:** I didn't really believe in warm-ups, but I've noticed that running at 7 mph right from the get-go is quite hard. Running at a slower pace for around 0.8 miles lets me run the rest at 7 mph pretty easily. Similarly, I notice doing a few lat pull downs make pull-ups seem less riskier.
-**Sleep:** is super important. I added a stretch goal to do 1 chapter of Crafting Interpreters per day, but when hours of sleep were falling below 7 hours consistently, I had to give that one up (4 days missed, 9 days done approx.).
-**Active recall:** Accidentally started doing this when I read a chapter of Crafting Interpreters on one day, and procrastinated on the implementation. It worked better than I planned, so I incorporated this into the reading of the book.
+**Warm-ups:** I didn't really believe in warm-ups, but I've noticed that running at 7 mph right from the get-go is quite hard. Running at a slower pace for around 0.8 miles lets me run the rest at 7 mph pretty easily. Similarly, I notice doing a few lat pull downs make pull-ups seem less riskier.  
+**Sleep:** is super important. I added a stretch goal to do 1 chapter of Crafting Interpreters per day, but when hours of sleep were falling below 7 hours consistently, I had to give that one up (4 days missed, 9 days done approx.).  
+**Active recall:** Accidentally started doing this when I read a chapter of Crafting Interpreters on one day, and procrastinated on the implementation. It worked better than I planned, so I incorporated this into the reading of the book.  
 
 ### Goal specific
 **Running:** I need to also include some long (> 30 min), slow (< 6 mph) runs in my routine. That should have more of an impact on my 5k speed than running 2 miles really quickly.  
@@ -51,9 +51,12 @@ Rather than set a reading goal, setting a goal to learn a technical skill throug
 
 ### Goal-setting assessment
 **Running:** Excellent. Consistency is key and I pushed more than I would have expected to. I ran 60 miles over the month, and if I had set my goal to an average of 2 miles per day, I would definitely have failed the goal.  
-**Guitar:** Ok - good. I could push myself to learn harder pieces.  
+**Guitar:** Ok. Learned a few songs, but I could push myself to learn harder pieces.  
 **Chess:** Bad.  
 **Push-ups:** Very good. Could have set it slightly harder.  
-**Pull-ups:** Good. Making slow progress, but making progress.  
+**Pull-ups:** Good. Making slow progress, but making progress (up to 3 pull ups now).  
+
+### Bonus  
+I set a stretch goal of 1 chapter of Crafting Interpreters a day, and kept at it well enough to get through almost 9 chapters in 14 days. I'll probably keep this but amend it to 1 chapter every 2 days for February.  
 
 On to February!
