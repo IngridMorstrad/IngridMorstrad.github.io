@@ -29,6 +29,10 @@ Jimmy Buttler, going without the internet to train more, as described [here](htt
 
 Ben White (Arsenal defender), All Or Nothing S1E6 26:10: "I don't think I was ever talented [...] I just worked so much harder than everyone else."
 
+> I was not born with any special talents. I was just lucky to find my life passion early on, and was willing to work more diligently than others, every single day.
+
+Susan polgar's [tweet](https://twitter.com/SusanPolgar/status/1488879383934738439) 
+
 ### about proving people wrong
 
 Kapil Dev at ~1:00 [here](https://youtu.be/9h-l_uBr7dE?t=53)!
