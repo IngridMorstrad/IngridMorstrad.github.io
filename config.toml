@@ -4,6 +4,8 @@ googleAnalytics = "UA-75060729-1"
 
 copyright = "Ashwin Menon"
 
+title = "Ashwin's blog"
+
 [[menu.main]]
 
 name = "Home"
