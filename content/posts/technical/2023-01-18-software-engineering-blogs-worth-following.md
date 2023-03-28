@@ -17,6 +17,9 @@ _Approximately in the order I'd recommend them in_
 [Vaidehi Joshi](https://github.com/vaidehijoshi/) - not really a blog, but the basecs and baseds series.  
 [Dan Luu](https://danluu.com/)  
 
-Unranked: [Carlos Arguelles](https://carloarg02.medium.com/) (haven't gotten to it yet)
+Unranked (haven't gotten to yet):
+
+[Carlos Arguelles](https://carloarg02.medium.com/) (haven't gotten to it yet)
+[Brandon Rhodes](https://rhodesmill.org/brandon/)
 
 Will add more as I find more worth adding here.
