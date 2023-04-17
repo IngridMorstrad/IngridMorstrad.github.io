@@ -8,13 +8,13 @@ tags: technical
 # The sorry state of software: UI/UX
 
 ## Can you tell the time?
-<img src="https://github.com/IngridMorstrad/IngridMorstrad.github.io/blob/mainline/static/assets/images/android%20alarm.png?raw=true" width="30%" />
+![Weird Android clock face](https://github.com/IngridMorstrad/IngridMorstrad.github.io/blob/mainline/static/assets/images/android%20alarm.png?raw=true)
 
 Nope, you aren't looking at a programmer's [attempt at being funny](https://techcrunch.com/gallery/worst-volume-controls/). This was the **official** clock app on Android.
 
 This was actually an attempt at improving the earlier iteration, which for some godforsaken reason stuffed the hours from 13 to 24 into the clock face displaying 1-12:
 
-<img src="https://github.com/IngridMorstrad/IngridMorstrad.github.io/blob/mainline/static/assets/images/ClockApp.jpeg?raw=true" width="30%" />
+![Weird Android dual clock face](https://github.com/IngridMorstrad/IngridMorstrad.github.io/blob/mainline/static/assets/images/ClockApp.jpeg?raw=true)
 
 Inexplicably, 00 is included in the inner clock face, meaning the inner clock face actually goes from 00 to 13. I'm perplexed how this was released to customers. And really, why even update a "clock" app? Surely, it can't be improved anymore... or can it?
 
@@ -31,22 +31,22 @@ Lastly, large corporations are likely monopolies, and without good regulations, 
 Good UX is whatever makes it easier for the customer to do the right thing. The right thing here means whatever the customer opened the app/software to do, and not what the software/app may want to trick the consumer into doing. Good UI is whatever enables this UX. In addition, good UI makes it HARD for the user to do the wrong thing. The book "Design of Everyday Things" has a few non-software examples.
 
 ### Good UI/UX example: The old Square Cash app
-<img src="https://github.com/IngridMorstrad/IngridMorstrad.github.io/blob/mainline/static/assets/images/squareCashOld.png?raw=true" width="30%" />
+![Old Square Cash UI](https://github.com/IngridMorstrad/IngridMorstrad.github.io/blob/mainline/static/assets/images/squareCashOld.png?raw=true)  
 Here's a screenshot of an older version of the Square Cash app. See how it launches you right to the payment screen, and clearly presents two options (Request & Pay), which are likely all you need.
   
 This is a seemingly simple product, but look at how one of their competitors went about it:  
-<img src="https://github.com/IngridMorstrad/IngridMorstrad.github.io/blob/mainline/static/assets/images/venmoUI.png?raw=true" width="30%" />
+![Venmo UI](https://github.com/IngridMorstrad/IngridMorstrad.github.io/blob/mainline/static/assets/images/venmoUI.png?raw=true)
 
 Admittedly, this may have helped them win and keep market share thanks to network effects, but it's worth calling out that a product that is used more is not always a better product (as alluded to in the previous section).
 
 Unfortunately, it looks like Square Cash (now just "Cash", which is in my opinion of the worst name changes ever) is beginning to lose its wonderful UI/UX to "feature-itis" (as described above):  
-<img src="https://github.com/IngridMorstrad/IngridMorstrad.github.io/blob/mainline/static/assets/images/newSquareCash.jpeg?raw=true" width="30%" />  
+![New Square Cash UI](https://github.com/IngridMorstrad/IngridMorstrad.github.io/blob/mainline/static/assets/images/newSquareCash.jpeg?raw=true)  
 _Note the increasing "tabs" at the bottom below Request/Pay_
 
 The idea behind this forcing what should be different apps (for buying stocks and getting a debit card in this case) into an existing one is to attempt to drive growth. People are unlikely to download an app that they don't need, but if you force it onto one they may already be using, you may get more users! (Note to reader: Please do not emulate)
 
 ### Good UI/UX example: The official Android Clock app
-<img src="https://github.com/IngridMorstrad/IngridMorstrad.github.io/blob/mainline/static/assets/images/timer.jpeg?raw=true" width="30%" />
+![Timer tab in the Android clock app](https://github.com/IngridMorstrad/IngridMorstrad.github.io/blob/mainline/static/assets/images/timer.jpeg)  
 In a dramatic twist, it looks like the loser of this post is also its winner! In the latest version of the Android Clock app, the weird clock face has been removed, and replaced with a more sensible UI. This UI is also used for the "Timer" tab in the Clock app, which has some brilliant features baked in.  
 
 The Timer tab comes with some preset timers, and while you may not be doing those exact things, the fact that they are set to different time periods (2 mins, 15 mins, etc.) means they are likely useful for some tasks you were using timers for anyway. For example, I use the "Brush teeth" 2 minute timer to take a 2 minute rest between sets during my workouts. Allowing the customer to have named timers set locally means I can use this to set up a 30 minute timer that I can use for guitar practice.
