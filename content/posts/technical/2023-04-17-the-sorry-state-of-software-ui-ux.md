@@ -46,7 +46,7 @@ _Note the increasing "tabs" at the bottom below Request/Pay_
 The idea behind this forcing what should be different apps (for buying stocks and getting a debit card in this case) into an existing one is to attempt to drive growth. People are unlikely to download an app that they don't need, but if you force it onto one they may already be using, you may get more users! (Note to reader: Please do not emulate)
 
 ### Good UI/UX example: The official Android Clock app
-![Timer tab in the Android clock app](https://github.com/IngridMorstrad/IngridMorstrad.github.io/blob/mainline/static/assets/images/timer.jpeg)  
+![Timer tab in the Android clock app](https://github.com/IngridMorstrad/IngridMorstrad.github.io/blob/mainline/static/assets/images/timer.jpeg?raw=true)  
 In a dramatic twist, it looks like the loser of this post is also its winner! In the latest version of the Android Clock app, the weird clock face has been removed, and replaced with a more sensible UI. This UI is also used for the "Timer" tab in the Clock app, which has some brilliant features baked in.  
 
 The Timer tab comes with some preset timers, and while you may not be doing those exact things, the fact that they are set to different time periods (2 mins, 15 mins, etc.) means they are likely useful for some tasks you were using timers for anyway. For example, I use the "Brush teeth" 2 minute timer to take a 2 minute rest between sets during my workouts. Allowing the customer to have named timers set locally means I can use this to set up a 30 minute timer that I can use for guitar practice.
