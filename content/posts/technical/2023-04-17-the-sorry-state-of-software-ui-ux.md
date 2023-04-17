@@ -1,6 +1,6 @@
 ---
 comments: true
-date: "2023-04-19"
+date: "2023-04-17"
 title: The sorry state of software UI/UX
 tags: technical 
 ---
