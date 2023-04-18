@@ -6,7 +6,7 @@ tags: technical
 ---
 
 ## Can you tell the time?
-![Weird Android clock face](https://github.com/IngridMorstrad/IngridMorstrad.github.io/blob/mainline/static/assets/images/android%20alarm.png?raw=true)
+{{< figure src="https://github.com/IngridMorstrad/IngridMorstrad.github.io/blob/mainline/static/assets/images/android%20alarm.png?raw=true" width="640px" title=">Totally normal clock face" >}}
 
 Nope, you aren't looking at a programmer's [attempt at being funny](https://techcrunch.com/gallery/worst-volume-controls/). This was the **official** clock app on Android.
 
