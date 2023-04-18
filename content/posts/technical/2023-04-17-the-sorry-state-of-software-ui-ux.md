@@ -6,13 +6,13 @@ tags: technical
 ---
 
 ## Can you tell the time?
-{{< figure src="https://github.com/IngridMorstrad/IngridMorstrad.github.io/blob/mainline/static/assets/images/android%20alarm.png?raw=true" width="600px" title=">Totally normal clock face" >}}
+{{< figure src="https://github.com/IngridMorstrad/IngridMorstrad.github.io/blob/mainline/static/assets/images/android%20alarm.png?raw=true" width="600px" title="  Totally normal clock face" >}}
 
 Nope, you aren't looking at a programmer's [attempt at being funny](https://techcrunch.com/gallery/worst-volume-controls/). This was the **official** clock app on Android.
 
 This was actually an attempt at improving the earlier iteration, which for some godforsaken reason stuffed the hours from 13 to 24 into the clock face displaying 1-12:
 
-{{< figure src="https://github.com/IngridMorstrad/IngridMorstrad.github.io/blob/mainline/static/assets/images/ClockApp.jpeg?raw=true" width="600px" title=">Why settle for one clock face when you can have two?" >}}
+{{< figure src="https://github.com/IngridMorstrad/IngridMorstrad.github.io/blob/mainline/static/assets/images/ClockApp.jpeg?raw=true" width="600px" title="  Why settle for one clock face when you can have two?" >}}
 
 Inexplicably, 00 is included in the inner clock face, meaning the inner clock face actually goes 00 -> 13 -> 14 -> 15 (and so on)! I'm perplexed this was released to customers. And why would you even want to update a "clock" app? Surely, it can't be improved anymore... or can it?
 
@@ -29,22 +29,22 @@ Lastly, large corporations are likely monopolies, and without good regulations, 
 A good UX makes it easier for the customer to do the right thing. The right thing here means whatever the customer opened the app/software to do, and not what the app/software may want to trick the consumer into doing. Good UI enables such UX. In addition, good UI makes it _hard_ for the user to do the wrong thing. The book "Design of Everyday Things" has a few non-software examples.
 
 ### Good UI/UX example: The old Square Cash app
-{{< figure src="https://github.com/IngridMorstrad/IngridMorstrad.github.io/blob/mainline/static/assets/images/squareCashOld.png?raw=true" width="600px" title=">A good UI/UX can seem deceptively simple" >}}
+{{< figure src="https://github.com/IngridMorstrad/IngridMorstrad.github.io/blob/mainline/static/assets/images/squareCashOld.png?raw=true" width="600px" title="  A good UI/UX can seem deceptively simple" >}}
 Here's a screenshot of an older version of the Square Cash app. See how it launches you right to the payment screen, and clearly presents two options (Request & Pay), which are likely all you need.
   
 This is a seemingly simple product, but look at how one of their competitors went about it:  
-{{< figure src="https://github.com/IngridMorstrad/IngridMorstrad.github.io/blob/mainline/static/assets/images/venmoUI.png?raw=true" width="600px" title=">A social-financial app?!" >}}
+{{< figure src="https://github.com/IngridMorstrad/IngridMorstrad.github.io/blob/mainline/static/assets/images/venmoUI.png?raw=true" width="600px" title="  A social-financial app?!" >}}
 
 In this older version of the Venmo app, it's near impossible to find out how to do what I likely opened the app to do (which is make/receive payments). On the top right, the small pen/paper icon is what one needs to click to get to the relevant screen. The home screen, inexplicably, is a social feed of random transactions - mostly of strangers. Admittedly, this may have helped them win and keep market share thanks to network effects, but it's worth calling out that a product that is used more is not always a better product (as alluded to in the previous section). In the newest versions of the app, the social feed persists, but is limited to friends-only (with many choosing to make their transactions private) and the Pay/Request button is front and center.
 
 Unfortunately, it looks like Square Cash (now just "Cash", which is in my opinion one of the worst name changes ever\*) is beginning to lose its wonderful UI/UX to "feature-itis" (as described above):  
-{{< figure src="https://github.com/IngridMorstrad/IngridMorstrad.github.io/blob/mainline/static/assets/images/newSquareCash.jpeg?raw=true" width="600px" title=">Note the increasing number of tabs at the bottom" >}}
+{{< figure src="https://github.com/IngridMorstrad/IngridMorstrad.github.io/blob/mainline/static/assets/images/newSquareCash.jpeg?raw=true" width="600px" title="  Note the increasing number of tabs at the bottom" >}}
 
 
 The reason why companies force what should be different apps (for buying stocks and getting a debit card in this case) into an existing app is to attempt to drive growth. People are unlikely to download an app that they don't need, but if you force it onto one they may already be using, you may get more users! (Note to reader: Please do not emulate)
 
 ### Good UI/UX example: The official Android Clock app
-{{< figure src="https://github.com/IngridMorstrad/IngridMorstrad.github.io/blob/mainline/static/assets/images/timer.jpeg?raw=true" width="600px" title=">The only tick-tock app you need" >}}  
+{{< figure src="https://github.com/IngridMorstrad/IngridMorstrad.github.io/blob/mainline/static/assets/images/timer.jpeg?raw=true" width="600px" title="  The only tick-tock app you need" >}}  
 In a dramatic twist, it looks like the loser of this post is also its winner! In the latest version of the Android Clock app, the weird clock face has been removed, and replaced with a more sensible UI. This UI is also used for the "Timer" tab in the Clock app, which has some brilliant features baked in.  
 
 The Timer tab comes with some preset named timers, and while you may not be doing those exact things, the fact that they are set to different time periods (2 mins, 15 mins, etc.) means they are likely useful for some tasks you were using timers for anyway. For example, I use the "Brush teeth" 2 minute timer during my workouts to take a 2 minute rest between sets. Timers being named, and saved locally, means I can use these for different purposes repeatedly (as an example, the 30 minute timer I use while practising guitar is shown above), which should drive the "right" metrics up.
