@@ -55,7 +55,7 @@ And if that wasn't enough, the Clock app can also now notify you if you have an 
 Now that I've laid out the bad news, I should say, "Fear not, all is not lost!". Software engineering can (and I hope will) return to its glory days when people were floored with what you could do with a computer. Here's the good news, dear reader: The future is up to you! Write/read/share/talk (even casually) and hold each other to a higher standard. We got this :)
 
 ## Readers' comments
-_"I think one big part of UX design is a user-study that most people decide to skip over and UX designers kind of push their own biased designs. For everything small one cannot do a study, which is when some prior experience is useful. But, that experience - similar to subjective debates on code reviews - can lead to biased implementations too."_ - KB
+_"I think one big part of UX design is a user-study that most people decide to skip over and UX designers kind of push their own biased designs. For everything small one cannot do a study, which is when some prior experience is useful. But, that experience - similar to subjective debates on code reviews - can lead to biased implementations too."_ - KB  
 _"I definitely think software developers need to have more ownership. They don't want to take it."_ - MN
 
 _\*: I once bought a board game from someone after confirming they take "Cash". I meant the app. They meant... cash._
