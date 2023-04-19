@@ -10,7 +10,7 @@ tags: technical
 
 Nope, you aren't looking at a programmer's [attempt at being funny](https://techcrunch.com/gallery/worst-volume-controls/). This was the **official** clock app on Android.
 
-This was actually an attempt at improving the earlier iteration, which for some godforsaken reason stuffed the hours from 13 to 24 into the clock face displaying 1-12:
+This was actually an attempt at improving an earlier iteration, which for some godforsaken reason stuffed the hours from 13 to 24 into the clock face displaying 1-12:
 
 {{< figure src="https://github.com/IngridMorstrad/IngridMorstrad.github.io/blob/mainline/static/assets/images/ClockApp.jpeg?raw=true" width="600px" title="  Why settle for one clock face when you can have two?" >}}
 
@@ -53,5 +53,9 @@ And if that wasn't enough, the Clock app can also now notify you if you have an 
 
 ## What does the future look like?
 Now that I've laid out the bad news, I should say, "Fear not, all is not lost!". Software engineering can (and I hope will) return to its glory days when people were floored with what you could do with a computer. Here's the good news, dear reader: The future is up to you! Write/read/share/talk (even casually) and hold each other to a higher standard. We got this :)
+
+## Readers' comments
+_"I think one big part of UX design is a user-study that most people decide to skip over and UX designers kind of push their own biased designs. For everything small one cannot do a study, which is when some prior experience is useful. But, that experience - similar to subjective debates on code reviews - can lead to biased implementations too."_ - KB
+_"I definitely think software developers need to have more ownership. They don't want to take it."_ - MN
 
 _\*: I once bought a board game from someone after confirming they take "Cash". I meant the app. They meant... cash._
