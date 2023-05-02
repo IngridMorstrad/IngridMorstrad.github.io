@@ -22,9 +22,11 @@ One main challenge was a trip in the first week of April, which explains the cha
 
 I didn't have the guitar goal, and barely touched the guitar as a result, so I'll be adding it back for May, but likely only 4 times a week (instead of 7 like in February).
 
-Mentally, this month was less of a struggle than the previous months.
+I'd like to incorporate non-exercise goals as well, and started a 1:1 to try and help with this. Still working things out there, but on a positive note, managed to get [some reading](https://read.ashwinmenon.com) done, and updated my personal reading site!
 
-I'd like to incorporate non-exercise goals as well, and started a 1:1 to try and help with this. Still working things out, but on a positive note, managed to get [some reading](https://read.ashwinmenon.com) done!
+The guitar goal was dropped in favor of writing, but I didn't get too much writing published (only [this blog post](https://www.ashwinmenon.com/posts/technical/2023-04-17-the-sorry-state-of-software-ui-ux/)), so I'll add the guitar goal back for May.
+
+Mentally, this month was less of a struggle than the previous months. Surely the vacation had nothing to do with that ;)
 
 ## Goal-specific comments
 **Running:** Average mileage slightly lower than March (by 0.001) but this wasn't part of the goal, and wasn't measured till the end. Ran more 5ks than usual, and the trip, along with playing pickleball some days meant that getting as much mileage as I did still feels like an achievement.  
