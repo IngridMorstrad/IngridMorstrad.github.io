@@ -40,7 +40,6 @@ In this older version of the Venmo app, it's near impossible to find out how to 
 Unfortunately, it looks like Square Cash (now just "Cash", which is in my opinion one of the worst name changes ever\*) is beginning to lose its wonderful UI/UX to "feature-itis" (as described above):  
 {{< figure src="https://github.com/IngridMorstrad/IngridMorstrad.github.io/blob/mainline/static/assets/images/newSquareCash.jpeg?raw=true" width="600px" title="  Note the increasing number of tabs at the bottom" >}}
 
-
 The reason why companies force what should be different apps (for buying stocks and getting a debit card in this case) into an existing app is to attempt to drive growth. People are unlikely to download an app that they don't need, but if you force it onto one they may already be using, you may get more users! (Note to reader: Please do not emulate)
 
 ### Good UI/UX example: The official Android Clock app
@@ -49,7 +48,11 @@ In a dramatic twist, it looks like the loser of this post is also its winner! In
 
 The Timer tab comes with some preset named timers, and while you may not be doing those exact things, the fact that they are set to different time periods (2 mins, 15 mins, etc.) means they are likely useful for some tasks you were using timers for anyway. For example, I use the "Brush teeth" 2 minute timer during my workouts to take a 2 minute rest between sets. Timers being named, and saved locally, means I can use these for different purposes repeatedly (as an example, the 30 minute timer I use while practising guitar is shown above), which should drive the "right" metrics up.
 
+{{< figure src="https://github.com/IngridMorstrad/IngridMorstrad.github.io/blob/mainline/static/assets/images/clockNotify.jpeg?raw=true" width="600px" title="  Remind me again?" >}}
 And if that wasn't enough, the Clock app can also now notify you if you have an alarm that's about to go off in the next 15 minutes. This is especially useful for those rare days when we might wake up before the alarm goes off, only for it to announce itself in the middle of a meeting. I think most of us would rather _not_ let our colleagues know when we intended to wake up.
+
+{{< figure src="https://github.com/IngridMorstrad/IngridMorstrad.github.io/blob/mainline/static/assets/images/clockNotify.jpeg?raw=true" width="100px" title="  Remind me again?" >}}
+Lastly, it's the simple, subtle touches that - like icing on the cake - ties the whole thing together. The app icon updates to show you the current time! Now, that just b"ring"s me so much joy!
 
 ## What does the future look like?
 Now that I've laid out the bad news, I should say, "Fear not, all is not lost!". Software engineering can (and I hope will) return to its glory days when people were floored with what you could do with a computer. Here's the good news, dear reader: The future is up to you! Write/read/share/talk (even casually) and hold each other to a higher standard. We got this :)
@@ -66,3 +69,5 @@ Also good insight into what kills kills motivation and to innovate.. The opaquen
 Look into the practice of "Human Centered Design". At my last job, I was part of this process for an application. It was amazing how much detail we went into to understand what people wanted/needed, over a dozen or so interviews. It is essentially a new name for something some people have always done (like 'intermittent fasting'), but at least it gets people talking about the importance of sensible software. - GM  
 
 _\*: I once bought a board game from someone after confirming they take "Cash". I meant the app. They meant... cash._
+
+NB: I haven't managed to fit in a paragraph about UX changing based on "experiments" showing different UX-es to different customer bases, but many companies set significant portions (or their entire UI) this way nowadays. This may work in some cases, but in many cases I've seen "worse" UX return positive metrics (per the experiment). I'd chalk this down to dopamine hits (similar to selling sugar) as mentioned in one of the paragraphs above.
