@@ -51,7 +51,7 @@ The Timer tab comes with some preset named timers, and while you may not be doin
 {{< figure src="https://github.com/IngridMorstrad/IngridMorstrad.github.io/blob/mainline/static/assets/images/clockNotify.jpeg?raw=true" width="600px" title="  Remind me again?" >}}
 And if that wasn't enough, the Clock app can also now notify you if you have an alarm that's about to go off in the next 15 minutes. This is especially useful for those rare days when we might wake up before the alarm goes off, only for it to announce itself in the middle of a meeting. I think most of us would rather _not_ let our colleagues know when we intended to wake up.
 
-{{< figure src="https://github.com/IngridMorstrad/IngridMorstrad.github.io/blob/mainline/static/assets/images/alarmIcon.jpeg?raw=true" width="150px" title="  Remind me again?" >}}
+{{< figure src="https://github.com/IngridMorstrad/IngridMorstrad.github.io/blob/mainline/static/assets/images/alarmIcon.jpeg?raw=true" width="150px" title=" " >}}
 Lastly, it's the simple, subtle touches that - like icing on the cake - ties the whole thing together. The app icon updates to show you the current time! Now, that just b"ring"s me so much joy!
 
 ## What does the future look like?
