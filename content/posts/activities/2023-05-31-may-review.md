@@ -20,7 +20,7 @@ Fell sick on May 8 (late at night), which led to me resting and cancelling all g
 - **Guitar:** 30 minutes of guitar 4 times a week.
 
 ## Overall thoughts
-Falling sick really threw things off, and running through sickness instead of dedicating all the time to rest definitely delayed recovery. However, keeping the running goal alive is somewhat satisfying. Not sure I'd mentioned it before, but I had been adding items to a "Gym videos" playlist, as motivation to watch in the gym. This also had the added side effect of reducing hours spent on YouTube, though I can't say it was particularly successful in May.
+Falling sick really threw things off, and running through sickness instead of dedicating all the time to rest definitely delayed recovery. However, keeping the running goal alive is somewhat satisfying, despite the speeds, distances and times dropping compared to April (due to sickness/need for rest). Not sure I'd mentioned it before, but I had been adding items to a "Gym videos" playlist, as motivation to watch in the gym. This also had the added side effect of reducing hours spent on YouTube, though I can't say it was particularly successful in May.
 
 April and May also saw time spent engaging in other physical activity like pickleball, table tennis and a hike (the "new" Mailbox peak trail).
 
