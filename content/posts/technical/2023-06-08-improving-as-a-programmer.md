@@ -1,7 +1,7 @@
 ---
 comments: true
-date: "2023-06-08"
-title: The sorry state of software UI/UX
+date: "2023-08-08"
+title: Improving as a programmer
 tags: technical 
 ---
 
