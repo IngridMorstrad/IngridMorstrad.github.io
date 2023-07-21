@@ -54,9 +54,19 @@
       </a>
       {{ end }}
     </span>
-    <span class="h2">Most recent</span>
     {{ end }}
-
+    <span class="h2">Mini-series</span>
+      <span class="h3">Interviewing in tech</span>
+      <ul class="post-list">
+        <li class="post-item">
+          <span><a href="https://www.ashwinmenon.com/posts/thoughts/2022-01-21-tech-interviews-an-origin-story/">Tech interviews: an origin story</a></span>
+        </li> 
+        <li class="post-item">
+          <span><a href="https://www.ashwinmenon.com/posts/thoughts/2022-02-10-tech-interviews-beating-the-game/">Tech interviews: beating the game</a></span>
+        </li> 
+      </ul>
+      
+    <span class="h2">Most recent</span>
     {{ $showAllPostsOnHomePage := false }}
     {{ if (isset .Site.Params "showallpostsonhomepage") }}
       {{ $showAllPostsOnHomePage = .Site.Params.ShowAllPostsOnHomePage }}
