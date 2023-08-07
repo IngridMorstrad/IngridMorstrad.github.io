@@ -21,7 +21,7 @@ A day later, I decided this might be a good opportunity to chronicle the progres
 The green dots indicate when I took medicines (details two sections below).  
 Day 1 is not graphed.  
 Day 2 starts at 11 AM.  
-Day 5 ends at 5:15 PM.
+Day 6 ends at 5:15 PM.
 
 ## Interesting observations
 
