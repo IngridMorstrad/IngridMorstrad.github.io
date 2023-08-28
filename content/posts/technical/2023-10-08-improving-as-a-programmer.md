@@ -1,6 +1,6 @@
 ---
 comments: true
-date: "2023-08-08"
+date: "2023-10-08"
 title: Improving as a programmer
 tags: technical 
 ---
