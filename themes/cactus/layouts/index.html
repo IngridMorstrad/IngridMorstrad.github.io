@@ -38,25 +38,7 @@
 
   <section id="writing">
     <span class="h1"><a href="{{ .Site.Params.mainSection | absURL }}">Writings</a></span>
-    {{ if (and (and (isset .Site.Params "tagsoverview") (eq .Site.Params.tagsOverview true)) (gt (len .Site.Taxonomies.tags) 0)) }}
-    <span class="h2">Topics</span>
-    <span class="widget tagcloud">
-      {{ $AllRegularPagesCount := len .Site.RegularPages }}
-      {{ range $elem := .Site.Taxonomies.tags.Alphabetical }}
-      {{ $scratch := newScratch }}
-      {{ if (isset $.Site.Params "tagcloud") }}
-      {{ $scratch.Set "fontSize" (add 0.5 (mul 5 (div (float $elem.Count) $AllRegularPagesCount))) }}
-      {{ else }}
-      {{ $scratch.Set "fontSize" 1 }}
-      {{ end }}
-      <a style="font-size: {{ $scratch.Get `fontSize` }}rem;" href="{{ $elem.Page.Permalink }}">
-	      {{- .Page.Title -}}
-      </a>
-      {{ end }}
-    </span>
-    {{ end }}
-    <span class="h2">Mini-series</span>
-      <span class="h3">Interviewing in tech</span>
+    <span class="h2">Mini-series: Interviewing in tech</span>
       <ul class="post-list">
         <li class="post-item">
           <span><a href="https://www.ashwinmenon.com/posts/thoughts/2022-01-21-tech-interviews-an-origin-story/">Tech interviews: an origin story</a></span>
@@ -115,6 +97,23 @@
         </li>
       {{ end }}
     </ul>
+    {{ end }}
+    {{ if (and (and (isset .Site.Params "tagsoverview") (eq .Site.Params.tagsOverview true)) (gt (len .Site.Taxonomies.tags) 0)) }}
+    <span class="h2">Topics</span>
+    <span class="widget tagcloud">
+      {{ $AllRegularPagesCount := len .Site.RegularPages }}
+      {{ range $elem := .Site.Taxonomies.tags.Alphabetical }}
+      {{ $scratch := newScratch }}
+      {{ if (isset $.Site.Params "tagcloud") }}
+      {{ $scratch.Set "fontSize" (add 0.5 (mul 5 (div (float $elem.Count) $AllRegularPagesCount))) }}
+      {{ else }}
+      {{ $scratch.Set "fontSize" 1 }}
+      {{ end }}
+      <a style="font-size: {{ $scratch.Get `fontSize` }}rem;" href="{{ $elem.Page.Permalink }}">
+	      {{- .Page.Title -}}
+      </a>
+    {{ end }}
+    </span>
     {{ end }}
   </section>
 
