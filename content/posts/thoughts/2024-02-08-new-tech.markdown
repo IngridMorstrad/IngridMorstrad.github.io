@@ -1,0 +1,31 @@
+---
+layout: post
+title:  "First post"
+date:   2024-02-08 18:25:32
+comments: true
+tags: thoughts
+---
+
+# New tech
+
+The 90s and 00s were rife with new, exciting inventions. Some that seemed to build on a similar idea while moving a great deal forward.
+The Walkman -> CD player -> MP3 player  
+The PC -> Laptop (both getting exponentially more powerful) -> Smartphones  
+
+On the software side we had a similar jump with Wikipedia and Google Maps both replacing klutzier hardware equivalents.
+
+The 90s and 00s were a great time to grow up, thanks to the pace of technological delivery. And then in the 10s, it just kinda... stopped?!
+After the technological rainforest that was the 90s and 00s, the 10s was pretty much a barren wasteland. Sure, video streaming and information sharing progressed. Connectivity increased, with WhatsApp and free calling. But, nothing _really_ exciting (to me) stood out (please message me if I've missed something - I'm sure I likely have).
+
+Thankfully, the 20s seem to have started on a good note, with not just one, but two (TWO) pieces of technology that I'll get into right now.
+
+The first is artificial intelligence (AI), or more specifically, generative AI (or large language models). As soon as I used the first edition of chat GPT I knew this was revolutionary. And even now, there is room for growth - specifically by "unlocking" the shitty voice assistants of the 10s. I'm a little surprised by the lack of progress there actually, but looks like most are looking for the easiest way forward, which is to create yet another unnecessary GPT clone. Anyway, I'm still bullish on AI, and specifically the increases in productivity it can provide. It's like everyone suddenly got a personal assistant/coach for free.
+
+The second is virtual/mixed/augmented reality (VR/MR/AR). While working at Meta, I thought, "Apple is going to come out with a polished headset, with limited functionality, and all the Apple fanboys/customers are going to love it and buy it". This was while Meta was copping some bad PR publicly (as always). Well, the Apple Vision Pro was announced a few months ago, at an Apple-certified price of over 3000$ (or is it 4000? Does it even matter?) and the initial response was... not as positive as I expected it to be. Forward to February 2024, and now the headset has been released and guess what? Every review I've seen so far has been positive. YouTube creators like Marquess Brownlee, Casey Neistat, Cleo Abram all had primarily positive things to say about the headset, and what's interesting is while the Metaverse was roundly mocked, the Apple headset is now allowing people to see what the future may hold. Even the flaws that are present, are more easily excused. And that's exactly how I'd have seen this going two years ago. Apple releases a great, but pricey first look which paints a solid picture and gets everyone bought in. First impressions, am I right?
+
+## What does the future hold?
+I hope more new, exciting tech. If we're talking about Apple/Meta, I'm sure the hope (for Meta) is that in the worst case they can play the Android to Apple's iPhone in this space (best case is they are the only ones on the market, of course).
+
+If we're talking about VR+ and if I were a betting man, I'd bet it will replace video calls. Some sports/exercise as well likely, and it _can_ have the potential to further increase the spread of information. The internet (HTML + WWW), and then YouTube have done this progressively in the last two decades by letting you learn by reading and learn by seeing. VR+ can let you learn by doing. There are already apps out there for learning the piano, and demos out there for the guitar.
+
+It may even replace social hangouts. Think game nights. Why drive 60 minutes to your friend's place when you can get together right then & there (wherever there may be), have a board set up and the cards all shuffled and ready to go? The cherry on the cake is that you can go to bed _right after_? Honestly, if that doesn't sound great to you, it's likely because you are under thirty, in which case, enjoy it while it lasts.
