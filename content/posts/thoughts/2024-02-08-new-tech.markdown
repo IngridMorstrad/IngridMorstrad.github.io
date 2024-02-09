@@ -31,7 +31,7 @@ The second is virtual/mixed/augmented reality (VR/MR/AR). While working at Meta,
 
 Forward to February 2024, and now the headset has been released and reviews have started coming in. YouTube creators like Marquess Brownlee, Casey Neistat, Cleo Abram all took it out for a spin, and the response has been primarily positive! Shock. What's interesting is while the Quest was roundly mocked, the Apple headset is getting a pass for the very same things. While the Metaverse was a joke no one would want to be in, the Vision Pro is now allowing people to see what the future may hold. You'd look like a clown wearing the Quest in public, but there are so many videos out there of people wearing the Vision Pro in public.
 
-And that's exactly how I'd have seen this going two years ago. Apple releases a great, but pricey first look which paints a solid picture, and that gets everyone to buy in. First impressions, am I right?
+And that's exactly how I'd have seen this going two years ago. Apple releases a pricey, polished product which paints a picture pretty enough for people to buy in to their vision (pun intended). First impressions, am I right?
 
 ## What does the future hold?
 I hope more new, exciting tech.
@@ -40,4 +40,4 @@ If we're talking about Apple/Meta, I'm sure that Meta hopes that in the worst ca
 
 If we're talking about VR+ and if I were a betting man, I'd bet it will replace video calls. Some sports/exercise as well likely, and it _can_ have the potential to further increase the spread of information. The internet (HTML + WWW), and then YouTube have done this progressively in the last two decades by letting you learn by reading and learn by seeing. VR+ can let you learn by doing. There are already apps out there for learning the piano, and demos out there for the guitar. Could this allow you to train/measure yourself against "past" you (real-life [ghost replays](https://gamedev.stackexchange.com/questions/9508/how-to-create-a-ghost-replay-feature-in-a-game))?
 
-It may even replace social hangouts. Think game nights. Why drive 60 minutes to your friend's place when you can get together right then & there (wherever there may be), have a board set up and the cards all shuffled and ready to go? Pick any game of your choice, no storage needed (like a Kindle for board games). The cherry on the cake is that you can go to bed _right after_? Honestly, if that doesn't sound great to you, then maybe re-read this once you turn thirty.
+It may even replace social hangouts. Think game nights. Why drive 60 minutes to your friend's place when you can get together right then & there (wherever there may be), have a board set up and the cards all shuffled and ready to go? Pick any game of your choice, no storage needed (like a Kindle for board games). The cherry on the cake is that you can go to bed _right after_! Honestly, if that doesn't sound great to you, then maybe re-read this once you turn thirty :) .
