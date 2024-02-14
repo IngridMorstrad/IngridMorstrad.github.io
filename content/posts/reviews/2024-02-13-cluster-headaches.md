@@ -94,3 +94,12 @@ Above link has other recommendation too, including
 2 recommendations for sleeping sitting up  
 Many recommendation related to breathing/clearing the sinuse/nasal inhalers ilke anefrin/Flonase
 Couple of recommendations for a TENS unit
+
+## Appendix
+
+To process:  
+- https://www.youtube.com/watch?v=CGjdgy0cwGk  
+- https://vitamindwiki.com/Cluster+and+Migraine+headache+treatment+protocol+-+Sept+2023#Talk_to_your_doctor  
+- https://vitamindwiki.com/Cluster+Headaches+treated+by+high-dose+Vitamin+D%2C+etc.+%28interview+and+transcript%29+-+Feb+2022  
+- https://vitamindwiki.com/Cluster+headaches+virtually+eliminated+in+7%2C000+people+with+high-dose+vitamin+D+and+cofactors+-+Feb+2022
+- https://en.wikipedia.org/wiki/Cluster_headache
