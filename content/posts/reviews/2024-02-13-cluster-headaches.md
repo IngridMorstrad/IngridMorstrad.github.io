@@ -86,7 +86,7 @@ From: https://www.reddit.com/r/clusterheads/comments/38qtnz/what_are_your_tricks
 > [Austin Goh Cluster headaches on YouTube
 ](https://www.youtube.com/watch?v=uA6i338wX2E)
 
-Found on https://www.reddit.com/r/clusterheads/comments/38qtnz/what_are_your_tricks_to_abortprevent_attacks/ and 1 more link.  
+Found on https://www.reddit.com/r/clusterheads/comments/38qtnz/what_are_your_tricks_to_abortprevent_attacks/ and [1 more link. ](https://www.reddit.com/r/ClusterHeadaches/comments/1ao4hi0/my_cure_to_prevent_attacks/) 
 
 Above link has other recommendation too, including  
 4 recommendations for Excedrin (one saying it caused rebound headaches)  
