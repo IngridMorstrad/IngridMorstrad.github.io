@@ -121,5 +121,9 @@ ggplot(data=prob,aes(x=PointProb, y=MatchProb)) + geom_line() + geom_point() + x
 
 ```
 
+## Appendix
+
+Someone did the math on this. I haven't verified it, but you can read it [here](https://www.reddit.com/r/tennis/comments/1163n6q/having_a_55_chance_of_winning_any_given_point/).
+
 [^1]: [Tennis rules](https://en.wikipedia.org/wiki/Tennis#Scoring)
 [^2]: The line graph closely resembles [the graphs](https://www.google.com/search?q=percolation+threshold&tbm=isch) you get when trying to find the percolation threshold. How this relates to that topic covered in Sedgwick's course on Algorithms, I do not know.
