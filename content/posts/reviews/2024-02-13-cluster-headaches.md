@@ -103,3 +103,6 @@ To process:
 - https://vitamindwiki.com/Cluster+Headaches+treated+by+high-dose+Vitamin+D%2C+etc.+%28interview+and+transcript%29+-+Feb+2022  
 - https://vitamindwiki.com/Cluster+headaches+virtually+eliminated+in+7%2C000+people+with+high-dose+vitamin+D+and+cofactors+-+Feb+2022
 - https://en.wikipedia.org/wiki/Cluster_headache
+- https://www.clusterheadaches.com/cgi-bin/yabb2/YaBB.pl?num=1674489873
+- https://www.clusterheadaches.com/cgi-bin/yabb2/YaBB.pl?num=1324046404/900#900
+- 
