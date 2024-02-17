@@ -21,5 +21,9 @@ Unranked (haven't gotten to yet):
 
 [Carlos Arguelles](https://carloarg02.medium.com/) (haven't gotten to it yet)
 [Brandon Rhodes](https://rhodesmill.org/brandon/)
+https://explog.in/
+https://www.evalapply.org/
+https://the.scapegoat.dev/blog/
+https://publish.obsidian.md/manuel/Public/INDEX
 
 Will add more as I find more worth adding here.
