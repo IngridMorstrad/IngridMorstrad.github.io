@@ -33,6 +33,8 @@ Ben White (Arsenal defender), All Or Nothing S1E6 26:10: "I don't think I was ev
 
 Susan polgar's [tweet](https://twitter.com/SusanPolgar/status/1488879383934738439) 
 
+Mohini Dey at the very start of [this interview](https://www.youtube.com/watch?v=OJTXqHxt_UU) giving great detail on her practice routine (effectively all day from 1 pm after school). Lessons with a private tutor, then homework, then school homework (non music-related) and then lessons from her father (a bass player), followed by homework from that (usually scales - mentioned later in the video).
+
 ### about proving people wrong
 
 Kapil Dev at ~1:00 [here](https://youtu.be/9h-l_uBr7dE?t=53)!
