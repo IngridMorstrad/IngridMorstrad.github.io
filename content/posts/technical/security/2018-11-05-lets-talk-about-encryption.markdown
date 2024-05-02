@@ -41,4 +41,4 @@ Well, anytime you (or Red Riding Hood) want to say you yourself wrote a message,
 ## End
 Relieved to have solved the problem, you get back to writing your letter. Little do you know, that further dangers remain...
 
-Tune in next week for part 2!
+Click [here](https://www.ashwinmenon.com/posts/technical/security/2018-11-05-lets-talk-about-encryption-again/) for part 2!
