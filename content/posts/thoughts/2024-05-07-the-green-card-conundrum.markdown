@@ -7,7 +7,7 @@ tags: thoughts
 ---
 
 ## What's going on? 
-Over a million people are in a "temporary resident" status queue. Primarily from India and China, these people need to constantly worry about needing to leave the country for years (decades). This can be worrisome for the "host" country. The queue only grows year-over-year. 
+Over a million people are in a "temporary resident" status queue. Primarily from India and China, these people need to constantly worry about needing to leave the country for years (decades). This can be worrisome for the United States as this prevents full integration and can adversely impact the economical and technological boost full integration would provide.
 
 ## What should be done about it?
 Ideally, legislation needs to be passed to remove or reduce a per-country limit. Some form of this has been getting introduced into Congress and getting stuck there since 2007! [Wiki](https://en.wikipedia.org/wiki/Fairness_for_High_Skilled_Immigrants_Act)
