@@ -16,22 +16,26 @@ Rahul Dravid
 - At 5:02 about practising in the nets (email to Pietersen).
 - At 7:43 "You can't always control the results, but you can certainly control your preparation."
 
-Kapil Dev at ~4:45 [here](https://youtu.be/9h-l_uBr7dE)
+Kapil Dev
+- at ~4:45 [here](https://youtu.be/9h-l_uBr7dE)
 
-Sunil Chhetri at ~5:00 [here](https://youtu.be/sBj_JQWTqw8?t=300).
+Sunil Chhetri
+- at ~5:00 [here](https://youtu.be/sBj_JQWTqw8?t=300).
 - At 7:47 as well.
 
-Conan O'Brien at 4:04 [here](https://youtu.be/AcF1OoWqXBc?t=244) "If you work really hard and you're kind, amazing things will happen."
+Conan O'Brien
+- at 4:04 [here](https://youtu.be/AcF1OoWqXBc?t=244) "If you work really hard and you're kind, amazing things will happen."
 
-Novak Djokovic at ~1:20 [here](https://youtu.be/L-HSSU0rvRo?t=79) "you work repetitively maybe sometimes on certain things"
+Novak Djokovic
+- at ~1:20 [here](https://youtu.be/L-HSSU0rvRo?t=79) "you work repetitively maybe sometimes on certain things"
 
 Jimmy Buttler, going without the internet to train more, as described [here](https://www.businessinsider.com/jimmy-butler-went-all-summer-without-cable-and-internet-to-train-more-2014-11) and [here](https://www.nba.com/bulls/features/jimmy-butler-story).
 
 Ben White (Arsenal defender), All Or Nothing S1E6 26:10: "I don't think I was ever talented [...] I just worked so much harder than everyone else."
 
-> I was not born with any special talents. I was just lucky to find my life passion early on, and was willing to work more diligently than others, every single day.
+Susan polgar's [tweet](https://twitter.com/SusanPolgar/status/1488879383934738439)  
 
-Susan polgar's [tweet](https://twitter.com/SusanPolgar/status/1488879383934738439) 
+> I was not born with any special talents. I was just lucky to find my life passion early on, and was willing to work more diligently than others, every single day.
 
 Mohini Dey at the very start of [this interview](https://www.youtube.com/watch?v=OJTXqHxt_UU) giving great detail on her practice routine (effectively all day from 1 pm after school). Lessons with a private tutor, then homework, then school homework (non music-related) and then lessons from her father (a bass player), followed by homework from that (usually scales - mentioned later in the video).
 
