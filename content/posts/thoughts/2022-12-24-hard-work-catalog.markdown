@@ -16,7 +16,7 @@ Rahul Dravid
 - At 5:02 about practising in the nets (email to Pietersen).
 - At 7:43 "You can't always control the results, but you can certainly control your preparation."
 
-Kapil Dev at ~4:45 [here](https://youtu.be/9h-l_uBr7dE
+Kapil Dev at ~4:45 [here](https://youtu.be/9h-l_uBr7dE)
 
 Sunil Chhetri at ~5:00 [here](https://youtu.be/sBj_JQWTqw8?t=300).
 - At 7:47 as well.
