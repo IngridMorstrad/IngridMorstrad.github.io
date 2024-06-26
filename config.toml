@@ -28,7 +28,7 @@ url = "/tags"
 weight = 3
 
 [params]
-  description = "Hi, I'm Ashwin. This is my little corner of the web. Hope you enjoy your stay. Feel free to leave a comment or [subscribe for updates](https://tinyletter.com/9sy9ll9f)! RSS available [here](https://www.ashwinmenon.com/index.xml)"
+  description = "Hi, I'm Ashwin. This is my little corner of the web. Hope you enjoy your stay. To get updates, [subscribe](https://buttondown.email/AshwinMenon). RSS available [here](https://www.ashwinmenon.com/index.xml)"
 
   mainSection = "posts"
   showAllPostsOnHomePage = true
@@ -40,6 +40,6 @@ weight = 3
   link = "https://www.twitter.com/TheAshwinMenon"
 
 [[params.social]]
-  name = "mailchimp"
-  link = "https://tinyletter.com/9sy9ll9f"
+  name = "minutemailer"
+  link = "https://buttondown.email/AshwinMenon"
 
