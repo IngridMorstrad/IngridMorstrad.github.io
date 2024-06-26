@@ -42,3 +42,6 @@ Lastly, we have the duo of Tadej Pogacar and Jonas Vingegaard. Together, they ha
 As it goes in sports, when titans take the stage, you best take a seat.
 
 The stage is set. June 29. Where's the popcorn?
+
+![TdF what to watch calendar](https://github.com/IngridMorstrad/IngridMorstrad.github.io/assets/1291400/ef7c0beb-ecc7-4e87-b546-600e8b8c894d)
+from [here](https://x.com/CyclingYazz/status/1805284097792582001)
