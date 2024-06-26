@@ -6,8 +6,6 @@ comments: true
 tags: thoughts
 ---
 
-# New tech
-
 The 90s and 00s were rife with new, exciting inventions. Some that seemed to build on a similar idea while moving a great deal forward.
 ```
 The Walkman -> CD player -> MP3 player  
