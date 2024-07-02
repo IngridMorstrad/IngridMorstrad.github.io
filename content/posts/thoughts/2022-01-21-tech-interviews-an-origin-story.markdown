@@ -6,7 +6,11 @@ comments: true
 tags: thoughts
 ---
 
-_Disclaimer/Foreword: The aim of writing this series of posts is to allow our modern interview processes to be viewed through the lens of history (chronicling the process) and science (identifying problems and inferring improvements from process changes). This series will contain 3 parts: the first one (this post) describes how interviews got to be the way they are today, the second will describe how you can maximize your chance of success at these interviews, and the third will talk about suggestions to improve the process and fix some of the issues plaguing tech interviews._
+_Disclaimer/Foreword: The aim of writing this series of posts is to allow our modern interview processes to be viewed through the lens of history (chronicling the process) and science (identifying problems and inferring improvements from process changes).  
+This series will contain 3 parts:  
+the first one (this post) describes how interviews got to be the way they are today,  
+the second (read [here](https://www.ashwinmenon.com/posts/thoughts/2022-02-10-tech-interviews-beating-the-game/)) describes how you can maximize your chance of success at these interviews,  
+and the third is about improving the process and fixing some of the issues plaguing tech interviews._
 
 I've been interviewing in the "tech industry" for around ten years now. In that time, the interview process has undergone some interesting changes. Presently, I'd assume almost every engineer in the industry is all too familiar with the onerous, and oft-frustrating process that is tech interviews. Yet, except for a few minor differences, the process has been standardized* throughout the industry. How did it get this way?
 
@@ -46,3 +50,5 @@ All it would take is for one company to look at the interview process and revamp
 
 Or it could mean that fixing hiring is a really hard problem.  
 Or both.
+
+[Click here for part 2: Beating the game](https://www.ashwinmenon.com/posts/thoughts/2022-02-10-tech-interviews-beating-the-game/)
