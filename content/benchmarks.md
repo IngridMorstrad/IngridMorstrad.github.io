@@ -1,4 +1,3 @@
-## Test post
+## Benchmarks
 
-Check  
-7 on Freemotion, 5.78 distance in 20 mins
+Freemotion bike, level 7, 5.78 miles, 20 mins, 78 rpm, 190 cal
