@@ -6,8 +6,8 @@ comments: true
 tags: thoughts
 ---
 
-Disclaimer 1: This is my understanding, if you spot something wrong, please assume best intentions and let me know, thanks!
-Disclaimer 2: All uses of the word male/men/female/women here are subject to the caveats I've tried to detail below.
+_Disclaimer 1: This is my understanding, if you spot something wrong, please assume best intentions and let me know, thanks!_  
+_Disclaimer 2: All uses of the word male/men/female/women here are subject to the caveats I've tried to detail below._
 
 I had to write this post as the topic of sex and gender (in sports) has popped up yet again this Olympics :)
 
