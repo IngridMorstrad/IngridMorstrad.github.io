@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planare - Yearly Planner (September Start)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .planare {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .month {
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px;
+            width: calc(33.33% - 20px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .month.past {
+            background-color: #e0e0e0;
+            color: #888;
+        }
+        h2 {
+            margin-top: 0;
+            color: #333;
+        }
+        .task {
+            margin-bottom: 10px;
+        }
+        .progress-bar {
+            background-color: #e0e0e0;
+            border-radius: 8px;
+            height: 20px;
+            overflow: hidden;
+        }
+        .progress {
+            background-color: #4CAF50;
+            height: 100%;
+            width: 0;
+            transition: width 0.3s ease;
+        }
+        .past .progress {
+            background-color: #888;
+        }
+    </style>
+</head>
+<body>
+    <h1>Planare - Yearly Planner</h1>
+    <div class="planare" id="planner"></div>
+
+    <script>
+        // Embedded CSV data as a string
+        const csvData = `
+month,task,progress
+September,Intro to French (LT),28/40
+September,Intro to Italian (LT),9/45
+September,Da Capo,0/372
+September,Oggi In Italia,0/426
+September,Italian Foundation Course Discs,0/8
+September,Italian Advanced Course Discs,0/4
+September,Italian Vocabulary Course Discs,0/5
+September,Italian Language Builder,0/2
+September,French Foundation,0/8
+September,French Vocabulary,0/5
+September,French Advanced,0/4
+September,French Builder,0/2
+October,TBD,0/3
+November,TBD,0/3
+August,Placeholder,3/3
+`;
+
+        // Function to detect if a month is in the past
+        function isMonthInPast(month) {
+            const now = new Date();
+            const monthNames = [
+                "January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+            ];
+            const currentMonthIndex = now.getMonth(); // 0-indexed month
+            const monthIndex = monthNames.indexOf(month);
+            return monthIndex < currentMonthIndex;
+        }
+
+        // Function to parse CSV data
+        function parseCSV(data) {
+            const rows = data.trim().split('\n').slice(1); // Skip header
+            const parsedData = {};
+
+            rows.forEach(row => {
+                const [month, task, progress] = row.split(',');
+
+                if (!parsedData[month]) {
+                    parsedData[month] = [];
+                }
+
+                parsedData[month].push({ task, progress });
+            });
+
+            return parsedData;
+        }
+
+        // Function to render the planner
+        function loadPlannerData() {
+            const data = parseCSV(csvData);
+
+            const plannerContainer = document.getElementById('planner');
+
+            Object.keys(data).forEach(month => {
+                // Create month container
+                const monthDiv = document.createElement('div');
+                monthDiv.classList.add('month');
+
+                if (isMonthInPast(month)) {
+                    monthDiv.classList.add('past');
+                }
+
+                // Create month title
+                const monthTitle = document.createElement('h2');
+                monthTitle.textContent = month;
+                monthDiv.appendChild(monthTitle);
+
+                // Create tasks
+                data[month].forEach(taskData => {
+                    const taskDiv = document.createElement('div');
+                    taskDiv.classList.add('task');
+
+                    const taskProgress = taskData.progress.split('/');
+                    const progressPercentage = (taskProgress[0] / taskProgress[1]) * 100;
+
+                    taskDiv.innerHTML = `
+                        <p>${taskData.task} (${taskData.progress})</p>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: ${progressPercentage}%"></div>
+                        </div>
+                    `;
+                    monthDiv.appendChild(taskDiv);
+                });
+
+                plannerContainer.appendChild(monthDiv);
+            });
+        }
+
+        // Load the planner data when the page loads
+        window.onload = loadPlannerData;
+    </script>
+</body>
+</html>
+
