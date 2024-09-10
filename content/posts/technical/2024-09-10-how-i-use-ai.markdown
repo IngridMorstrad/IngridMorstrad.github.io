@@ -5,7 +5,7 @@ title: How I use AI
 tags: technical 
 ---
 
-Brief list of what I've used AI (read as "LLMs") for
+Brief list of what I've used AI (read as "LLMs") for.
 
 # What I've used AI for
 
@@ -73,8 +73,8 @@ You can ask the LLM to go step-by-step (print the results of each step, reason s
 ## Appendix: Useful answers from the LLM
 ### Splitting a git commit into 2
 
-`git reset HEAD^` to unstage the changes, then git add the changes you want in the first commit.
-Run `git commit -m "First part of the split commit"` to create the first commit.
+`git reset HEAD^` to unstage the changes, then git add the changes you want in the first commit.  
+Run `git commit -m "First part of the split commit"` to create the first commit.  
 For the remaining changes, use git add to stage them, then `git commit -m "Second part of the split commit"` to create the second commit.
 
 ### Cherry-picking a file from another commit
