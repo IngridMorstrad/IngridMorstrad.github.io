@@ -25,5 +25,7 @@ https://explog.in/
 https://www.evalapply.org/
 https://the.scapegoat.dev/blog/
 https://publish.obsidian.md/manuel/Public/INDEX
+https://lilymara.xyz/talks/ and https://lilymara.xyz/pages/blogroll/ and https://blog.m-ou.se/
+
 
 Will add more as I find more worth adding here.
