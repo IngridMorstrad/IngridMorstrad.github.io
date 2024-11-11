@@ -1,7 +1,7 @@
 function scrollPercentage() {
-    var winTop = $(window).scrollTop(),
-        docHeight = $(document).height(),
-        winHeight = $(window).height();
+    const winTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight;
+    const winHeight = window.innerHeight;
 
     return (winTop / (docHeight - winHeight)) * 100;
 }

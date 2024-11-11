@@ -49,106 +49,73 @@ var searchFunc = function(path, searchId, contentId) {
     return result;
   }
 
-  $.ajax({
-    url: path,
-    dataType: "xml",
-    success: function(xmlResponse) {
-      // get the contents from search data
-      var datas = $("entry", xmlResponse).map(function() {
-        return {
-          title: $("title", this).text(),
-          content: $("content", this).text(),
-          url: $("link", this).attr("href")
-        };
-      }).get();
+  fetch(path)
+  .then(response => response.text())
+  .then(str => (new window.DOMParser()).parseFromString(str, "application/xml"))
+  .then(xmlResponse => {
+    const datas = Array.from(xmlResponse.querySelectorAll("entry")).map(entry => ({
+      title: entry.querySelector("title") ? entry.querySelector("title").textContent : "Untitled",
+      content: entry.querySelector("content") ? entry.querySelector("content").textContent : "",
+      url: entry.querySelector("link") ? entry.querySelector("link").getAttribute("href") : "#"
+    }));
 
-      var $input = document.getElementById(searchId);
-      if (!$input) { return; }
-      var $resultContent = document.getElementById(contentId);
+    const $input = document.getElementById(searchId);
+    if (!$input) return;
+    const $resultContent = document.getElementById(contentId);
 
-      $input.addEventListener("input", function(){
-        var resultList = [];
-        var keywords = getAllCombinations(this.value.trim().toLowerCase().split(" "))
-          .sort(function(a,b) { return b.split(" ").length - a.split(" ").length; });
-        $resultContent.innerHTML = "";
-        if (this.value.trim().length <= 0) {
-          return;
-        }
-        // perform local searching
-        datas.forEach(function(data) {
-          var matches = 0;
-          if (!data.title || data.title.trim() === "") {
-            data.title = "Untitled";
-          }
-          var dataTitle = data.title.trim().toLowerCase();
-          var dataContent = stripHtml(data.content.trim());
-          var dataUrl = data.url;
-          var indexTitle = -1;
-          var indexContent = -1;
-          var firstOccur = -1;
-          // only match artiles with not empty contents
-          if (dataContent !== "") {
-            keywords.forEach(function(keyword) {
-              indexTitle = dataTitle.indexOf(keyword);
-              indexContent = dataContent.indexOf(keyword);
+    $input.addEventListener("input", function () {
+      const resultList = [];
+      const keywords = getAllCombinations(this.value.trim().toLowerCase().split(" "))
+        .sort((a, b) => b.split(" ").length - a.split(" ").length);
+      $resultContent.innerHTML = "";
+      if (this.value.trim().length <= 0) return;
 
-              if( indexTitle >= 0 || indexContent >= 0 ){
-                matches += 1;
-                if (indexContent < 0) {
-                  indexContent = 0;
-                }
-                if (firstOccur < 0) {
-                  firstOccur = indexContent;
-                }
-              }
-            });
-          }
-          // show search results
-          if (matches > 0) {
-            var searchResult = {};
-            searchResult.rank = matches;
-            searchResult.str = "<li><a href='"+ dataUrl +"' class='search-result-title'>"+ dataTitle +"</a>";
-            if (firstOccur >= 0) {
-              // cut out 100 characters
-              var start = firstOccur - 20;
-              var end = firstOccur + 80;
+      datas.forEach(data => {
+        let matches = 0;
+        const dataTitle = data.title.toLowerCase();
+        const dataContent = stripHtml(data.content);
+        const dataUrl = data.url;
+        let firstOccur = -1;
 
-              if(start < 0){
-                start = 0;
-              }
+        if (dataContent) {
+          keywords.forEach(keyword => {
+            const indexTitle = dataTitle.indexOf(keyword);
+            const indexContent = dataContent.indexOf(keyword);
 
-              if(start == 0){
-                end = 100;
-              }
-
-              if(end > dataContent.length){
-                end = dataContent.length;
-              }
-
-              var matchContent = dataContent.substr(start, end);
-
-              // highlight all keywords
-              var regS = new RegExp(keywords.join("|"), "gi");
-              matchContent = matchContent.replace(regS, function(keyword) {
-                return "<em class=\"search-keyword\">"+keyword+"</em>";
-              });
-
-              searchResult.str += "<p class=\"search-result\">" + matchContent +"...</p>";
+            if (indexTitle >= 0 || indexContent >= 0) {
+              matches += 1;
+              if (firstOccur < 0) firstOccur = indexContent < 0 ? 0 : indexContent;
             }
-            searchResult.str += "</li>";
-            resultList.push(searchResult);
-          }
-        });
-        resultList.sort(function(a, b) {
-            return b.rank - a.rank;
-        });
-        var result ="<ul class=\"search-result-list\">";
-        for (var i = 0; i < resultList.length; i++) {
-          result += resultList[i].str;
+          });
         }
-        result += "</ul>";
-        $resultContent.innerHTML = result;
+
+        if (matches > 0) {
+          const searchResult = {
+            rank: matches,
+            str: `<li><a href='${dataUrl}' class='search-result-title'>${data.title}</a>`
+          };
+
+          if (firstOccur >= 0) {
+            let start = firstOccur - 20;
+            let end = firstOccur + 80;
+            start = start < 0 ? 0 : start;
+            end = start === 0 ? 100 : end > dataContent.length ? dataContent.length : end;
+
+            let matchContent = dataContent.substring(start, end);
+            const regS = new RegExp(keywords.join("|"), "gi");
+            matchContent = matchContent.replace(regS, keyword => `<em class="search-keyword">${keyword}</em>`);
+
+            searchResult.str += `<p class="search-result">${matchContent}...</p>`;
+          }
+          searchResult.str += "</li>";
+          resultList.push(searchResult);
+        }
       });
-    }
-  });
+
+      resultList.sort((a, b) => b.rank - a.rank);
+      $resultContent.innerHTML = `<ul class="search-result-list">${resultList.map(result => result.str).join("")}</ul>`;
+    });
+  })
+  .catch(error => console.error("Error fetching XML:", error));
+
 };
