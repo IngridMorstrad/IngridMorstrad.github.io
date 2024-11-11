@@ -1,7 +1,9 @@
 <div id="header-post">
   <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
   <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="window.scrollTo({ top: 0, behavior: 'smooth' }); return false;" style="display:none;">
+    <i class="fas fa-chevron-up fa-lg"></i>
+  </a>
   <span id="menu">
     <span id="nav">
       <ul>
@@ -15,26 +17,34 @@
       <ul>
         {{ if .Prev }}
         <li>
-          <a class="icon" href=" {{ .Prev.Permalink }}">
-            <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
+          <a class="icon" href="{{ .Prev.Permalink }}">
+            <i class="fas fa-chevron-left" aria-hidden="true" 
+               onmouseover="toggleVisibility('i-prev', true)" 
+               onmouseout="toggleVisibility('i-prev', false)"></i>
           </a>
         </li>
         {{ end }}
         {{ if .Next }}
         <li>
           <a class="icon" href="{{ .Next.Permalink }}">
-            <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
+            <i class="fas fa-chevron-right" aria-hidden="true" 
+               onmouseover="toggleVisibility('i-next', true)" 
+               onmouseout="toggleVisibility('i-next', false)"></i>
           </a>
         </li>
         {{ end }}
         <li>
-          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">
-            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          <a class="icon" href="#" onclick="window.scrollTo({ top: 0, behavior: 'smooth' }); return false;">
+            <i class="fas fa-chevron-up" aria-hidden="true" 
+               onmouseover="toggleVisibility('i-top', true)" 
+               onmouseout="toggleVisibility('i-top', false)"></i>
           </a>
         </li>
         <li>
-          <a class="icon" href="#">
-            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          <a class="icon" href="#" onclick="toggleVisibility('share', null); return false;">
+            <i class="fas fa-share-alt" aria-hidden="true" 
+               onmouseover="toggleVisibility('i-share', true)" 
+               onmouseout="toggleVisibility('i-share', false)"></i>
           </a>
         </li>
       </ul>
@@ -53,3 +63,16 @@
     </div>
   </span>
 </div>
+
+<script>
+  function toggleVisibility(id, show) {
+    const element = document.getElementById(id);
+    if (show === null) {
+      // Toggle display
+      element.style.display = element.style.display === 'none' ? 'block' : 'none';
+    } else {
+      // Show or hide based on 'show' parameter
+      element.style.display = show ? 'block' : 'none';
+    }
+  }
+</script>
