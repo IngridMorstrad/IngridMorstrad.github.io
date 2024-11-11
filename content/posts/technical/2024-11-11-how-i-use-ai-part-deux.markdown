@@ -1,7 +1,7 @@
 ---
 comments: true
 date: "2024-11-11"
-title: How I use AI: Part deux
+title: How I use AI (part deux)
 tags: technical 
 ---
 
