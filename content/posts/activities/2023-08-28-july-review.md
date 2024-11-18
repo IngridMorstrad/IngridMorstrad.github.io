@@ -4,6 +4,8 @@ title:  "July review"
 date:   2023-08-27
 comments: true
 tags: activities
+_build:
+  list: never
 ---
 
 For July, I set the following goals:
