@@ -74,14 +74,30 @@
     {{ $mainPosts := (sort ( where site.RegularPages "Type" "in" site.Params.mainSections ) "Date" "desc") }}
     {{ if $showAllPostsOnHomePage }}
     <ul class="post-list">
-      {{ range (.Paginate $mainPosts).Pages }}
-        {{ if not (strings.HasSuffix .Title " review") }}
-          <li class="post-item">
-            <div class="meta"><time datetime="{{ time .Date }}" itemprop="datePublished">{{ .Date.Format $dataFormat }}</time></div>
-            <span><a href="{{ .Permalink }}">{{ if .Title }} {{- .Title -}} {{ else }} {{- print "Untitled" -}}{{ end }}</a></span>
-          </li>
+        {{ $count := 0 }}
+        {{ range (.Paginate $mainPosts).Pages }}
+          {{ if ge $count 10 }}
+            {{ break }}
+          {{ end }}
+          <!-- Debug: Show each title being evaluated -->
+  {{ if not (strings.HasSuffix .Title " review") }}
+    {{ $debugMsg := printf "Including post: %s" .Title }}
+  {{ else }}
+    {{ $debugMsg := printf "Excluding post: %s" .Title }}
+  {{ end }}
+  {{ $debugMsg }} <!-- Print debug message -->
+          {{ if not (strings.HasSuffix .Title " review") }}
+            <li class="post-item">
+              <div class="meta">
+                <time datetime="{{ time .Date }}" itemprop="datePublished">
+                  {{ .Date.Format $dataFormat }}
+                </time>
+              </div>
+              <span><a href="{{ .Permalink }}">{{ if .Title }}{{ .Title }}{{ else }}Untitled{{ end }}</a></span>
+            </li>
+            {{ $count = add $count 1 }}
+          {{ end }}
         {{ end }}
-      {{ end }}
     </ul>
 
     {{ partial "pagination.html" . }}
