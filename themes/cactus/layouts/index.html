@@ -71,7 +71,7 @@
       {{ $showAllPostsOnHomePage = .Site.Params.ShowAllPostsOnHomePage }}
     {{ end }}
     {{ $dataFormat := .Site.Params.dateFormat | default "2006-01-02" }}
-    {{ $mainPosts := (where (sort (where site.RegularPages "Type" "in" site.Params.mainSections) "Date" "desc") "Title" "not in" (slice " review")) }}
+    {{ $mainPosts := (sort (where (and (site.RegularPages "Type" "in" site.Params.mainSections) (site.RegularPages "Title" "not in" (slice "review")))) "Date" "desc") }}
     {{ if $showAllPostsOnHomePage }}
       <ul class="post-list">
       {{ range (.Paginate $mainPosts).Pages }}
