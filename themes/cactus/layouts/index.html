@@ -82,10 +82,13 @@
           <!-- Debug: Show each title being evaluated -->
   {{ if not (strings.HasSuffix .Title " review") }}
     {{ $debugMsg := printf "Including post: %s" .Title }}
+        
+     {{ $debugMsg }} <!-- Print debug message -->
   {{ else }}
     {{ $debugMsg := printf "Excluding post: %s" .Title }}
+        
+      {{ $debugMsg }} <!-- Print debug message -->
   {{ end }}
-  {{ $debugMsg }} <!-- Print debug message -->
           {{ if not (strings.HasSuffix .Title " review") }}
             <li class="post-item">
               <div class="meta">
