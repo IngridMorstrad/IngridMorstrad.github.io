@@ -43,6 +43,6 @@ weight = 3
   link = "https://www.twitter.com/TheAshwinMenon"
 
 [[params.social]]
-  name = "minutemailer"
+  name = "square-envelope"
   link = "https://buttondown.email/AshwinMenon"
 
