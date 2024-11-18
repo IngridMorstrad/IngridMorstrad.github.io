@@ -73,12 +73,8 @@
     {{ $dataFormat := .Site.Params.dateFormat | default "2006-01-02" }}
     {{ $mainPosts := (sort ( where site.RegularPages "Type" "in" site.Params.mainSections ) "Date" "desc") }}
     {{ if $showAllPostsOnHomePage }}
-    <ul class="post-list">
-      {{ $count := 0 }}
+      <ul class="post-list">
       {{ range (.Paginate $mainPosts).Pages }}
-        {{ if ge $count 10 }}
-          {{ break }}
-        {{ end }}
         {{ if not (strings.HasSuffix .Title " review") }}
           <li class="post-item">
             <div class="meta">
@@ -88,12 +84,11 @@
             </div>
             <span><a href="{{ .Permalink }}">{{ if .Title }}{{ .Title }}{{ else }}Untitled{{ end }}</a></span>
           </li>
-          {{ $count = add $count 1 }}
         {{ end }}
       {{ end }}
-    </ul>
+      </ul>
 
-    {{ partial "pagination.html" . }}
+      {{ partial "pagination.html" . }}
 
     {{ else }}
     <ul class="post-list">
