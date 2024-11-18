@@ -3,7 +3,6 @@ tags: reviews
 comments: true
 date: "2024-11-17"
 title: NAND game
-list: never
 ---
 
 # What is it
