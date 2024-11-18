@@ -22,10 +22,16 @@ I found two strategies helped to get past levels:
 4. Persistence! Like with many puzzle games, I had to hack away at some solutions (SR latch, D latch) which did not come easily to me. Should probably revisit some of these to build up an intuitive understanding.
 
 My SR latch solution:
+
+
 <img width="299" alt="image" src="https://github.com/user-attachments/assets/98ea0cc7-a095-49a7-a617-c2d0015f4a68">
 
 My D latch solution:
+
+
 <img width="368" alt="image" src="https://github.com/user-attachments/assets/58934981-6b08-4447-ab25-a8ebccc78021">
 
 My data flip-flop solution:
+
+
 <img width="360" alt="image" src="https://github.com/user-attachments/assets/01e257d2-fde2-45f9-90b4-cae93b71395b">
