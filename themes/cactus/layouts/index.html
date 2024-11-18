@@ -71,7 +71,10 @@
       {{ $showAllPostsOnHomePage = .Site.Params.ShowAllPostsOnHomePage }}
     {{ end }}
     {{ $dataFormat := .Site.Params.dateFormat | default "2006-01-02" }}
-    {{ $mainPosts := (sort (where (and (site.RegularPages "Type" "in" site.Params.mainSections) (site.RegularPages "Title" "not in" (slice "review")))) "Date" "desc") }}
+      
+{{ $pages = $pages | intersect (where .Site.RegularPages "Params.images" "!=" nil) }}
+    {{ $mainPosts := (where site.RegularPages "Type" "in" site.Params.mainSections) | intersect (where site.RegularPages "Title" "not in" (slice "review")) }}
+    {{ $mainPosts := (sort $mainPosts "Date" "desc") }}
     {{ if $showAllPostsOnHomePage }}
       <ul class="post-list">
       {{ range (.Paginate $mainPosts).Pages }}
