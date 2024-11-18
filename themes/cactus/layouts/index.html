@@ -71,11 +71,10 @@
       {{ $showAllPostsOnHomePage = .Site.Params.ShowAllPostsOnHomePage }}
     {{ end }}
     {{ $dataFormat := .Site.Params.dateFormat | default "2006-01-02" }}
-    {{ $mainPosts := (sort ( where site.RegularPages "Type" "in" site.Params.mainSections ) "Date" "desc") }}
-    {{ $filteredPosts := where $mainPosts "Title" "notIn" (slice " review") }}
+    {{ $mainPosts := .Paginate (where (sort (where site.RegularPages "Type" "in" site.Params.mainSections) "Date" "desc") "Title" "notIn" (slice " review")) }}
     {{ if $showAllPostsOnHomePage }}
       <ul class="post-list">
-      {{ range (.Paginate $filteredPosts).Pages }}
+      {{ range (.Paginate $mainPosts).Pages }}
         {{ if not (strings.HasSuffix .Title " review") }}
           <li class="post-item">
             <div class="meta">
@@ -97,7 +96,7 @@
       {{ if isset .Site.Params "postsonhomepage" }}
         {{ .Scratch.Set "count" .Site.Params.postsOnHomePage }}
       {{ end }}
-      {{ range (first (.Scratch.Get "count") $filteredPosts) }}
+      {{ range (first (.Scratch.Get "count") $mainPosts) }}
         <li class="post-item">
           <div class="meta"><time datetime="{{ time .Date }}" itemprop="datePublished">{{ .Date.Format $dataFormat }}</time></div>
           <span><a href="{{ .Permalink }}">{{ if .Title }} {{- .Title -}} {{ else }} {{- print "Untitled" -}}{{ end }}</a></span>
