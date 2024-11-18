@@ -27,6 +27,9 @@ name = "Tags"
 url = "/tags"
 weight = 3
 
+[pagination]
+  pagerSize = 20
+  
 [params]
   description = "Hi, I'm Ashwin. This is my little corner of the web. Hope you enjoy your stay. To get updates, [subscribe](https://buttondown.email/AshwinMenon). RSS available [here](https://www.ashwinmenon.com/index.xml)"
 
