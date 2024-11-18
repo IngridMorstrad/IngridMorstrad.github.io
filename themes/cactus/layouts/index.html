@@ -72,21 +72,19 @@
     {{ end }}
     {{ $dataFormat := .Site.Params.dateFormat | default "2006-01-02" }}
     
-    {{ $mainPosts := (where site.RegularPages "Type" "in" site.Params.mainSections) | intersect (where site.RegularPages "Title" "not in" (slice "review")) }}
+    {{ $mainPosts := (where site.RegularPages "Type" "in" site.Params.mainSections) }}
     {{ $mainPosts := (sort $mainPosts "Date" "desc") }}
     {{ if $showAllPostsOnHomePage }}
       <ul class="post-list">
       {{ range (.Paginate $mainPosts).Pages }}
-        {{ if not (strings.HasSuffix .Title " review") }}
-          <li class="post-item">
-            <div class="meta">
-              <time datetime="{{ time .Date }}" itemprop="datePublished">
-                {{ .Date.Format $dataFormat }}
-              </time>
-            </div>
-            <span><a href="{{ .Permalink }}">{{ if .Title }}{{ .Title }}{{ else }}Untitled{{ end }}</a></span>
-          </li>
-        {{ end }}
+        <li class="post-item">
+          <div class="meta">
+            <time datetime="{{ time .Date }}" itemprop="datePublished">
+              {{ .Date.Format $dataFormat }}
+            </time>
+          </div>
+          <span><a href="{{ .Permalink }}">{{ if .Title }}{{ .Title }}{{ else }}Untitled{{ end }}</a></span>
+        </li>
       {{ end }}
       </ul>
 
