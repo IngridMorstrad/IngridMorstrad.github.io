@@ -4,6 +4,8 @@ title:  "May review"
 date:   2023-05-31
 comments: true
 tags: activities
+_build:
+  list: never
 ---
 
 For May, I set the following goals. Again, most were a slight increase in difficulty from [April](https://www.ashwinmenon.com/posts/activities/2023-04-30-april-review/), and as time goes on the review gets shorter:

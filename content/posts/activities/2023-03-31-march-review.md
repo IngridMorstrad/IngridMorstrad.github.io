@@ -4,6 +4,8 @@ title:  "March review"
 date:   2023-03-31
 comments: true
 tags: activities
+_build:
+  list: never
 ---
 
 For March, I set the following goals. Again, most were a slight increase in difficulty from [February](https://www.ashwinmenon.com/posts/activities/2023-02-28-february-review/):

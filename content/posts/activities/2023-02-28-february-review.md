@@ -4,6 +4,8 @@ title:  "February review"
 date:   2023-02-28
 comments: true
 tags: activities
+_build:
+  list: never
 ---
 
 For February, I set the following goals. Most were a slight increase in difficulty from January ([January review](https://www.ashwinmenon.com/posts/activities/2023-01-31-january-review/)):

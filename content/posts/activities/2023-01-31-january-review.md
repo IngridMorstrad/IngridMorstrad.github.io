@@ -4,6 +4,8 @@ title:  "January review"
 date:   2023-01-31
 comments: true
 tags: activities
+_build:
+  list: never
 ---
 
 Two years ago I set [some new year goals](https://www.ashwinmenon.com/posts/activities/2021-01-31-january-review/). They went well till... they didn't (around May - I wonder what happened then *wink*).
