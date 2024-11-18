@@ -1,0 +1,31 @@
+---
+tags: reviews
+comments: true
+date: "2021-04-18"
+title: NAND game
+---
+
+# What is it
+
+I just finished playing [NAND game](www.nandgame.com) which gets you to build a computer starting from simple relay circuits. As you build components, you get to reuse them. Over time, this means you have an arsenal of components that let you eventually build a computer. I think thiis similar to a course [Nand2Tetris](https://www.nand2tetris.org/) that I'd started years ago but never finished. I skipped the software lessons, but completed all the hardware ones.
+
+# What I liked
+
+The fact that you jump right in to doing things was excellent. I already have some background (having studied these in college) and so, this was perfect for me. I got to treat each level as a puzzle with no time spent reading any introductory/explanatory text. That also got me to spend more time thinking, which I liked.
+
+# How to solve it
+
+I found two strategies helped to get past levels: 
+1. Knowing how to convert a truth table to a boolean expression (and then converting the boolean expression into the circuit, which should be trivial). This lets you kind of "brute-force" the solution when you can't conceptualize it neatly in your head.
+2. Understanding the holistic solution/algorithm. I don't know of a better way to phrase this, but maybe a concrete example will help. I was stuck with the multi-bit adder level until someone pointed out to me that you can simply treat it like you would addition with decimal numbers (think back to first grade math). Similarly "understanding" how a selector & switch work (one lets you pass in input1/input2 and the other, the inverse, lets you switch which output is "on"). In the later levels, having the inputs labeled (especially "cl" for clock) helps with this.  
+3. Some background knowledge needed (Two's complement), converting boolean truth tables to expressions as mentioned in point 1.
+4. Persistence! Like with many puzzle games, I had to hack away at some solutions (SR latch, D latch) which did not come easily to me. Should probably revisit some of these to build up an intuitive understanding.
+
+My SR latch solution:
+<img width="299" alt="image" src="https://github.com/user-attachments/assets/98ea0cc7-a095-49a7-a617-c2d0015f4a68">
+
+My D latch solution:
+<img width="368" alt="image" src="https://github.com/user-attachments/assets/58934981-6b08-4447-ab25-a8ebccc78021">
+
+My data flip-flop solution:
+<img width="360" alt="image" src="https://github.com/user-attachments/assets/01e257d2-fde2-45f9-90b4-cae93b71395b">
