@@ -37,6 +37,9 @@ weight = 3
   rss = true
   tagsOverview = true
 
+  [params.comments]
+    enabled = true
+
 [[params.social]]
   name = "twitter"
   link = "https://www.twitter.com/TheAshwinMenon"
