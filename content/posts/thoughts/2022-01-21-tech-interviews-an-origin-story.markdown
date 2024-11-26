@@ -4,6 +4,7 @@ date: "2022-01-21"
 title:  "Tech interviews: an origin story"
 comments: true
 tags: thoughts
+bsky: 3lbtptogqbc2j
 ---
 
 _Disclaimer/Foreword: The aim of writing this series of posts is to allow our modern interview processes to be viewed through the lens of history (chronicling the process) and science (identifying problems and inferring improvements from process changes).  

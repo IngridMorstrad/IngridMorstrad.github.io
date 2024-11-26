@@ -8,7 +8,12 @@
   {{ .Scratch.Set "enable_comments" true }}
 {{ end }}
 
+{{ if (isset .Site.Params "bsky") }}
+  {{ .Scratch.Set "bsky_uri" .Site.Params }}
+{{ end }}
+
 {{ $enable_comments := .Scratch.Get "enable_comments" }}
+{{ $bsky_uri := .Scratch.Get "bsky" }}
 {{ if $enable_comments }}
   {{ if (or (not (isset .Site.Params.Comments "engine")) (eq .Site.Params.Comments.Engine "disqus")) }}
     <div class="blog-post-comments">
@@ -32,5 +37,15 @@
         </div>
     </div>
 
+  {{ else if $bsky_uri }}
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const uri = 'https://bsky.app/profile/ashwinmenon.com/post/' + $bsky_uri;
+      if (uri) {
+        initBlueskyComments('bluesky-comments', uri);
+      } 
+    });
+  </script>
   {{ end }}
+  
 {{ end }}
