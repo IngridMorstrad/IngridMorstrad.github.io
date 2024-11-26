@@ -30,4 +30,18 @@
   {{ if site.Config.Services.GoogleAnalytics.ID }}
     {{ template "_internal/google_analytics.html" . }}
   {{ end }}
+   
+  {{ if (isset .Site.Params "bsky") }}
+    {{ .Scratch.Set "bsky_uri" .Site.Params }}
+  {{ end }}
+    {{ if $bsky_uri }}
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const uri = 'https://bsky.app/profile/ashwinmenon.com/post/' + $bsky_uri;
+      if (uri) {
+        initBlueskyComments('bluesky-comments', uri);
+      } 
+    });
+  </script>
+  {{ end }}
 </head>
