@@ -1,5 +1,6 @@
 The "old" internet: https://projects.kwon.nyc/internet-is-fun/
-https://twitter.com/iximiuz/status/1859339483390296354
+Networking: https://twitter.com/iximiuz/status/1859339483390296354
+WebRTC: https://twitter.com/arcinston/status/1858603234455126441
 
 Observability
 https://news.ycombinator.com/item?id=39529775
