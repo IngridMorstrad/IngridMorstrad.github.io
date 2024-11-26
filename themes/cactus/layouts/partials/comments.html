@@ -8,12 +8,12 @@
   {{ .Scratch.Set "enable_comments" true }}
 {{ end }}
 
-{{ if (isset .Site.Params "bsky") }}
-  {{ .Scratch.Set "bsky_uri" .Bsky }}
+{{ if (isset .Params.Bsky ) }}
+  {{ .Scratch.Set "bsky_uri" .Params.Bsky }}
 {{ end }}
 
 {{ $enable_comments := .Scratch.Get "enable_comments" }}
-{{ $bsky_uri := .Scratch.Get "bsky" }}
+{{ $bsky_uri := .Scratch.Get "bsky_uri" }}
 {{ if $enable_comments }}
   {{ if $bsky_uri }}
   <script>
