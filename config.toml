@@ -2,8 +2,7 @@ theme = "cactus"
 
 [services]
   [services.googleAnalytics]
-    ID = "G-5ZWXZPBDDK"
-
+    id = "G-5ZWXZPBDDK"
 
 googleAnalytics = "G-5ZWXZPBDDK"
 
