@@ -18,7 +18,7 @@
   {{ if $bsky_uri }}
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      const uri = 'https://bsky.app/profile/ashwinmenon.com/post/{{ bsky_uri }}';
+      const uri = 'https://bsky.app/profile/ashwinmenon.com/post/{{ .Scratch.Get "bsky_uri" }}';
       if (uri) {
         initBlueskyComments('bluesky-comments', uri);
       } 
