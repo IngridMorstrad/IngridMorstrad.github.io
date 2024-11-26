@@ -15,7 +15,6 @@
 {{ $enable_comments := .Scratch.Get "enable_comments" }}
 {{ $bsky_uri := .Scratch.Get "bsky_uri" }}
 {{ if $enable_comments }}
-  {{ if $bsky_uri }}
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const uri = 'https://bsky.app/profile/ashwinmenon.com/post/{{ .Scratch.Get "bsky_uri" }}';
@@ -24,6 +23,5 @@
       } 
     });
   </script>
-  {{ end }}
   
 {{ end }}
