@@ -8,7 +8,7 @@
   {{ .Scratch.Set "enable_comments" true }}
 {{ end }}
 
-{{ if (isset .Params.Bsky ) }}
+{{ if (isset .Params "bsky" ) }}
   {{ .Scratch.Set "bsky_uri" .Params.Bsky }}
 {{ end }}
 
