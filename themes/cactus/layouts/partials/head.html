@@ -16,7 +16,6 @@
   <link rel="stylesheet" href="{{ $colortheme | printf "/css/style-%s.css" | absURL }}">
   <!-- Custom CSS -->
   {{ range .Site.Params.css }} <link rel="stylesheet" href="{{ . | absURL }}"> {{ end }}
-  {{ safeHTML }}
 
   {{ partial "favicon.html" . }}
   {{ if .Site.Params.rss }}
