@@ -27,5 +27,10 @@ https://the.scapegoat.dev/blog/
 https://publish.obsidian.md/manuel/Public/INDEX
 https://lilymara.xyz/talks/ and https://lilymara.xyz/pages/blogroll/ and https://blog.m-ou.se/
 
+https://near.blog/links/
+https://architecturenotes.co/
+https://mahdiyusuf.com/
+https://newsletter.francofernando.com/
+https://chrismunns.com/talks.html
 
 Will add more as I find more worth adding here.
