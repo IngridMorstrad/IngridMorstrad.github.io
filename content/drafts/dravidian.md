@@ -1,0 +1,9 @@
+https://en.wikipedia.org/wiki/Ullatan_language
+https://en.wikipedia.org/wiki/Thachanadan_language
+https://www.youtube.com/watch?v=kXPc4KogBtQ
+https://www.youtube.com/watch?v=FEB9y7yqj9o
+https://www.youtube.com/watch?v=Wai9EaylkRQ
+https://www.youtube.com/watch?v=RhqGD362nso
+https://www.youtube.com/watch?v=xp06DP-LcN4
+https://en.wikipedia.org/wiki/Vishavan_language
+https://en.wikipedia.org/wiki/Wayanad_Chetti_language
