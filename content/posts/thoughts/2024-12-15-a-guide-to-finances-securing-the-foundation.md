@@ -4,6 +4,7 @@ title:  "A guide to finances: securing the foundation"
 date:   2024-12-15 14:30:14
 comments: true
 tags: thoughts
+bsky: 3ldeww7kadv2w
 ---
 
 # Intro
