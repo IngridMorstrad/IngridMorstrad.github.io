@@ -5,6 +5,7 @@ date:   2024-12-15 14:30:14
 comments: true
 tags: thoughts
 bsky: 3ldeww7kadv2w
+thumb: https://images.pexels.com/photos/47344/dollar-currency-money-us-dollar-47344.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2
 ---
 
 # Intro
