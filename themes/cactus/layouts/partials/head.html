@@ -27,8 +27,8 @@
     {{ printf `<link href="%s" rel="%s" type="%s" title="%s" />` .Permalink .Rel .MediaType.Type $.Site.Title | safeHTML }}
   {{ end }}
   {{ end }}
-    <meta property="og:title" content="{{ $.Site.Title }}">
-    <meta property="og:description" content="">
+    <meta property="og:title" content="{{ .Title }}">
+    <meta property="og:description" content="Read more...">
     <meta property="og:image" content="{{ if .IsPage }} {{ if .Params.thumb }} {{ .Params.thumb }} {{ end }}  {{ end }}"> 
     <meta property="og:type" content="website">
   {{ if site.Config.Services.GoogleAnalytics.ID }}
