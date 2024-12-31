@@ -45,3 +45,9 @@ Day 5: 9:30 AM. NyQuil half dose (couldn't take the headache).
 NyQuil may screw around with your sleep. If you don't have difficulty falling asleep, I'd stick to plain acetaminophen.
 
 If you do have difficulty falling asleep, NyQuil might be alright, but I'd ensure you still stick to your nightly sleep schedule once your temperature is under control. I strongly think (in hindsight) if I'd kept a good sleep schedule at the end of Day 4, I'd have recovered a day earlier. I only slept ~5 hours the fourth night and though my temperature had fallen, when I woke up, it quickly started rising. I made sure to sleep 8 hours the next day.
+
+## Post COVID
+
+A year later, I decided to check my running pace chart for 2023, and spotted this interesting graph. Can you guess when I got COVID?
+
+<img width="603" alt="image" src="https://github.com/user-attachments/assets/1f6e7390-78a7-4604-95f1-f0be1bf4d8a4" />
