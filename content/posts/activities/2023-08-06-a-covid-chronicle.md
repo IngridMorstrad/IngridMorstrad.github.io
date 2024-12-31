@@ -4,6 +4,7 @@ title:  "A covid chronicle"
 date:   2023-08-06
 comments: true
 tags: activities
+bsky: 3lelf6yu64k2q
 ---
 
 ## The initial signs
