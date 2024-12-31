@@ -51,4 +51,4 @@ If you do have difficulty falling asleep, NyQuil might be alright, but I'd ensur
 
 A year later, I decided to check my running pace chart for 2023, and spotted this interesting graph. Can you guess when I got COVID?
 
-<img width="603" alt="image" src="https://github.com/user-attachments/assets/1f6e7390-78a7-4604-95f1-f0be1bf4d8a4" />
+![A graph showing pace versus time]((/assets/images/pace.png))
