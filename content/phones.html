@@ -3,31 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Model Score Graph with Error Bars</title>
+    <title>Device Speedometer scores</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
+            margin: 0;
+            padding: 0;
         }
         #chart-container {
             display: flex;
             justify-content: center;
             align-items: flex-end;
             height: 300px;
-            width: 600px;
-            border-bottom: 2px solid black;
+            width: 90%;
+            max-width: 800px;
             margin: 20px auto;
+            border-bottom: 2px solid black;
             position: relative;
         }
         .bar-container {
             position: relative;
-            margin: 0 3px;
+            margin: 0 5px;
         }
         .bar {
-            width: 15px;
+            width: 20px;
             background-color: steelblue;
             position: relative;
-            z-index: 1; /* Keep bar below error bar */
+            z-index: 1;
         }
         .error-bar {
             position: absolute;
@@ -35,7 +38,7 @@
             background-color: red;
             left: 50%;
             transform: translateX(-50%);
-            z-index: 2; /* Ensure error bar is above the bar */
+            z-index: 2;
         }
         .label {
             position: absolute;
@@ -53,12 +56,26 @@
         .bar-container:hover .label {
             visibility: visible;
         }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            #chart-container {
+                height: 250px;
+                width: 95%;
+            }
+            .bar-container {
+                margin: 0 2px;
+            }
+            .bar {
+                width: 10px;
+            }
+        }
     </style>
 </head>
 <body>
-    <h2>Model Score Graph with Error Bars</h2>
+    <h2>Device Speedometer scores</h2>
     <div id="chart-container"></div>
-    
+
     <script>
         const predefinedData = [
             { model: "Redmi 9A", score: 0.685, date: "02/10/2025", stddev: 0.043 },
@@ -100,11 +117,10 @@
                 if (data.stddev !== null) {
                     let errorBar = document.createElement("div");
                     errorBar.className = "error-bar";
-                    // Calculate the error bar height based on stddev
                     let errorHeight = (data.stddev / maxScore * 250); // error height scaled to chart height
-                    errorBar.style.height = errorHeight * 2 + "px";  // double error bar height for both directions
-                    errorBar.style.bottom = 0; // Start from the bottom of the bar
-                    errorBar.style.top = `-${errorHeight}px`; // Move error bar upwards from the top of the bar
+                    errorBar.style.height = errorHeight * 2 + "px"; // double error bar height for both directions
+                    errorBar.style.bottom = 0;
+                    errorBar.style.top = `-${errorHeight}px`;
                     barContainer.appendChild(errorBar);
                 }
                 
