@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Score Graph with Error Bars</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #chart-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            height: 300px;
+            width: 600px;
+            border-bottom: 2px solid black;
+            margin: 20px auto;
+            position: relative;
+        }
+        .bar-container {
+            position: relative;
+            margin: 0 3px;
+        }
+        .bar {
+            width: 15px;
+            background-color: steelblue;
+            position: relative;
+            z-index: 1; /* Keep bar below error bar */
+        }
+        .error-bar {
+            position: absolute;
+            width: 2px;
+            background-color: red;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2; /* Ensure error bar is above the bar */
+        }
+        .label {
+            position: absolute;
+            top: -20px;
+            right: 100%;
+            margin-right: 5px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 3px 5px;
+            border-radius: 3px;
+            font-size: 12px;
+            white-space: nowrap;
+            visibility: hidden;
+        }
+        .bar-container:hover .label {
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+    <h2>Model Score Graph with Error Bars</h2>
+    <div id="chart-container"></div>
+    
+    <script>
+        const predefinedData = [
+            { model: "Redmi 9A", score: 0.685, date: "02/10/2025", stddev: 0.043 },
+            { model: "Samsung M31S", score: 2.28, date: "02/10/25", stddev: 0.082 },
+            { model: "Lenovo ThinkPad Yoga 14", score: 4.41, date: "12/28/24", stddev: 0.27 },
+            { model: "OnePlus 7T", score: 5.3, date: "02/23/25", stddev: null },
+            { model: "OnePlus 8T", score: 5.53, date: "12/22/24", stddev: 0.32 },
+            { model: "Moto G84", score: 5.87, date: "02/08/25", stddev: 0.15 },
+            { model: "Samsung S21 FE", score: 6.06, date: "12/22/24", stddev: 0.72 },
+            { model: "Lenovo ThinkPad Yoga 14 on Thorium", score: 6.17, date: "12/28/24", stddev: 0.24 },
+            { model: "Pixel 6A", score: 10.4, date: "02/23/25", stddev: 0.9 },
+            { model: "HP EliteBook 840 G8", score: 10.9, date: "12/28/24", stddev: 1.2 },
+            { model: "M1 Pro Sequoia 15.1.1 32GB RAM on Thorium", score: 11.5, date: "12/28/24", stddev: 0.84 },
+            { model: "Pixel 9 Pro", score: 16, date: "", stddev: null },
+            { model: "OnePlus 13 512 GB", score: 18.3, date: "", stddev: null },
+            { model: "M1 Pro Sequoia 15.1.1 32GB RAM on Thorium", score: 19.7, date: "12/28/24", stddev: 0.94 },
+            // { model: "M3 Pro 14\"", score: 570, date: "12/1/2023", stddev: 46 },
+            // { model: "M3 Pro 14\"", score: 469, date: "12/1/2023", stddev: 26 },
+        ];
+
+        function renderChart() {
+            let chart = document.getElementById("chart-container");
+            chart.innerHTML = "";
+            let maxScore = Math.max(...predefinedData.map(d => d.score));
+
+            predefinedData.forEach(data => {
+                let barContainer = document.createElement("div");
+                barContainer.className = "bar-container";
+                
+                let label = document.createElement("div");
+                label.className = "label";
+                label.textContent = `${data.model}: ${data.score} ${data.stddev ? `± ${data.stddev}` : ""}`;
+                
+                let bar = document.createElement("div");
+                bar.className = "bar";
+                bar.style.height = (data.score / maxScore * 250) + "px";
+                
+                // Adding error bars
+                if (data.stddev !== null) {
+                    let errorBar = document.createElement("div");
+                    errorBar.className = "error-bar";
+                    // Calculate the error bar height based on stddev
+                    let errorHeight = (data.stddev / maxScore * 250); // error height scaled to chart height
+                    errorBar.style.height = errorHeight * 2 + "px";  // double error bar height for both directions
+                    errorBar.style.bottom = 0; // Start from the bottom of the bar
+                    errorBar.style.top = `-${errorHeight}px`; // Move error bar upwards from the top of the bar
+                    barContainer.appendChild(errorBar);
+                }
+                
+                barContainer.appendChild(bar);
+                barContainer.appendChild(label);
+                chart.appendChild(barContainer);
+            });
+        }
+
+        window.onload = renderChart;
+    </script>
+</body>
+</html>
