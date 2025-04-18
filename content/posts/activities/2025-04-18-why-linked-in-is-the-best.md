@@ -54,5 +54,5 @@ And vote for your preferred ending:
 ---
 
 ### Post-script
-_For those interested in the technical side_
+_For those interested in the technical side_  
 I used an LLM to help me set up the "alternate ending" mechanism. This is a static page, so I can't really use responses from a server, meaning everything has to live client-side. This makes it hard to collect votes from readers on which version of the alternate ending to prefer. The LLM suggested using a form and making a request. This works, but has its limitations. What are the limitations? I'll leave that as an exercise for the reader, or as a good topic to discuss over coffee ;).
