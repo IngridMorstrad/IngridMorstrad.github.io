@@ -26,6 +26,11 @@ name = "Tags"
 url = "/tags"
 weight = 3
 
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
 [pagination]
   pagerSize = 20
   
