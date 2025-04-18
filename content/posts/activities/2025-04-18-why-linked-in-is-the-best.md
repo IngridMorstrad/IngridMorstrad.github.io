@@ -36,6 +36,17 @@ Enter LinkedIn. Sometime post-2020 LinkedIn moved to a model where you could pos
     const para = document.getElementById('ending');
     showingAlternate = !showingAlternate;
     para.textContent = showingAlternate ? alternate : original;
-    this.textContent = showingAlternate ? 'View original ending' : 'View alternate ending';
+    this.textContent = showingAlternate ? 'Click to view original ending' : 'Click to view alternate ending';
   });
 </script>
+
+And vote for your preferred ending:
+<form action="https://formspree.io/f/xoveobwr" method="POST">
+  <label>
+    <input type="radio" name="ending" value="original" required> Original
+  </label>
+  <label>
+    <input type="radio" name="ending" value="alternate"> Alternate
+  </label>
+  <button type="submit">Vote</button>
+</form>
