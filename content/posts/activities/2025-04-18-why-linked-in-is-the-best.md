@@ -24,7 +24,7 @@ Meanwhile, Instagram was picking up steam. My friends had moved there, and unbek
 Enter LinkedIn. Sometime post-2020 LinkedIn moved to a model where you could post, and it would surface your posts to your network and vice versa. In exchange for your posts, you'd get likes and comments. "Hey!" I thought. "This feels familiar..." Indeed, it was simply old-style Facebook. Except, with a different set of connections.
 
 <p id="ending">Now, here's the point of this post. We're in a bit of a golden moment here. This is the twilight zone before "the algorithm" takes a more powerful stance and you have ads or other revenue-generating junk pushed onto your feed. This is the opportunity for your 15 minutes of connection, where you can post, and hopefully, be heard. A hark back to the days when social media was actually social. And an opportunity to brighten faded connections or create new ones. All you have to do is post :)</p>
-<a href="#" id="toggle-ending">View alternate ending</a>
+<a href="#" id="toggle-ending">Click to view alternate ending</a>
 
 <script>
   const original = "Now, here's the point of this post. We're in a bit of a golden moment here. This is the twilight zone before the 'algorithm' takes a more powerful stance and you have ads or other revenue-generating junk pushed onto your feed. This is the opportunity for your 15 minutes of connection, where you can post, and hopefully, be heard. A hark back to the days when social media was actually social. And an opportunity to brighten faded connections or create new ones. All you have to do is post :)";
