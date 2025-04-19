@@ -29,7 +29,7 @@ Money and savings is in essence a foundation to allow the pursuit of other thing
 For some of the initial questions, I've used something that I couldn't have in 2017, LLMs :)
 
 Q: Can you provide more details on how to calculate THE_GOAL? What specific categories or expenses should be considered when envisioning an ideal life?  
-A: I'd definitely consider the biggest expenses you're likely to have. Housing (whether you rent or buy), car(s), vacations (budget for the level of luxury you want), and a monthly budget for food and utilities. If you plan to have kids or pets, budget for those as well.
+A: I'd definitely consider the biggest expenses you're likely to have. Housing (whether you rent or buy), car(s), vacations (budget for the level of luxury you want), and a monthly budget for food and utilities. If you plan to have kids or pets, budget for those as well. Update: As pointed out by a friend, factoring in taxes for the amount you'd liquidate yearly & health-care expenses are important things to consider too.
 
 Q: Why is 0.04 (or the other suggested numbers) used as the divisor to determine financial independence? What's the reasoning behind this calculation?  
 A: Great question! This comes from the 4% withdrawal rate "rule". For over 150 years (since 1871), you can withdraw your investments at a 4% rate and almost always live the rest of your life without going bankrupt. 3% is even safer, as you're withdrawing a smaller % of your investments. Here's a [visualization](https://engaging-data.com/visualizing-4-rule/) you can play around with to see all scenarios since 1871!
