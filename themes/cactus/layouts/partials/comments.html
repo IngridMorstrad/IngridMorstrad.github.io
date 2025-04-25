@@ -15,6 +15,7 @@
 {{ $enable_comments := .Scratch.Get "enable_comments" }}
 {{ $bsky_uri := .Scratch.Get "bsky_uri" }}
 {{ if $enable_comments }}
+<h2>Comments</h2>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const uri = 'https://bsky.app/profile/ashwinmenon.com/post/{{ $bsky_uri }}';
@@ -23,7 +24,7 @@
       } 
     });
   </script>
-To leave a comment, go <a href="https://bsky.app/profile/ashwinmenon.com/post/{{ $bsky_uri }}">here</a>
+<a href="https://bsky.app/profile/ashwinmenon.com/post/{{ $bsky_uri }}">Leave a comment</a>
 <div id="bluesky-comments">
 </div>
 
