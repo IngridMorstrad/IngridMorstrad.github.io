@@ -14,11 +14,11 @@ If you've been following along, I've been using LLMs for a while, as detailed [h
 Like any good beginning, I must include introductions.
 
 LLMs are generally used in two ways. Most people are already familiar with the chat interface (like in ChatGPT, etc.) where a user is waiting on the LLM's response.  
-Agents are the programmatic equivalent, where a program is waiting to use the response. The important thing to note here is that speeding up an LLM's output (in <span title="A token is basically a word" style="color:green">tokens</span>/s) isn't vital for the "chat" use-case (<span title="since it only needs to be as fast as a user's reading speed" style="color:green">why?</span>), but is vital for the "agentic" use-case.
+Agents are the programmatic equivalent, where a program is waiting to use the response. The important thing to note here is that speeding up an LLM's output (in <span title="A token is basically a word" style="color:green">tokens</span>/s) isn't vital for the "chat" use case (<span title="since it only needs to be as fast as a user's reading speed" style="color:green">why?</span>), but is vital for the "agentic" use case.
 
 Context window size is how much of the current conversation an LLM remembers. Personally, with the rise of YouTube shorts, my context window size has dropped to 10 words.
 
-A tool is the ability to do things like read a file, search the web, edit a file, etc. An LLM does none of these, it simply outputs words. A tool-calling LLM (or tool-calling agent) is able to "use" these tools. The way this works is it asks for a program to be run, and then the output of the program is passed to the LLM. LLMs only understand text, so this is how it has to be done.
+A tool is the ability to do things like read a file, search the web, edit a file, etc. An LLM does none of these; it simply outputs words. A tool-calling LLM (or tool-calling agent) is able to "use" these tools. The way this works is it asks for a program to be run, and then the output of the program is passed to the LLM. LLMs only understand text, so this is how it has to be done.
 
 When I say LLM, I am usually referring to online LLMs (think ChatGPT, Gemini, etc.). I try to explicitly state when working with local LLMs that run on my machine.
 
@@ -27,7 +27,7 @@ Prompts are effectively the messages you send to the LLM.
 ## Building my own agent
 
 I was going to attempt to build an agent, as Thorsten did. But, unlike the article, which uses Claude's API ($$), I was going to build it for as cheap as possible, like any good middle-class Indian would.  
-So, Claude was out. What could I use instead? My first "searches" (using LLMs of course) led to "Hugging Face". [Hugging Face](https://huggingface.co/) is apparently a repository (GitHub) for models. The LLM suggested using Hugging Face APIs as an alternate. After tinkering with auth tokens and trying to integrate with model APIs a bit, I was unable to make progress (possibly buggy code). I was also not sure if I'd be able to do this for free if I did make progress, so I dropped this idea altogether.
+So, Claude was out. What could I use instead? My first "searches" (using LLMs of course) led to "Hugging Face". [Hugging Face](https://huggingface.co/) is apparently a repository (GitHub) for models. The LLM suggested using Hugging Face APIs as an alternate. After tinkering with auth tokens and trying to integrate with model APIs, I was unable to make progress (possibly buggy code). I was also not sure if I'd be able to do this for free if I did make progress, so I dropped this idea altogether.
 
 One reason for moving on was that in the past, I'd used [Ollama](https://www.ollama.com/) to run some models locally, and I wondered if this would work for me now. So, I prompted the LLM with the idea, asking it to modify the code to call Ollama. I'd also need to use Ollama to download the model I wanted to use. Here's a good place to state what I was working with.
 
@@ -96,7 +96,7 @@ I barely wrote any code, since my knowledge of Go (the language the script was i
 Here are a few tips based on what I learned:
 - Add log statements.
 - Ask the LLM to add log statements.
-- Trash the old chat and create a new chat every once in a while. Starting afresh seems to help, maybe because of the context window (should be unlikely given context windows are so large these days?) or because of confirmation bias due to the LLMs earlier (incorrect) ideas.
+- Trash the old chat and create a new chat every once in a while. Starting afresh seems to help, maybe because of the context window (should be unlikely given context windows are so large these days?) or because of confirmation bias due to the LLMs earlier, incorrect ideas.
 - Switching to a different LLM can help (ChatGPT -> Gemini -> Claude).
 - Pretty obvious, but a higher-end model works better (Gemini 2.5 Pro is better than Gemini 2.5 Flash, for example).
 - When prompting (for example, teaching the local LLM how to "use" a tool), providing examples really helps.
