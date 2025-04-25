@@ -111,7 +111,7 @@ I take it to mean inching closer towards an "AI for all" world. Reaching this mi
 
 ## Where do we go from here?
 First, I have to release the code (I'll update this when done). Then, there are many paths to choose from:
-- Run this on a machine with a GPU (Macbook Pro M4?)
+- Run this on a machine with a GPU (MacBook Pro M4?)
 - Integrate this with cloud APIs as Thorsten did, but possibly with more APIs rather than just Claude (Hugging Face? Gemini? ChatGPT?)
 - Try chunking the data sent to the LLM to bypass memory issues?
 - Try different LLMs? Mini LLaMA? Try LLaMA.cpp?
