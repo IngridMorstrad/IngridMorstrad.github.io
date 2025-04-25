@@ -14,7 +14,7 @@ If you've been following along, I've been using LLMs for a while, as detailed [h
 Like any good beginning, I must include introductions.
 
 LLMs are generally used in two ways. Most people are already familiar with the chat interface (like in ChatGPT, etc.) where a user is waiting on the LLM's response.  
-Agents are the programmatic equivalent, where a program is waiting to use the response. The important thing to note here is that speeding up an LLM's output (in <span title="A token is basically a word">tokens</span>/s) isn't vital for the "chat" use-case (<span title="since it only needs to be as fast as a user's reading speed">why?</span>), but is vital for the "agentic" use-case.
+Agents are the programmatic equivalent, where a program is waiting to use the response. The important thing to note here is that speeding up an LLM's output (in <span title="A token is basically a word" style="color:green">tokens</span>/s) isn't vital for the "chat" use-case (<span title="since it only needs to be as fast as a user's reading speed" style="color:green">why?</span>), but is vital for the "agentic" use-case.
 
 Context window size is how much of the current conversation an LLM remembers. Personally, with the rise of YouTube shorts, my context window size has dropped to 10 words.
 
@@ -31,7 +31,7 @@ So, Claude was out. What could I use instead? My first "searches" (using LLMs of
 
 One reason for moving on was that in the past, I'd used [Ollama](https://www.ollama.com/) to run some models locally, and I wondered if this would work for me now. So, I prompted the LLM with the idea, asking it to modify the code to call Ollama. I'd also need to use Ollama to download the model I wanted to use. Here's a good place to state what I was working with.
 
-I was not running this on a PC. I was using a SteamDeck, running SteamOS, which I learned is built on ArchLinux. Now, SteamOS is probably the worst operating system to build anything on, because Steam locks everything down (understandably) and support for <span title="including a package manager">anything</span> is minimal. That left me little choice.
+I was not running this on a PC. I was using a SteamDeck, running SteamOS, which I learned is built on ArchLinux. Now, SteamOS is probably the worst operating system to build anything on, because Steam locks everything down (understandably) and support for <span title="including a package manager" style="color:green">anything</span> is minimal. That left me little choice.
 
 I went with the 1b version of the Gemma3 model. Why Gemma3? It's the best open-source model out there for now. Why 1b? That refers to the number of parameters (1 billion), approximating the size of the model. Given the limited system I was working with, I needed the smallest model.
 
@@ -65,7 +65,7 @@ Also, at one point, the local LLM kept repeatedly calling the tool. Reading the 
 
 ## Things go bOOM
 
-Was the file being fed into the local LLM causing it to crash? Was the file larger than the context window size? Seemed unlikely to me - I'd read about how context window sizes in the newer LLMs had made <span title="A way to send lots of data to the LLM for it to work with">retrieval augmented generation (RAG)</span> redundant. I quickly confirmed that was not the case by googling.
+Was the file being fed into the local LLM causing it to crash? Was the file larger than the context window size? Seemed unlikely to me - I'd read about how context window sizes in the newer LLMs had made <span title="A way to send lots of data to the LLM for it to work with" style="color:green">retrieval augmented generation (RAG)</span> redundant. I quickly confirmed that was not the case by googling.
 
 After discussing with the LLM some more, I decided to use a "quantized" version of the model: `gemma3:1b-it-qat`. I'm not entirely sure what this means, but as I understand it, it uses a lower precision version of the model (probably trained with int8 instead of float32?). This results in a smaller model, but with a slight drop in accuracy. No luck. I then noticed an interesting line:
 
