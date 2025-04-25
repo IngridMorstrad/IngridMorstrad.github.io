@@ -13,7 +13,7 @@ If you've been following along, I've been using LLMs for a while, as detailed [h
 
 Like any good beginning, I must include introductions.
 
-LLMs are used in one of two ways. Most people are already familiar with the chat interface (like in ChatGPT, etc.) where a user is waiting on the LLM's response.  
+LLMs are generally used in two ways. Most people are already familiar with the chat interface (like in ChatGPT, etc.) where a user is waiting on the LLM's response.  
 Agents are the programmatic equivalent, where a program is waiting to use the response. The important thing to note here is that speeding up an LLM's output (in <span title="A token is basically a word">tokens</span>/s) isn't vital for the "chat" use-case (<span title="since it only needs to be as fast as a user's reading speed">why?</span>), but is vital for the "agentic" use-case.
 
 Context window size is how much of the current conversation an LLM remembers. Personally, with the rise of YouTube shorts, my context window size has dropped to 10 words.
