@@ -101,15 +101,15 @@ Here are a few tips based on what I learned:
 - Pretty obvious, but a higher-end model works better (Gemini 2.5 Pro is better than Gemini 2.5 Flash, for example).
 - When prompting (for example, teaching the local LLM how to "use" a tool), providing examples really helps.
 
-# On the shoulders of giants
+## On the shoulders of giants
 
 A short note to acknowledge all the work others have done. Couldn't have started on this exercise without Thorsten's article or without the people that built Ollama. And of course, all the folks pushing the boundaries of AI.
 
-# What does democratizing AI mean?
+## What does democratizing AI mean?
 
 I take it to mean inching closer towards an "AI for all" world. Reaching this milestone with a SteamDeck running SteamOS (probably the worst device to attempt this on) means that getting this to run on any other device should be easier and should give better performance.
 
-# Where do we go from here?
+## Where do we go from here?
 First, I have to release the code (I'll update this when done). Then, there are many paths to choose from:
 - Run this on a machine with a GPU (Macbook Pro M4?)
 - Integrate this with cloud APIs as Thorsten did, but possibly with more APIs rather than just Claude (Hugging Face? Gemini? ChatGPT?)
