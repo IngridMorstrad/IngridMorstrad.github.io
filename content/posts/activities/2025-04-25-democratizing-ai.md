@@ -4,6 +4,7 @@ title:  "Democratizing AI"
 date:   2025-04-25
 comments: true
 tags: activities
+bsky: 3lnocbmo3rs27
 ---
 
 If you've been following along, I've been using LLMs for a while, as detailed [here](https://www.ashwinmenon.com/posts/technical/2024-09-10-how-i-use-ai/) and [here](https://www.ashwinmenon.com/posts/technical/2024-11-11-how-i-use-ai-part-deux/). I learned a lot about the world of LLMs and I've tried to capture that here. Recently, motivated by Thorsten Ball's excellent ["How to build an agent"](https://ampcode.com/how-to-build-an-agent) guide, I decided to jump in and get my feet wet building AI agents with AI (LLMs).
@@ -83,7 +84,7 @@ level=WARN source=amd_linux.go:348 msg="unable to verify rocm library: no suitab
 
 Wait - this wasn't using the GPU? This had been running on the CPU this whole time? I followed the manual instructions as suggested, with no luck. ChatGPT let me know that trying to do this was a bad idea as ROCm v6 was not officially supported on SteamOS. At least I learned that the device uses AMD GPUs.
 
-Anyhow, some time later (see the section below on "working with an idiot"), I guessed that the file was possibly too large. I created a new, shorter file and asked it to summarize it instead.
+Some time later, I guessed that the file was possibly too large. I created a new, shorter file and asked it to summarize it instead.
 
 Success! I was finally done.
 
