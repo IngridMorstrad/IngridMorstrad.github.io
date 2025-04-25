@@ -94,8 +94,9 @@ I spent a total of around 10 (distracted) hours on this, over a few days. I didn
 I barely wrote any code, since my knowledge of Go (the language the script was in) is minimal, and got online LLMs to make most code changes, simply copy-pasting them and hoping they worked. I had to do this many, many times, as the program simply didn't do what I needed it to, and after a point, the code had grown beyond my control. That last point is a particularly common experience people have when "vibe coding". At one point, I made significant progress by simply reading the code, and comparing it to what Thorsten was doing, and then making a few changes to get a different error. Not very different from when I program myself (a new error is "progress").
 
 Here are a few tips based on what I learned:
-- Add log statements.
-- Ask the LLM to add log statements.
+- Add log statements that print values. The output can be useful to LLMs.
+- Ask the LLM to add log statements for debugging purposes.
+- Add comments explaining the code. Helps the LLM understand what you are trying to do and suggest fixes.
 - Trash the old chat and create a new chat every once in a while. Starting afresh seems to help, maybe because of the context window (should be unlikely given context windows are so large these days?) or because of confirmation bias due to the LLMs earlier, incorrect ideas.
 - Switching to a different LLM can help (ChatGPT -> Gemini -> Claude).
 - Pretty obvious, but a higher-end model works better (Gemini 2.5 Pro is better than Gemini 2.5 Flash, for example).
