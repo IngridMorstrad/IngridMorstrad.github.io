@@ -82,7 +82,7 @@ level=WARN source=amd_linux.go:443 msg="amdgpu detected, but no compatible rocm 
 level=WARN source=amd_linux.go:348 msg="unable to verify rocm library: no suitable rocm found, falling back to CPU"
 ```
 
-Wait - this wasn't using the GPU? This had been running on the CPU this whole time? I followed the manual instructions as suggested, with no luck. ChatGPT let me know that trying to do this was a bad idea as ROCm v6 was not officially supported on SteamOS. At least I learned that the device uses AMD GPUs.
+Wait - the script wasn't using the GPU? It had been running on the CPU this whole time? I followed the manual instructions as suggested, with no luck. ChatGPT let me know that trying to do this was a bad idea as <span title="AMD's equivalent of NVIDIA's CUDA">ROCm v6</span> was not officially supported on SteamOS. At least I learned that the device uses AMD GPUs.
 
 Some time later, I guessed that the file was possibly too large. I created a new, shorter file and asked it to summarize it instead.
 
