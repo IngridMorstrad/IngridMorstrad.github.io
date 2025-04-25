@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Democratizing AI"
-date:   2025-04-26
+date:   2025-04-25
 comments: true
 tags: activities
 ---
