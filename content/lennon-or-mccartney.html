@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beatles Song Preference Analyzer</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        h1 {
+            color: #b22222;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #e0e0e0;
+            margin-right: 5px;
+            border-radius: 5px 5px 0 0;
+        }
+        .tab.active {
+            background-color: #b22222;
+            color: white;
+        }
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background-color: white;
+            border-radius: 0 0 5px 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .song-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .song-card {
+            width: 48%;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .song-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .listen-link {
+            margin-top: 15px;
+        }
+        .listen-link a {
+            color: #b22222;
+            text-decoration: none;
+            font-size: 0.9em;
+        }
+        .listen-link a:hover {
+            text-decoration: underline;
+        }
+        .song-title {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        .preference-display {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            font-size: 1.2em;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f5f5f5;
+        }
+        .uncertain {
+            font-style: italic;
+            color: #777;
+        }
+        .toggle-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .toggle-button {
+            background-color: #b22222;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background-color 0.2s;
+        }
+        .toggle-button:hover {
+            background-color: #8b0000;
+        }
+    </style>
+</head>
+<body>
+    <h1>Beatles Song Preference Analyzer</h1>
+
+    <div class="tabs">
+        <div class="tab active" data-tab="comparison">Song Comparison</div>
+        <div class="tab" data-tab="history">Selection History</div>
+    </div>
+
+    <div class="tab-content active" id="comparison-tab">
+        <div class="preference-display" id="preference-display">
+            Begin selecting songs to determine your preference
+        </div>
+
+        <div class="toggle-container">
+            <button hidden="true" class="toggle-button" id="toggle-algorithm">Switch to Alternate Algorithm</button>
+        </div>
+
+        <div class="song-container" id="song-choices">
+            <div class="song-card" id="song-a">
+                <div class="song-title">Song A</div>
+                <div class="listen-link"><a href="#" target="_blank">Listen to the song</a></div>
+            </div>
+            <div class="song-card" id="song-b">
+                <div class="song-title">Song B</div>
+                <div class="listen-link"><a href="#" target="_blank">Listen to the song</a></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-content" id="history-tab">
+        <table id="history-table">
+            <thead>
+                <tr>
+                    <th>Round</th>
+                    <th>Song A</th>
+                    <th>Song B</th>
+                    <th>Your Choice</th>
+                </tr>
+            </thead>
+            <tbody id="history-body">
+                <!-- History entries will be added here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Beatles songs data with Lennon/McCartney contribution percentages
+        const beatlesSongs = [
+            {
+                title: "A Day in the Life",
+                lennon: 60,
+                mccartney: 40,
+                george: 0,
+                uncertain: false
+            },
+            {
+                title: "A Hard Day's Night",
+                lennon: 80,
+                mccartney: 20,
+                george: 0,
+                uncertain: false
+            },
+            {
+                title: "Across the Universe",
+                lennon: 100,
+                mccartney: 0,
+                george: 0,
+                uncertain: false
+            },
+            {
+                title: "All My Loving",
+                lennon: 0,
+                mccartney: 100,
+                george: 0,
+                uncertain: false
+            },
+            {
+                title: "All You Need Is Love",
+                lennon: 90,
+                mccartney: 10,
+                george: 0,
+                uncertain: false
+            },
+            {
+                title: "And I Love Her",
+                lennon: 0,
+                mccartney: 100,
+                george: 0,
+                uncertain: false
+            },
+            {
+                title: "Back in the U.S.S.R.",
+                lennon: 30,
+                mccartney: 70,
+                george: 0,
+                uncertain: false
+            },
+            {
+                title: "Blackbird",
+                lennon: 0,
+                mccartney: 100,
+                george: 0,
+                uncertain: false
+            },
+            {
+                title: "Can't Buy Me Love",
+                lennon: 0,
+                mccartney: 100,
+                george: 0,
+                uncertain: false
+            },
+            {
+                title: "Come Together",
+                lennon: 90,
+                mccartney: 10,
+                george: 0,
+                uncertain: false
+            },
+            {
+                title: "Day Tripper",
+                lennon: 60,
+                mccartney: 40,
+                george: 0,
+                uncertain: false
+            },
+            {
+                title: "Eleanor Rigby",
+                lennon: 0,
+                mccartney: 100,
+                george: 0,
+                uncertain: false
+            },
+            {
+                title: "Eight Days a Week",
+                lennon: 30,
+                mccartney: 70,
+                george: 0,
+                uncertain: false
+            },
+            {
+                title: "Getting Better",
+                lennon: 30,
+                mccartney: 70,
+                george: 0,
+                uncertain: false
+            },
+            {
+                title: "Help!",
+                lennon: 100,
+                mccartney: 0,
+                george: 0,
+                uncertain: false
+            },
+            {
+                title: "Hello, Goodbye",
+                lennon: 0,
+                mccartney: 100,
+                george: 0,
+                uncertain: false
+            },
+            {
+                title: "Hey Jude",
+                lennon: 0,
+                mccartney: 100,
+                george: 0,
+                uncertain: false
+            },
+            {
+                title: "I Am the Walrus",
+                lennon: 100,
+                mccartney: 0,
+                george: 0,
+                uncertain: false
+            },
+            {
+                title: "I Feel Fine",
+                lennon: 80,
+                mccartney: 20,
+                george: 0,
+                uncertain: false
+            },
+            {
+                title: "I Want to Hold Your Hand",
+                lennon: 50,
+                mccartney: 50,
+                george: 0,
+                uncertain: false
+            },
+            {
+                title: "I'm Looking Through You",
+                lennon: 0,
+                mccartney: 100,
+                george: 0,
+                uncertain: false
+            },
+            {
+                title: "In My Life",
+                lennon: 80,
+                mccartney: 20,
+                george: 0,
+                uncertain: true
+            },
+            {
+                title: "Let It Be",
+                lennon: 0,
+                mccartney: 100,
+                george: 0,
+                uncertain: false
+            },
+            {
+                title: "Lucy in the Sky with Diamonds",
+                lennon: 90,
+                mccartney: 10,
+                george: 0,
+                uncertain: false
+            },
+            {
+                title: "Norwegian Wood",
+                lennon: 90,
+                mccartney: 10,
+                george: 0,
+                uncertain: false
+            },
+            {
+                title: "Nowhere Man",
+                lennon: 100,
+                mccartney: 0,
+                george: 0,
+                uncertain: false
+            },
+            {
+                title: "Ob-La-Di, Ob-La-Da",
+                lennon: 0,
+                mccartney: 100,
+                george: 0,
+                uncertain: false
+            },
+            {
+                title: "Paperback Writer",
+                lennon: 0,
+                mccartney: 100,
+                george: 0,
+                uncertain: false
+            },
+            {
+                title: "Penny Lane",
+                lennon: 0,
+                mccartney: 100,
+                george: 0,
+                uncertain: false
+            },
+            {
+                title: "Revolution",
+                lennon: 100,
+                mccartney: 0,
+                george: 0,
+                uncertain: false
+            },
+            {
+                title: "Sgt. Pepper's Lonely Hearts Club Band",
+                lennon: 0,
+                mccartney: 100,
+                george: 0,
+                uncertain: false
+            },
+            {
+                title: "Strawberry Fields Forever",
+                lennon: 100,
+                mccartney: 0,
+                george: 0,
+                uncertain: false
+            },
+            {
+                title: "The Ballad of John and Yoko",
+                lennon: 100,
+                mccartney: 0,
+                george: 0,
+                uncertain: false
+            },
+            {
+                title: "The Long and Winding Road",
+                lennon: 0,
+                mccartney: 100,
+                george: 0,
+                uncertain: false
+            },
+            {
+                title: "Tomorrow Never Knows",
+                lennon: 100,
+                mccartney: 0,
+                george: 0,
+                uncertain: false
+            },
+            {
+                title: "We Can Work It Out",
+                lennon: 30,
+                mccartney: 70,
+                george: 0,
+                uncertain: false
+            },
+            {
+                title: "While My Guitar Gently Weeps",
+                lennon: 0,
+                mccartney: 0,
+                george: 100,
+                uncertain: false
+            },
+            {
+                title: "Yellow Submarine",
+                lennon: 0,
+                mccartney: 100,
+                george: 0,
+                uncertain: false
+            },
+            {
+                title: "Yesterday",
+                lennon: 0,
+                mccartney: 100,
+                george: 0,
+                uncertain: false
+            },
+            {
+                title: "Something",
+                lennon: 0,
+                mccartney: 0,
+                george: 100,
+                uncertain: false
+            },
+            {
+                title: "Here Comes the Sun",
+                lennon: 0,
+                mccartney: 0,
+                george: 100,
+                uncertain: false
+            },
+            {
+                title: "Taxman",
+                lennon: 0,
+                mccartney: 0,
+                george: 100,
+                uncertain: false
+            },
+            {
+                title: "If I Needed Someone",
+                lennon: 0,
+                mccartney: 0,
+                george: 100,
+                uncertain: false
+            },
+            {
+                title: "Hey Bulldog",
+                lennon: 90,
+                mccartney: 10,
+                george: 0,
+                uncertain: false
+            },
+            {
+                title: "I'm So Tired",
+                lennon: 100,
+                mccartney: 0,
+                george: 0,
+                uncertain: false
+            },
+            {
+                title: "Martha My Dear",
+                lennon: 0,
+                mccartney: 100,
+                george: 0,
+                uncertain: false
+            },
+            {
+                title: "For No One",
+                lennon: 0,
+                mccartney: 100,
+                george: 0,
+                uncertain: false
+            },
+            {
+                title: "She's Leaving Home",
+                lennon: 20,
+                mccartney: 80,
+                george: 0,
+                uncertain: false
+            },
+            {
+                title: "Drive My Car",
+                lennon: 20,
+                mccartney: 80,
+                george: 0,
+                uncertain: false
+            },
+            {
+                title: "I'm Only Sleeping",
+                lennon: 100,
+                mccartney: 0,
+                george: 0,
+                uncertain: false
+            }
+        ];
+
+        // Variables to track user preferences
+        let round = 1;
+        let history = [];
+        let currentSongA = null;
+        let currentSongB = null;
+
+        // Flag to determine which algorithm to use
+        let useAlternateAlgorithm = false;
+
+        // Song data structure for preference calculation
+        const songData = {};
+        // Preferences storage for calculating score
+        const userPreferences = [];
+        // Comparisons for alternate algorithm
+        const comparisons = [];
+
+        // Function to get non-George songs
+        function getNonGeorgeSongs() {
+            return beatlesSongs.filter(song => song.george === 0);
+        }
+
+        // Function to get two random songs that are not by George
+        function getTwoRandomSongs() {
+            const nonGeorgeSongs = getNonGeorgeSongs();
+            const randomIndices = getRandomIndices(nonGeorgeSongs.length, 2);
+            return [nonGeorgeSongs[randomIndices[0]], nonGeorgeSongs[randomIndices[1]]];
+        }
+
+        // Function to get random indices
+        function getRandomIndices(max, count) {
+            const indices = [];
+            while (indices.length < count) {
+                const randomIndex = Math.floor(Math.random() * max);
+                if (!indices.includes(randomIndex)) {
+                    indices.push(randomIndex);
+                }
+            }
+            return indices;
+        }
+
+        // Function to display songs
+        function displaySongs() {
+            const songs = getTwoRandomSongs();
+            currentSongA = songs[0];
+            currentSongB = songs[1];
+
+            const songAElement = document.getElementById('song-a');
+            const songBElement = document.getElementById('song-b');
+
+            songAElement.querySelector('.song-title').textContent = currentSongA.title;
+            songBElement.querySelector('.song-title').textContent = currentSongB.title;
+
+            // Update YouTube links
+            const youtubeSearchA = `https://www.youtube.com/results?search_query=${encodeURIComponent('The Beatles ' + currentSongA.title)}`;
+            const youtubeSearchB = `https://www.youtube.com/results?search_query=${encodeURIComponent('The Beatles ' + currentSongB.title)}`;
+
+            songAElement.querySelector('.listen-link a').href = youtubeSearchA;
+            songBElement.querySelector('.listen-link a').href = youtubeSearchB;
+
+            // Add click event listeners
+            songAElement.onclick = () => selectSong('A');
+            songBElement.onclick = () => selectSong('B');
+        }
+
+        // Function to update preferences
+        function updatePreferences(selectedSong) {
+            const otherSong = selectedSong === 'A' ? 'B' : 'A';
+            const selectedData = selectedSong === 'A' ? currentSongA : currentSongB;
+            const otherData = selectedSong === 'A' ? currentSongB : currentSongA;
+
+            // Update song data for preference calculation
+            if (!songData[selectedData.title]) {
+                songData[selectedData.title] = {
+                    A: selectedData.mccartney,  // McCartney as Person A
+                    B: selectedData.lennon      // Lennon as Person B
+                };
+            }
+
+            if (!songData[otherData.title]) {
+                songData[otherData.title] = {
+                    A: otherData.mccartney,  // McCartney as Person A
+                    B: otherData.lennon      // Lennon as Person B
+                };
+            }
+
+            // Store user preference pair for original algorithm
+            userPreferences.push([selectedData.title, otherData.title]);
+
+            // Store comparison for alternate algorithm
+            comparisons.push({
+                A_i: selectedData.mccartney,
+                B_i: selectedData.lennon,
+                A_j: otherData.mccartney,
+                B_j: otherData.lennon,
+                preferIOverJ: selectedSong === 'A'
+            });
+
+            // Update history
+            history.push({
+                round,
+                songA: currentSongA.title,
+                songB: currentSongB.title,
+                lennon_A: currentSongA.lennon,
+                mccartney_A: currentSongA.mccartney,
+                lennon_B: currentSongB.lennon,
+                mccartney_B: currentSongB.mccartney,
+                choice: selectedSong
+            });
+
+            // Update history display
+            updateHistoryDisplay();
+
+            // Update preference display
+            updatePreferenceDisplay();
+
+            // Increment round
+            round++;
+
+            // Display new songs
+            displaySongs();
+        }
+
+        // Function to select a song
+        function selectSong(song) {
+            updatePreferences(song);
+        }
+
+        /**
+         * Given pairwise comparisons of songs (each with A and B scores),
+         * infer how much you like B over A, then convert to a percentage.
+         */
+        function inferPreferencePercent(comparisons) {
+            const lows = [];
+            const highs = [];
+            const deltas = [];
+
+            comparisons.forEach(({ A_i, B_i, A_j, B_j, preferIOverJ }) => {
+                const sign = preferIOverJ ? 1 : -1;
+                const dA = (A_i - A_j) * sign;
+                const dB = (B_i - B_j) * sign;
+                deltas.push({ dA, dB });
+
+                if (dB > 0) {
+                    lows.push(-dA / dB);
+                } else if (dB < 0) {
+                    highs.push(-dA / dB);
+                }
+            });
+
+            const L = lows.length ? Math.max(...lows) : -0.5;
+            const U = highs.length ? Math.min(...highs) : 0.5;
+
+            let w;
+            if (L < U) {
+                // consistent: pick midpoint of feasible interval
+                w = (L + U) / 2;
+            } else {
+                // inconsistent: least‐squares fallback
+                const num = deltas.reduce((sum, { dA, dB }) => sum + dA * dB, 0);
+                const den = deltas.reduce((sum, { dB }) => sum + dB * dB, 0);
+                w = den === 0 ? 1 : -num / den;
+            }
+            console.log(lows);
+            console.log(highs);
+
+            // convert to percent difference
+            const percent = w >= 1 ? (w - 1) * 100 : -(1 - w) * 100;
+            return { w, percent };
+        }
+
+        /**
+         * Calculates a preference score for Person B (Lennon) over Person A (McCartney) based on song preferences.
+         */
+        function calculatePreferenceScore(songs, preferences) {
+            // Step 2: Calculate Net Contribution Difference for Each Song
+            const netContributions = {};
+            for (const songName in songs) {
+                if (Object.hasOwnProperty.call(songs, songName)) {
+                    const contributions = songs[songName];
+                    // Check if A and B contributions exist, default to 0 if not
+                    const contributionA = contributions.A || 0;
+                    const contributionB = contributions.B || 0;
+                    // Net B Contribution = B's contribution - A's contribution
+                    netContributions[songName] = contributionB - contributionA;
+                }
+            }
+
+            // Step 3: Process Each Preference
+            let totalPreferenceSignal = 0;
+            let comparisonCount = 0;
+            let totalWeight = 0.1;
+            console.log(preferences);
+
+            for (const preferencePair of preferences) {
+                const preferredSong = preferencePair[0];
+                const nonPreferredSong = preferencePair[1];
+
+                // Ensure both songs exist in our calculated net contributions
+                if (
+                    netContributions.hasOwnProperty(preferredSong) &&
+                    netContributions.hasOwnProperty(nonPreferredSong)
+                ) {
+                    const netPreferred = netContributions[preferredSong];
+                    const netNonPreferred = netContributions[nonPreferredSong];
+
+                    // Calculate the signal for this preference pair
+                    // Signal = (Net Contribution of Preferred) - (Net Contribution of Non-Preferred)
+                    const signal = netPreferred - netNonPreferred;
+
+                    totalPreferenceSignal += signal;
+                    comparisonCount++;
+                    // weight by magnitude: bigger swings count more
+                    if (signal !== 0) {
+                      totalPreferenceSignal += signal;
+                      totalWeight += Math.abs(signal);
+                    } else {
+                      console.warn(
+                        `Skipping neutral comparison [${preferredSong}, ${nonPreferredSong}] — net=${netPreferred}.`
+                      );
+                    }
+                } else {
+                    console.warn(
+                        `Skipping preference pair: [${preferredSong}, ${nonPreferredSong}] as one or both songs were not found in the songs list.`
+                    );
+                }
+            }
+
+            // Step 4: Calculate Average Preference Score
+            let averagePreferenceScore = 0;
+            if (comparisonCount > 0 && totalWeight > 0) {
+                averagePreferenceScore = totalPreferenceSignal / totalWeight * 50;
+            } else {
+                console.log('No valid preferences provided or processed.');
+            }
+
+            return averagePreferenceScore;
+        }
+
+        // Function to update preference display
+        function updatePreferenceDisplay() {
+            const prefDisplay = document.getElementById('preference-display');
+
+            if (userPreferences.length < 7) {
+                prefDisplay.textContent = "Make at least 7 choices to see who you prefer :)";
+                return;
+            }
+
+            let preferencePercent;
+
+            if (useAlternateAlgorithm) {
+                // Calculate preference using alternate algorithm
+                const result = inferPreferencePercent(comparisons);
+                preferencePercent = result.percent;
+
+                if (preferencePercent > 0) {
+                    prefDisplay.textContent = `You prefer Lennon by ${Math.abs(preferencePercent).toFixed(1)}%`;
+                } else if (preferencePercent < 0) {
+                    prefDisplay.textContent = `You prefer McCartney by ${Math.abs(preferencePercent).toFixed(1)}%`;
+                } else {
+                    prefDisplay.textContent = "Your preference is balanced between Lennon and McCartney";
+                }
+            } else {
+                // Calculate preference using original algorithm
+                preferencePercent = calculatePreferenceScore(songData, userPreferences);
+
+                if (preferencePercent > 0) {
+                    prefDisplay.textContent = `You prefer Lennon by ${Math.abs(preferencePercent).toFixed(1)}%`;
+                } else if (preferencePercent < 0) {
+                    prefDisplay.textContent = `You prefer McCartney by ${Math.abs(preferencePercent).toFixed(1)}%`;
+                } else {
+                    prefDisplay.textContent = "Your preference is balanced between Lennon and McCartney";
+                }
+            }
+        }
+
+        // Function to update history display
+        function updateHistoryDisplay() {
+            const historyBody = document.getElementById('history-body');
+            historyBody.innerHTML = '';
+
+            history.forEach(entry => {
+                const row = document.createElement('tr');
+
+                const roundCell = document.createElement('td');
+                roundCell.textContent = entry.round;
+
+                const songACell = document.createElement('td');
+                songACell.textContent = `${entry.songA} (Lennon: ${entry.lennon_A}%, McCartney: ${entry.mccartney_A}%)`;
+
+                const songBCell = document.createElement('td');
+                songBCell.textContent = `${entry.songB} (Lennon: ${entry.lennon_B}%, McCartney: ${entry.mccartney_B}%)`;
+
+                const choiceCell = document.createElement('td');
+                choiceCell.textContent = `Song ${entry.choice}`;
+
+                row.appendChild(roundCell);
+                row.appendChild(songACell);
+                row.appendChild(songBCell);
+                row.appendChild(choiceCell);
+
+                historyBody.appendChild(row);
+            });
+        }
+
+        // Tab switching functionality
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                document.querySelectorAll('.tab').forEach(t => {
+                    t.classList.remove('active');
+                });
+
+                // Add active class to clicked tab
+                tab.classList.add('active');
+
+                // Hide all tab contents
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+
+                // Show the corresponding tab content
+                const tabId = tab.getAttribute('data-tab');
+                document.getElementById(`${tabId}-tab`).classList.add('active');
+            });
+        });
+
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', () => {
+            displaySongs();
+            updatePreferenceDisplay();
+
+            // Add toggle button event listener
+            document.getElementById('toggle-algorithm').addEventListener('click', () => {
+                useAlternateAlgorithm = !useAlternateAlgorithm;
+
+                // Update button text
+                const toggleButton = document.getElementById('toggle-algorithm');
+                if (useAlternateAlgorithm) {
+                    toggleButton.textContent = "Switch to Original Algorithm";
+                } else {
+                    toggleButton.textContent = "Switch to Alternate Algorithm";
+                }
+
+                // Update the preference display with new algorithm
+                updatePreferenceDisplay();
+            });
+        });
+    </script>
+</body>
+</html>
