@@ -73,18 +73,21 @@ Here's another bad hint (the first word in the answer is "The" and not "Ariel"):
 
 Unfortunately, each user is unique, and has their own unique set of facts stemming from what they have learned in their life. This make it really difficult to craft a good hint (open to ideas!). Here are a couple of examples:
 
-![The hint asks the user to enter the Greek name for Jupiter](static/assets/images/jupiter.png)  
+![The hint asks the user to enter the Greek name for Jupiter](/assets/images/jupiter.png)  
 If the user doesn't know the Greek name for Jupiter, they are out of luck. The hint only helps those that know the Jupiter-Zeus are simply Roman-Greek versions of the same god.
 
-![LLM treats "papa" as the familial term and not the Spanish term for the pope](static/assets/images/papa.png)  
+![LLM treats "papa" as the familial term and not the Spanish term for the pope](/assets/images/papa.png)  
 Here, the LLM treats "Papa" as the word "Dad" and not as the Spanish word for "Pope". If the user meant the latter, this could be a confusing experience.
 
 ## What I tried to fix this
 I tried rewriting the prompt, and then decide I better A/B test it with my existing prompt. So, I got the LLM to write me another script, where it could read the questions & incorrect responses I'd gotten so far and feed them into the Gemini API with one of two models, and one of two prompts. I'd choose which one I'd prefer and it could give me a ranking.  
 I had to fine-tune what it generated - it generated a poor ranking algorithm, and I asked it to use an Elo-based system instead - but, the results surprised me. The verbose prompt seemed to give better "hints", as did the older "stable" model. The newer "experimental" model lead to worse results, which gave me some pause.
 
-Here you can see some results:  
+Here you can see some results.  
+Initial run which simply showed how much I preferred a particular LLM+prompt (but not the level of the LLM+prompt it was up against). FWIW, both hints seem to not be very useful:  
 ![Initial AB Tests](/assets/images/initialABTests.png)  
+
+Run that used my Elo suggestion. This screenshot has some better hints:  
 ![Tests with Elo](/assets/images/ABTestsElo.png)
 
 I likely need to fine-tune or train the LLM to give good hints, and as of now I'm not 100% sure how to do that. Watch this space!
