@@ -4,13 +4,14 @@ title:  "How I used AI in Hunchle"
 date:   2025-05-28
 comments: true
 tags: activities
+bsky: 3lq7ujbbbuc2w
 ---
 
 I used AI in a big way to build [Hunchle](www.hunchle.com). I figured it would be useful to write this post to share my experience and to document what coding with AI looks like today.
 
 There were two major ways I used LLMs in Hunchle, a trivia app:
 
-## Generating questions
+## 1. Generating questions
 
 In an ideal world, I'd generate 30,000 questions by myself, custom-crafted the way I like quiz questions. However, that was more of a time investment than I'd have liked. So, I decided to use AI (ChatGPT, Gemini, and Grok mostly) to generate some questions for me.
 
@@ -38,7 +39,7 @@ What's up with that? The right answer is "Game of Thrones", but here the AI simp
 
 Getting it to generate a good mix of difficulty for the questions was another entirely complicated ritual. I have nothing successful to share here yet, so I'll simply leave this as a hopeful note for the future.
 
-## Generating hints
+## 2. Generating hints
 
 One of the earliest pieces of feedback I got was that the questions were too hard. As people in any field are likely to do, I'd severely overestimated the familiarity anyone outside the field of trivia had with any of these things. One suggestion to fix this was to use multiple choice questions, but I didn't like that route where you'd get a dopamine hit simply out of luck. I chose to go with providing hints, and leveraging AI to "personalize" them based on a user's guess. I used the Gemini API for this, and this led to a BUNCH of problems.
 
@@ -49,7 +50,9 @@ This was a nightmare failure scenario, where the LLM is violating your #1 constr
 Question: What is the chemical symbol for silver?
 Correct Answer: Ag
 User Answer: Au
-Hint: You're right that "Au" is a chemical symbol! However, it represents a different precious metal. Think about the origin of the symbol and which langu<REDACTED>e it comes from.
+Hint: You're right that "Au" is a chemical symbol! However, it represents a different  
+precious metal. Think about the origin of the symbol and which langu<REDACTED>e
+it comes from.
 ```
 
 ### Useless hints
