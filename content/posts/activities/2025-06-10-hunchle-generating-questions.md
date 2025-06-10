@@ -4,6 +4,7 @@ title:  "Hunchle: Generating questions"
 date:   2025-06-10
 comments: true
 tags: activities
+bsky: 3lrbtm7jpkk2q
 ---
 
 Time for a blog post detailing the difficulty with creating a fun-to-play trivia app (www.hunchle.com)
