@@ -45,3 +45,8 @@ If you like engineering and building, I think at some point you would yearn for 
 Note: There are cases where promotions up the management chain make a strong case for switching. This was not a motivator for me, but is a reason for many to make the switch.
 
 If you found this useful, please drop me a note! If you want more of my thoughts, I'm open to meeting over coffee!
+
+## Appendix
+
+Other blogs/thoughts on being a manager:  
+- https://twitter.com/EmmaBostian/status/1717133238412427408
