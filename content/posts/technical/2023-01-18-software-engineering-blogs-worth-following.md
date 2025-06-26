@@ -34,3 +34,7 @@ https://newsletter.francofernando.com/
 https://chrismunns.com/talks.html
 
 Will add more as I find more worth adding here.
+
+### Specific blog posts I really enjoy
+
+https://buttondown.com/jaffray/archive/my-first-distributed-system/
