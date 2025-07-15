@@ -8,6 +8,9 @@ tags: activities
 
 ## Background
 
+<details>
+    <summary>Click to expand; feel free to skip</summary>
+<p>
 I've often thought of myself as someone who loved making people laugh. I'd played that role at school, though I'm not sure others remember me that way.
 In college too, I was delighted when others were laughing - whether with me or, occasionally, at me. 
 
@@ -22,6 +25,9 @@ I saw multiple Indian comics perform live in the US. I saw Kunal Kamra, Rahul Su
 If you're looking for recommendations in a similar vein, Bill Burr is another favorite of mine. He's excellent at putting an uncomfortable thought in your head and then walking you around to see the funny side of it. I've loved all his Netflix specials.
 
 Of late, I'm partial to Nate Bargatze, with his SNL sketch being a resounding hit amongst many audiences. People have asked me who my favorite comic is, and that's one that's really hard to answer. I'll probably have to link them to this post.
+</p>
+</details>
+
 
 ## My "journey" into stand-up comedy
 
