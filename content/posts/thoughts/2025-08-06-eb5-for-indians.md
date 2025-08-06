@@ -31,7 +31,14 @@ To recover a $2,000,000 loss, you would need to work for
     <span id="yearsOutput">X</span> years
     if your pre-tax salary is
 
-  <input type="number" id="salaryNumber" min="10000" max="5000000" value="100000" step="10000"> USD/year
+  <input type="number" id="salaryNumber" min="10000" max="5000000" value="100000" step="10000"> USD/year. (interactive, feel free to edit).
+
+### Average-case
+On average, the expected loss is about $600,000, which means:
+
+You would need to earn another $895,000 pre-tax to recover the loss.
+
+This translates to working for an additional <span id="averageYearsOutput">X</span> years if your pre-tax salary is <span id="salaryEntered">Y</span> USD/year.
 
   <script>
     const salaryNumber = document.getElementById("salaryNumber");
@@ -51,14 +58,7 @@ To recover a $2,000,000 loss, you would need to work for
     salaryNumber.addEventListener("input", updateYears);
 
     updateYears();
-  </script> (interactive, feel free to edit).
-
-### Average-case
-On average, the expected loss is about $600,000, which means:
-
-You would need to earn another $895,000 pre-tax to recover the loss.
-
-This translates to working for an additional <span id="averageYearsOutput">X</span> years if your pre-tax salary is <span id="salaryEntered">Y</span> USD/year.
+  </script>
 
 The total investment amount typically ranges from $870,000 to $940,000, which includes various fees. Of this, $70,000 to $140,000 is non-refundable (fees, etc.).
 
