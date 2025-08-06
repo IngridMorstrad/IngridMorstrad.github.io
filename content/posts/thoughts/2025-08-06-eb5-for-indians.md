@@ -8,15 +8,20 @@ tags: thoughts
 
 DISCLAIMER: None of the below is financial advice or recommendations for anyone beyond myself. Please do your due diligence (and don't sue me, thanks!)!
 
+## What
+
 EB-5 is a program where you invest some money (800K$ minimum) and in exchange may be eligible for a green card.
 
 One of the key issues with the EB-5 visa program is that it is currently backlogged for Indian citizens. However, some specific investment categories (targeted employment areas or TEAs) are not affected by this backlog. It's essential to ensure that any investments are directed into those categories to avoid delays.
+
+The main benefits are getting the green card itself, meaning you are freed from the endless visa renewals, and the restrictions that come with visas (freeing up entrepreneurship opportunities, etc.). I go over this and "benefits" to travel (no benefit it turns out) in the last section below.
 
 ## Risk and Cost Analysis
 With the EB-5 you "pay" an opportunity cost from investing the principal amount itself (800K$), which means you lose out on interest that you could have accrued on that money (whether savings interest or market returns). In addition, there is a chance of a full loss (meaning you lose all 800K$ as well).
 
 Based on some calculations (done with the help of ChatGPT, so definitely not 100% accurate), here’s a breakdown of potential financial outcomes for EB-5 investments in categories without a backlog:
 
+### Worst-case
 There is approximately a 5% chance of a full loss.
 
 In such a scenario, the total loss would be $1,351,000 after six years.
@@ -26,31 +31,34 @@ To recover a $2,000,000 loss, you would need to work for
     <span id="yearsOutput">X</span> years
     if your pre-tax salary is
 
-  <input type="number" id="salaryNumber" min="10000" max="1000000" value="100000" step="1000"> USD/year
-
-  <div class="output" id="result"></div>
+  <input type="number" id="salaryNumber" min="10000" max="5000000" value="100000" step="10000"> USD/year
 
   <script>
     const salaryNumber = document.getElementById("salaryNumber");
     const yearsOutput = document.getElementById("yearsOutput");
+    const averageYearsOutput = document.getElementById("averageYearsOutput");
+    const salaryEntered = document.getElementById("salaryEntered");
 
     function updateYears() {
       const salary = parseFloat(salaryNumber.value);
       const years = (2000000 / salary).toFixed(2);
+      const averageYears = (895000 / salary).toFixed(2);
       yearsOutput.textContent = years;
+      averageYearsOutput.textContent = averageYears;
+      salaryEntered.textContent = salary;
     }
 
     salaryNumber.addEventListener("input", updateYears);
 
-    // Initial calculation
     updateYears();
-  </script>
+  </script> (interactive, feel free to edit).
 
+### Average-case
 On average, the expected loss is about $600,000, which means:
 
 You would need to earn another $895,000 pre-tax to recover the loss.
 
-This translates to X years of work, if your pre-tax salary is Y.
+This translates to working for an additional <span id="averageYearsOutput">X</span> years if your pre-tax salary is <span id="salaryEntered">Y</span> USD/year.
 
 The total investment amount typically ranges from $870,000 to $940,000, which includes various fees. Of this, $70,000 to $140,000 is non-refundable (fees, etc.).
 
@@ -68,6 +76,9 @@ In addition to the EB-5 route, there are other countries that offer citizenship 
 
 - Antigua & Barbuda, in particular, provides access to all of Europe with its passport.
 
+## Entrepreneurship
+An H4 visa with an Employment Authorization Document (EAD) provides similar benefits to a green card with the exception that your spouse needs to be employed (I think on an H1-B, but check with your lawyers) and also, by virtue of it being a visa, the standard visa restrictions apply (can't re-enter if the visa is expired, need to renew it every 2-3 years, need to leave the country when you lose status). 
+
 # Final thoughts
 
-Comparing the program with similar programs in other nations, EB-5 is one of the better "residency by investment" programs out there, assuming you get your principal amount back, even if after 4-5 years. Also important to consider the state of the world today (most nations seem to be moving away from globalization) and the recent hike in EB-5 fees for TEAs from 500k$ to 800k$ indicate that this may only get more expensive as time goes on, which means if you are interested it may be better to take advantage of this sooner rather than later.
+Comparing the program with similar programs in other nations, EB-5 is one of the better residency-by-investment programs out there assuming you get your principal amount back, even if it takes 4-5 years. Also important to consider the state of the world today (most nations seem to be moving away from globalization) and the recent hike in EB-5 fees for TEAs from 500k$ to 800k$ indicate that this may only get more expensive as time goes on, which means if you are interested it may be better to take advantage of this sooner rather than later.
