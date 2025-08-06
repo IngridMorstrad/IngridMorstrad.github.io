@@ -8,17 +8,43 @@ tags: thoughts
 
 DISCLAIMER: None of the below is financial advice or recommendations for anyone beyond myself. Please do your due diligence (and don't sue me, thanks!)!
 
-# Understanding the EB-5 Program and Alternatives for Indians
+EB-5 is a program where you invest some money (800K$ minimum) and in exchange may be eligible for a green card.
+
 One of the key issues with the EB-5 visa program is that it is currently backlogged for Indian citizens. However, some specific investment categories (targeted employment areas or TEAs) are not affected by this backlog. It's essential to ensure that any investments are directed into those categories to avoid delays.
 
 ## Risk and Cost Analysis
-Based on some calculations (done with the help of ChatGPT, so may not be 100% accurate), here’s a breakdown of potential financial outcomes for EB-5 investments in categories without a backlog:
+With the EB-5 you "pay" an opportunity cost from investing the principal amount itself (800K$), which means you lose out on interest that you could have accrued on that money (whether savings interest or market returns). In addition, there is a chance of a full loss (meaning you lose all 800K$ as well).
+
+Based on some calculations (done with the help of ChatGPT, so definitely not 100% accurate), here’s a breakdown of potential financial outcomes for EB-5 investments in categories without a backlog:
 
 There is approximately a 5% chance of a full loss.
 
 In such a scenario, the total loss would be $1,351,000 after six years.
 
-To recover this, one would need to earn about $2 million pre-tax, which would be X years of work, if your pre-tax salary is Y.
+To recover this, one would need to earn about $2 million pre-tax.  
+To recover a $2,000,000 loss, you would need to work for
+    <span id="yearsOutput">X</span> years
+    if your pre-tax salary is
+
+  <input type="number" id="salaryNumber" min="10000" max="1000000" value="100000" step="1000"> USD/year
+
+  <div class="output" id="result"></div>
+
+  <script>
+    const salaryNumber = document.getElementById("salaryNumber");
+    const yearsOutput = document.getElementById("yearsOutput");
+
+    function updateYears() {
+      const salary = parseFloat(salaryNumber.value);
+      const years = (2000000 / salary).toFixed(2);
+      yearsOutput.textContent = years;
+    }
+
+    salaryNumber.addEventListener("input", updateYears);
+
+    // Initial calculation
+    updateYears();
+  </script>
 
 On average, the expected loss is about $600,000, which means:
 
