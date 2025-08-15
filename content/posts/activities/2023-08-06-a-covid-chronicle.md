@@ -55,8 +55,7 @@ A year later, I decided to check my running pace chart for 2023, and spotted thi
 
   <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
   <style>
-    body { background: #0b1020; color: #e8ecf3; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 20px; }
-    .chart { margin-bottom: 40px; }
+    .chart { background: #0b1020; color: #e8ecf3; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; margin: 0; margin-bottom: 40px; }
     h1 { margin: 0 0 16px; font-size: 18px; }
   </style>
   <h1>Fever Temperature Logs</h1>
