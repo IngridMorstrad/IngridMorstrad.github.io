@@ -49,6 +49,168 @@ If you do have difficulty falling asleep, NyQuil might be alright, but I'd ensur
 
 ## Post COVID
 
-A year later, I decided to check my running pace chart for 2023, and spotted this interesting graph. Can you guess when I got COVID?
+A year later, I decided to check my running pace chart for 2023, and spotted this interesting graph. Can you guess when I got COVID? [UPDATE: Correlation is coincidental]
 
 ![A graph showing pace versus time](/assets/images/pace.png)
+
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <style>
+    body { background: #0b1020; color: #e8ecf3; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 20px; }
+    .chart { margin-bottom: 40px; }
+    h1 { margin: 0 0 16px; font-size: 18px; }
+  </style>
+  <h1>Fever Temperature Logs</h1>
+  <div id="charts"></div>
+
+  <script>
+    const logs = [
+        `
+        [2:30 PM, 2/15/2025] Me: 100.7
+[4:04 PM, 2/15/2025] Me: 101.1
+[5:05 PM, 2/15/2025] Me: 100.9 (Had Tylenol 500 mg)
+[5:49 PM, 2/15/2025] Me: 100.8
+[6:37 PM, 2/15/2025] Me: 100
+[10:35 PM, 2/15/2025] Me: 99.1
+[11:58 PM, 2/15/2025] Me: 99.9
+[12:18 AM, 2/16/2025] Me: 101
+[12:58 AM, 2/16/2025] Me: 100.7
+[1:43 AM, 2/16/2025] Me: 100.9
+[2:19 AM, 2/16/2025] Me: 100.9
+[2:58 AM, 2/16/2025] Me: 101.1
+[3:54 AM, 2/16/2025] Me: 101.5
+[4:21 AM, 2/16/2025] Me: 101.3
+[6:42 AM, 2/16/2025] Me: 100.4
+[7:13 AM, 2/16/2025] Me: 100.3
+[8:08 AM, 2/16/2025] Me: 100.4
+[9:36 AM, 2/16/2025] Me: 99.9
+[4:55 PM, 2/16/2025] Me: 97.7
+`,
+        `
+        [6:17 PM, 8/1/2025] Me: 100
+[7:11 PM, 8/1/2025] Me: 100.3
+[8:13 PM, 8/1/2025] Me: 100.3
+[9:36 PM, 8/1/2025] Me: 100.5
+[10:29 PM, 8/1/2025] Me: 100.6
+[3:33 AM, 8/2/2025] Me: 99.8
+[4:27 AM, 8/2/2025] Me: 99.5
+[8:42 AM, 8/2/2025] Me: 98.8
+[10:07 AM, 8/2/2025] Me: 98
+[5:39 PM, 8/2/2025] Me: 98.4
+`
+    ];
+
+    function parseWhatsAppBlock(text) {
+      const lines = text.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+      const rx = /^\[(\d{1,2}:\d{2}\s?[AP]M),\s(\d{1,2}\/\d{1,2}\/\d{4})\]\s[^:]+:\s(-?\d+(?:\.\d+)?)(?:\s*\(([^)]+)\))?$/i;
+      const points = [];
+      for (const line of lines) {
+        const m = rx.exec(line);
+        if (!m) continue;
+        const [, time12, mdy, tempStr, note] = m;
+        const dt = new Date(`${mdy} ${time12}`);
+        const temp = parseFloat(tempStr);
+        if (!Number.isNaN(dt.getTime()) && !Number.isNaN(temp)) {
+          points.push({ dt, temp, note: note || '' });
+        }
+      }
+      points.sort((a,b) => a.dt - b.dt);
+      return points;
+    }
+
+    function to12h(date) {
+      let h = date.getHours();
+      const m = date.getMinutes().toString().padStart(2,'0');
+      const ampm = h >= 12 ? 'PM' : 'AM';
+      h = h % 12; if (h === 0) h = 12;
+      return `${h}:${m} ${ampm}`;
+    }
+
+    function plotLog(points, containerId, title) {
+      if (!points.length) return;
+
+      const anchor = new Date(points[0].dt);
+      anchor.setHours(0,0,0,0);
+      const dayMs = 24*60*60*1000;
+
+      const xVals = [];
+      const hoverTexts = [];
+      const notes = [];
+
+      for (const p of points) {
+        const dayNum = Math.floor((p.dt - anchor)/dayMs) + 1;
+        const startOfDay = new Date(p.dt); startOfDay.setHours(0,0,0,0);
+        const frac = (p.dt - startOfDay)/dayMs;
+        xVals.push(dayNum + frac);
+        hoverTexts.push(`Day ${dayNum}, ${to12h(p.dt)}`);
+        notes.push(p.note);
+      }
+
+      const ys = points.map(p=>p.temp);
+      const yMin = Math.min(...ys);
+      const yMax = Math.max(...ys);
+      const yPad = 1;
+
+      // Ensure full day range is visible: x-axis min at 0.95 and max at last day + 1
+      const lastDay = Math.floor((points[points.length-1].dt - anchor)/dayMs) + 1;
+
+      const trace = {
+        x: xVals,
+        y: ys,
+        mode: 'lines+markers+text',
+        type: 'scatter',
+        text: notes,
+        textposition: 'top center',
+        customdata: hoverTexts,
+        hovertemplate: '<b>%{y:.1f} °F</b><br>%{customdata}<br>%{text}<extra></extra>',
+        marker: { size: 8 }
+      };
+
+      const shapes = [
+        { type:'line', xref:'x', yref:'y', x0:1, x1:lastDay+1, y0:100.4, y1:100.4, line:{dash:'dot',width:1} }
+      ];
+      for(let d=2; d<=lastDay; d++){
+        shapes.push({ type:'line', xref:'x', yref:'y', x0:d, x1:d, y0:yMin-yPad, y1:yMax+yPad, line:{width:1, color:'rgba(255,255,255,0.22)'} });
+      }
+
+      const layout = {
+        title,
+        paper_bgcolor:'rgba(0,0,0,0)',
+        plot_bgcolor:'rgba(0,0,0,0)',
+        margin:{l:50,r:20,t:40,b:50},
+        xaxis:{
+          title:'Day',
+          tickmode:'array',
+          tickvals:Array.from({length:lastDay},(_,i)=>i+1),
+          ticktext:Array.from({length:lastDay},(_,i)=>`Day ${i+1}`),
+          gridcolor:'rgba(255,255,255,0.06)',
+          range:[0.95, lastDay+1]  // <-- extend to include full last day
+        },
+        yaxis:{
+          title:'Temperature (°F)',
+          gridcolor:'rgba(255,255,255,0.06)',
+          range:[yMin-yPad,yMax+yPad]
+        },
+        shapes,
+        annotations:[{x:lastDay/2, y:100.4, xref:'x', yref:'y', text:'', showarrow:false, font:{size:11}}],
+        showlegend:false
+      };
+
+      Plotly.newPlot(containerId,[trace],layout,{responsive:true});
+    }
+
+    const chartsDiv = document.getElementById('charts');
+    logs.forEach((log,idx)=>{
+      const points = parseWhatsAppBlock(log);
+      const chartId = `chart${idx}`;
+      const chartDiv = document.createElement('div');
+      chartDiv.className='chart';
+      chartDiv.id=chartId;
+      chartsDiv.appendChild(chartDiv);
+      const firstDate = new Date(points[0].dt);
+      const formattedDate = `${(firstDate.getMonth() + 1).toString().padStart(2, '0')}/` +
+          `${firstDate.getDate().toString().padStart(2, '0')}/` +
+          `${firstDate.getFullYear()}`;
+      plotLog(points, chartId, `${formattedDate}`);
+    });
+  </script>
+
