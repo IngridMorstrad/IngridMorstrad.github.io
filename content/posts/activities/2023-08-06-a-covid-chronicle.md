@@ -49,14 +49,18 @@ If you do have difficulty falling asleep, NyQuil might be alright, but I'd ensur
 
 ## Post COVID
 
-A year later, I decided to check my running pace chart for 2023, and spotted this interesting graph. Can you guess when I got COVID? [UPDATE: Correlation is coincidental]
+A year later, I decided to check my running pace chart for 2023, and spotted this interesting graph. Can you guess when I got COVID?
 
 ![A graph showing pace versus time](/assets/images/pace.png)
 
+## Later fevers
+
+02/2025: Sore throat after travelling to India.  
+08/2025: Sore throat after travelling back from Denver.  
+
   <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
   <style>
-    .chart { background: #0b1020; color: #e8ecf3; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; margin: 0; margin-bottom: 40px; }
-    h1 { margin: 0 0 16px; font-size: 18px; }
+    .chart { color: #000000; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; margin: 0; margin-bottom: 40px; }
   </style>
   <h1>Fever Temperature Logs</h1>
   <div id="charts"></div>
@@ -165,10 +169,9 @@ A year later, I decided to check my running pace chart for 2023, and spotted thi
       };
 
       const shapes = [
-        { type:'line', xref:'x', yref:'y', x0:1, x1:lastDay+1, y0:100.4, y1:100.4, line:{dash:'dot',width:1} }
       ];
       for(let d=2; d<=lastDay; d++){
-        shapes.push({ type:'line', xref:'x', yref:'y', x0:d, x1:d, y0:yMin-yPad, y1:yMax+yPad, line:{width:1, color:'rgba(255,255,255,0.22)'} });
+        shapes.push({ type:'line', xref:'x', yref:'y', x0:d, x1:d, y0:yMin-yPad, y1:yMax+yPad, line:{width:1, color:'rgba(255,255,255,0.1)'} });
       }
 
       const layout = {
@@ -177,16 +180,15 @@ A year later, I decided to check my running pace chart for 2023, and spotted thi
         plot_bgcolor:'rgba(0,0,0,0)',
         margin:{l:50,r:20,t:40,b:50},
         xaxis:{
-          title:'Day',
           tickmode:'array',
           tickvals:Array.from({length:lastDay},(_,i)=>i+1),
           ticktext:Array.from({length:lastDay},(_,i)=>`Day ${i+1}`),
-          gridcolor:'rgba(255,255,255,0.06)',
+          gridcolor:'rgba(0,0,0,0.22)',
           range:[0.95, lastDay+1]  // <-- extend to include full last day
         },
         yaxis:{
           title:'Temperature (°F)',
-          gridcolor:'rgba(255,255,255,0.06)',
+          gridcolor:'rgba(0,0,0,0.22)',
           range:[yMin-yPad,yMax+yPad]
         },
         shapes,
