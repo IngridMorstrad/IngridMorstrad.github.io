@@ -3,6 +3,7 @@ comments: true
 date: "2025-09-01"
 title: On Software Design
 tags: technical 
+bsky: 3lxsclllrlk2y
 ---
 
 For a lot of my career, I never really understood software design. It was always presented as something more associated with SDE2s, or higher and not so much with SDE1s. I had no idea what to make of it or what to do with that information. The first few design documents I wrote seemed inane. There was something to be done, and we all knew what we wanted to do, but it looked like I had to formalize it in some way before I could move forward. The document always had a structure, always following a similar pattern, that made this exercise seem even more tedious. The structure usually went like this: Motivation, Problem, Requirements, Chosen proposal, Considered but declined proposal, Appendix. A glossary and "not in scope" section could also be excluded. For each proposal, we'd need to list out the pros and cons.
