@@ -33,7 +33,18 @@ To recover a $2,000,000 loss, you would need to work for
 
   <input type="number" id="salaryNumber" min="10000" max="5000000" value="100000" step="10000"> USD/year. (interactive, feel free to edit).
 
+### Best-case
+
+For EB-5, it looks like a project with a low return is likelier to allow you to get your principal back. Think of it this way: the corporations looking for an EB-5 investment are either risky investments that the banks don't consider safe enough to loan money to (these give a higher return like 5%) OR they are less risky investments that banks can loan money to, but at a higher rate than what they'd be able to get through the EB-5 program (returns around 1%). In this section, we'll model this latter case.
+
+We'll assume the 800K$ is fully returned after a 5 year period, with 1% interest per year. This means you get ~840K$ after 5 years. In addition, we'll assume the fees add up to 100K$, which will not be regained in the EB-5 case, but will grow if one does not take the EB-5 path. If invested in the S&P 500, on average this would lead to a 1.45M$ return (`900K * 1.1^4`), meaning the total difference at the end of 5 years is around 600K$. Note that if the investment is returned after 4 years, the difference drops to ~500K$, so the time period makes a big difference.
+
+This translates to working for an additional <span id="bestYearsOutput">X</span> years if your pre-tax salary is <span id="salaryEntered">Y</span> USD/year (interactive, feel free to update above).
+
 ### Average-case
+
+[EDIT: After writing the post I realized the average-case is the average probabilistically, and so applies to how much a number of people would lose on average. This doesn't help for the individual investor, for whom either the worst-case or a best-case scenario applies. For EB-5, looks like most projects fall in either of these two outcomes. The average-case section is retained for posterity, but may not be particularly useful for an individual.]
+
 On average, the expected loss is about $600,000, which means:
 
 You would need to earn another $895,000 pre-tax to recover the loss.
@@ -44,13 +55,16 @@ This translates to working for an additional <span id="averageYearsOutput">X</sp
     const salaryNumber = document.getElementById("salaryNumber");
     const yearsOutput = document.getElementById("yearsOutput");
     const averageYearsOutput = document.getElementById("averageYearsOutput");
+    const bestYearsOutput = document.getElementById("bestYearsOutput");
     const salaryEntered = document.getElementById("salaryEntered");
 
     function updateYears() {
       const salary = parseFloat(salaryNumber.value);
       const years = (2000000 / salary).toFixed(2);
+      const bestYearsOutput = (600000 / salary).toFixed(2);
       const averageYears = (895000 / salary).toFixed(2);
       yearsOutput.textContent = years;
+      bestYearsOutput.textContent = bestYears;
       averageYearsOutput.textContent = averageYears;
       salaryEntered.textContent = salary;
     }
@@ -70,7 +84,7 @@ A review of [Visa Requirements for Indian Citizens](https://en.wikipedia.org/wik
 ### Alternative Citizenship Options
 In addition to the EB-5 route, there are other countries that offer citizenship or residency through investment at a lower cost:
 
-- Portugal, Spain, Greece, and Malta all offer residency-by-investment programs.
+- Portugal, Spain, Greece, and Malta all offer residency-by-investment programs. Portugal is voting on changing Golden Visa requirements in September 2025. 
 
 - Antigua & Barbuda, Saint Lucia, and Dominica offer citizenship for around $100,000.
 
