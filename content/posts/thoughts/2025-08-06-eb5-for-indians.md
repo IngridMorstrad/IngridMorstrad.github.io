@@ -19,15 +19,15 @@ The main benefits are getting the green card itself, meaning you are freed from 
 ## Risk and Cost Analysis
 With the EB-5 you "pay" an opportunity cost from investing the principal amount itself (800K$), which means you lose out on interest that you could have accrued on that money (whether savings interest or market returns). In addition, there is a chance of a full loss (meaning you lose all 800K$ as well).
 
-Based on some calculations (done with the help of ChatGPT, so definitely not 100% accurate), here’s a breakdown of potential financial outcomes for EB-5 investments in categories without a backlog:
+Based on some calculations (done with the help of ChatGPT, so definitely not 100% accurate (EDIT: and now manually verified, so accurate enough not to be entirely useless)), here’s a breakdown of potential financial outcomes for EB-5 investments in categories without a backlog. I've standardized the different scenarios to use a 100K$ cost towards fees (not returned), 800K$ investment for EB-5, and assumed a 1% yearly return, returned all at once after a 5-year period. The period affects the final results, so if you run your own calculations, please take note of that. I've assumed an effective tax-rate of 25%.
 
 ### Worst-case
-There is approximately a 5% chance of a full loss.
+There is approximately a 5% chance of a full loss (according to ChatGPT).
 
-In such a scenario, the total loss would be $1,351,000 after six years.
+In such a scenario, the total loss would be $1,594,000 after six years (`900*1.1^6`).
 
-To recover this, one would need to earn about $2 million pre-tax.  
-To recover a $2,000,000 loss, you would need to work for
+To recover this, one would need to earn about $2.13 million pre-tax.  
+To recover a $2,130,000 loss, you would need to work for
     <span id="yearsOutput">X</span> years
     if your pre-tax salary is
 
@@ -37,17 +37,16 @@ To recover a $2,000,000 loss, you would need to work for
 
 For EB-5, it looks like a project with a low return is likelier to allow you to get your principal back. Think of it this way: the corporations looking for an EB-5 investment are either risky investments that the banks don't consider safe enough to loan money to (these give a higher return like 5%) OR they are less risky investments that banks can loan money to, but at a higher rate than what they'd be able to get through the EB-5 program (returns around 1%). In this section, we'll model this latter case.
 
-We'll assume the 800K$ is fully returned after a 5 year period, with 1% interest per year. This means you get ~840K$ after 5 years. In addition, we'll assume the fees add up to 100K$, which will not be regained in the EB-5 case, but will grow if one does not take the EB-5 path. If invested in the S&P 500, on average this would lead to a 1.45M$ return (`900K * 1.1^4`), meaning the total difference at the end of 5 years is around 600K$. Note that if the investment is returned after 4 years, the difference drops to ~500K$, so the time period makes a big difference.
+Since we assume 800K$ is fully returned after a 5 year period, with 1% interest per year, we should have ~840K$ after 5 years. In addition, we assumed 100K$ in fees, which will not be regained in the EB-5 case, but will grow if one does not take the EB-5 path. If invested in the S&P 500 with 10% returns yearly, this would lead to a 1.45M$ return (`900K * 1.1^5`), meaning the total difference at the end of 5 years is around 600K$. Note that if the investment is returned after 4 years, the difference drops to ~500K$, so the time period makes a big difference. With a 5 year period, the 600K$ translates to 800K$ pre-tax at a 25% effective tax rate.
 
-This translates to working for an additional <span id="bestYearsOutput">X</span> years if your pre-tax salary is <span id="salaryEntered">Y</span> USD/year (interactive, feel free to update above).
+This means working for an additional <span id="bestYearsOutput">X</span> years if your pre-tax salary is <span id="salaryEntered">Y</span> USD/year (interactive, feel free to update above).
 
 ### Average-case
 
 [EDIT: After writing the post I realized the average-case is the average probabilistically, and so applies to how much a number of people would lose on average. This doesn't help for the individual investor, for whom either the worst-case or a best-case scenario applies. For EB-5, looks like most projects fall in either of these two outcomes. The average-case section is retained for posterity, but may not be particularly useful for an individual.]
 
-On average, the expected loss is about $600,000, which means:
-
-You would need to earn another $895,000 pre-tax to recover the loss.
+Assuming a 5% chance of 100% loss, 10% chance of 50% capital loss, and 85% chance of full capital return with 1% interest, we get:
+`(1.01^5*0.85+0.53*0.1)*800000`, which comes out to 757086.83$ over 5 years. The equivalent S&P 500 investment (10% return) gives us 1.45M$ as before. This translates to a 693K$ difference, which means you would need to earn another $924,000 pre-tax to recover the loss.
 
 This translates to working for an additional <span id="averageYearsOutput">X</span> years if your pre-tax salary is <span id="salaryEntered">Y</span> USD/year (interactive, feel free to update above).
 
@@ -60,9 +59,9 @@ This translates to working for an additional <span id="averageYearsOutput">X</sp
 
     function updateYears() {
       const salary = parseFloat(salaryNumber.value);
-      const years = (2000000 / salary).toFixed(2);
-      const bestYears = (600000 / salary).toFixed(2);
-      const averageYears = (895000 / salary).toFixed(2);
+      const years = (2130000 / salary).toFixed(2);
+      const bestYears = (800000 / salary).toFixed(2);
+      const averageYears = (924000 / salary).toFixed(2);
       yearsOutput.textContent = years;
       bestYearsOutput.textContent = bestYears;
       averageYearsOutput.textContent = averageYears;
