@@ -49,7 +49,7 @@ On average, the expected loss is about $600,000, which means:
 
 You would need to earn another $895,000 pre-tax to recover the loss.
 
-This translates to working for an additional <span id="averageYearsOutput">X</span> years if your pre-tax salary is <span id="salaryEntered">Y</span> USD/year.
+This translates to working for an additional <span id="averageYearsOutput">X</span> years if your pre-tax salary is <span id="salaryEntered">Y</span> USD/year (interactive, feel free to update above).
 
   <script>
     const salaryNumber = document.getElementById("salaryNumber");
@@ -61,7 +61,7 @@ This translates to working for an additional <span id="averageYearsOutput">X</sp
     function updateYears() {
       const salary = parseFloat(salaryNumber.value);
       const years = (2000000 / salary).toFixed(2);
-      const bestYearsOutput = (600000 / salary).toFixed(2);
+      const bestYears = (600000 / salary).toFixed(2);
       const averageYears = (895000 / salary).toFixed(2);
       yearsOutput.textContent = years;
       bestYearsOutput.textContent = bestYears;
