@@ -19,6 +19,6 @@ If you don't care about a high-level of precision, here are some numbers that ma
 
 And for a high-level overview, here's a visual representation of the estimate.
 
-![Visual representation plotting priority date against the year when it will become current](/assets/images/EB2_PD.png)
+![Visual representation plotting priority date against the year when it will become current](/assets/images/EB2.png)
 
 Not a recommendation, but if interested you could read [my EB-5 post](https://www.ashwinmenon.com/posts/thoughts/2025-08-06-eb5-for-indians/) as well.
