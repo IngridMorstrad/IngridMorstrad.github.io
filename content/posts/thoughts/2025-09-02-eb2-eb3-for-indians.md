@@ -22,3 +22,5 @@ And for a high-level overview, here's a visual representation of the estimate.
 ![Visual representation plotting priority date against the year when it will become current](/assets/images/EB2.png)
 
 Not a recommendation, but if interested you could read [my EB-5 post](https://www.ashwinmenon.com/posts/thoughts/2025-08-06-eb5-for-indians/) as well.
+
+Note: As of Sep 2025, there are around 48000 I-485 applications filed before Jan 2015 that are pending. This should clear in aroud 8 years, which aligns well with what the script predicted (~2033 for someone who filed in Jan 2015).
