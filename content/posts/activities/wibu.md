@@ -14,7 +14,7 @@ Some weeks I did nothing except relax by playing video games or surfing and scro
 
 I spent some time playing the guitar, unfortunately not consistently as always.  
 I connected and reconnected with family and friends that I had not been in very close contact with. Strengthened pre-existing relationships. Was able to spend more time with my sister when she visited as I did not have to think about requesting time off.  
-I completed the game Tomb Raider (2013), played Europa Universalis IV which I've always wanted to do. If you told 15-year-old me that someday I would be able to play video games to completion on a handheld gaming device that I owned I would've been over the moon.  
+I completed the games Tomb Raider (2013) and Hogwarts Legacy. I also played F1 Manager and Europa Universalis IV, a game which I've always wanted to throw myself into. If you told 15-year-old me that someday I would be able to play video games to completion on a handheld gaming device that I owned I would've been over the moon.  
 I made a couple of apps ([Hunchle](www.hunchle.com)) aiming to show my parents what I actually did/could do for a living. Telling them I worked at AWS and Meta is pretty much Latin for them, but with these apps they could get to use what I had built. The word game used GRE-level words, which makes it hard for most people, but is about the difficulty needed for my parents as they are both former journalists. Learned about LLMs, coding agents and how to use them through the process of building these as well. You can see my posts [here](https://www.ashwinmenon.com/posts/activities/2025-05-28-how-i-used-ai-in-hunchle/) and [here](https://www.ashwinmenon.com/posts/activities/2025-06-10-hunchle-generating-questions/).  
 Wrote a few blog posts which you can find on www.ashwinmenon.com.  
 Built (vibe-coded) some side projects on my blog, for example: https://www.ashwinmenon.com/phones/ and https://www.ashwinmenon.com/lennon-or-mccartney/  
@@ -32,3 +32,6 @@ Created some videos to help learn Malayalam.
 I'd often forget what day it was. For example, I thought it was a Wednesday when it was a Thursday.  
 I sleep in late often because I haven't had to set alarms except for a few days when there were early morning appointments.  
 Cash inflow is obviously worse, but it's interesting to try and think of other ways you could earn money. A tech job is surely one of the best ways to get a large, constant, regular inflow of money but there is definitely a dopamine hit from being able to find new ways, even if the amounts are tiny. Taking up new things is a challenge, but also validating.  
+
+## Regrets
+Only that I don't spend more time with people!
