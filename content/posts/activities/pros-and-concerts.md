@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Prose and concerts"
+title:  "Pros(e) and concerts"
 date:   2025-10-28
 comments: true
 tags: activities
