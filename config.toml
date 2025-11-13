@@ -35,7 +35,7 @@ weight = 3
   pagerSize = 20
   
 [params]
-  description = "Hi, I'm Ashwin. This is my little corner of the web. Hope you enjoy your stay. To get updates, [subscribe](https://buttondown.email/AshwinMenon). RSS available [here](https://www.ashwinmenon.com/index.xml)"
+  description = "Hi, I'm Ashwin. This is my little corner of the web. You can read about why I blog [here](https://www.ashwinmenon.com/about). Hope you enjoy your stay. To get updates, [subscribe](https://buttondown.email/AshwinMenon). RSS available [here](https://www.ashwinmenon.com/index.xml)"
 
   mainSection = "posts"
   showAllPostsOnHomePage = true
