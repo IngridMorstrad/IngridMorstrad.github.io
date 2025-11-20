@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Stock price estimator</title>
+
+<style>
+    :root {
+        /* Cactus-inspired palette */
+        --bg: #faf7f2;          /* sand */
+        --card: #ffffff;        /* white card */
+        --border: #d5c7b8;      /* warm beige */
+        --text: #2f2a26;        /* deep warm */
+        --sub: #6a5f58;         /* muted brown */
+        --accent: #5b8a72;      /* cactus green */
+        --accent-light: #6fa88a;
+        --radius: 10px;
+    }
+
+    body {
+        font-family: system-ui, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        max-width: 760px;
+        margin: 40px auto;
+        padding: 0 20px;
+        line-height: 1.5;
+    }
+
+    h1, h2, h3 {
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: var(--accent);
+    }
+
+    a {
+        color: var(--accent);
+        text-decoration: none;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .section {
+        background: var(--card);
+        padding: 24px;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        margin-top: 28px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    label {
+        display: block;
+        margin-top: 18px;
+        font-weight: 600;
+    }
+
+    input[type="number"] {
+        margin-top: 6px;
+        padding: 8px 10px;
+        width: 220px;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        font-size: 14px;
+        background: #fcfbf8;
+    }
+
+    button {
+        padding: 8px 14px;
+        border-radius: 6px;
+        cursor: pointer;
+        margin-top: 14px;
+        border: none;
+        background: var(--accent);
+        color: white;
+        font-weight: 600;
+        transition: background 0.15s ease;
+    }
+
+    button:hover {
+        background: var(--accent-light);
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 14px;
+    }
+
+    th {
+        text-align: left;
+        padding-bottom: 6px;
+        font-weight: 600;
+        color: var(--sub);
+    }
+
+    td {
+        padding: 8px 0;
+        border-bottom: 1px solid var(--border);
+    }
+
+    #out {
+        background: #f2ede6;
+        padding: 14px;
+        border-radius: 6px;
+        margin-top: 12px;
+        font-family: monospace;
+        white-space: pre;
+        border: 1px solid var(--border);
+    }
+
+    details summary {
+        cursor: pointer;
+        font-weight: 600;
+        color: var(--accent);
+    }
+
+    .small {
+        color: var(--sub);
+        font-size: 0.9em;
+        margin-top: 10px;
+    }
+
+    .center {
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    #outTitle {
+        margin-top: 32px;
+        font-weight: 600;
+        color: var(--accent);
+    }
+</style>
+</head>
+
+<body>
+
+<h1>Stock pricer (stock price estimator)</h1>
+
+<details class="section" style="margin-top:18px;">
+  <summary>What this tool does (click to expand)</summary>
+  <p style="margin-top:12px;">
+    This tool estimates the fair value of a stock based on your assumptions about earnings, 
+    required return, and future growth. It projects earnings forward year by year, discounts 
+    them back to the present using your required return, and converts that into either a fair P/E ratio and a fair price if the EPS is provided.
+  </p>
+
+  <p>
+    Enter EPS if you want a dollar price. If you leave EPS blank, the tool provides a fair P/E 
+    ratio only. You can create multiple growth stages to model transitions from fast growth 
+    to stable long-term growth.
+  </p>
+
+  <p>
+    The permanent growth rate is used for the final stage when the company reaches a mature, 
+    stable growth level.
+  </p>
+</details>
+
+<div class="section">
+    <label>EPS (optional):</label>
+    <input id="eps" type="number" step="0.01" placeholder="e.g. 7.1">
+
+    <label>Required return (r):</label>
+    <input id="r" type="number" step="0.001" value="0.08">
+
+    <details>
+      <summary>How to set required return</summary>
+      <p style="margin-top:12px;">
+      The required return is the annual return you expect for taking the risk of owning the business. If the business returns a value lower than that, you might as well invest in high-quality bonds instead. A simple way to estimate it is to start with the risk-free rate, usually the US 10-year Treasury yield, and then add an extra margin for the uncertainty of the company’s future.
+      </p>
+      
+      <p>
+      Lending to the US government is extremely safe. Owning a business is not. Earnings can fall, management can make mistakes, recessions can hit, and shareholders can be diluted. Investors expect to be compensated for this extra risk.
+      </p>
+      
+      <p>
+      Historically, broad stock-market returns have been around 3–6 percentage points above the US 10-year yield. That is why many valuations use a required return in the 7–10% range when the US10Y is around 4–5%.
+      </p>
+      
+      <p> If the business is very stable, you might choose a number near the low end. If the business is more uncertain or cyclical, you might choose a higher number. The required return is ultimately a judgment call, but using the 10-year Treasury yield as a base and adding a reasonable risk premium is a practical starting point.
+      </p>
+      
+      <p>Current US 10-year yield: 
+          <a href="https://www.cnbc.com/quotes/US10Y" target="_blank" rel="noopener noreferrer">US10Y</a>
+      </p>
+    </details>
+</div>
+
+<div class="section">
+    <h2>Future growth forecast</h2>
+
+    <table>
+      <thead>
+        <tr><th>Growth rate (%)</th><th>Years</th><th></th></tr>
+      </thead>
+      <tbody id="stagesBody">
+        <tr>
+          <td><input type="number" step="0.01" value="15"></td>
+          <td><input type="number" step="0.1" value="5"></td>
+          <td><button onclick="removeStage(this)">Remove</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <button onclick="addStage()">Add stage</button>
+
+    <h3 style="margin-top:24px;">Permanent growth rate</h3>
+    <input id="terminal" type="number" step="0.01" value="3"> %
+</div>
+
+<div class="center">
+    <button onclick="runCalc()">Compute</button>
+</div>
+
+<h2 id="outTitle">Results</h2>
+<pre id="out"></pre>
+
+<script>
+function addStage() {
+    const body = document.getElementById("stagesBody");
+    const row = document.createElement("tr");
+
+    row.innerHTML =
+        '<td><input type="number" step="0.01" value="10"></td>' +
+        '<td><input type="number" step="0.1" value="3"></td>' +
+        '<td><button onclick="removeStage(this)">Remove</button></td>';
+
+    body.appendChild(row);
+}
+
+function removeStage(btn) {
+    const body = document.getElementById("stagesBody");
+    if (body.rows.length > 1) {
+        btn.parentElement.parentElement.remove();
+    }
+}
+
+function fairPE(eps, stages, r) {
+    let E = eps;
+    let PV = 0;
+    let t = 0;
+
+    for (const [g, yrs] of stages) {
+        if (yrs === Infinity) {
+            PV += (E * (1 + g) / (r - g)) / Math.pow(1 + r, t);
+            break;
+        }
+        const n = yrs < 1 ? Math.round(yrs * 4) : Math.round(yrs);
+        const step = yrs / n;
+        for (let i = 0; i < n; i++) {
+            E *= Math.pow(1 + g, step);
+            t += step;
+            PV += E / Math.pow(1 + r, t);
+        }
+    }
+    return { fairPrice: PV, fairPE: PV / eps };
+}
+
+function runCalc() {
+    const epsInput = document.getElementById("eps").value.trim();
+    const eps = epsInput ? parseFloat(epsInput) : null;
+    const r = parseFloat(document.getElementById("r").value);
+
+    const stageRows = Array.from(document.querySelectorAll("#stagesBody tr"));
+    const stages = stageRows.map(row => {
+        const g = parseFloat(row.cells[0].querySelector("input").value) / 100;
+        const yrs = parseFloat(row.cells[1].querySelector("input").value);
+        return [g, yrs];
+    });
+
+    const terminal = parseFloat(document.getElementById("terminal").value) / 100;
+    stages.push([terminal, Infinity]);
+
+    const epsToUse = eps !== null ? eps : 1;
+    const { fairPrice, fairPE: peRatio } = fairPE(epsToUse, stages, r);
+
+    let out = "";
+    if (eps === null) {
+        out += "Fair P/E ≈ " + peRatio.toFixed(1) + "\n";
+        out += "(Enter EPS to compute a fair price.)";
+    } else {
+        out += "Fair price ≈ $" + fairPrice.toFixed(2) + "\n";
+        out += "Fair P/E ≈ " + peRatio.toFixed(1);
+    }
+
+    document.getElementById("out").textContent = out;
+}
+</script>
+
+</body>
+</html>
