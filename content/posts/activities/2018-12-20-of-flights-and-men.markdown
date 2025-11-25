@@ -33,7 +33,7 @@ He explained that he had just returned from Australia, after joining a training 
 "In fact, an article I was reading the other day. It said that when different parts of an industry run so well most times (like they do in the aviation industry), a lot of things have to go wrong in alignment for a tragedy to.."  
 “It’s called the Swiss cheese model.” he interrupted.  
 “Ah, yes, that’s what the article said” I mentally noted that a professional in the field (even one in training) always seemed to know more than a casual hobbyist.  
-“The article talked about what happened to [Air France 440](https://www.popularmechanics.com/flight/a3115/what-really-happened-aboard-air-france-447-6611877/) (sic)...”  
+"The article talked about what happened to [Air France 447](https://www.popularmechanics.com/flight/a3115/what-really-happened-aboard-air-france-447-6611877/) (sic)..."  
 “Ah that was horrible.” I sensed a tone tinged with despondency.  
 “Yeah looks like that was a bunch of things that went wrong that could have been avoided easily, huh?" I tried to turn the tone dial to positive. “All that pilot had to do was 'not pull the stick back'.”  
 “Yeah, that was horrible. It’s all well and good when you are training in controlled conditions, but in real flight

@@ -26,7 +26,7 @@ To use this information, we need to estimate the probability of winning a point.
 
 ![](/assets/images/tennis_points.png)
 
-Now, all that was left was to put this to use. I figured in most head-to-heads, both players woud have similar total points won. This would mean that the ratio of points won falls in the expected range (0.38 to 0.63). An interesting matchup to look at would be one with one player having a dominant head-to-head losing the match. Nadal-Wawrinka have a head-to-head of the second type.
+Now, all that was left was to put this to use. I figured in most head-to-heads, both players would have similar total points won. This would mean that the ratio of points won falls in the expected range (0.38 to 0.63). An interesting matchup to look at would be one with one player having a dominant head-to-head losing the match. Nadal-Wawrinka have a head-to-head of the second type.
 
 Nadal-Wawrinka's points won are:
 matches = [(99,62),(80,71),(69,55),(97,89),(59,48),(82,75),(63,51),(73,58),(59,39),(96,64),(75,59),(80,83),(88,116),(75,81)]

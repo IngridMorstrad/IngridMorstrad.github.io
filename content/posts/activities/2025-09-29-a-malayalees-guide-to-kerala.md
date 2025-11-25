@@ -52,7 +52,7 @@ Cheenavala, Kochi: The restaurant is named after the chinese fishing nets you se
 
 ## What I might skip
 
-The houseboats. Interesting experience the first time I tried it (mid-2000s), but the backwater were filled with weeds the last time I went.  
+The houseboats. Interesting experience the first time I tried it (mid-2000s), but the backwaters were filled with weeds the last time I went.  
 Trivandrum. Old, sleepy town. Could go to Varkala or Kovalam instead.  
 
 ## Things to check out in Kochi
