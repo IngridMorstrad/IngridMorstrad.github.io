@@ -19,7 +19,7 @@ The main benefits are getting the green card itself, meaning you are freed from 
 ## Risk and Cost Analysis
 With the EB-5 you "pay" an opportunity cost from investing the principal amount itself (800K$), which means you lose out on interest that you could have accrued on that money (whether savings interest or market returns). In addition, there is a chance of a full loss (meaning you lose all 800K$ as well).
 
-Based on some calculations (done with the help of ChatGPT, so definitely not 100% accurate (EDIT: and now manually verified, so accurate enough not to be entirely useless)), here’s a breakdown of potential financial outcomes for EB-5 investments in categories without a backlog. I've standardized the different scenarios to use a 100K$ cost towards fees (not returned), 800K$ investment for EB-5, and assumed a 1% yearly return, returned all at once after a 5-year period. The period affects the final results, so if you run your own calculations, please take note of that. I've assumed an effective tax-rate of 25%.
+Based on some calculations (done with the help of ChatGPT, so definitely not 100% accurate (EDIT: and now manually verified, so accurate enough not to be entirely useless)), here's a breakdown of potential financial outcomes for EB-5 investments in categories without a backlog. I've standardized the different scenarios to use a 100K$ cost towards fees (not returned), 800K$ investment for EB-5, and assumed a 1% yearly return, returned all at once after a 5-year period. The period affects the final results, so if you run your own calculations, please take note of that. I've assumed an effective tax-rate of 25%.
 
 ### Worst-case
 There is approximately a 5% chance of a full loss (according to ChatGPT).
