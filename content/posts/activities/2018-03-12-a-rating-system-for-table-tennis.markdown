@@ -32,7 +32,7 @@ you can score lower than your expected score (as predicted by Elo), even if you 
 <br />
 We can also easily see another desirable property the score should have.
 
-> Property 2: A win with a larger po difference should lead to a larger rating increase than one with a smaller score difference (other factors remaining constant).
+> Property 2: A win with a larger point difference should lead to a larger rating increase than one with a smaller score difference (other factors remaining constant).
 
 The "other factors remaining constant" here refers to the fact that a rating increase/decrease when working with Elo will depend on both opponents' initial ratings. The second property would require a 11-3 win to garner the victor a bigger rating increase than a 11-7 win. Notice that this places no restrictions on how the rating increase should decrease as the loser scores more points. Specifically, we don't tie ourselves to saying that a 11-3 win versus a 11-2 win should see the same decrease in rating increase that a 11-4 win versus a 11-3 win would see. In other words, the function need not be linear.
 

@@ -38,7 +38,7 @@ Meen pollichatthu (Roasted fish): Fish marinated in spices, wrapped in a banana 
 
 Biryani: Biryani in Kerala is very different from biryani elsewhere in India, but it's probably my favourite kind of biryani. Won't be packed with as many spices as most other biryanis, but will have a more-than-adequate helping of ghee. And the pappadam... oh the pappadam. I'd usually go for the chicken biryani, which will come with a boiled egg presented as hidden treasure for you to find.
 
-Sadya: Not very easy to find, Sadya is Kerala's traditional meal served on a banana leaf. I'd do a quick Google search and go to one based on the reviews. Might be worth calling before you go to ensure they still have a sadya option. The curries are usually unlimited, so it's like an Malayalee buffet. Vegetarian and worth a drive!
+Sadya: Not very easy to find, Sadya is Kerala's traditional meal served on a banana leaf. I'd do a quick Google search and go to one based on the reviews. Might be worth calling before you go to ensure they still have a sadya option. The curries are usually unlimited, so it's like a Malayalee buffet. Vegetarian and worth a drive!
 
 ## Where to eat
 

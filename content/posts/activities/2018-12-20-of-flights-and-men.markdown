@@ -36,8 +36,8 @@ He explained that he had just returned from Australia, after joining a training 
 "The article talked about what happened to [Air France 447](https://www.popularmechanics.com/flight/a3115/what-really-happened-aboard-air-france-447-6611877/) (sic)..."  
 "Ah that was horrible." I sensed a tone tinged with despondency.  
 "Yeah looks like that was a bunch of things that went wrong that could have been avoided easily, huh?" I tried to turn the tone dial to positive. "All that pilot had to do was 'not pull the stick back'."  
-"Yeah, that was horrible. It's all well and good when you are training in controlled conditions, but in real flight
-" No change in tone - it was time to move to a new topic.  
+"Yeah, that was horrible. It's all well and good when you are training in controlled conditions, but in real flight..."  
+No change in tone - it was time to move to a new topic.  
 "While I have you here, what really went wrong with Lion Air? I've read a lot of stuff but nothing seems to pinpoint what happened exactly." Okay, not a new topic, maybe just a new incident.  
 "We have to wait for the official investigation to be completed to know exactly what happened."  
 "That didn't yield much", I thought. But then, he continued, "Between us, Boeing has been cutting costs for some time now. Ever since the..."  

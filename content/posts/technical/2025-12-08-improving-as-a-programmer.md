@@ -16,7 +16,7 @@ What else could fit into a programmer's toolkit? A knowledge of command-line (un
 
 Prioritization skills.
 
-Different domains in software engineering is not a necessity, but could be helpful depending on the domain you are in. Things like a knowledge of networks, operating systems, compilers and databases (typical for an undergraduate course in computer science) fall in this bucket.
+Different domains in software engineering are not a necessity, but could be helpful depending on the domain you are in. Things like a knowledge of networks, operating systems, compilers and databases (typical for an undergraduate course in computer science) fall in this bucket.
 
 Distributed systems and control theory are two other areas that could provide useful, in the same bucket, though they are usually taught in an advanced degrees course.
 
