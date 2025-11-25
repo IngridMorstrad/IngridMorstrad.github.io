@@ -78,7 +78,7 @@ The total investment amount typically ranges from $870,000 to $940,000, which in
 For couples, only one petition is required, so the above financial figures can effectively be divided in half if the couple splits finances.
 
 ## Aiming to open travel opportunities?
-A review of [Visa Requirements for Indian Citizens](https://en.wikipedia.org/wiki/Visa_requirements_for_Indian_citizens) shows that a U.S. green card is treated the same as a valid U.S. visa in terms of international travel. As of July 2025, there don’t appear to be any countries where a green card provides entry privileges that an H1-B or H-4 visa does not.
+A review of [Visa Requirements for Indian Citizens](https://en.wikipedia.org/wiki/Visa_requirements_for_Indian_citizens) shows that a U.S. green card is treated the same as a valid U.S. visa in terms of international travel. As of July 2025, there don't appear to be any countries where a green card provides entry privileges that an H1-B or H-4 visa does not.
 
 ### Alternative Citizenship Options
 In addition to the EB-5 route, there are other countries that offer citizenship or residency through investment at a lower cost:

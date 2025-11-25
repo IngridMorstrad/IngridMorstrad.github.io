@@ -23,7 +23,7 @@ Wrote a few blog posts.
 Started playing badminton, including in the afternoons at the Redmond Community Center, for around only $5 a day!  
 Travelled to Yellowstone, Denver, and the UK. Will write about it, stay tuned!  
 Sent some open-source pull requests that are currently still in progress (from my side).  
-Wrote a few helper scripts using generative AI. One to book badminton courts when a slot opens up. Another to find where to stay, given a list of tourist attractions you’d like to visit and potential addresses to stay at.  
+Wrote a few helper scripts using generative AI. One to book badminton courts when a slot opens up. Another to find where to stay, given a list of tourist attractions you'd like to visit and potential addresses to stay at.  
 Started reading more books than before. Five books completed (one being tiny) versus 1 book over the past 2 years.  
 Spent time watching videos on history (reach out to me if you want YouTube channels to watch!). I knew that history repeats itself, but I didn't realize how often! A lot of themes from centuries ago are playing out today. Things written millennia ago are still applicable today.  
 Created some videos to help learn Malayalam.  

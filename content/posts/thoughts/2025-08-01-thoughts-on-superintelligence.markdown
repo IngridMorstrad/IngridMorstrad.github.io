@@ -16,7 +16,7 @@ Not sure what "productivity software" refers to here, but as a business that rel
 
 This one is interesting because it looks like a big backtrack from "the metaverse" (VR) and a move to augmented/mixed reality (AR/MR), which seemed like the obvious move even when the Metaverse was just created. As evidence: 
 
-> In a similar vein, I’ve always been, I think like a lot of people, more bullish about AR versus VR because like a phone, it’s something that accompanies you in the real world, as opposed to being immersive and you go somewhere else.
+> In a similar vein, I've always been, I think like a lot of people, more bullish about AR versus VR because like a phone, it's something that accompanies you in the real world, as opposed to being immersive and you go somewhere else.
 
 As stated by Ben Thompson in this [2022 interview with Zuckerberg], it was clear back then that AR was likely to be a bigger market than VR.
 
