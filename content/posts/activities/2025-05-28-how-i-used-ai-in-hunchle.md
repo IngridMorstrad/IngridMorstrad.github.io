@@ -7,7 +7,7 @@ tags: activities
 bsky: 3lq7ujbbbuc2w
 ---
 
-I used AI in a big way to build [Hunchle](www.hunchle.com). I figured it would be useful to write this post to share my experience and to document what coding with AI looks like today.
+I used AI in a big way to build [Hunchle](https://www.hunchle.com). I figured it would be useful to write this post to share my experience and to document what coding with AI looks like today.
 
 There were two major ways I used LLMs in Hunchle, a trivia app:
 

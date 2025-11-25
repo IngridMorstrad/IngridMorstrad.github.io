@@ -1,6 +1,24 @@
-_site
+# Hugo build artifacts
+public/
+resources/
+.hugo_build.lock
+
+# Sass cache
 .sass-cache
+
+# Legacy entries
+_site
 *.ignore
 BlogRemove
-
 bower_components/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
