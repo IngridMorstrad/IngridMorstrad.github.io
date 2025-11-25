@@ -34,7 +34,7 @@ Asking ChatGPT which of the myriad ticket options to buy (for the metro for my 3
 It was also great at teaching me a language. I lost the exact prompt I used as I unfortunately set it up as a temporary chat, but with prompting I could get it to be an interactive teacher and start simple.
 
 # Summarizing YouTube videos
-I have a few YouTube videos saved to playlists that I haven't seen for months. These tend to be on the longer side (over an hour long in some cases). I got the transcript for one of the videos using [note GPT](notegpt.io) and then pasted the transcript into an LLM for summarization. Now, I could either skip the entire video - saving an hour of my time - or at least be able to focus more easily on the video since I had an idea of what it would be covering.
+I have a few YouTube videos saved to playlists that I haven't seen for months. These tend to be on the longer side (over an hour long in some cases). I got the transcript for one of the videos using [note GPT](https://notegpt.io) and then pasted the transcript into an LLM for summarization. Now, I could either skip the entire video - saving an hour of my time - or at least be able to focus more easily on the video since I had an idea of what it would be covering.
 
 I also asked it to summarize my writing/brain dump to make a case for why what I'd done was valuable. 
 

@@ -7,7 +7,7 @@ title: NAND game
 
 # What is it
 
-I just finished playing [NAND game](www.nandgame.com) which gets you to build a computer starting from simple relay circuits. As you build components, you get to reuse them. Over time, this means you have an arsenal of components that let you eventually build a computer. I think thiis similar to a course [Nand2Tetris](https://www.nand2tetris.org/) that I'd started years ago but never finished. I skipped the software lessons, but completed all the hardware ones.
+I just finished playing [NAND game](www.nandgame.com) which gets you to build a computer starting from simple relay circuits. As you build components, you get to reuse them. Over time, this means you have an arsenal of components that let you eventually build a computer. I think this is similar to a course [Nand2Tetris](https://www.nand2tetris.org/) that I'd started years ago but never finished. I skipped the software lessons, but completed all the hardware ones.
 
 # What I liked
 

@@ -14,7 +14,7 @@ A few hours after I'd gotten back home (a day later) a fever of 102.3 had built 
 
 ## A citizen scientist
 
-A day later, I decided this might be a good opportunity to chronicle the progression of the disease, and collect some actual data. I started recording my temperature, and the medicines I took. We've had a spike in citizen journalism with the advent of the internet, it would be nice to also have a spike in the number of citizen scienctists! Here's a quick graph of what the five days battling with the fever looked like. By day 6, I was fever-free.   
+A day later, I decided this might be a good opportunity to chronicle the progression of the disease, and collect some actual data. I started recording my temperature, and the medicines I took. We've had a spike in citizen journalism with the advent of the internet, it would be nice to also have a spike in the number of citizen scientists! Here's a quick graph of what the five days battling with the fever looked like. By day 6, I was fever-free.   
 
 ![A graph of COVID temperatures vs time](/assets/images/covidTemps.png)
 
@@ -26,7 +26,7 @@ Day 6 ends at 5:15 PM.
 
 ## Interesting observations
 
-I decided not to take medicines when my temperature was under 102, as I'd read some recommendations that it might be better to let your body do it's thing. A higher temperature lets the immune system function better. I noticed that medicines steeply bring down the temperature, but once it wears off, the body temperature rises as sharply. The third time I took medicine I took it just before the body temperature crossed 102, as I noticed the medicine took around an hour to take effect - the body temperature didn't drop till about an hour after I'd taken the acetaminophen.  
+I decided not to take medicines when my temperature was under 102, as I'd read some recommendations that it might be better to let your body do its thing. A higher temperature lets the immune system function better. I noticed that medicines steeply bring down the temperature, but once it wears off, the body temperature rises as sharply. The third time I took medicine I took it just before the body temperature crossed 102, as I noticed the medicine took around an hour to take effect - the body temperature didn't drop till about an hour after I'd taken the acetaminophen.  
 
 Temperatures didn't correlate with how I felt. I distinctly remember feeling better at 103 than at 102, and sometimes felt worse at 98 than 99. My core body temperature is usually lower than 98, so a 98.6 left me feeling somewhat feverish.
 

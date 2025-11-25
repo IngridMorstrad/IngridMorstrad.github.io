@@ -26,7 +26,7 @@ From https://www.reddit.com/r/ClusterHeadaches/comments/ec77o9/headache_free_for
 > Psilocybin
 > Sphenopalantine ganglion (SPG) nerve block (catheter)
 > Lidocaine nasal spray
-> Botox (on masseter muscle due to tempromandibular joint pain)
+> Botox (on masseter muscle due to temporomandibular joint pain)
 > [Adverse effect] Verapamil -> Edema
 > [Adverse effect] Sumatriptan -> rebound headaches
 > [no effect] Gabapentin
@@ -92,7 +92,7 @@ Above link has other recommendation too, including
 4 recommendations for Excedrin (one saying it caused rebound headaches)  
 2 recommendations for masturbation  
 2 recommendations for sleeping sitting up  
-Many recommendation related to breathing/clearing the sinuse/nasal inhalers ilke anefrin/Flonase
+Many recommendation related to breathing/clearing the sinuses/nasal inhalers like anefrin/Flonase
 Couple of recommendations for a TENS unit
 
 ## Appendix
