@@ -1,5 +1,9 @@
 #!/bin/sh
 
+# NOTE: This script is optional. The site is automatically deployed via GitHub Actions
+# (see .github/workflows/hugo.yml) when changes are pushed to the mainline branch.
+# This script can be used for manual local deployments or as a backup method.
+
 # If a command fails then the deploy stops
 set -e
 
@@ -22,4 +26,4 @@ fi
 git commit -m "$msg"
 
 # Push source and build repos.
-git push origin master
+git push origin mainline

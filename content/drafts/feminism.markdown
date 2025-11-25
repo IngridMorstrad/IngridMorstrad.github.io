@@ -8,3 +8,4 @@ tags: thoughts
 ---
 
 Talk by Chimamanda Ngozi Adichie https://www.youtube..com/watch?v=hg3umXU\_qWc
+
