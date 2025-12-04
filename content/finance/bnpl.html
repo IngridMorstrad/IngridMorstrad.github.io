@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Interest Rate Calculator</title>
+    <!-- Load Tailwind CSS for modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font and base styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+        }
+        .card {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 0 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .input-field {
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .input-field:focus {
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-8 flex items-center justify-center min-h-screen">
+
+    <div class="card bg-white p-6 sm:p-8 rounded-xl w-full max-w-lg">
+        <h1 class="text-3xl font-extrabold text-gray-900 mb-2">Loan Interest Rate Calculator</h1>
+        <p class="text-gray-500 mb-6">Calculate the Effective Annual Rate (EAR) for an installment plan.</p>
+
+        <!-- Input Form -->
+        <div class="space-y-4">
+            <div>
+                <label for="upfrontPrice" class="block text-sm font-medium text-gray-700 mb-1">Upfront Price (PV - Paid Now)</label>
+                <input type="number" id="upfrontPrice" value="444.00" placeholder="e.g., 444.00"
+                       class="input-field mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3 border focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+
+            <div>
+                <label for="monthlyPayment" class="block text-sm font-medium text-gray-700 mb-1">Monthly Payment (PMT)</label>
+                <input type="number" id="monthlyPayment" value="113.50" placeholder="e.g., 113.50"
+                       class="input-field mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3 border focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+
+            <div>
+                <label for="nPayments" class="block text-sm font-medium text-gray-700 mb-1">Number of Payments (NPER - Months)</label>
+                <input type="number" id="nPayments" value="4" placeholder="e.g., 4"
+                       class="input-field mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3 border focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+
+            <button onclick="calculateRate()"
+                    class="w-full bg-indigo-600 text-white font-semibold py-3 px-4 rounded-lg hover:bg-indigo-700 transition duration-150 ease-in-out shadow-lg transform hover:scale-[1.01]">
+                Calculate Interest Rate
+            </button>
+        </div>
+
+        <!-- Results Display -->
+        <div id="results" class="mt-8 pt-6 border-t border-gray-200">
+            <h2 class="text-xl font-bold text-gray-800 mb-3">Results</h2>
+            
+            <p id="totalCost" class="text-md text-gray-700 mb-2">Total Loan Cost: <span class="font-semibold text-gray-900">--</span></p>
+            <p id="interestPaid" class="text-md text-gray-700 mb-4">Interest Paid (Premium): <span class="font-semibold text-gray-900">--</span></p>
+
+            <div class="p-4 rounded-lg bg-indigo-50">
+                <p class="text-lg font-semibold text-indigo-700">Effective Annual Rate (EAR / CAGR):</p>
+                <p id="earResult" class="text-3xl font-extrabold text-indigo-900 mt-1">--</p>
+            </div>
+            
+            <p id="aprResult" class="text-sm text-gray-500 mt-3">Annual Percentage Rate (APR): --</p>
+            <p id="statusMessage" class="mt-4 text-sm font-medium text-red-600 hidden"></p>
+        </div>
+    </div>
+
+    <script>
+        /**
+         * Pure JavaScript implementation of the financial RATE function using an iterative solver (Binary Search).
+         * Solves for the interest rate (r) per period.
+         * The goal is to find r where the Present Value of the Payments equals the Upfront Price (PV).
+         * @param {number} nper - The total number of payment periods.
+         * @param {number} pmt - The periodic payment (negative value).
+         * @param {number} pv - The present value or the upfront price (positive value).
+         * @returns {number} The calculated interest rate per period.
+         */
+        function calculateMonthlyRate(nper, pmt, pv) {
+            // Error tolerance
+            const financialRate = 0.0000001; 
+            // Standard range for a monthly rate solver (0% to 500% monthly)
+            let low = 0.0;
+            let high = 5.0; 
+            let rate = (low + high) / 2; // Start with the midpoint
+
+            // Function to calculate the Present Value (PV) of an annuity stream at a given rate
+            // We are looking for the rate 'r' where PV_payments = PV_loan (Upfront Price)
+            // Function returns: PV_payments - PV_loan
+            function calculatePV(rate) {
+                if (rate === 0) {
+                    // Simple calculation if rate is 0: PV = PMT * NPER
+                    return -pv + (-pmt) * nper; // Note: pmt is passed as negative, so -pmt is positive
+                }
+                // Annuity PV formula: PMT * [ (1 - (1 + r)^-n) / r ] - PV_loan
+                return -pv + (-pmt) * (1 - Math.pow(1 + rate, -nper)) / rate;
+            }
+
+            // Binary search to find the rate where calculatePV(rate) is zero
+            for (let i = 0; i < 50; i++) { // Increase iterations for better precision
+                let pv_calc = calculatePV(rate);
+                
+                if (Math.abs(pv_calc) < financialRate) {
+                    // Rate found within tolerance
+                    return rate; 
+                }
+
+                if (pv_calc > 0) {
+                    // If calculated PV of payments is greater than PV_loan, the rate is too low
+                    // (Lower rate makes future payments more valuable) -> Adjust rate up (low = rate)
+                    low = rate;
+                } else {
+                    // If calculated PV of payments is less than PV_loan, the rate is too high
+                    // (Higher rate makes future payments less valuable) -> Adjust rate down (high = rate)
+                    high = rate;
+                }
+                
+                // Recalculate rate as the new midpoint
+                rate = (high + low) / 2;
+            }
+            
+            return rate; // Return the best estimate after max iterations
+        }
+
+
+        function calculateRate() {
+            const upfrontPriceInput = document.getElementById('upfrontPrice');
+            const monthlyPaymentInput = document.getElementById('monthlyPayment');
+            const nPaymentsInput = document.getElementById('nPayments');
+            const earResult = document.getElementById('earResult');
+            const aprResult = document.getElementById('aprResult');
+            const totalCostEl = document.getElementById('totalCost').querySelector('span');
+            const interestPaidEl = document.getElementById('interestPaid').querySelector('span');
+            const statusMessage = document.getElementById('statusMessage');
+
+            // Reset status and results
+            statusMessage.textContent = "";
+            statusMessage.classList.add('hidden');
+            earResult.textContent = '--';
+            aprResult.textContent = 'Annual Percentage Rate (APR): --';
+            totalCostEl.textContent = '--';
+            interestPaidEl.textContent = '--';
+
+
+            const pv = parseFloat(upfrontPriceInput.value); // Present Value (Upfront Cost)
+            const pmt = parseFloat(monthlyPaymentInput.value); // Periodic Payment (positive input)
+            const nper = parseInt(nPaymentsInput.value, 10); // Number of Periods (Months)
+            const pmt_outflow = -pmt; // Convert payment to negative for financial calculation
+
+            // Basic validation
+            if (isNaN(pv) || isNaN(pmt) || isNaN(nper) || pv <= 0 || pmt <= 0 || nper <= 0) {
+                statusMessage.textContent = 'Please enter valid positive numbers for all fields.';
+                statusMessage.classList.remove('hidden');
+                return;
+            }
+
+            const totalLoanCost = pmt * nper;
+            const interestPaid = totalLoanCost - pv;
+
+            totalCostEl.textContent = `$${totalLoanCost.toFixed(2)}`;
+            interestPaidEl.textContent = `$${interestPaid.toFixed(2)}`;
+
+            if (interestPaid <= 0) {
+                // If loan cost is equal to or less than upfront price, it's 0% or a discount.
+                earResult.textContent = '0.00%';
+                aprResult.textContent = 'Annual Percentage Rate (APR): 0.00%';
+                return;
+            }
+            
+            // Check for impossible scenario (monthly payment too low to pay off principal)
+            if (pmt * nper < pv) {
+                 statusMessage.textContent = 'Error: Total payments are less than the upfront price. The calculation cannot find a positive rate.';
+                 statusMessage.classList.remove('hidden');
+                 return;
+            }
+
+
+            try {
+                // 1. Calculate Monthly Rate (r_m) using the fixed pure JS solver
+                // pv is the upfront price (positive value), pmt_outflow is the outflow (negative value)
+                const monthlyRate = calculateMonthlyRate(nper, pmt_outflow, pv);
+                
+                // 2. Calculate Annual Percentage Rate (APR)
+                const apr = monthlyRate * 12;
+
+                // 3. Calculate Effective Annual Rate (EAR) - the true CAGR interest rate
+                // EAR = (1 + r_m)^12 - 1
+                const ear = Math.pow(1 + monthlyRate, 12) - 1;
+
+                // Display Results
+                earResult.textContent = `${(ear * 100).toFixed(2)}%`;
+                aprResult.textContent = `Annual Percentage Rate (APR): ${(apr * 100).toFixed(2)}%`;
+
+            } catch (error) {
+                statusMessage.textContent = 'An unexpected calculation error occurred.';
+                statusMessage.classList.remove('hidden');
+                console.error("Calculation failed:", error);
+            }
+        }
+
+        // Set up initial calculation on load
+        window.onload = calculateRate;
+    </script>
+</body>
+</html>
