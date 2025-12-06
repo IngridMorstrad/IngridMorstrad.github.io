@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Continuous Activity Actogram - Sleep Analysis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for the continuous timeline */
+        .timeline-container {
+            position: relative;
+            height: 40px;
+            background-color: #e5eeec; /* Light gray-green background */
+            border-radius: 8px;
+            overflow: hidden; 
+            margin-top: 2rem;
+            cursor: crosshair; 
+        }
+        .activity-marker {
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 4px;
+            height: 100%; 
+            background-color: #3b82f6; /* Blue for activity */
+            opacity: 0.8;
+            pointer-events: none;
+            z-index: 1;
+        }
+        /* Activity blocks (filled regions) */
+        .activity-block {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            background-color: #10b981; /* Green for activity */
+            opacity: 0.6;
+            pointer-events: none;
+            border-radius: 4px;
+            z-index: 1;
+        }
+        /* Gap regions (clickable areas between activity blocks) */
+        .gap-region {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            background-color: rgba(251, 191, 36, 0.15); /* Light yellow/amber */
+            border-left: 2px dashed rgba(251, 191, 36, 0.6);
+            border-right: 2px dashed rgba(251, 191, 36, 0.6);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 0;
+        }
+        .gap-region:hover {
+            background-color: rgba(251, 191, 36, 0.35);
+            border-left-color: rgba(251, 191, 36, 0.9);
+            border-right-color: rgba(251, 191, 36, 0.9);
+            z-index: 1;
+        }
+        .gap-tag-btn {
+            background-color: #f59e0b;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            pointer-events: none;
+            white-space: nowrap;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+            cursor: pointer;
+        }
+        .gap-region:hover .gap-tag-btn {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .gap-region.small .gap-tag-btn {
+            font-size: 0.6rem;
+            padding: 2px 4px;
+        }
+        /* Day markers */
+        .day-marker {
+            position: absolute;
+            top: 100%;
+            width: 2px;
+            height: 10px;
+            background-color: #1f2937; 
+            transform: translateX(-1px);
+        }
+        .day-label {
+            position: absolute;
+            top: calc(100% + 12px);
+            transform: translateX(-50%);
+            font-size: 0.75rem;
+            color: #4b5563;
+        }
+        /* Selection Overlay (New) */
+        #selection-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background-color: rgba(239, 68, 68, 0.4); /* Light red semi-transparent for sleep */
+            pointer-events: none;
+            display: none;
+            border-radius: 8px;
+            z-index: 3;
+        }
+        /* Hover Time Display */
+        #hover-time-display {
+            min-height: 1.5rem; 
+        }
+        /* Persistent Sleep Period Display */
+        .sleep-period-display {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            background-color: rgba(239, 68, 68, 0.6); 
+            pointer-events: none;
+            border-radius: 8px;
+            z-index: 2;
+        }
+        /* Persistent Awake Period Display */
+        .awake-period-display {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            background-color: #10b981; /* Green for awake (same as active) */
+            opacity: 0.6;
+            pointer-events: none;
+            border-radius: 8px;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 p-4 sm:p-8 font-sans">
+
+    <div class="max-w-6xl mx-auto">
+        <header class="mb-8">
+            <h1 class="text-3xl font-extrabold text-gray-900">Continuous Activity Actogram</h1>
+            <p class="text-lg text-gray-600 mt-2">
+                Visualization of computer activity blocks over a continuous timeline. <span class="text-sm">🟢 Green = Active/Awake, 🔴 Red = Sleep, 🟡 Yellow = Untagged gaps (click to tag)</span>
+            </p>
+            <div id="storage-status" class="text-xs text-gray-500 mt-2">Using local storage...</div>
+        </header>
+
+        <!-- Visualization Area -->
+        <div id="timeline-chart" class="relative">
+            <!-- Hover Time Display -->
+            <div id="hover-time-display" class="absolute -top-6 left-0 text-sm font-semibold text-indigo-700">Hover for time...</div>
+            
+            <!-- Labels for the Start and End Date -->
+            <div id="date-range" class="flex justify-between text-sm font-medium text-gray-700 mb-2">
+                <span id="start-date"></span>
+                <span id="end-date"></span>
+            </div>
+
+            <!-- The main timeline container -->
+            <div id="timeline-container" class="timeline-container shadow-lg">
+                <!-- Selection Overlay (New) -->
+                <div id="selection-overlay" style="display:none;"></div>
+                <!-- Activity markers and Persistent Sleep markers will be injected here -->
+            </div>
+            
+            <!-- Day separation markers and labels -->
+            <div id="day-markers" class="relative h-6"></div>
+        </div>
+
+        <!-- Duration Measurement & Action Bar -->
+        <div class="mt-8 p-6 bg-white border border-gray-200 rounded-lg shadow-md">
+            <h2 class="text-xl font-semibold text-gray-700 mb-4">Analysis Tools</h2>
+            
+            <div class="flex flex-wrap gap-4 items-center">
+                <div id="duration-display" class="text-lg font-bold text-red-600 min-w-[200px]">
+                    Selected Duration: 0h 0m
+                </div>
+                <button id="tag-sleep-btn" disabled class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-150 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed">
+                    Tag Selected Period as Sleep (Drag)
+                </button>
+                <button id="tag-awake-btn" disabled class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-150 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed">
+                    Tag Selected Period as Awake (Drag)
+                </button>
+                <button id="show-periods-btn" class="bg-gray-700 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-150 ease-in-out">
+                    Generate Sleep & Awake Periods
+                </button>
+            </div>
+        </div>
+        
+        <!-- Chronological Periods List -->
+        <div class="mt-8 p-6 bg-white border border-gray-200 rounded-lg shadow-md" id="periods-output-area" style="display:none;">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-semibold text-gray-700">Chronological Periods (Gaps are candidate sleep periods)</h2>
+                <div class="flex space-x-2">
+                    <button id="copy-periods-btn" class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold py-2 px-4 rounded-lg shadow-md transition duration-150 ease-in-out">
+                        Copy to Clipboard
+                    </button>
+                    <button id="download-periods-btn" class="bg-green-600 hover:bg-green-700 text-white text-sm font-bold py-2 px-4 rounded-lg shadow-md transition duration-150 ease-in-out">
+                        Download All Periods (JSON)
+                    </button>
+                    <button id="clear-all-btn" class="bg-red-600 hover:bg-red-700 text-white text-sm font-bold py-2 px-4 rounded-lg shadow-md transition duration-150 ease-in-out">
+                        Clear All Periods
+                    </button>
+                </div>
+            </div>
+            <div id="periods-list" class="space-y-2">
+                <p class="text-gray-500">Click "Generate Sleep & Awake Periods" above.</p>
+            </div>
+        </div>
+
+        <!-- Data Input, Import/Export & Settings Area -->
+        <div class="mt-8 p-6 bg-white border border-gray-200 rounded-lg shadow-inner">
+            <h2 class="text-xl font-semibold text-gray-700 mb-4">Data Management & Settings</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-end mb-4">
+                <!-- Timezone Select -->
+                <div class="md:col-span-1">
+                    <label for="timezone-select" class="block text-sm font-medium text-gray-700">Display Timezone</label>
+                    <select id="timezone-select" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                        <option value="UTC" selected>UTC (Raw Data)</option>
+                        <option value="PST">PST (UTC-8)</option>
+                        <option value="CET">CET (UTC+1)</option>
+                    </select>
+                </div>
+                
+                <!-- Load Data Button -->
+                <div class="md:col-span-3">
+                    <label for="raw-data-input" class="block text-sm font-medium text-gray-700 mb-1">Paste activity data here (plain or START:/END: format):</label>
+                    <div class="flex space-x-2">
+                        <textarea id="raw-data-input" rows="1" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md p-2 font-mono text-xs" placeholder="Example: START: 2025-12-01 22:30:15..."></textarea>
+                        <button id="load-data-btn" class="w-1/3 min-w-[120px] bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-150 ease-in-out">
+                            Load & Visualize
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Import Periods Section -->
+            <div class="mt-6 border-t pt-4">
+                <h3 class="text-lg font-medium text-gray-700 mb-2">Import Pre-Tracked Periods</h3>
+                <label for="import-periods-input" class="block text-sm font-medium text-gray-500">Paste Periods JSON here (from downloaded file):</label>
+                <div class="flex space-x-2 mt-1">
+                    <textarea id="import-periods-input" rows="3" class="shadow-sm focus:ring-yellow-500 focus:border-yellow-500 block w-full sm:text-sm border border-gray-300 rounded-md p-2 font-mono text-xs" placeholder='{"sleep": [{"startTime": 1672531200000, "endTime": 1672560000000}], "awake": [{"startTime": 1672560000000, "endTime": 1672580000000}]}
+                    '></textarea>
+                    <button id="import-periods-btn" class="w-1/3 min-w-[120px] bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-150 ease-in-out">
+                        Import & Overwrite
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <footer class="mt-12 pt-6 border-t border-gray-200">
+            <p class="text-sm text-gray-500">
+                Data input is assumed to be in UTC. All tagged periods (sleep and awake) are saved locally using your browser's local storage. 
+                Yellow dashed regions indicate gaps between activity blocks - hover and click to tag them as sleep or awake periods.
+            </p>
+        </footer>
+    </div>
+
+    <script type="module">
+        
+        // --- GLOBAL STATE ---
+        let globalTimestamps = [];
+        let globalActivityBlocks = []; // Array of {start, end} for activity blocks
+        let globalStartTime = 0;
+        let globalEndTime = 0;
+        let globalTotalDurationMs = 0;
+
+        // Selection State (Milliseconds since epoch)
+        let selectionStartMs = 0;
+        let selectionEndMs = 0;
+        let currentPeriods = []; // Array of {type: 'sleep'|'awake', startTime, endTime}
+
+        // Timezone Configuration
+        const TIMEZONES = {
+            'UTC': { name: 'UTC', identifier: 'UTC' },
+            'PST': { name: 'PST', identifier: 'America/Los_Angeles' }, 
+            'CET': { name: 'CET', identifier: 'Europe/Paris' }         
+        };
+
+        // UI Element References
+        const timelineContainer = document.getElementById('timeline-container');
+        const selectionOverlay = document.getElementById('selection-overlay');
+        const durationDisplay = document.getElementById('duration-display');
+        const tagSleepBtn = document.getElementById('tag-sleep-btn');
+        const tagAwakeBtn = document.getElementById('tag-awake-btn');
+        const showPeriodsBtn = document.getElementById('show-periods-btn');
+        const periodsList = document.getElementById('periods-list');
+        const periodsOutputArea = document.getElementById('periods-output-area');
+        const storageStatus = document.getElementById('storage-status'); 
+        const downloadPeriodsBtn = document.getElementById('download-periods-btn');
+        const copyPeriodsBtn = document.getElementById('copy-periods-btn');
+        const importPeriodsBtn = document.getElementById('import-periods-btn');
+        const importPeriodsInput = document.getElementById('import-periods-input');
+        const clearAllBtn = document.getElementById('clear-all-btn');
+        
+        // Other UI references
+        const dayMarkersContainer = document.getElementById('day-markers');
+        const startDateEl = document.getElementById('start-date');
+        const endDateEl = document.getElementById('end-date');
+        const rawDataInput = document.getElementById('raw-data-input');
+        const timezoneSelect = document.getElementById('timezone-select');
+        const hoverTimeDisplay = document.getElementById('hover-time-display');
+
+        // --- UTILITY FUNCTIONS ---
+
+        /**
+         * Shows a temporary notification message in the bottom right corner.
+         * @param {string} message - The message content.
+         * @param {boolean} isError - If true, style as an error.
+         */
+        function showNotification(message, isError = false) {
+            // Remove existing notification if present to avoid stacking
+            document.querySelectorAll('.notification-box').forEach(el => el.remove());
+            
+            const notification = document.createElement('div');
+            notification.className = `notification-box fixed bottom-4 right-4 p-3 rounded-lg shadow-xl text-white font-semibold transition-opacity duration-300 z-50 ${isError ? 'bg-red-700' : 'bg-green-600'}`;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            // Auto-remove after 3 seconds
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                notification.style.pointerEvents = 'none'; // Make sure it can't be clicked while fading
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        function formatDuration(ms) {
+            const totalSeconds = Math.floor(ms / 1000);
+            const hours = Math.floor(totalSeconds / 3600);
+            const minutes = Math.floor((totalSeconds % 3600) / 60);
+            const seconds = totalSeconds % 60;
+            if (hours > 0) return `${hours}h ${minutes}m ${seconds}s`;
+            if (minutes > 0) return `${minutes}m ${seconds}s`;
+            return `${seconds}s`;
+        }
+        
+        function formatTimeForDisplay(timestamp, tzIdentifier) {
+             const formatOptions = { 
+                hour12: false, 
+                timeZone: tzIdentifier, 
+                year: 'numeric', 
+                month: '2-digit', 
+                day: '2-digit', 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit' 
+            };
+            return new Date(timestamp).toLocaleString('en-US', formatOptions);
+        }
+
+        /**
+         * Cleans, parses, and validates raw timestamp data.
+         * Treats the incoming string timestamps as UTC.
+         * Supports both plain timestamps and labeled format (START:/END:)
+         * @param {string} rawData - Raw input string from the textarea.
+         * @returns {Object} Object with timestamps array and activityBlocks array
+         */
+        function processData(rawData) {
+            const lines = rawData.trim().split('\n').map(l => l.trim()).filter(l => l.length > 0);
+            
+            const timestamps = [];
+            const activityBlocks = [];
+            let currentBlockStart = null;
+            
+            for (let line of lines) {
+                let isStart = false;
+                let isEnd = false;
+                let tsString = line;
+                
+                if (line.startsWith('START:')) {
+                    isStart = true;
+                    tsString = line.substring(line.indexOf(':') + 1).trim();
+                } else if (line.startsWith('END:')) {
+                    isEnd = true;
+                    tsString = line.substring(line.indexOf(':') + 1).trim();
+                }
+                
+                const date = new Date(tsString + 'Z');
+                if (isNaN(date.getTime())) continue;
+                
+                timestamps.push(date);
+                
+                // Track activity blocks if using START:/END: format
+                if (isStart) {
+                    currentBlockStart = date;
+                } else if (isEnd && currentBlockStart) {
+                    activityBlocks.push({
+                        start: currentBlockStart.getTime(),
+                        end: date.getTime()
+                    });
+                    currentBlockStart = null;
+                }
+            }
+            
+            timestamps.sort((a, b) => a.getTime() - b.getTime());
+            activityBlocks.sort((a, b) => a.start - b.start);
+            
+            return { timestamps, activityBlocks };
+        }
+
+        // --- DRAG SELECTION LOGIC (Unchanged) ---
+        
+        let isDragging = false;
+        let dragStartX = 0;
+
+        function handleMouseDown(e) {
+            if (e.target.id !== 'timeline-container' || globalTotalDurationMs <= 0) return;
+            isDragging = true;
+            dragStartX = e.clientX;
+            selectionOverlay.style.display = 'block';
+            selectionOverlay.style.width = '0px';
+            
+            const rect = timelineContainer.getBoundingClientRect();
+            const relativeX = (e.clientX - rect.left) / rect.width;
+            selectionStartMs = globalStartTime + relativeX * globalTotalDurationMs;
+            selectionEndMs = selectionStartMs; 
+            
+            tagSleepBtn.disabled = true;
+            tagAwakeBtn.disabled = true;
+            durationDisplay.textContent = `Selected Duration: 0h 0m`;
+        }
+
+        function handleMouseMove(e) {
+            if (globalTotalDurationMs <= 0) return;
+
+            // Hover time display logic
+            if (!isDragging) {
+                const rect = timelineContainer.getBoundingClientRect();
+                const relativeX = (e.clientX - rect.left);
+                const positionPercent = (relativeX / rect.width) * 100;
+                
+                const boundedPositionPercent = Math.max(0, Math.min(100, positionPercent));
+
+                hoverTimeDisplay.textContent = calculateHoverTime(e);
+                hoverTimeDisplay.style.left = `calc(${boundedPositionPercent}% - 50px)`;
+            }
+
+            // Drag selection logic
+            if (isDragging) {
+                const rect = timelineContainer.getBoundingClientRect();
+                let currentX = e.clientX;
+                
+                currentX = Math.max(rect.left, Math.min(rect.right, currentX));
+
+                const startCoord = Math.min(dragStartX, currentX);
+                const endCoord = Math.max(dragStartX, currentX);
+                const width = endCoord - startCoord;
+
+                selectionOverlay.style.left = (startCoord - rect.left) + 'px';
+                selectionOverlay.style.width = width + 'px';
+                
+                const startXRelative = (startCoord - rect.left) / rect.width;
+                const endXRelative = (endCoord - rect.left) / rect.width;
+
+                selectionStartMs = globalStartTime + startXRelative * globalTotalDurationMs;
+                selectionEndMs = globalStartTime + endXRelative * globalTotalDurationMs;
+                
+                const durationMs = selectionEndMs - selectionStartMs;
+                durationDisplay.textContent = `Selected Duration: ${formatDuration(durationMs)}`;
+                
+                tagSleepBtn.disabled = (durationMs < 60000);
+                tagAwakeBtn.disabled = (durationMs < 60000);
+            }
+        }
+
+        function handleMouseUp(e) {
+            if (isDragging) {
+                isDragging = false;
+                if (selectionEndMs - selectionStartMs < 60000) {
+                    selectionOverlay.style.width = '0px';
+                    tagSleepBtn.disabled = true;
+                    tagAwakeBtn.disabled = true;
+                    durationDisplay.textContent = `Selected Duration: 0h 0m (Drag longer than 1 min)`;
+                }
+            }
+        }
+
+        // --- LOCAL STORAGE DATA PERSISTENCE (Sleep & Awake Tags) ---
+
+        const STORAGE_KEY = 'userPeriods';
+
+        function loadPeriods() {
+            try {
+                const storedData = localStorage.getItem(STORAGE_KEY);
+                let periods = storedData ? JSON.parse(storedData) : [];
+                
+                // Migrate old format (sleep-only) to new format
+                if (periods.length > 0 && !periods[0].type) {
+                    periods = periods.map(p => ({ type: 'sleep', startTime: p.startTime, endTime: p.endTime }));
+                }
+                
+                periods = periods.filter(p => 
+                    p && 
+                    (p.type === 'sleep' || p.type === 'awake') &&
+                    typeof p.startTime === 'number' && 
+                    typeof p.endTime === 'number' && 
+                    p.startTime < p.endTime
+                );
+                
+                periods.sort((a, b) => a.startTime - b.startTime);
+                currentPeriods = periods;
+                renderPersistentPeriods();
+                const sleepCount = currentPeriods.filter(p => p.type === 'sleep').length;
+                const awakeCount = currentPeriods.filter(p => p.type === 'awake').length;
+                storageStatus.textContent = `Storage: Local Storage (${sleepCount} sleep, ${awakeCount} awake tags loaded).`;
+            } catch (e) {
+                console.error("Error loading from localStorage:", e);
+                currentPeriods = [];
+                storageStatus.textContent = 'Storage Error: Resetting local period data.';
+            }
+        }
+
+        function savePeriodsToLocalStorage(periods) {
+             try {
+                const cleanPeriods = periods.map(p => ({
+                    type: p.type || 'sleep', // Default to sleep for backward compatibility
+                    startTime: p.startTime,
+                    endTime: p.endTime
+                }));
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(cleanPeriods));
+                loadPeriods(); // Reload and re-render timeline
+                return true;
+            } catch (e) {
+                console.error("Error saving to localStorage: ", e);
+                return false;
+            }
+        }
+
+        /**
+         * Saves a new period (sleep or awake) and triggers UI refresh.
+         * @param {number} startMs - Start time in milliseconds.
+         * @param {number} endMs - End time in milliseconds.
+         * @param {string} type - 'sleep' or 'awake'
+         */
+        function savePeriod(startMs, endMs, type = 'sleep') {
+            if (endMs <= startMs || endMs - startMs < 60000) {
+                showNotification('Period must be longer than 1 minute.', true);
+                return;
+            }
+
+            if (type !== 'sleep' && type !== 'awake') {
+                showNotification('Invalid period type. Must be "sleep" or "awake".', true);
+                return;
+            }
+
+            // Remove any overlapping periods of the same or different type
+            const existingPeriods = [...currentPeriods];
+            const filteredPeriods = existingPeriods.filter(p => {
+                // Remove if completely contained within new period
+                if (p.startTime >= startMs && p.endTime <= endMs) return false;
+                // Remove if completely contains new period
+                if (p.startTime <= startMs && p.endTime >= endMs) return false;
+                // Remove if overlaps significantly (more than 50%)
+                const overlapStart = Math.max(p.startTime, startMs);
+                const overlapEnd = Math.min(p.endTime, endMs);
+                if (overlapStart < overlapEnd) {
+                    const overlapDuration = overlapEnd - overlapStart;
+                    const pDuration = p.endTime - p.startTime;
+                    if (overlapDuration > pDuration * 0.5) return false;
+                }
+                return true;
+            });
+
+            const newPeriod = { type, startTime: startMs, endTime: endMs };
+            filteredPeriods.push(newPeriod);
+            
+            if (savePeriodsToLocalStorage(filteredPeriods)) {
+                // If the tag came from drag selection, clear the overlay
+                if (startMs === selectionStartMs && endMs === selectionEndMs) {
+                    selectionOverlay.style.width = '0px';
+                    tagSleepBtn.disabled = true;
+                    tagAwakeBtn.disabled = true;
+                    durationDisplay.textContent = `Tagged as ${type === 'sleep' ? 'Sleep' : 'Awake'}! 0h 0m`;
+                }
+                
+                showNotification(`${type === 'sleep' ? 'Sleep' : 'Awake'} tagged: ${formatDuration(endMs - startMs)}`);
+
+                // Re-calculate the periods list if it's currently displayed
+                if(periodsOutputArea.style.display !== 'none') {
+                    calculatePeriods();
+                }
+            } else {
+                 showNotification(`Error: Could not save ${type} tag.`, true);
+            }
+        }
+
+        // Backward compatibility wrapper
+        function saveSleepPeriod(startMs, endMs) {
+            savePeriod(startMs, endMs, 'sleep');
+        }
+
+        /**
+         * Merges two consecutive periods of the same type.
+         * Removes both periods and creates a new merged period.
+         * @param {number} start1 - Start time of first period
+         * @param {number} end1 - End time of first period
+         * @param {number} start2 - Start time of second period
+         * @param {number} end2 - End time of second period
+         * @param {string} type - 'sleep' or 'awake'
+         */
+        function mergeConsecutivePeriods(start1, end1, start2, end2, type) {
+            const existingPeriods = [...currentPeriods];
+            
+            // Find and remove periods that overlap with the two periods being merged
+            // We need to check for any overlapping periods, not just exact matches
+            const filteredPeriods = existingPeriods.filter(p => {
+                // Check if this period overlaps with the first period being merged
+                const overlapsFirst = !(p.endTime <= start1 || p.startTime >= end1);
+                // Check if this period overlaps with the second period being merged
+                const overlapsSecond = !(p.endTime <= start2 || p.startTime >= end2);
+                
+                // Remove if it overlaps with either period
+                return !(overlapsFirst || overlapsSecond);
+            });
+
+            // Create merged period (from start of first to end of second)
+            const mergedStart = Math.min(start1, start2);
+            const mergedEnd = Math.max(end1, end2);
+            const mergedPeriod = { type, startTime: mergedStart, endTime: mergedEnd };
+            
+            filteredPeriods.push(mergedPeriod);
+            
+            if (savePeriodsToLocalStorage(filteredPeriods)) {
+                showNotification(`Merged ${type} period: ${formatDuration(mergedEnd - mergedStart)}`);
+                
+                // Re-calculate the periods list if it's currently displayed
+                if(periodsOutputArea.style.display !== 'none') {
+                    calculatePeriods();
+                }
+            } else {
+                showNotification(`Error: Could not merge periods.`, true);
+            }
+        }
+        
+        // --- IMPORT / EXPORT FUNCTIONS (Unchanged) ---
+        
+        function downloadPeriods() {
+            // Export in clean format: separate arrays for sleep and awake
+            const sleepPeriods = currentPeriods
+                .filter(p => p.type === 'sleep')
+                .map(p => ({ startTime: p.startTime, endTime: p.endTime }));
+            const awakePeriods = currentPeriods
+                .filter(p => p.type === 'awake')
+                .map(p => ({ startTime: p.startTime, endTime: p.endTime }));
+            
+            const exportData = {
+                sleep: sleepPeriods,
+                awake: awakePeriods
+            };
+            
+            const data = JSON.stringify(exportData, null, 2);
+            const blob = new Blob([data], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `periods_${new Date().toISOString().split('T')[0]}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showNotification('Periods JSON downloaded.');
+        }
+
+        function copyPeriodsToClipboard() {
+            // Export in clean format: separate arrays for sleep and awake
+            const sleepPeriods = currentPeriods
+                .filter(p => p.type === 'sleep')
+                .map(p => ({ startTime: p.startTime, endTime: p.endTime }));
+            const awakePeriods = currentPeriods
+                .filter(p => p.type === 'awake')
+                .map(p => ({ startTime: p.startTime, endTime: p.endTime }));
+            
+            const exportData = {
+                sleep: sleepPeriods,
+                awake: awakePeriods
+            };
+            
+            const data = JSON.stringify(exportData, null, 2);
+            navigator.clipboard.writeText(data).then(() => {
+                showNotification('Periods JSON copied to clipboard!');
+            }).catch(err => {
+                console.error('Failed to copy to clipboard:', err);
+                showNotification('Failed to copy to clipboard. Please try again.');
+            });
+        }
+
+        function importPeriods() {
+            const rawJson = importPeriodsInput.value.trim();
+            if (!rawJson) {
+                showNotification('Paste JSON data into the field before clicking Import.', true);
+                return;
+            }
+
+            try {
+                const importedData = JSON.parse(rawJson);
+                let validPeriods = [];
+                
+                // Support both new format {sleep: [...], awake: [...]} and old format (array)
+                if (importedData.sleep || importedData.awake) {
+                    // New format
+                    if (Array.isArray(importedData.sleep)) {
+                        validPeriods.push(...importedData.sleep.map(p => ({
+                            type: 'sleep',
+                            startTime: Number(p.startTime),
+                            endTime: Number(p.endTime)
+                        })));
+                    }
+                    if (Array.isArray(importedData.awake)) {
+                        validPeriods.push(...importedData.awake.map(p => ({
+                            type: 'awake',
+                            startTime: Number(p.startTime),
+                            endTime: Number(p.endTime)
+                        })));
+                    }
+                } else if (Array.isArray(importedData)) {
+                    // Old format or array with type field
+                    validPeriods = importedData.map(p => ({
+                        type: p.type || 'sleep', // Default to sleep for backward compatibility
+                        startTime: Number(p.startTime),
+                        endTime: Number(p.endTime)
+                    }));
+                } else {
+                    throw new Error('Imported data must be a JSON Object with sleep/awake arrays or a JSON Array.');
+                }
+                
+                validPeriods = validPeriods.filter(p => 
+                    !isNaN(p.startTime) && 
+                    !isNaN(p.endTime) && 
+                    p.startTime < p.endTime &&
+                    (p.type === 'sleep' || p.type === 'awake')
+                );
+
+                if (validPeriods.length === 0 && (importedData.length > 0 || (importedData.sleep && importedData.sleep.length > 0) || (importedData.awake && importedData.awake.length > 0))) {
+                     showNotification('No valid periods found in the imported JSON.', true);
+                     return;
+                }
+
+                const sleepCount = validPeriods.filter(p => p.type === 'sleep').length;
+                const awakeCount = validPeriods.filter(p => p.type === 'awake').length;
+                const totalCurrent = currentPeriods.length;
+
+                if (confirm(`Importing will overwrite ${totalCurrent} existing tags with ${validPeriods.length} new tags (${sleepCount} sleep, ${awakeCount} awake). Continue?`)) {
+                    if (savePeriodsToLocalStorage(validPeriods)) {
+                        showNotification(`Successfully imported ${validPeriods.length} periods (${sleepCount} sleep, ${awakeCount} awake)!`);
+                        visualizeData(); // Re-render everything
+                        importPeriodsInput.value = ''; // Clear input on success
+                    } else {
+                         showNotification(`Import failed due to storage error.`, true);
+                    }
+                }
+
+            } catch (e) {
+                console.error("Import Error:", e);
+                showNotification('Failed to import data. Please check the JSON format.', true);
+            }
+        }
+
+        function clearAllPeriods() {
+            if (currentPeriods.length === 0) {
+                showNotification('No periods to clear.', false);
+                return;
+            }
+
+            const sleepCount = currentPeriods.filter(p => p.type === 'sleep').length;
+            const awakeCount = currentPeriods.filter(p => p.type === 'awake').length;
+
+            if (confirm(`Are you sure you want to clear all ${currentPeriods.length} periods (${sleepCount} sleep, ${awakeCount} awake)? This cannot be undone.`)) {
+                if (savePeriodsToLocalStorage([])) {
+                    showNotification('All periods cleared!');
+                    visualizeData(); // Re-render everything
+                    if(periodsOutputArea.style.display !== 'none') {
+                        calculatePeriods();
+                    }
+                } else {
+                    showNotification('Failed to clear periods.', true);
+                }
+            }
+        }
+
+
+        function initStorage() {
+            if (typeof localStorage === 'undefined') {
+                storageStatus.textContent = 'ERROR: Local Storage is not available.';
+                tagSleepBtn.disabled = true;
+                tagAwakeBtn.disabled = true;
+                return;
+            }
+            loadPeriods();
+        }
+
+        // --- RENDERING FUNCTIONS ---
+
+        function renderPersistentPeriods() {
+            document.querySelectorAll('.sleep-period-display').forEach(el => el.remove());
+            document.querySelectorAll('.awake-period-display').forEach(el => el.remove());
+
+            if (globalTotalDurationMs <= 0) return;
+
+            const tzIdentifier = TIMEZONES[timezoneSelect.value].identifier;
+
+            currentPeriods.forEach(period => {
+                const startOffsetMs = period.startTime - globalStartTime;
+                const endOffsetMs = period.endTime - globalStartTime;
+
+                if (endOffsetMs <= 0 || startOffsetMs >= globalTotalDurationMs) return;
+
+                const startPercent = Math.max(0, (startOffsetMs / globalTotalDurationMs) * 100);
+                const endPercent = Math.min(100, (endOffsetMs / globalTotalDurationMs) * 100);
+                const widthPercent = endPercent - startPercent;
+
+                if (widthPercent > 0) {
+                    const el = document.createElement('div');
+                    el.className = period.type === 'sleep' ? 'sleep-period-display' : 'awake-period-display';
+                    el.style.left = `${startPercent}%`;
+                    el.style.width = `${widthPercent}%`;
+                    
+                    const typeLabel = period.type === 'sleep' ? 'SLEEP' : 'AWAKE';
+                    el.title = `${typeLabel}: ${formatTimeForDisplay(period.startTime, tzIdentifier)} - ${formatTimeForDisplay(period.endTime, tzIdentifier)} (${formatDuration(period.endTime - period.startTime)})`;
+                    
+                    timelineContainer.appendChild(el);
+                }
+            });
+
+            renderActivityMarkers();
+        }
+
+        function renderActivityMarkers() {
+            // Remove old markers and blocks
+            document.querySelectorAll('.activity-marker').forEach(el => el.remove());
+            document.querySelectorAll('.activity-block').forEach(el => el.remove());
+            document.querySelectorAll('.gap-region').forEach(el => el.remove());
+
+            if (globalTotalDurationMs <= 0) return;
+
+            const tzIdentifier = TIMEZONES[timezoneSelect.value].identifier;
+            
+            // If we have activity blocks (from START:/END: format), render them as filled regions
+            if (globalActivityBlocks.length > 0) {
+                // Render activity blocks
+                globalActivityBlocks.forEach(block => {
+                    const startOffsetMs = block.start - globalStartTime;
+                    const endOffsetMs = block.end - globalStartTime;
+
+                    if (endOffsetMs <= 0 || startOffsetMs >= globalTotalDurationMs) return;
+
+                    const startPercent = Math.max(0, (startOffsetMs / globalTotalDurationMs) * 100);
+                    const endPercent = Math.min(100, (endOffsetMs / globalTotalDurationMs) * 100);
+                    const widthPercent = endPercent - startPercent;
+
+                    if (widthPercent > 0) {
+                        const el = document.createElement('div');
+                        el.className = 'activity-block';
+                        el.style.left = `${startPercent}%`;
+                        el.style.width = `${widthPercent}%`;
+                        el.title = `ACTIVE: ${formatTimeForDisplay(block.start, tzIdentifier)} - ${formatTimeForDisplay(block.end, tzIdentifier)} (${formatDuration(block.end - block.start)})`;
+                        timelineContainer.appendChild(el);
+                    }
+                });
+                
+                // Render gaps between activity blocks as clickable regions
+                renderGapRegions();
+            } else {
+                // Fallback: render individual timestamps as thin markers (for plain timestamp data)
+                globalTimestamps.forEach(ts => {
+                    const marker = document.createElement('div');
+                    marker.className = 'activity-marker';
+
+                    const positionMs = ts.getTime() - globalStartTime;
+                    const positionPercent = (positionMs / globalTotalDurationMs) * 100;
+
+                    marker.style.left = `${positionPercent}%`;
+                    marker.title = formatTimeForDisplay(ts.getTime(), tzIdentifier);
+                    timelineContainer.appendChild(marker);
+                });
+            }
+        }
+        
+        function renderGapRegions() {
+            if (globalActivityBlocks.length === 0) return;
+            
+            const tzIdentifier = TIMEZONES[timezoneSelect.value].identifier;
+            const gaps = calculateGaps();
+            
+            gaps.forEach(gap => {
+                // Check if this gap is already covered by a tagged period (sleep or awake)
+                const isAlreadyTagged = currentPeriods.some(period => 
+                    period.startTime <= gap.start && period.endTime >= gap.end
+                );
+                
+                // Skip if already tagged or too small to render
+                if (isAlreadyTagged || gap.durationMs < 60000) return; // Skip gaps < 1 minute
+                
+                const startOffsetMs = gap.start - globalStartTime;
+                const endOffsetMs = gap.end - globalStartTime;
+
+                if (endOffsetMs <= 0 || startOffsetMs >= globalTotalDurationMs) return;
+
+                const startPercent = Math.max(0, (startOffsetMs / globalTotalDurationMs) * 100);
+                const endPercent = Math.min(100, (endOffsetMs / globalTotalDurationMs) * 100);
+                const widthPercent = endPercent - startPercent;
+
+                if (widthPercent > 0.3) { // Only render if wide enough to see
+                    const el = document.createElement('div');
+                    el.className = 'gap-region';
+                    if (widthPercent < 3) {
+                        el.classList.add('small');
+                    }
+                    el.style.left = `${startPercent}%`;
+                    el.style.width = `${widthPercent}%`;
+                    el.title = `Gap: ${formatTimeForDisplay(gap.start, tzIdentifier)} - ${formatTimeForDisplay(gap.end, tzIdentifier)} (${formatDuration(gap.durationMs)})\nClick to tag as sleep or awake`;
+                    
+                    // Add buttons inside gap (text adapts to size)
+                    const btnContainer = document.createElement('div');
+                    btnContainer.style.display = 'flex';
+                    btnContainer.style.gap = '4px';
+                    btnContainer.style.flexDirection = widthPercent < 5 ? 'column' : 'row';
+                    
+                    const sleepBtn = document.createElement('div');
+                    sleepBtn.className = 'gap-tag-btn';
+                    sleepBtn.style.backgroundColor = '#ef4444'; // Red for sleep
+                    sleepBtn.style.pointerEvents = 'auto'; // Enable clicks
+                    if (widthPercent >= 5) {
+                        sleepBtn.textContent = '💤 Sleep';
+                    } else if (widthPercent >= 2) {
+                        sleepBtn.textContent = '💤';
+                    } else {
+                        sleepBtn.textContent = '💤';
+                    }
+                    
+                    const awakeBtn = document.createElement('div');
+                    awakeBtn.className = 'gap-tag-btn';
+                    awakeBtn.style.backgroundColor = '#10b981'; // Green for awake
+                    awakeBtn.style.pointerEvents = 'auto'; // Enable clicks
+                    if (widthPercent >= 5) {
+                        awakeBtn.textContent = '👁 Awake';
+                    } else if (widthPercent >= 2) {
+                        awakeBtn.textContent = '👁';
+                    } else {
+                        awakeBtn.textContent = '👁';
+                    }
+                    
+                    btnContainer.appendChild(sleepBtn);
+                    btnContainer.appendChild(awakeBtn);
+                    el.appendChild(btnContainer);
+                    
+                    // Click handlers
+                    sleepBtn.onclick = (e) => {
+                        e.stopPropagation();
+                        if (confirm(`Tag this ${formatDuration(gap.durationMs)} gap as SLEEP?\n\nFrom: ${formatTimeForDisplay(gap.start, tzIdentifier)}\nTo: ${formatTimeForDisplay(gap.end, tzIdentifier)}`)) {
+                            savePeriod(gap.start, gap.end, 'sleep');
+                        }
+                    };
+                    
+                    awakeBtn.onclick = (e) => {
+                        e.stopPropagation();
+                        if (confirm(`Tag this ${formatDuration(gap.durationMs)} gap as AWAKE?\n\nFrom: ${formatTimeForDisplay(gap.start, tzIdentifier)}\nTo: ${formatTimeForDisplay(gap.end, tzIdentifier)}`)) {
+                            savePeriod(gap.start, gap.end, 'awake');
+                        }
+                    };
+                    
+                    // Also allow clicking the gap region itself to show options
+                    el.onclick = (e) => {
+                        if (e.target === el || e.target === btnContainer) {
+                            const choice = confirm(`Tag this ${formatDuration(gap.durationMs)} gap?\n\nClick OK for SLEEP, Cancel for AWAKE.\n\nFrom: ${formatTimeForDisplay(gap.start, tzIdentifier)}\nTo: ${formatTimeForDisplay(gap.end, tzIdentifier)}`);
+                            if (choice) {
+                                savePeriod(gap.start, gap.end, 'sleep');
+                            } else {
+                                savePeriod(gap.start, gap.end, 'awake');
+                            }
+                        }
+                    };
+                    
+                    timelineContainer.appendChild(el);
+                }
+            });
+        }
+        
+        function calculateGaps() {
+            const gaps = [];
+            
+            if (globalActivityBlocks.length === 0) return gaps;
+            
+            const sortedBlocks = [...globalActivityBlocks].sort((a, b) => a.start - b.start);
+            
+            // Gap before first activity block
+            if (sortedBlocks[0].start > globalStartTime) {
+                gaps.push({
+                    start: globalStartTime,
+                    end: sortedBlocks[0].start,
+                    durationMs: sortedBlocks[0].start - globalStartTime
+                });
+            }
+            
+            // Gaps between activity blocks
+            for (let i = 0; i < sortedBlocks.length - 1; i++) {
+                const currentEnd = sortedBlocks[i].end;
+                const nextStart = sortedBlocks[i + 1].start;
+                
+                if (nextStart > currentEnd) {
+                    gaps.push({
+                        start: currentEnd,
+                        end: nextStart,
+                        durationMs: nextStart - currentEnd
+                    });
+                }
+            }
+            
+            // Gap after last activity block
+            const lastBlock = sortedBlocks[sortedBlocks.length - 1];
+            if (lastBlock.end < globalEndTime) {
+                gaps.push({
+                    start: lastBlock.end,
+                    end: globalEndTime,
+                    durationMs: globalEndTime - lastBlock.end
+                });
+            }
+            
+            return gaps;
+        }
+        
+        function renderTimeline(data) {
+            const timestamps = data.timestamps;
+            const activityBlocks = data.activityBlocks;
+            
+            globalTimestamps = timestamps;
+            globalActivityBlocks = activityBlocks;
+            globalStartTime = timestamps.length > 0 ? timestamps[0].getTime() : 0;
+            globalEndTime = timestamps.length > 0 ? timestamps[timestamps.length - 1].getTime() : 0;
+            globalTotalDurationMs = globalEndTime - globalStartTime;
+            
+            selectionOverlay.style.width = '0px';
+            tagSleepBtn.disabled = true;
+            tagAwakeBtn.disabled = true;
+            durationDisplay.textContent = 'Selected Duration: 0h 0m';
+
+            if (globalTotalDurationMs <= 0) {
+                timelineContainer.innerHTML = '<p class="text-center text-gray-500 pt-3">No data to display. Paste timestamps and click Load.</p>';
+                startDateEl.textContent = '';
+                endDateEl.textContent = '';
+                dayMarkersContainer.innerHTML = '';
+                hoverTimeDisplay.textContent = 'Hover for time...';
+                return;
+            }
+            
+            timelineContainer.appendChild(selectionOverlay); 
+
+            const selectedTZ = timezoneSelect.value;
+            const tzIdentifier = TIMEZONES[selectedTZ].identifier;
+            
+            const formatOptions = { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', timeZone: tzIdentifier };
+            const dayLabelOptions = { weekday: 'short', timeZone: tzIdentifier };
+
+            startDateEl.textContent = timestamps[0].toLocaleDateString('en-US', formatOptions);
+            endDateEl.textContent = timestamps[timestamps.length - 1].toLocaleDateString('en-US', formatOptions);
+
+            renderActivityMarkers();
+            renderPersistentPeriods();
+
+            dayMarkersContainer.innerHTML = '';
+            
+            function getNextMidnight(date, timeZone) {
+                const next = new Date(date);
+                next.setDate(next.getDate() + 1);
+                const nextDayDateString = next.toLocaleDateString('en-US', { timeZone: timeZone, year: 'numeric', month: 'numeric', day: 'numeric' });
+                return new Date(`${nextDayDateString} 00:00:00`); 
+            }
+
+            let currentMidnight = getNextMidnight(timestamps[0], tzIdentifier);
+            
+            while (currentMidnight.getTime() < globalEndTime) {
+                const midnightPositionMs = currentMidnight.getTime() - globalStartTime;
+                const midnightPositionPercent = (midnightPositionMs / globalTotalDurationMs) * 100;
+
+                if (midnightPositionPercent > 0 && midnightPositionPercent < 100) {
+                    const marker = document.createElement('div');
+                    marker.className = 'day-marker';
+                    marker.style.left = `${midnightPositionPercent}%`;
+                    dayMarkersContainer.appendChild(marker);
+
+                    const labelDate = new Date(currentMidnight.getTime() + 1000); 
+                    const label = document.createElement('div');
+                    label.className = 'day-label';
+                    label.style.left = `${midnightPositionPercent}%`;
+                    label.textContent = labelDate.toLocaleDateString('en-US', dayLabelOptions);
+                    dayMarkersContainer.appendChild(label);
+                }
+
+                currentMidnight = getNextMidnight(currentMidnight, tzIdentifier);
+            }
+        }
+        
+        function visualizeData() {
+            const rawData = rawDataInput.value;
+            const processedData = processData(rawData);
+            renderTimeline(processedData);
+            
+            loadPeriods();
+            
+            // Auto-generate the chronological periods after loading data
+            if (processedData.timestamps.length > 0) {
+                calculatePeriods();
+            }
+        }
+
+        // --- AWAKE/SLEEP PERIOD LISTING ---
+
+        function calculatePeriods() {
+            periodsOutputArea.style.display = 'block';
+            periodsList.innerHTML = '';
+
+            if (globalTimestamps.length === 0) {
+                periodsList.innerHTML = '<p class="text-gray-500">No activity data loaded.</p>';
+                return;
+            }
+            
+            const tzIdentifier = TIMEZONES[timezoneSelect.value].identifier;
+            
+            // Get all gaps between activity blocks (these are what appear in the timeline)
+            const allGaps = calculateGaps();
+            
+            // Get all explicitly tagged periods, sorted by start time
+            const sortedTaggedPeriods = [...currentPeriods].sort((a, b) => a.startTime - b.startTime);
+            
+            // Build chronological list: include ALL gaps from timeline, plus tagged periods
+            const allPeriods = [];
+            
+            // First, add all gaps as "gap" (periods of inactivity - candidate sleep periods)
+            allGaps.forEach(gap => {
+                // Check if this gap is completely covered by a tagged period
+                const coveringTagged = sortedTaggedPeriods.find(tp => 
+                    tp.startTime <= gap.start && tp.endTime >= gap.end
+                );
+                
+                if (!coveringTagged) {
+                    // Gap is not fully covered, add it as "gap" (inactivity period)
+                    allPeriods.push({
+                        type: 'gap',
+                        startTime: gap.start,
+                        endTime: gap.end,
+                        durationMs: gap.durationMs,
+                        isGap: true
+                    });
+                }
+            });
+            
+            // Then add all tagged periods
+            sortedTaggedPeriods.forEach(taggedPeriod => {
+                allPeriods.push({
+                    type: taggedPeriod.type === 'sleep' ? 'Sleep' : 'Awake',
+                    startTime: taggedPeriod.startTime,
+                    endTime: taggedPeriod.endTime,
+                    durationMs: taggedPeriod.endTime - taggedPeriod.startTime,
+                    isExplicit: true,
+                    originalPeriod: taggedPeriod
+                });
+            });
+            
+            // Sort by start time
+            allPeriods.sort((a, b) => a.startTime - b.startTime);
+            
+            // 3. Render the chronological list
+            if (allPeriods.length === 0) {
+                 periodsList.innerHTML = '<p class="text-gray-500">No periods calculated within the visible range.</p>';
+                 return;
+            }
+
+            allPeriods.forEach((period, index) => {
+                const isSleep = period.type === 'Sleep';
+                const isAwake = period.type === 'Awake';
+                const isGap = period.type === 'gap';
+                
+                // Check if next period is the same type (for merge option)
+                const nextPeriod = index < allPeriods.length - 1 ? allPeriods[index + 1] : null;
+                const canMerge = nextPeriod && (nextPeriod.type === period.type || (nextPeriod.type === 'gap' && period.type === 'gap'));
+                
+                let bgColor, textColor;
+                if (isSleep) {
+                    bgColor = 'bg-red-100 border-red-300';
+                    textColor = 'text-red-800';
+                } else if (isGap) {
+                    // Gaps (inactivity periods) - use yellow/amber to match timeline
+                    bgColor = 'bg-yellow-100 border-yellow-300';
+                    textColor = 'text-yellow-800';
+                } else {
+                    // Awake periods (green)
+                    bgColor = 'bg-green-100 border-green-300';
+                    textColor = 'text-green-800';
+                }
+
+                const item = document.createElement('div');
+                item.className = `p-3 rounded-lg border ${bgColor} flex justify-between items-center`;
+                
+                // Create content div
+                const contentDiv = document.createElement('div');
+                contentDiv.innerHTML = `
+                    <span class="font-bold ${textColor}">${period.type}:</span>
+                    <span class="font-mono text-sm ml-2">${formatDuration(period.durationMs)}</span> 
+                    <span class="text-gray-600 text-xs block mt-1">
+                        Start: ${formatTimeForDisplay(period.startTime, tzIdentifier)} | 
+                        End: ${formatTimeForDisplay(period.endTime, tzIdentifier)}
+                    </span>
+                `;
+                item.appendChild(contentDiv);
+
+                // Add action buttons
+                if (period.durationMs >= 60000) {
+                    const buttonContainer = document.createElement('div');
+                    buttonContainer.style.display = 'flex';
+                    buttonContainer.style.gap = '4px';
+                    buttonContainer.style.flexWrap = 'wrap';
+                    
+                    // Merge button (if consecutive periods of same type)
+                    if (canMerge && nextPeriod) {
+                        const mergeButton = document.createElement('button');
+                        mergeButton.textContent = 'Merge with Next';
+                        mergeButton.className = 'bg-purple-500 hover:bg-purple-600 text-white text-xs font-semibold py-1 px-3 rounded-lg shadow-sm transition duration-150 ease-in-out';
+                        mergeButton.onclick = () => {
+                            const mergedDuration = nextPeriod.endTime - period.startTime;
+                            const periodTypeLabel = period.type === 'gap' ? 'gap' : period.type;
+                            if(confirm(`Merge this ${formatDuration(period.durationMs)} ${periodTypeLabel} period with the next ${formatDuration(nextPeriod.durationMs)} ${nextPeriod.type} period?\n\nResult: ${formatDuration(mergedDuration)} ${periodTypeLabel} period\n\nFrom: ${formatTimeForDisplay(period.startTime, tzIdentifier)}\nTo: ${formatTimeForDisplay(nextPeriod.endTime, tzIdentifier)}`)) {
+                                const mergeType = period.type === 'gap' ? 'sleep' : (period.type === 'Sleep' ? 'sleep' : 'awake');
+                                mergeConsecutivePeriods(period.startTime, period.endTime, nextPeriod.startTime, nextPeriod.endTime, mergeType);
+                            }
+                        };
+                        buttonContainer.appendChild(mergeButton);
+                    }
+                    
+                    // For gap periods (inactivity), show both tag options
+                    if (isGap) {
+                        const sleepButton = document.createElement('button');
+                        sleepButton.textContent = 'Tag as Sleep';
+                        sleepButton.className = 'bg-red-500 hover:bg-red-600 text-white text-xs font-semibold py-1 px-3 rounded-lg shadow-sm transition duration-150 ease-in-out';
+                        sleepButton.onclick = () => {
+                            if(confirm(`Tag this ${formatDuration(period.durationMs)} gap (inactivity) period as SLEEP?\n\nFrom: ${formatTimeForDisplay(period.startTime, tzIdentifier)}\nTo: ${formatTimeForDisplay(period.endTime, tzIdentifier)}`)) {
+                                savePeriod(period.startTime, period.endTime, 'sleep');
+                            }
+                        };
+                        buttonContainer.appendChild(sleepButton);
+                        
+                        const awakeButton = document.createElement('button');
+                        awakeButton.textContent = 'Tag as Awake';
+                        awakeButton.className = 'bg-green-500 hover:bg-green-600 text-white text-xs font-semibold py-1 px-3 rounded-lg shadow-sm transition duration-150 ease-in-out';
+                        awakeButton.onclick = () => {
+                            if(confirm(`Tag this ${formatDuration(period.durationMs)} gap (inactivity) period as AWAKE?\n\nFrom: ${formatTimeForDisplay(period.startTime, tzIdentifier)}\nTo: ${formatTimeForDisplay(period.endTime, tzIdentifier)}`)) {
+                                savePeriod(period.startTime, period.endTime, 'awake');
+                            }
+                        };
+                        buttonContainer.appendChild(awakeButton);
+                    } else if (isAwake) {
+                        // Allow changing explicitly tagged awake periods to sleep
+                        const sleepButton = document.createElement('button');
+                        sleepButton.textContent = 'Tag as Sleep';
+                        sleepButton.className = 'bg-red-500 hover:bg-red-600 text-white text-xs font-semibold py-1 px-3 rounded-lg shadow-sm transition duration-150 ease-in-out';
+                        sleepButton.onclick = () => {
+                            if(confirm(`Tag this ${formatDuration(period.durationMs)} period as SLEEP?\n\nFrom: ${formatTimeForDisplay(period.startTime, tzIdentifier)}\nTo: ${formatTimeForDisplay(period.endTime, tzIdentifier)}`)) {
+                                savePeriod(period.startTime, period.endTime, 'sleep');
+                            }
+                        };
+                        buttonContainer.appendChild(sleepButton);
+                    }
+                    
+                    if (isSleep) {
+                        // Allow changing sleep periods to awake
+                        const awakeButton = document.createElement('button');
+                        awakeButton.textContent = 'Tag as Awake';
+                        awakeButton.className = 'bg-green-500 hover:bg-green-600 text-white text-xs font-semibold py-1 px-3 rounded-lg shadow-sm transition duration-150 ease-in-out';
+                        awakeButton.onclick = () => {
+                            if(confirm(`Tag this ${formatDuration(period.durationMs)} period as AWAKE?\n\nFrom: ${formatTimeForDisplay(period.startTime, tzIdentifier)}\nTo: ${formatTimeForDisplay(period.endTime, tzIdentifier)}`)) {
+                                savePeriod(period.startTime, period.endTime, 'awake');
+                            }
+                        };
+                        buttonContainer.appendChild(awakeButton);
+                    }
+                    
+                    if (buttonContainer.children.length > 0) {
+                        item.appendChild(buttonContainer);
+                    }
+                } 
+
+                periodsList.appendChild(item);
+            });
+        }
+
+
+        // --- Event Handlers & Initialization ---
+        
+        function calculateHoverTime(e) {
+            if (globalTotalDurationMs <= 0) return 'Data range invalid.';
+
+            const rect = timelineContainer.getBoundingClientRect();
+            const relativeX = (e.clientX - rect.left) / rect.width;
+
+            const timeOffsetMs = relativeX * globalTotalDurationMs;
+            const hoveredTimeMs = globalStartTime + timeOffsetMs;
+
+            const hoveredDate = new Date(hoveredTimeMs);
+            const selectedTZ = timezoneSelect.value;
+            const tzIdentifier = TIMEZONES[selectedTZ].identifier;
+
+            const formatOptions = { 
+                hour12: false, 
+                timeZone: tzIdentifier, 
+                year: 'numeric', 
+                month: '2-digit', 
+                day: '2-digit', 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit' 
+            };
+            
+            return hoveredDate.toLocaleString('en-US', formatOptions);
+        }
+
+        function setupListeners() {
+            document.getElementById('load-data-btn').addEventListener('click', visualizeData);
+            timezoneSelect.addEventListener('change', visualizeData);
+            
+            tagSleepBtn.addEventListener('click', () => {
+                // Call savePeriod with drag selection times
+                savePeriod(selectionStartMs, selectionEndMs, 'sleep');
+            });
+            
+            tagAwakeBtn.addEventListener('click', () => {
+                // Call savePeriod with drag selection times
+                savePeriod(selectionStartMs, selectionEndMs, 'awake');
+            });
+            
+            showPeriodsBtn.addEventListener('click', calculatePeriods);
+            downloadPeriodsBtn.addEventListener('click', downloadPeriods);
+            copyPeriodsBtn.addEventListener('click', copyPeriodsToClipboard);
+            importPeriodsBtn.addEventListener('click', importPeriods);
+            clearAllBtn.addEventListener('click', clearAllPeriods);
+            
+            // Drag listeners
+            timelineContainer.addEventListener('mousedown', handleMouseDown);
+            timelineContainer.addEventListener('mousemove', handleMouseMove);
+            document.addEventListener('mouseup', handleMouseUp);
+            timelineContainer.addEventListener('mouseleave', () => {
+                if (!isDragging) {
+                    hoverTimeDisplay.textContent = 'Hover for time...';
+                    hoverTimeDisplay.style.left = '0';
+                }
+            });
+            
+            // Placeholder data and initial load
+            const placeholderData = `
+START: 2025-12-01 22:30:15
+END: 2025-12-02 00:05:00
+START: 2025-12-02 08:15:30
+END: 2025-12-02 14:20:45
+            `;
+            rawDataInput.value = placeholderData.trim();
+
+            initStorage(); 
+            visualizeData();
+        }
+        
+        setupListeners();
+
+    </script>
+</body>
+</html>
