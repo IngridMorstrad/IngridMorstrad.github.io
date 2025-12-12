@@ -66,6 +66,7 @@ At the end of the day, the market is effectively an arena for those that want to
 For those that still wish to try trading, I built a small tool to help estimate what stocks should be priced at: https://www.ashwinmenon.com/finance/stock_pricer/  
 You can see my returns against VOO here: https://www.ashwinmenon.com/finance/investing/  
 I've also built a BNPL tool, so you can understand the annual rate on these loans if you take them: https://www.ashwinmenon.com/finance/bnpl/  
+Interesting site to calculate returns with dividends reinvested: https://www.dripcalc.com/compare/intc/voo/  
 I'll add further tools under https://www.ashwinmenon.com/finance/, so keep an eye out!  
 
 ---
