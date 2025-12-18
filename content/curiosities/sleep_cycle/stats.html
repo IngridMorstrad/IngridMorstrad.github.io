@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sleep/Awake Duration Analysis</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .stats-container {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+        .stat-box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            min-width: 200px;
+        }
+        .stat-box h3 {
+            margin-top: 0;
+            color: #555;
+        }
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .charts-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .chart-box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        @media (max-width: 768px) {
+            .charts-container {
+                grid-template-columns: 1fr;
+            }
+            .stats-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Sleep/Awake Duration Analysis</h1>
+    
+    <div class="stats-container">
+        <div class="stat-box">
+            <h3>Sleep Duration</h3>
+            <div class="stat-value" id="sleepMean"></div>
+            <div>Mean</div>
+            <div class="stat-value" id="sleepStd"></div>
+            <div>Std Dev</div>
+        </div>
+        <div class="stat-box">
+            <h3>Awake Duration</h3>
+            <div class="stat-value" id="awakeMean"></div>
+            <div>Mean</div>
+            <div class="stat-value" id="awakeStd"></div>
+            <div>Std Dev</div>
+        </div>
+    </div>
+
+    <div class="charts-container">
+        <div class="chart-box">
+            <h3>Sleep Duration Distribution</h3>
+            <canvas id="sleepChart"></canvas>
+        </div>
+        <div class="chart-box">
+            <h3>Awake Duration Distribution</h3>
+            <canvas id="awakeChart"></canvas>
+        </div>
+    </div>
+
+    <script>
+        const data = [
+            { num: 1, start: "2024-11-29 12:00", end: "2024-11-29 17:19", type: "Sleep", duration: "5h 19m" },
+            { num: 2, start: "2024-11-29 17:19", end: "2024-11-30 16:16", type: "Awake", duration: "22h 57m" },
+            { num: 3, start: "2024-11-30 16:16", end: "2024-11-30 19:20", type: "Sleep", duration: "3h 04m" },
+            { num: 4, start: "2024-11-30 19:20", end: "2024-12-01 13:09", type: "Awake", duration: "17h 49m" },
+            { num: 5, start: "2024-12-01 13:09", end: "2024-12-01 16:51", type: "Sleep", duration: "3h 42m" },
+            { num: 6, start: "2024-12-01 16:51", end: "2024-12-02 11:16", type: "Awake", duration: "18h 25m" },
+            { num: 7, start: "2024-12-02 11:16", end: "2024-12-02 13:43", type: "Sleep", duration: "2h 27m" },
+            { num: 8, start: "2024-12-02 13:43", end: "2024-12-02 14:40", type: "Awake", duration: "0h 57m" },
+            { num: 9, start: "2024-12-02 14:40", end: "2024-12-02 16:13", type: "Sleep", duration: "1h 33m" },
+            { num: 10, start: "2024-12-02 16:13", end: "2024-12-03 01:56", type: "Awake", duration: "9h 43m" },
+            { num: 11, start: "2024-12-03 01:56", end: "2024-12-03 04:38", type: "Sleep", duration: "2h 42m" },
+            { num: 12, start: "2024-12-03 04:38", end: "2024-12-03 16:39", type: "Awake", duration: "12h 01m" },
+            { num: 13, start: "2024-12-03 16:39", end: "2024-12-03 19:51", type: "Sleep", duration: "3h 12m" },
+            { num: 14, start: "2024-12-03 19:51", end: "2024-12-03 20:33", type: "Awake", duration: "0h 42m" },
+            { num: 15, start: "2024-12-03 20:33", end: "2024-12-04 02:57", type: "Sleep", duration: "6h 24m" },
+            { num: 16, start: "2024-12-04 02:57", end: "2024-12-05 01:51", type: "Awake", duration: "22h 54m" },
+            { num: 17, start: "2024-12-05 01:51", end: "2024-12-05 09:02", type: "Sleep", duration: "7h 11m" },
+            { num: 18, start: "2024-12-05 09:02", end: "2024-12-05 23:57", type: "Awake", duration: "14h 55m" },
+            { num: 19, start: "2024-12-05 23:57", end: "2024-12-06 09:28", type: "Sleep", duration: "9h 31m" },
+            { num: 20, start: "2025-12-08 04:19", end: "2025-12-08 20:57", type: "Awake", duration: "16h 38m" },
+            { num: 21, start: "2025-12-08 20:57", end: "2025-12-09 01:50", type: "Sleep", duration: "4h 53m" },
+            { num: 22, start: "2025-12-09 01:50", end: "2025-12-09 17:53", type: "Awake", duration: "16h 03m" },
+            { num: 23, start: "2025-12-09 17:53", end: "2025-12-10 04:43", type: "Sleep", duration: "10h 50m" },
+            { num: 24, start: "2025-12-10 04:43", end: "2025-12-10 21:54", type: "Awake", duration: "17h 11m" },
+            { num: 25, start: "2025-12-10 21:54", end: "2025-12-11 07:03", type: "Sleep", duration: "9h 09m" },
+            { num: 26, start: "2025-12-11 07:03", end: "2025-12-12 00:07", type: "Awake", duration: "17h 04m" },
+            { num: 27, start: "2025-12-12 00:07", end: "2025-12-12 08:43", type: "Sleep", duration: "8h 36m" },
+            { num: 28, start: "2025-12-12 08:43", end: "2025-12-13 01:01", type: "Awake", duration: "16h 18m" },
+            { num: 29, start: "2025-12-13 01:01", end: "2025-12-13 09:10", type: "Sleep", duration: "8h 09m" },
+            { num: 30, start: "2025-12-13 09:10", end: "2025-12-14 00:52", type: "Awake", duration: "15h 42m" },
+            { num: 31, start: "2025-12-14 00:52", end: "2025-12-14 09:30", type: "Sleep", duration: "8h 38m" },
+            { num: 32, start: "2025-12-14 09:30", end: "2025-12-15 03:16", type: "Awake", duration: "17h 46m" },
+            { num: 33, start: "2025-12-15 03:16", end: "2025-12-15 10:48", type: "Sleep", duration: "7h 32m" },
+            { num: 34, start: "2025-12-15 10:48", end: "2025-12-16 04:34", type: "Awake", duration: "17h 46m" },
+            { num: 35, start: "2025-12-16 04:34", end: "2025-12-16 10:20", type: "Sleep", duration: "5h 46m" },
+            { num: 36, start: "2025-12-16 10:20", end: "2025-12-16 15:47", type: "Awake", duration: "5h 27m" },
+            { num: 37, start: "2025-12-16 15:47", end: "2025-12-16 17:14", type: "Sleep", duration: "1h 27m" },
+            { num: 38, start: "2025-12-16 17:14", end: "2025-12-17 04:34", type: "Awake", duration: "11h 20m" },
+            { num: 39, start: "2025-12-17 04:34", end: "2025-12-17 12:10", type: "Sleep", duration: "7h 36m" }
+        ];
+
+        function parseDuration(duration) {
+            const match = duration.match(/(\d+)h\s*(\d+)m/);
+            if (match) {
+                return parseInt(match[1]) + parseInt(match[2]) / 60;
+            }
+            return 0;
+        }
+
+        function calculateStats(values) {
+            const n = values.length;
+            const mean = values.reduce((a, b) => a + b, 0) / n;
+            const variance = values.reduce((a, b) => a + Math.pow(b - mean, 2), 0) / n;
+            const std = Math.sqrt(variance);
+            return { mean, std };
+        }
+
+        function formatHours(hours) {
+            const h = Math.floor(hours);
+            const m = Math.round((hours - h) * 60);
+            return `${h}h ${m}m`;
+        }
+
+        const sleepData = data.filter(d => d.type === "Sleep").map(d => parseDuration(d.duration));
+        const awakeData = data.filter(d => d.type === "Awake").map(d => parseDuration(d.duration));
+
+        const sleepStats = calculateStats(sleepData);
+        const awakeStats = calculateStats(awakeData);
+
+        document.getElementById('sleepMean').textContent = formatHours(sleepStats.mean);
+        document.getElementById('sleepStd').textContent = formatHours(sleepStats.std);
+        document.getElementById('awakeMean').textContent = formatHours(awakeStats.mean);
+        document.getElementById('awakeStd').textContent = formatHours(awakeStats.std);
+
+        function createHistogram(data, elementId, label, color) {
+            const bins = 8;
+            const min = Math.min(...data);
+            const max = Math.max(...data);
+            const binSize = (max - min) / bins;
+            
+            const histogram = new Array(bins).fill(0);
+            const binLabels = [];
+            
+            for (let i = 0; i < bins; i++) {
+                const binStart = min + i * binSize;
+                const binEnd = min + (i + 1) * binSize;
+                binLabels.push(`${binStart.toFixed(1)}-${binEnd.toFixed(1)}h`);
+                
+                data.forEach(value => {
+                    if (value >= binStart && (i === bins - 1 ? value <= binEnd : value < binEnd)) {
+                        histogram[i]++;
+                    }
+                });
+            }
+
+            const ctx = document.getElementById(elementId).getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: binLabels,
+                    datasets: [{
+                        label: label,
+                        data: histogram,
+                        backgroundColor: color,
+                        borderColor: color,
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 1
+                            },
+                            title: {
+                                display: true,
+                                text: 'Frequency'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Duration (hours)'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        createHistogram(sleepData, 'sleepChart', 'Sleep Duration', 'rgba(54, 162, 235, 0.7)');
+        createHistogram(awakeData, 'awakeChart', 'Awake Duration', 'rgba(255, 159, 64, 0.7)');
+    </script>
+</body>
+</html>
