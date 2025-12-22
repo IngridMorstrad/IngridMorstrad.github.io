@@ -107,7 +107,20 @@ Did not attempt
 7 points: (+7 -0)  
 1 point: v x x x(+2 -1) x  
 
+# Bonus
+
+## Gemini 3 Thinking
+
+2 points: x x x v v  
+13 points (+13 -0)  
+1 point: v x x x x  
+3 points: v v x x v  
+5 points: v v v(+7 -0) v v  
+10 points: (+11 -1)  
+3.8 points: v x x v(+7 -1) v
+
 # Final scores
-Gemini 3 Fast wins with 37.01 points! Claude Sonnet 4.5 is in second with 20 points and ChatGPT comes in last with 13.86 points.
+Gemini 3 Fast wins with 37.01 points! Claude Sonnet 4.5 is in second with 20 points and ChatGPT comes in last with 13.86 points (though it skipped one round due to rate limits).
 
 If I get access to more models, I'll update this.
+Update: Gemini 3 Thinking scored 37.8 given the scoring system chosen (it did really well on a couple of rounds) despite skipping an entire round!
