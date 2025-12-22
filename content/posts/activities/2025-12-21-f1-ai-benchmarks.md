@@ -8,7 +8,7 @@ tags: activities
 
 Any researchers who want the prompts and/or links to the chats can contact me =)
 
-I went through the [Formula 1 EOY quiz](https://www.youtube.com/watch?v=D-6b-vD6ZdA) on Mr V's Garage's YouTube channel and decided to put some AIs through the test as well. For the LLMs, I gave each of them just 1 shot at the questions. Here is how I fared, and how the AIs fared (x indicates incorrect, v indicates correct, p indicates partially correct):
+I went through the [Formula 1 EOY quiz](https://www.youtube.com/watch?v=D-6b-vD6ZdA) on Mr V's Garage's YouTube channel and decided to put some AIs through the test as well. For the LLMs, I gave each of them just 1 shot at the questions. These all use the free versions of the LLMs. Here is how I fared, and how the AIs fared (x indicates incorrect, v indicates correct, p indicates partially correct):
 
 # Round 1
 ## Me
@@ -73,7 +73,7 @@ I'm not sure how to evaluate Claude's fourth answer, but I've given it partially
 # Round 3
 
 ## Me
-0. I just gave myself a zero. I don't expect to know any of these.
+0. I just gave myself a zero from this point on. I don't expect to know any of these.
 
 ## Claude (Sonnet 4.5)
 x x x x x v x 
@@ -82,7 +82,7 @@ x x x x x v x
 x p x v v x x 
 
 ## ChatGPT (probably 5.2?)
-<paused> for rate limits
+Paused due to hitting rate limits (if someone from Open AI wants to give me free credits I'll update this)  
 
 # Round 4, 5, 6, 7
 
@@ -112,7 +112,7 @@ Did not attempt
 ## Gemini 3 Thinking
 
 2 points: x x x v v  
-13 points (+13 -0)  
+13 points: (+13 -0)  
 1 point: v x x x x  
 3 points: v v x x v  
 5 points: v v v(+7 -0) v v  
