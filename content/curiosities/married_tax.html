@@ -1,0 +1,387 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>2025 Marriage Penalty / Bonus Heatmap</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 20px;
+    }
+    .chart-container {
+      max-width: 900px;
+    }
+    .tooltip {
+      position: absolute;
+      pointer-events: none;
+      background: rgba(0,0,0,0.85);
+      color: #fff;
+      padding: 8px 10px;
+      border-radius: 4px;
+      font-size: 12px;
+      line-height: 1.4;
+      z-index: 10;
+    }
+    .axis text {
+      font-size: 11px;
+    }
+    .axis-label {
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .subtitle {
+      font-size: 12px;
+      color: #555;
+      margin-bottom: 10px;
+      max-width: 800px;
+    }
+    .legend text {
+      font-size: 11px;
+    }
+  </style>
+</head>
+<body>
+<div class="chart-container">
+  <div class="title">Approximate 2025 U.S. Federal Marriage Penalty / Bonus</div>
+  <div class="subtitle">
+    Simplified model: wages only, standard deduction, and a stylized childless EITC-like credit to produce penalties at low, equal incomes (for 2025 brackets). Positive values are penalties (more tax when married), negative values are bonuses. All numbers approximate, not tax advice. The 2017 Tax Cuts and Jobs Act (TCJA), now effectively locked in through 2025 by later legislation, made almost all the joint brackets exactly double the single brackets and doubled the standard deduction, sharply reducing bracket‑driven marriage penalties for middle and upper‑middle incomes.
+  </div>
+  <svg id="heatmap" width="900" height="550"></svg>
+</div>
+
+<div id="tooltip" class="tooltip" style="display:none;"></div>
+
+<script>
+// -----------------------------
+// 2025 tax parameters (approx.)
+// -----------------------------
+// Brackets for taxable income (after standard deduction). [web:6][web:7][web:10][web:13]
+const BRACKETS_2025_SINGLE = [
+  {lower: 0,      upper: 11925,  rate: 0.10},
+  {lower: 11925,  upper: 48475,  rate: 0.12},
+  {lower: 48475,  upper: 103350, rate: 0.22},
+  {lower: 103350, upper: 197300, rate: 0.24},
+  {lower: 197300, upper: 250525, rate: 0.32},
+  {lower: 250525, upper: 375800, rate: 0.35},
+  {lower: 375800, upper: Infinity, rate: 0.37}
+];
+
+const BRACKETS_2025_MFJ = [
+  {lower: 0,      upper: 23850,  rate: 0.10},
+  {lower: 23850,  upper: 96950,  rate: 0.12},
+  {lower: 96950,  upper: 206700, rate: 0.22},
+  {lower: 206700, upper: 394600, rate: 0.24},
+  {lower: 394600, upper: 501050, rate: 0.32},
+  {lower: 501050, upper: 751600, rate: 0.35},
+  {lower: 751600, upper: Infinity, rate: 0.37}
+];
+
+// Standard deductions 2025 (approx). [web:20][web:26]
+const STD_DED_SINGLE = 15750;
+const STD_DED_MFJ    = 31500;
+
+// -----------------------------
+// Simple EITC-like credit model
+// -----------------------------
+// NYT penalties at low equal incomes are driven largely by EITC and related credits. [web:1][web:31][web:33]
+// This is a stylized, childless credit, not an exact reproduction of 2025 law.
+function eitc_simplified_childless_2025(earnedIncome, filingStatus) {
+  // Basic shape: credit rises with earnings to a max, then phases out. [web:31][web:33]
+  // Parameters loosely chosen to produce penalties qualitatively similar to NYT.
+  let phaseInRate, maxCredit, phaseInEnd, phaseOutStart, phaseOutEnd;
+
+  if (filingStatus === "single") {
+    phaseInRate   = 0.15;
+    maxCredit     = 700;      // approximate magnitude
+    phaseInEnd    = 7000;
+    phaseOutStart = 9000;
+    phaseOutEnd   = 22000;
+  } else if (filingStatus === "mfj") {
+    // MFJ thresholds a bit higher, but not doubled, which can create penalties. [web:33]
+    phaseInRate   = 0.15;
+    maxCredit     = 700;
+    phaseInEnd    = 7000;
+    phaseOutStart = 14000;
+    phaseOutEnd   = 27000;
+  } else {
+    return 0;
+  }
+
+  let credit = 0;
+  if (earnedIncome <= 0) {
+    credit = 0;
+  } else if (earnedIncome <= phaseInEnd) {
+    credit = phaseInRate * earnedIncome;
+  } else if (earnedIncome <= phaseOutStart) {
+    credit = maxCredit;
+  } else if (earnedIncome <= phaseOutEnd) {
+    const t = (phaseOutEnd - earnedIncome) / (phaseOutEnd - phaseOutStart);
+    credit = Math.max(0, maxCredit * t);
+  } else {
+    credit = 0;
+  }
+  return credit;
+}
+
+// -----------------------------
+// Core tax functions
+// -----------------------------
+function incomeTax2025(taxableIncome, brackets) {
+  let tax = 0;
+  let remaining = Math.max(0, taxableIncome);
+  for (const b of brackets) {
+    if (remaining <= 0) break;
+    const width = b.upper - b.lower;
+    const amount = Math.max(0, Math.min(remaining, width));
+    tax += amount * b.rate;
+    remaining -= amount;
+  }
+  return tax;
+}
+
+function taxSingle2025(wages) {
+  const taxable = Math.max(0, wages - STD_DED_SINGLE);
+  const tax = incomeTax2025(taxable, BRACKETS_2025_SINGLE);
+  const credit = eitc_simplified_childless_2025(wages, "single");
+  return Math.max(0, tax - credit);
+}
+
+function taxMFJ2025(w1, w2) {
+  const income = w1 + w2;
+  const taxable = Math.max(0, income - STD_DED_MFJ);
+  const tax = incomeTax2025(taxable, BRACKETS_2025_MFJ);
+  const credit = eitc_simplified_childless_2025(income, "mfj");
+  return Math.max(0, tax - credit);
+}
+
+// penalty (positive) / bonus (negative) in dollars and percent
+function marriageEffect2025(w1, w2) {
+  const income = w1 + w2;
+  if (income <= 0) return {delta: 0, pct: 0};
+
+  const taxSingleTotal = taxSingle2025(w1) + taxSingle2025(w2);
+  const taxMFJ = taxMFJ2025(w1, w2);
+  const delta = taxMFJ - taxSingleTotal;   // >0 penalty, <0 bonus
+  const pct = delta / income;
+  return {delta, pct};
+}
+
+// -----------------------------
+// Build data grid
+// -----------------------------
+const totalIncomeMin = 40000;
+const totalIncomeMax = 900000; // focusing on low/moderate incomes where credits matter most
+const totalIncomeSteps = 80;
+
+const splitSteps = 101; // 0%,1%,...,100%
+
+const totalIncomes = d3.range(totalIncomeSteps).map(i =>
+  totalIncomeMin + (totalIncomeMax - totalIncomeMin) * i / (totalIncomeSteps - 1)
+);
+const splits = d3.range(splitSteps).map(i => i / (splitSteps - 1));
+
+const grid = [];
+totalIncomes.forEach((T, i) => {
+  splits.forEach((s, j) => {
+    const w1 = s * T;
+    const w2 = (1 - s) * T;
+    const eff = marriageEffect2025(w1, w2);
+    grid.push({
+      i, j,
+      totalIncome: T,
+      share1: s,
+      w1,
+      w2,
+      delta: eff.delta,
+      pct: eff.pct
+    });
+  });
+});
+
+// -----------------------------
+// Draw heatmap with D3
+// -----------------------------
+const svg = d3.select("#heatmap");
+const width = +svg.attr("width");
+const height = +svg.attr("height");
+
+const margin = {top: 40, right: 80, bottom: 60, left: 80};
+const innerWidth = width - margin.left - margin.right;
+const innerHeight = height - margin.top - margin.bottom;
+
+const g = svg.append("g")
+  .attr("transform", `translate(${margin.left},${margin.top})`);
+
+const xScale = d3.scaleLinear()
+  .domain([0, 1])
+  .range([0, innerWidth]);
+
+const yScale = d3.scaleLinear()
+  .domain([totalIncomeMin, totalIncomeMax])
+  .range([innerHeight, 0]);
+
+// Color scale in percentage points: -5% to +5%
+const maxAbsPct = 0.05;
+const colorScale = d3.scaleDiverging(d3.interpolateRdBu)
+  .domain([maxAbsPct, 0, -maxAbsPct]); // red = penalty, blue = bonus
+
+// Draw rectangles
+const cellWidth = innerWidth / (splitSteps - 1);
+const cellHeight = innerHeight / (totalIncomeSteps - 1);
+
+g.selectAll("rect.cell")
+  .data(grid)
+  .enter()
+  .append("rect")
+  .attr("class", "cell")
+  .attr("x", d => xScale(d.share1) - cellWidth / 2)
+  .attr("y", d => yScale(d.totalIncome) - cellHeight / 2)
+  .attr("width", cellWidth)
+  .attr("height", cellHeight)
+  .attr("fill", d => {
+    const v = Math.max(-maxAbsPct, Math.min(maxAbsPct, d.pct));
+    return colorScale(v);
+  });
+
+// Axes
+const xAxis = d3.axisBottom(xScale)
+  .tickValues([0, 0.25, 0.5, 0.75, 1.0])
+  .tickFormat(d => `${Math.round(d * 100)}%`);
+
+const yAxis = d3.axisLeft(yScale)
+  .ticks(8)
+  .tickFormat(d => `$${d3.format(",")(d)}`);
+
+g.append("g")
+  .attr("transform", `translate(0,${innerHeight})`)
+  .attr("class", "axis")
+  .call(xAxis);
+
+g.append("g")
+  .attr("class", "axis")
+  .call(yAxis);
+
+g.append("text")
+  .attr("class", "axis-label")
+  .attr("x", innerWidth / 2)
+  .attr("y", innerHeight + 40)
+  .attr("text-anchor", "middle")
+  .text("Share of income earned by spouse 1");
+
+g.append("text")
+  .attr("class", "axis-label")
+  .attr("transform", "rotate(-90)")
+  .attr("x", -innerHeight / 2)
+  .attr("y", -55)
+  .attr("text-anchor", "middle")
+  .text("Total household wage income (2025 $)");
+
+// Color legend
+const legendHeight = 200;
+const legendWidth = 14;
+const legendX = innerWidth + 30;
+const legendY = (innerHeight - legendHeight) / 2;
+
+const legend = g.append("g")
+  .attr("class", "legend")
+  .attr("transform", `translate(${legendX},${legendY})`);
+
+const legendScale = d3.scaleLinear()
+  .domain([-maxAbsPct, maxAbsPct])
+  .range([legendHeight, 0]);
+
+const legendAxis = d3.axisRight(legendScale)
+  .ticks(5)
+  .tickFormat(v => `${(v * 100).toFixed(1)}%`);
+
+const legendData = d3.range(legendHeight).map(i => {
+  const t = i / (legendHeight - 1);
+  const v = maxAbsPct - 2 * maxAbsPct * (i / (legendHeight - 1));
+  return {y: i, v};
+});
+
+legend.selectAll("rect")
+  .data(legendData)
+  .enter()
+  .append("rect")
+  .attr("x", 0)
+  .attr("y", d => d.y)
+  .attr("width", legendWidth)
+  .attr("height", 1)
+  .attr("fill", d => colorScale(d.v));
+
+legend.append("g")
+  .attr("transform", `translate(${legendWidth + 4},0)`)
+  .call(legendAxis);
+
+legend.append("text")
+  .attr("x", legendWidth / 2)
+  .attr("y", -10)
+  .attr("text-anchor", "middle")
+  .attr("class", "axis-label")
+  .text("Penalty / bonus");
+
+// -----------------------------
+// Tooltip behavior
+// -----------------------------
+const tooltip = d3.select("#tooltip");
+
+svg.on("mousemove", (event) => {
+  const [mouseX, mouseY] = d3.pointer(event);
+
+  // find nearest cell
+  const xInChart = mouseX - margin.left;
+  const yInChart = mouseY - margin.top;
+  if (xInChart < 0 || xInChart > innerWidth || yInChart < 0 || yInChart > innerHeight) {
+    tooltip.style("display", "none");
+    return;
+  }
+
+  const s = xScale.invert(xInChart);
+  const T = yScale.invert(yInChart);
+
+  const i = Math.round((T - totalIncomeMin) / (totalIncomeMax - totalIncomeMin) * (totalIncomeSteps - 1));
+  const j = Math.round(s * (splitSteps - 1));
+
+  const clampedI = Math.max(0, Math.min(totalIncomeSteps - 1, i));
+  const clampedJ = Math.max(0, Math.min(splitSteps - 1, j));
+
+  const d = grid[clampedI * splitSteps + clampedJ];
+
+  if (!d) {
+    tooltip.style("display", "none");
+    return;
+  }
+
+  const sign = d.delta > 0 ? "penalty" : (d.delta < 0 ? "bonus" : "neutral");
+  const absDelta = Math.abs(d.delta);
+
+  tooltip
+    .style("display", "block")
+    .style("left", (event.pageX + 12) + "px")
+    .style("top", (event.pageY + 12) + "px")
+    .html(`
+      <div><strong>Total income:</strong> $${d3.format(",.0f")(d.totalIncome)}</div>
+      <div><strong>Spouse 1:</strong> $${d3.format(",.0f")(d.w1)} (${(d.share1 * 100).toFixed(0)}%)</div>
+      <div><strong>Spouse 2:</strong> $${d3.format(",.0f")(d.w2)} (${((1 - d.share1) * 100).toFixed(0)}%)</div>
+      <div><strong>Marriage ${sign}:</strong> $${d3.format(",.0f")(absDelta)} (${(d.pct * 100).toFixed(2)}%)</div>
+      <div style="margin-top:4px;font-size:11px;opacity:0.8;">
+        Positive = more tax if married; negative = less.
+      </div>
+    `);
+});
+
+svg.on("mouseleave", () => {
+  tooltip.style("display", "none");
+});
+</script>
+</body>
+</html>
+
