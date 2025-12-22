@@ -12,7 +12,7 @@ I went through the [Formula 1 EOY quiz](https://www.youtube.com/watch?v=D-6b-vD6
 
 # Round 1
 ## Me
-x x x x
+x x x x x
 
 ## Claude (Sonnet 4.5)
 v p x v v
