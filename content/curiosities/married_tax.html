@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +10,7 @@
       margin: 20px;
     }
     .chart-container {
-      max-width: 900px;
+      max-width: 1000px;
     }
     .tooltip {
       position: absolute;
@@ -53,7 +52,7 @@
   <div class="subtitle">
     Simplified model: wages only, standard deduction, and a stylized childless EITC-like credit to produce penalties at low, equal incomes (for 2025 brackets). Positive values are penalties (more tax when married), negative values are bonuses. All numbers approximate, not tax advice. The 2017 Tax Cuts and Jobs Act (TCJA), now effectively locked in through 2025 by later legislation, made almost all the joint brackets exactly double the single brackets and doubled the standard deduction, sharply reducing bracket‑driven marriage penalties for middle and upper‑middle incomes.
   </div>
-  <svg id="heatmap" width="900" height="550"></svg>
+  <svg id="heatmap" width="1000" height="550"></svg>
 </div>
 
 <div id="tooltip" class="tooltip" style="display:none;"></div>
@@ -212,7 +211,7 @@ const svg = d3.select("#heatmap");
 const width = +svg.attr("width");
 const height = +svg.attr("height");
 
-const margin = {top: 40, right: 80, bottom: 60, left: 80};
+const margin = {top: 40, right: 160, bottom: 60, left: 80};
 const innerWidth = width - margin.left - margin.right;
 const innerHeight = height - margin.top - margin.bottom;
 
@@ -286,7 +285,7 @@ g.append("text")
 // Color legend
 const legendHeight = 200;
 const legendWidth = 14;
-const legendX = innerWidth + 30;
+const legendX = innerWidth + 40;
 const legendY = (innerHeight - legendHeight) / 2;
 
 const legend = g.append("g")
@@ -363,10 +362,17 @@ svg.on("mousemove", (event) => {
   const sign = d.delta > 0 ? "penalty" : (d.delta < 0 ? "bonus" : "neutral");
   const absDelta = Math.abs(d.delta);
 
+  const container = document.querySelector(".chart-container");
+  const rect = container.getBoundingClientRect();
+
+  let left = rect.left + mouseX + 12;
+  let top  = rect.top + mouseY + 12;
+
+
   tooltip
     .style("display", "block")
-    .style("left", (event.pageX + 12) + "px")
-    .style("top", (event.pageY + 12) + "px")
+    .style("left", left + "px")
+    .style("top", top + "px")
     .html(`
       <div><strong>Total income:</strong> $${d3.format(",.0f")(d.totalIncome)}</div>
       <div><strong>Spouse 1:</strong> $${d3.format(",.0f")(d.w1)} (${(d.share1 * 100).toFixed(0)}%)</div>
