@@ -83,3 +83,31 @@ x p x v v x x
 
 ## ChatGPT (probably 5.2?)
 <paused> for rate limits
+
+# Round 4, 5, 6, 7
+
+## Me
+Did not attempt
+
+## Claude (Sonnet 4.5)
+4 points: v v v v x  
+0 points: x x x x x  
+4 points: (+4 -0)  
+1 point: v x x x x
+
+## Gemini 3 (Fast)
+3 points: v v x x v  
+4.21 points: x v p v(+7 -1) v  
+4 points: (+6 -2)  
+4.8 points: v v v v(+6) x
+
+## ChatGPT (probably 5.2?)
+0 points: x x x x x  
+1.86 points: x x v(+5 -2) v x  
+7 points: (+7 -0)  
+1 point: v x x x(+2 -1) x  
+
+# Final scores
+Gemini 3 Fast wins with 37.01 points! Claude Sonnet 4.5 is in second with 20 points and ChatGPT comes in last with 13.86 points.
+
+If I get access to more models, I'll update this.
