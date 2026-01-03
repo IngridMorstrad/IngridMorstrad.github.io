@@ -21,7 +21,7 @@ url = "/posts"
 weight = 2
 
 [[menu.main]]
-name = "Tags"
+name = "Post by topic"
 url = "/tags"
 weight = 3
 
