@@ -16,7 +16,7 @@ If you've signed in to Google or Facebook or your bank from a new computer recen
 Phishing is an attack where an attacker creates a website that looks just like your email login page (or bank login page or Facebook login page, you get the idea) and tries to get you to sign in. When you do, the username & password are sent to the attacker's website and he can use that to sign in to the actual website (email/facebook/bank) without you realizing it. Ah, so does 2FA protect me from this? NO! The attacker could just present you with a page asking you to type in the code sent to your device. If you do, the attacker has access to your account again.
 
 ## So what's the deal with Yubikey/U2F?
-Here's where I was stumped. Long-pressing the Yubikey generates a string, regardless of what application you are in (for details on how: see references below). You can see the string printed out in notepad for example. So, that means it works very similarly to an OTP (one time passcode - the code sent to your phone), in the sense that it doesn't use information specific to what webpage you are logging into, etc. (it may use timestamps, etc. but so can OTP). But, everywhere I read that U2F protects you from phishing! What gives?
+Here's where I was stumped. Long-pressing the Yubikey generates a string, regardless of what application you are in (for details on how: see [references](#references)). You can see the string printed out in notepad for example. So, that means it works very similarly to an OTP (one time passcode - the code sent to your phone), in the sense that it doesn't use information specific to what webpage you are logging into, etc. (it may use timestamps, etc. but so can OTP). But, everywhere I read that U2F protects you from phishing! What gives?
 
 After reading a bunch of pages, all which basically stated that the Yubikey "just works"/"sends a key" without describing how it generates the key and why this prevents phishing, I read the specifications on the Yubikey site & the Google design doc on U2F. The problem was, I confused two different features of the Yubikey. The string I was seeing was Yubico's OTP, which was one of the many different things it supports. It also supports U2F, which is entirely different.
 
@@ -26,8 +26,8 @@ Extra notes: U2F also protects against even more sophisticated phishing attacks 
 
 ## How public/private keys work
 Let's say you want to send me some information, and ensure only I can read it. I have a pair of keys (1 public & 1 private). This pair of keys is created such that if you encrypt with the public key, the message can be decrypted with the private key. Now, you can encrypt the message you want to send me with my public key and ensure no one else can read it (since only I should have my private key).
-
+<a id="references"></a>
 ## References (stuff I read so you don't have to)
-https://docs.google.com/document/d/1SjCwdrFbVPG1tYavO5RsSD1QpJwj8\_im6sl-VWjJ6k0  
+https://docs.google.com/document/d/1SjCwdrFbVPG1tYavO5RsSD1QpJwj8_im6sl-VWjJ6k0  
 https://fidoalliance.org/specs/u2f-specs-master/fido-u2f-overview.html  
 http://www.linuxjournal.com/magazine/yubikey-one-time-password-authentication?page=0,1

@@ -6,9 +6,9 @@ comments: true
 tags: thoughts
 ---
 
-"Don't meet your heroes," I've heard. "People are imperfect" I counter. 
+"Don't meet your heroes," I've heard. "People are imperfect" I counter.
  
-Here are a few people I look up to, with the reasons I look up to them stated. They may have flaws, but the flaws are not why I look up to them\*. I admire them mainly for the good that they do, and for choosing – in what seems like a batshit crazy move to many - *not* to prioritize profit\*\*. 
+Here are a few people I look up to, with the reasons I look up to them stated. They may have flaws, but the flaws are not why I look up to them[^1]. I admire them mainly for the good that they do, and for choosing – in what seems like a batshit crazy move to many - *not* to prioritize profit[^2].
 
 **Steve Wozniak (creator of Apple)** Extremely capable, humble, and by all accounts very nice. After creating Apple I, he wanted to give away the designs for free rather than selling it for profit. Gave away his shares to early Apple employees. Was nice enough to engage in email correspondence with me.   
 
@@ -18,7 +18,7 @@ Here are a few people I look up to, with the reasons I look up to them stated. T
 
 **Boyan Slat (creator of Ocean Cleanup)** Came up with a bold idea (removing plastic from the oceans), a plan and is seeing it through. His company aims to shut down by 2042, after having removed all plastic from the oceans. Has removed 389000 kg of trash from the oceans so far. 
 
-There are many more that inspire me. For the sake of brevity, I will list a few without details. Paul Gilbert (guitarist), Jon Stewart, Conan, Hussein Nasr (YouTuber, for his love of learning), Grant Sanderson (YouTuber), and a childhood friend who still clings to his principles\*\*\*.  
+There are many more that inspire me. For the sake of brevity, I will list a few without details. Paul Gilbert (guitarist), Jon Stewart, Conan, Hussein Nasr (YouTuber, for his love of learning), Grant Sanderson (YouTuber), and a childhood friend who still clings to his principles[^3].  
 
 ## Honorable mentions (2026 update)
 
@@ -29,8 +29,7 @@ A few others who have similar vibes:
 
 ---
 
-\*: I can't help but provide the disclaimer that this does not apply if the flaw is that they are good at misrepresenting/lying about what they've done 
-
-\*\*: Related: the second bullet point [here](https://www.ashwinmenon.com/posts/thoughts/2022-10-31-some-thoughts/) 
-
-\*\*\*: Some others too, for other reasons, but only this friend for similar reasons to those detailed. If you had expected to be listed here, fret not, and comfort yourself with the fact that while this may seem like "The Ashwin awards", like all other awards, these too, are worth absolutely nothing 😁
+## Footnotes
+[^1]: I can't help but provide the disclaimer that this does not apply if the flaw is that they are good at misrepresenting/lying about what they've done.
+[^2]: Related: the second bullet point [here](https://www.ashwinmenon.com/posts/thoughts/2022-10-31-some-thoughts/).
+[^3]: Some others too, for other reasons, but only this friend for similar reasons to those detailed. If you had expected to be listed here, fret not, and comfort yourself with the fact that while this may seem like "The Ashwin awards", like all other awards, these too, are worth absolutely nothing.

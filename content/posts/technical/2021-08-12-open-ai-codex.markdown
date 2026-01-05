@@ -26,7 +26,7 @@ Codex is clearly great at parsing problem statements and coming up with code tha
 
 For problems that I could see the solution quickly to, the code-writing exercise was now effectively a code-review exercise! I would expect the same pitfalls exist as with normal code-reviews (bugs may not be caught; tests must be written).
 
-Where Codex "shines"^ is in its ability to quickly digest a large number of modules and libraries and write code using those. I'd be interested in learning how much manual effort is involved in getting a new library "digested" by Codex. For example, in problem 2, "difflib" was recommended in the problem statement - did difflib have to be explicitly "ingested" by Codex at some point prior? Lastly, in some cases, Codex doesn't save much time - if you are unfamiliar with the library, you have to read up on it to debug effectively, and this forms the bottleneck, not the code-writing process.
+Where Codex "shines"[^1] is in its ability to quickly digest a large number of modules and libraries and write code using those. I'd be interested in learning how much manual effort is involved in getting a new library "digested" by Codex. For example, in problem 2, "difflib" was recommended in the problem statement - did difflib have to be explicitly "ingested" by Codex at some point prior? Lastly, in some cases, Codex doesn't save much time - if you are unfamiliar with the library, you have to read up on it to debug effectively, and this forms the bottleneck, not the code-writing process.
 
 ### Regrets
 Unfortunately, I didn't really use Codex to "help" me code _(Open AI has recommended using Codex as a "helper", for example, by defining helper function signatures and having Codex implement it)_. This is partly because I wasn't sure how long I had to work on the problems and, with the website constantly crashing, I wasn't sure how long I would have access to Codex. In addition, once a problem was "solved", I was not allowed to edit the code (or access Codex) any longer.
@@ -245,5 +245,5 @@ I was surprised at how well Codex handled this. Only the base-case needed to be 
 1 < x < 2
 
 
-## Notes
-\^: "shines" as depending on how much manual effort is involved, I'm not convinced I can say it shines.
+## Footnotes
+[^1]: "shines" — depending on how much manual effort is involved, I'm not convinced I can say it shines.
