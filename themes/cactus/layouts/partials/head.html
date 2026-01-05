@@ -18,6 +18,7 @@
   {{ end }}
   {{ $colortheme := .Scratch.Get "colortheme" }}
   <link rel="stylesheet" href="{{ $colortheme | printf "/css/style-%s.css" | absURL }}">
+  <link rel="stylesheet" href="{{ "css/footnote-popups.css" | relURL }}">
   <!-- Custom CSS -->
   {{ range .Site.Params.css }} <link rel="stylesheet" href="{{ . | absURL }}"> {{ end }}
 
