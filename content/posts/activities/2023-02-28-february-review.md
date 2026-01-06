@@ -4,7 +4,7 @@ title:  "February review"
 date:   2023-02-28
 comments: true
 tags: activities
-_build:
+build:
   list: never
 ---
 

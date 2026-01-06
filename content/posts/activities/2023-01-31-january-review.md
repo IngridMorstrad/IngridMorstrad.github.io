@@ -4,7 +4,7 @@ title:  "January review"
 date:   2023-01-31
 comments: true
 tags: activities
-_build:
+build:
   list: never
 ---
 

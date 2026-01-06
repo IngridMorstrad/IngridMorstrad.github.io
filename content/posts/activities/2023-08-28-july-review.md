@@ -4,7 +4,7 @@ title:  "July review"
 date:   2023-08-27
 comments: true
 tags: activities
-_build:
+build:
   list: never
 ---
 
