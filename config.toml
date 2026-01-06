@@ -51,6 +51,9 @@ weight = 5
   rss = true
   tagsOverview = true
 
+  # Extra site CSS (loaded after the theme CSS)
+  css = ["/assets/css/brand.css"]
+
   [params.comments]
     enabled = true
 
