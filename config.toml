@@ -62,6 +62,7 @@ weight = 5
   link = "https://www.twitter.com/TheAshwinMenon"
 
 [[params.social]]
-  name = "square-envelope"
+  name = "buttondown"
   link = "https://buttondown.email/AshwinMenon"
+  icon = "fas fa-envelope-square"
 
