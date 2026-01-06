@@ -3,7 +3,7 @@ layout: post
 title:  "Hunchle: Generating questions"
 date:   2025-06-10
 comments: true
-tags: activities
+tags: [activities, AI]
 bsky: 3lrbtm7jpkk2q
 ---
 

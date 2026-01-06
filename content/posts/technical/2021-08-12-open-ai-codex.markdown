@@ -2,7 +2,7 @@
 comments: true
 date: "2021-08-12"
 title: Open AI Codex - coding with AI
-tags: technical 
+tags: [technical, AI]
 ---
 
 I got to use the Open AI Codex API today, as part of the Open AI codex challenge. The challenge consisted of 5 problems, meant to be solved as quickly as possible, with the Codex available for help.

@@ -3,7 +3,7 @@ layout: post
 title:  "How I used AI in Hunchle"
 date:   2025-05-28
 comments: true
-tags: activities
+tags: [activities, AI]
 bsky: 3lq7ujbbbuc2w
 ---
 

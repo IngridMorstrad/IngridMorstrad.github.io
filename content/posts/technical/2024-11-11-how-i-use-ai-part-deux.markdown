@@ -2,7 +2,7 @@
 comments: true
 date: "2024-11-11"
 title: How I use AI (part deux)
-tags: technical 
+tags: [technical, AI]
 ---
 
 Adding to my list of what I've used AI (read as "LLMs") for. For my previous post, click [here](https://www.ashwinmenon.com/posts/technical/2024-09-10-how-i-use-ai/).

@@ -3,7 +3,7 @@ layout: post
 title:  "New tech"
 date:   2024-02-08 18:25:32
 comments: true
-tags: thoughts
+tags: [thoughts, AI]
 ---
 
 The 90s and 00s were rife with new, exciting inventions. Some that seemed to build on a similar idea while moving a great deal forward.

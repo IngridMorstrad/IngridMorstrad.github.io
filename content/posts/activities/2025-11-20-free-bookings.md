@@ -3,7 +3,7 @@ layout: post
 title:  "I want my Chicken Shawarma: How I cut booking costs by 10x"
 date:   2025-11-20
 comments: true
-tags: activities
+tags: [activities, AI]
 ---
 
 I like playing sports. I created an app to notify me when courts are available.  

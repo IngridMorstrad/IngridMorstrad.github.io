@@ -3,7 +3,7 @@ layout: post
 title:  "F1 AI benchmarks"
 date:   2025-12-21
 comments: true
-tags: activities
+tags: [activities, AI]
 ---
 
 Any researchers who want the prompts and/or links to the chats can contact me =)

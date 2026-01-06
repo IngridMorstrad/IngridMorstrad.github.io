@@ -2,7 +2,7 @@
 comments: true
 date: "2024-09-10"
 title: How I use AI
-tags: technical 
+tags: [technical, AI]
 ---
 
 Brief list of what I've used AI (read as "LLMs") for.

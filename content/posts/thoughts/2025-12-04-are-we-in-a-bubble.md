@@ -3,7 +3,7 @@ layout: post
 title:  "Are we in a bubble?"
 date:   2025-12-04
 comments: true
-tags: thoughts
+tags: [thoughts, AI]
 ---
 
 <details>

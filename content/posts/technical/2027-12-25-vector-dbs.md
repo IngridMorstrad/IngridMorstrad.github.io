@@ -2,7 +2,7 @@
 comments: true
 date: "2027-12-25"
 title: Vector DB
-tags: technical 
+tags: [technical, AI]
 ---
 
 ## What is a vector DB?

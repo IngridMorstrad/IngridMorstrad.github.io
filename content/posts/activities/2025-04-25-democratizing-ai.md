@@ -3,7 +3,7 @@ layout: post
 title:  "Democratizing AI"
 date:   2025-04-25
 comments: true
-tags: activities
+tags: [activities, AI]
 bsky: 3lnocbmo3rs27
 ---
 
