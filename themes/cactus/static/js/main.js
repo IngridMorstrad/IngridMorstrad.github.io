@@ -1,4 +1,48 @@
 document.addEventListener("DOMContentLoaded", function() {
+  /**
+   * Light/dark theme toggle.
+   *
+   * - Default: user's OS preference (prefers-color-scheme)
+   * - Persist: localStorage ("cactus-theme")
+   * - Apply: swap the theme stylesheet href
+   */
+  const themeToggleButton = document.querySelector("#theme-toggle");
+  const themeLink = document.querySelector("#theme-stylesheet");
+  const themeConfig = window.__cactusTheme || {};
+
+  function getTheme() {
+    const t = document.documentElement.getAttribute("data-theme");
+    return t === "dark" ? "dark" : "light";
+  }
+
+  function setTheme(theme) {
+    const next = theme === "dark" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", next);
+
+    if (themeLink && themeConfig.lightHref && themeConfig.darkHref) {
+      themeLink.href = next === "dark" ? themeConfig.darkHref : themeConfig.lightHref;
+    }
+
+    if (themeConfig.storageKey) {
+      try { localStorage.setItem(themeConfig.storageKey, next); } catch (e) {}
+    }
+
+    if (themeToggleButton) {
+      const label = next === "dark" ? "Switch to light theme" : "Switch to dark theme";
+      themeToggleButton.setAttribute("aria-label", label);
+      themeToggleButton.setAttribute("title", label);
+    }
+  }
+
+  if (themeToggleButton) {
+    // Initialize labels based on current theme (already applied in <head>)
+    setTheme(getTheme());
+
+    themeToggleButton.addEventListener("click", function() {
+      const current = getTheme();
+      setTheme(current === "dark" ? "light" : "dark");
+    });
+  }
 
   /**
    * Sets up Justified Gallery if the gallery plugin is available.
