@@ -44,7 +44,7 @@ weight = 5
   pagerSize = 20
   
 [params]
-  description = "Hi, I'm Ashwin. This is my little corner of the web. You can read about why I blog [here](https://www.ashwinmenon.com/about). Hope you enjoy your stay. To get updates, [subscribe](https://buttondown.email/AshwinMenon). RSS available [here](https://www.ashwinmenon.com/index.xml)"
+  description = "Hi, I'm Ashwin. This is my little corner of the web. You can read about why I blog [here](https://www.ashwinmenon.com/about). Hope you enjoy your stay. To get updates, [subscribe](https://buttondown.email/AshwinMenon)."
 
   mainSection = "posts"
   showAllPostsOnHomePage = true
@@ -65,4 +65,33 @@ weight = 5
   name = "buttondown"
   link = "https://buttondown.email/AshwinMenon"
   icon = "fas fa-envelope-square"
+
+[[params.feeds]]
+  name = "rss"
+  link = "/index.xml"
+
+[[params.feeds]]
+  name = "atom"
+  link = "/atom.xml"
+
+# --- Feeds ---
+# Hugo generates RSS by default. We also enable Atom output format so readers can use
+# either /index.xml (RSS 2.0) or /atom.xml (Atom 1.0).
+[mediaTypes]
+  [mediaTypes."application/atom+xml"]
+    suffixes = ["xml"]
+
+[outputFormats]
+  [outputFormats.ATOM]
+    mediaType = "application/atom+xml"
+    baseName = "atom"
+    # Atom templates must not be HTML-escaped; treat as plain text output.
+    isPlainText = true
+    rel = "alternate"
+
+[outputs]
+  home = ["HTML", "RSS", "ATOM"]
+  section = ["HTML", "RSS", "ATOM"]
+  taxonomy = ["HTML", "RSS", "ATOM"]
+  term = ["HTML", "RSS", "ATOM"]
 

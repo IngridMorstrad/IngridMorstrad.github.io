@@ -38,6 +38,15 @@
       {{ end }}
       </p>
   {{ end }}
+
+  {{ if isset .Site.Params "feeds" }}
+      <p>Feeds:
+      {{ $feedLength := (len .Site.Params.feeds) }}
+      {{ range $findex, $feed := .Site.Params.feeds }}
+        <a href="{{ $feed.link | relURL }}">{{ if eq $feed.name "rss" }}RSS{{ else if eq $feed.name "atom" }}Atom{{ else }}{{ $feed.name }}{{ end }}</a>{{ if (lt (add $findex 1) $feedLength) }}, {{ end }}
+      {{ end }}
+      </p>
+  {{ end }}
   </section>
 
   <section id="writing">
@@ -125,7 +134,13 @@
       {{ else }}
       {{ $scratch.Set "fontSize" 1 }}
       {{ end }}
-      <a style="font-size: {{ $scratch.Get `fontSize` }}rem;" href="{{ $elem.Page.Permalink }}">
+      {{- $size := 1 -}}
+      {{- if (isset $.Site.Params "tagcloud") -}}
+        {{- $ratio := div (float $elem.Count) (float $AllRegularPagesCount) -}}
+        {{- $size = add 1 (int (math.Round (mul 4 $ratio))) -}}
+        {{- $size = (math.Min 5 (math.Max 1 $size)) -}}
+      {{- end -}}
+      <a class="tag-size-{{ $size }}" href="{{ $elem.Page.Permalink }}">
 	      {{- .Page.Title -}}
       </a>
     {{ end }}

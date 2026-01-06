@@ -31,4 +31,11 @@ html[data-theme="light"] {
   background-position: center;
 }
 
+/* Tag cloud sizing (used on the homepage Topics list) */
+.tagcloud a.tag-size-1 { font-size: 1rem; }
+.tagcloud a.tag-size-2 { font-size: 1.5rem; }
+.tagcloud a.tag-size-3 { font-size: 2rem; }
+.tagcloud a.tag-size-4 { font-size: 2.5rem; }
+.tagcloud a.tag-size-5 { font-size: 3rem; }
+
 
