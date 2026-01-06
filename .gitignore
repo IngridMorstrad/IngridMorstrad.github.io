@@ -13,6 +13,9 @@ _site
 BlogRemove
 bower_components/
 
+# Node (not used for builds/deployments)
+node_modules/
+
 # OS files
 .DS_Store
 Thumbs.db
