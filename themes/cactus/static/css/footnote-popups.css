@@ -25,12 +25,23 @@
   border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.98);
-  color: inherit;
+  /* Don't rely on inheriting page text color; the popup background is controlled here. */
+  color: #1d1f21;
   box-shadow: 0 14px 40px rgba(0, 0, 0, 0.18);
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
   font-size: 0.95rem;
   line-height: 1.45;
+}
+
+.footnote-popup__inner a {
+  color: #0b5fff;
+  text-decoration: underline;
+  background-image: none;
+}
+
+.footnote-popup__inner a:visited {
+  color: #6a38ff;
 }
 
 .footnote-popup__inner p:last-child {
@@ -42,6 +53,28 @@
     border-color: rgba(255, 255, 255, 0.14);
     background: rgba(25, 25, 25, 0.97);
     box-shadow: 0 14px 40px rgba(0, 0, 0, 0.55);
+  }
+
+  /* Some theme CSS sets explicit colors on elements (p/li/etc). Force readable text inside the popup. */
+  .footnote-popup__inner,
+  .footnote-popup__inner * {
+    color: rgba(255, 255, 255, 0.92);
+  }
+
+  .footnote-popup__inner a {
+    color: rgba(140, 200, 255, 0.95);
+    text-decoration: underline;
+    background-image: none;
+  }
+
+  .footnote-popup__inner a:visited {
+    color: rgba(186, 156, 255, 0.9);
+  }
+
+  .footnote-popup__inner code,
+  .footnote-popup__inner pre {
+    background: rgba(255, 255, 255, 0.08);
+    color: inherit;
   }
 }
 
