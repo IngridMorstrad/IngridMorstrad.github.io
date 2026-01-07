@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lichess Rating Graph</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            color: #e0e0e0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #fff;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        label {
+            font-size: 0.85rem;
+            color: #aaa;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        input, select {
+            padding: 12px 16px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            background: rgba(255,255,255,0.08);
+            color: #fff;
+            font-size: 1rem;
+            min-width: 150px;
+            transition: all 0.2s;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #4a90d9;
+            background: rgba(255,255,255,0.12);
+        }
+
+        select option {
+            background: #1a1a2e;
+            color: #fff;
+        }
+
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #4a90d9 0%, #3672b9 100%);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(74,144,217,0.4);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.15);
+        }
+
+        .chart-container {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        #ratingChart {
+            width: 100% !important;
+            height: 500px !important;
+        }
+
+        .status {
+            text-align: center;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .status.loading {
+            display: block;
+            background: rgba(74,144,217,0.2);
+            color: #4a90d9;
+        }
+
+        .status.error {
+            display: block;
+            background: rgba(217,74,74,0.2);
+            color: #d94a4a;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.05);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #4a90d9;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            input, select, button {
+                width: 100%;
+            }
+
+            #ratingChart {
+                height: 350px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lichess Rating Graph</h1>
+
+        <div class="controls">
+            <div class="control-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Enter Lichess username" value="">
+            </div>
+            <div class="control-group">
+                <label for="gameMode">Game Mode</label>
+                <select id="gameMode">
+                    <option value="blitz">Blitz</option>
+                    <option value="bullet">Bullet</option>
+                    <option value="rapid">Rapid</option>
+                    <option value="classical">Classical</option>
+                    <option value="correspondence">Correspondence</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label for="numGames">Max Games</label>
+                <input type="number" id="numGames" placeholder="0 = all" value="0" min="0">
+            </div>
+            <div class="control-group">
+                <label>&nbsp;</label>
+                <button class="btn-primary" id="loadBtn" onclick="loadData()">Load Data</button>
+            </div>
+        </div>
+
+        <div class="status" id="status"></div>
+
+        <div class="chart-container">
+            <canvas id="ratingChart"></canvas>
+        </div>
+
+        <div class="actions hidden" id="actions">
+            <button class="btn-secondary" onclick="downloadImage()">Download PNG</button>
+        </div>
+
+        <div class="stats hidden" id="stats">
+            <div class="stat-card">
+                <div class="stat-value" id="totalGames">-</div>
+                <div class="stat-label">Total Games</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="currentRating">-</div>
+                <div class="stat-label">Current Rating</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="peakRating">-</div>
+                <div class="stat-label">Peak Rating</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="lowestRating">-</div>
+                <div class="stat-label">Lowest Rating</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="avgGamesPerDay">-</div>
+                <div class="stat-label">Avg Games/Day</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let chart = null;
+        let currentUsername = '';
+        let currentGameMode = '';
+
+        // Initialize empty chart
+        const ctx = document.getElementById('ratingChart').getContext('2d');
+        chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: []
+            },
+            options: getChartOptions('', '')
+        });
+
+        function getChartOptions(username, gameMode) {
+            return {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: {
+                            usePointStyle: true,
+                            padding: 20
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(0,0,0,0.8)',
+                        padding: 12,
+                        titleFont: { size: 14 },
+                        bodyFont: { size: 13 },
+                        callbacks: {
+                            title: function(items) {
+                                return `Game #${items[0].label}`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Number of Games',
+                            font: { size: 14, weight: 'bold' }
+                        },
+                        ticks: {
+                            maxTicksLimit: 20
+                        }
+                    },
+                    y: {
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        title: {
+                            display: true,
+                            text: username ? `${username}'s Lichess ${capitalize(gameMode)} Rating` : 'Rating',
+                            color: '#3F5D7D',
+                            font: { size: 14, weight: 'bold' }
+                        },
+                        ticks: {
+                            color: '#3F5D7D',
+                            stepSize: 50
+                        },
+                        grid: {
+                            color: 'rgba(0,0,0,0.1)'
+                        }
+                    },
+                    y1: {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        title: {
+                            display: true,
+                            text: 'Games per Day',
+                            color: '#666',
+                            font: { size: 14, weight: 'bold' }
+                        },
+                        ticks: {
+                            color: '#666'
+                        },
+                        grid: {
+                            drawOnChartArea: false
+                        },
+                        min: 0
+                    }
+                }
+            };
+        }
+
+        function capitalize(str) {
+            return str.charAt(0).toUpperCase() + str.slice(1);
+        }
+
+        function showStatus(message, type) {
+            const status = document.getElementById('status');
+            status.textContent = message;
+            status.className = 'status ' + type;
+        }
+
+        function hideStatus() {
+            document.getElementById('status').className = 'status';
+        }
+
+        async function loadData() {
+            const username = document.getElementById('username').value.trim();
+            const gameMode = document.getElementById('gameMode').value;
+            const numGames = parseInt(document.getElementById('numGames').value) || 0;
+
+            if (!username) {
+                showStatus('Please enter a username', 'error');
+                return;
+            }
+
+            currentUsername = username;
+            currentGameMode = gameMode;
+
+            const loadBtn = document.getElementById('loadBtn');
+            loadBtn.disabled = true;
+            loadBtn.textContent = 'Loading...';
+
+            showStatus(`Fetching ${gameMode} games for ${username}...`, 'loading');
+
+            try {
+                const games = await fetchGames(username, gameMode, numGames);
+
+                if (games.length === 0) {
+                    showStatus(`No ${gameMode} games found for ${username}`, 'error');
+                    loadBtn.disabled = false;
+                    loadBtn.textContent = 'Load Data';
+                    return;
+                }
+
+                showStatus(`Processing ${games.length} games...`, 'loading');
+                const data = processGames(games, username);
+
+                updateChart(data, username, gameMode);
+                updateStats(data);
+
+                document.getElementById('actions').classList.remove('hidden');
+                document.getElementById('stats').classList.remove('hidden');
+
+                hideStatus();
+            } catch (error) {
+                console.error(error);
+                showStatus(`Error: ${error.message}`, 'error');
+            }
+
+            loadBtn.disabled = false;
+            loadBtn.textContent = 'Load Data';
+        }
+
+        async function fetchGames(username, gameMode, maxGames) {
+            let url = `https://lichess.org/api/games/user/${username}?rated=true&perfType=${gameMode}&sort=dateAsc`;
+            if (maxGames > 0) {
+                url += `&max=${maxGames}`;
+            }
+
+            const response = await fetch(url, {
+                headers: {
+                    'Accept': 'application/x-ndjson'
+                }
+            });
+
+            if (!response.ok) {
+                if (response.status === 404) {
+                    throw new Error('User not found');
+                }
+                throw new Error(`HTTP error: ${response.status}`);
+            }
+
+            const text = await response.text();
+            const lines = text.trim().split('\n').filter(line => line);
+            return lines.map(line => JSON.parse(line));
+        }
+
+        function processGames(games, username) {
+            const ratings = [];
+            const dates = [];
+            const dailyGamesMap = {};
+            let skipped = 0;
+
+            for (const game of games) {
+                const color = getColor(game, username);
+                if (!color) {
+                    skipped++;
+                    continue;
+                }
+
+                const playerData = game.players[color];
+                const rating = playerData.rating;
+                const ratingDiff = playerData.ratingDiff;
+
+                if (ratingDiff === undefined) {
+                    skipped++;
+                    continue;
+                }
+
+                const oldRating = rating - ratingDiff;
+                const gameDate = new Date(game.createdAt);
+                const dateKey = gameDate.toISOString().split('T')[0];
+
+                // Add both old and new rating for smoother visualization
+                ratings.push(oldRating);
+                ratings.push(rating);
+                dates.push(dateKey);
+                dates.push(dateKey);
+
+                dailyGamesMap[dateKey] = (dailyGamesMap[dateKey] || 0) + 1;
+            }
+
+            // Map daily games to each rating point
+            const dailyGames = dates.map(d => dailyGamesMap[d]);
+
+            // Calculate 100-game moving average
+            const movingAvg = [];
+            for (let i = 0; i < ratings.length; i++) {
+                const start = Math.max(0, i - 99);
+                const slice = ratings.slice(start, i + 1);
+                const avg = slice.reduce((a, b) => a + b, 0) / slice.length;
+                movingAvg.push(avg);
+            }
+
+            return { ratings, dailyGames, movingAvg, dates };
+        }
+
+        function getColor(game, username) {
+            const usernameLower = username.toLowerCase();
+            try {
+                if (game.players.black.user.name.toLowerCase() === usernameLower) {
+                    return 'black';
+                } else if (game.players.white.user.name.toLowerCase() === usernameLower) {
+                    return 'white';
+                }
+            } catch (e) {
+                return null;
+            }
+            return null;
+        }
+
+        function updateChart(data, username, gameMode) {
+            const labels = data.ratings.map((_, i) => i + 1);
+
+            chart.data.labels = labels;
+            chart.data.datasets = [
+                {
+                    label: 'Rating',
+                    data: data.ratings,
+                    borderColor: '#3F5D7D',
+                    backgroundColor: 'rgba(63, 93, 125, 0.1)',
+                    borderWidth: 2,
+                    pointRadius: 0,
+                    fill: true,
+                    yAxisID: 'y',
+                    order: 1
+                },
+                {
+                    label: '100-Game Average',
+                    data: data.movingAvg,
+                    borderColor: '#FF9500',
+                    backgroundColor: 'transparent',
+                    borderWidth: 2,
+                    pointRadius: 0,
+                    fill: false,
+                    yAxisID: 'y',
+                    order: 2
+                },
+                {
+                    label: 'Games per Day',
+                    data: data.dailyGames,
+                    backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                    borderColor: 'transparent',
+                    type: 'bar',
+                    yAxisID: 'y1',
+                    order: 3
+                }
+            ];
+
+            chart.options = getChartOptions(username, gameMode);
+
+            // Auto-scale y-axis
+            const minRating = Math.min(...data.ratings);
+            const maxRating = Math.max(...data.ratings);
+            const padding = 50;
+            chart.options.scales.y.min = Math.floor((minRating - padding) / 50) * 50;
+            chart.options.scales.y.max = Math.ceil((maxRating + padding) / 50) * 50;
+
+            chart.update();
+        }
+
+        function updateStats(data) {
+            const totalGames = data.ratings.length / 2; // Each game adds 2 points
+            const currentRating = data.ratings[data.ratings.length - 1];
+            const peakRating = Math.max(...data.ratings);
+            const lowestRating = Math.min(...data.ratings);
+
+            // Calculate unique days
+            const uniqueDays = new Set(data.dates).size;
+            const avgGamesPerDay = (totalGames / uniqueDays).toFixed(1);
+
+            document.getElementById('totalGames').textContent = Math.round(totalGames).toLocaleString();
+            document.getElementById('currentRating').textContent = currentRating;
+            document.getElementById('peakRating').textContent = peakRating;
+            document.getElementById('lowestRating').textContent = lowestRating;
+            document.getElementById('avgGamesPerDay').textContent = avgGamesPerDay;
+        }
+
+        function downloadImage() {
+            const link = document.createElement('a');
+            link.download = `ChessGraph_${currentUsername}_${currentGameMode}.png`;
+            link.href = chart.toBase64Image('image/png', 1);
+            link.click();
+        }
+
+        // Allow Enter key to submit
+        document.getElementById('username').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                loadData();
+            }
+        });
+    </script>
+</body>
+</html>
