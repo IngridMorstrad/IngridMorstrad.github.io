@@ -72,12 +72,6 @@ tags: [technical, ai]
   <p>Author of The Chronicles of Narnia.</p>
 </div>
 
-<div class="btn-group my2">
-  <button class="btn-toggle" onclick="show('JKR')">JKR</button>
-  <button class="btn-toggle" onclick="show('JRRT')">JRRT</button>
-  <button class="btn-toggle" onclick="show('CSL')">CSL</button>
-</div>
-
 <div id="JKR" style="display:none;">
 <h1>The Curious Case of the Code Sprite</h1>
 
