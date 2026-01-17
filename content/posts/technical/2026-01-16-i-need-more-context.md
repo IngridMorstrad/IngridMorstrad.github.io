@@ -89,7 +89,7 @@ tags: [technical, ai]
 </div>
 
 <div id="JRRT" style="display:none;">
-    <h2>Concerning the Stewardship of the Digital Scrivener</h2>
+    <h1>Concerning the Stewardship of the Digital Scrivener</h1>
 
 <p>It has lately been my task to labor alongside a new craft-fellow, a spirit of woven logic known as the Claude Code. Yet, as with all such artifacts of subtle art, I have found the partnership fraught with peculiar trials. These tribulations spring chiefly from a singular trait of its nature: the "Context Window." It is a fickle vessel; on one hand, it dwells overlong upon the shadows of its own recent thoughts, spinning a web of self-reinforcing folly; on the other, it is prone to a sudden weariness, ceasing its labors prematurely as if a candle had flickered out at the limit of its oil. To aid those who must likewise toil with this invisible colleague, I have set down certain counsels for the husbanding of its strength.</p>
 
