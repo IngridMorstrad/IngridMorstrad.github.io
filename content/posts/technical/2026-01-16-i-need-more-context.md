@@ -51,18 +51,6 @@ tags: [technical, ai]
   }
 </style>
 
-<div class="button-nav mt3">
-  <button class="btn-author" onclick="showAuthor(event, 'JKR')">JKR</button>
-  <button class="btn-author" onclick="showAuthor(event, 'JRRT')">JRRT</button>
-  <button class="btn-author" onclick="showAuthor(event, 'CSL')">CSL</button>
-</div>
-
-<div class="btn-group my2">
-  <button class="btn-toggle" onclick="show('JKR')">JKR</button>
-  <button class="btn-toggle" onclick="show('JRRT')">JRRT</button>
-  <button class="btn-toggle" onclick="show('CSL')">CSL</button>
-</div>
-
 <div id="JKR" style="display:none;">
 <h1>The Curious Case of the Code Sprite</h1>
 
@@ -83,7 +71,7 @@ tags: [technical, ai]
 </ul>
 </section>
 
-<section> <h3>A Final Warning on Scale</h3> <p>Above all, remember that brevity is the soul of a productive workspace. Keep your files small and your conversations short. A file longer than four hundred lines is an invitation for the fellow to meander, speed-running through its energy reserves before it has even found the information you require. By keeping its world small and its instructions sharp, you may find that this digital coworker becomes less of a temperamental burden and more of the efficient assistant it was intended to be.</p> </section> </article>
+<section> <h3>A Final Warning on Scale</h3> <p>Above all, remember that brevity is the soul of a productive workspace. Keep your files small and your conversations short. A file longer than four hundred lines is an invitation for the fellow to meander, speed-running through its energy reserves before it has even found the information you require. By keeping its world small and its instructions sharp, you may find that this digital coworker becomes less of a temperamental burden and more of the efficient assistant it was intended to be.</p> </section>
 </div>
 
 <div id="JRRT" style="display:none;">
@@ -156,6 +144,10 @@ For the latter, I had to dive into the trenches. I ended up looking at token usa
 - Hook into "pre-tool-usage" hooks and force silent tool usage. This was a little more complicated, but you can work with Gemini (or some LLM) to help you configure your pre-commit hooks to ban Claude from running expensive tests. Expensive because at the rate at which these things spit out tokens, they assume I'm funded by Warren Buffett. The trick here is to create a custom test script that sends test output to a temp file and only displays it if tests fail. Then, you add a pre-tool-usage hook for Claude that acts as a policeman whenever Claude tries to run a tool. You inspect if this is going to make you go bankrupt (like a test outputting lots of data) and if yes, you point it to the quiet script. All in code, of course. I had tests running pre-commit and this solution was a life-saver.
 
 I'll update this post as I learn more!</div>
+
+
+<div id="content">
+</div>
 
 <script>
 function show(id) {
