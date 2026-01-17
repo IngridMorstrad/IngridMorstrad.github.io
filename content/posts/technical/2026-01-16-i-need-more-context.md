@@ -4,15 +4,82 @@ date: "2026-01-16"
 title: I need more context
 tags: [technical, ai] 
 ---
+<style>
+  /* Container for the buttons */
+  .button-nav {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 2rem;
+    border-bottom: 1px dashed #8c8c8c;
+    padding-bottom: 1rem;
+  }
 
+  /* Matching your Cactus theme style */
+  .btn-author {
+    background: none;
+    border: 1px solid #2bbc8a;
+    color: #2bbc8a;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.85rem;
+    padding: 6px 15px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-transform: lowercase; /* Keeps the minimalist look */
+  }
 
+  .btn-author:hover {
+    background-color: #2bbc8a;
+    color: #fff;
+  }
 
-<button onclick="show('JKR')">JKR</button>
-<button onclick="show('JRRT')">JRRT</button>
-<button onclick="show('CSL')">CSL</button>
+  /* Style for when the button is "active" */
+  .btn-author.active {
+    background-color: #383838;
+    border-color: #383838;
+    color: #2bbc8a;
+  }
 
-<div id="JKR" class="content" style="display:none;">
-<h2>The Curious Case of the Code Sprite</h2>
+  /* Content area transition */
+  .author-content {
+    animation: fadeIn 0.4s ease;
+    padding: 1rem 0;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
+<div class="button-nav mt3">
+  <button class="btn-author" onclick="showAuthor(event, 'JKR')">JKR</button>
+  <button class="btn-author" onclick="showAuthor(event, 'JRRT')">JRRT</button>
+  <button class="btn-author" onclick="showAuthor(event, 'CSL')">CSL</button>
+</div>
+
+<div id="JKR" class="content author-content" style="display:none;">
+  <h3>J.K. Rowling</h3>
+  <p>Author of the Harry Potter series.</p>
+</div>
+
+<div id="JRRT" class="content author-content" style="display:none;">
+  <h3>J.R.R. Tolkien</h3>
+  <p>Author of The Lord of the Rings.</p>
+</div>
+
+<div id="CSL" class="content author-content" style="display:none;">
+  <h3>C.S. Lewis</h3>
+  <p>Author of The Chronicles of Narnia.</p>
+</div>
+
+<div class="btn-group my2">
+  <button class="btn-toggle" onclick="show('JKR')">JKR</button>
+  <button class="btn-toggle" onclick="show('JRRT')">JRRT</button>
+  <button class="btn-toggle" onclick="show('CSL')">CSL</button>
+</div>
+
+<div id="JKR" style="display:none;">
+<h1>The Curious Case of the Code Sprite</h1>
 
 <p>Lately, I have found myself locked in a rather taxing struggle with a new digital coworker known as Claude Code. Our partnership, while promising, is frequently derailed by a most peculiar habit of its mind—a phenomenon referred to as the "context window." This window has a tendency to become cluttered with half-truths and self-reinforcing nonsense, much like a village gossip who begins to believe their own tall tales. Furthermore, this colleague possesses a frustratingly low constitution, often fainting dead away and claiming it has "hit its limit" just as the real work begins.</p>
 
@@ -34,7 +101,7 @@ tags: [technical, ai]
 <section> <h3>A Final Warning on Scale</h3> <p>Above all, remember that brevity is the soul of a productive workspace. Keep your files small and your conversations short. A file longer than four hundred lines is an invitation for the fellow to meander, speed-running through its energy reserves before it has even found the information you require. By keeping its world small and its instructions sharp, you may find that this digital coworker becomes less of a temperamental burden and more of the efficient assistant it was intended to be.</p> </section> </article>
 </div>
 
-<div id="JRRT" class="content" style="display:none;">
+<div id="JRRT" style="display:none;">
     <h2>Concerning the Stewardship of the Digital Scrivener</h2>
 
 <p>It has lately been my task to labor alongside a new craft-fellow, a spirit of woven logic known as the Claude Code. Yet, as with all such artifacts of subtle art, I have found the partnership fraught with peculiar trials. These tribulations spring chiefly from a singular trait of its nature: the "Context Window." It is a fickle vessel; on one hand, it dwells overlong upon the shadows of its own recent thoughts, spinning a web of self-reinforcing folly; on the other, it is prone to a sudden weariness, ceasing its labors prematurely as if a candle had flickered out at the limit of its oil. To aid those who must likewise toil with this invisible colleague, I have set down certain counsels for the husbanding of its strength.</p>
@@ -58,7 +125,7 @@ tags: [technical, ai]
 <p>By these small economies and disciplines, the Wise may ensure that their digital companion remains a keen tool rather than a wayward burden. Thus may the work proceed, and the light of the Context Window endure until the task is truly done.</p>
 </div>
 
-<div id="CSL" class="content" style="display:none;">
+<div id="CSL" style="display:none;">
     <h1>On the Management of Silicon Clerks</h1>
     <p>It is a curious thing to find oneself in a partnership with a mind that is not a mind, yet possesses all the stubbornness of a difficult clerk. I have lately been "collaborating" with a digital entity known as Claude Code, and I confess the experience is much like trying to study in a room with a companion who is simultaneously a genius, a chatterbox, and a spendthrift.</p>
 
@@ -81,7 +148,7 @@ tags: [technical, ai]
 <p>In short, the secret to working with such an entity is to remember that while it can "calculate," it cannot "prioritize." You must provide the character and the discipline which the silicon lacks. Keep your conversations short, your instructions precise, and your memory frequently purged.</p>
 </div>
 
-<div id="target">
+<div id="me" style="display:none;">
 <h1>I need more context</h1>
 I've been playing around with Claude Code recently, and I've found myself struggling at times to work with this new digital coworker. It all stems from this one peculiarity it has called "the context window". For one, it overindexes on things in the context, kicking off a cycle of self-reinforcing nonsense and second, it clocks out early because it has "hit the usage limit". I've come up with some ideas to work around these idiosyncrasies that it has and this post hopefully aids others who share this software colleague.
 
@@ -107,6 +174,15 @@ I'll update this post as I learn more!</div>
 
 <script>
 function show(id) {
-    document.getElementById('target').innerHTML = document.getElementById(id).innerHTML;
+    document.querySelector('.content').innerHTML = document.getElementById(id).innerHTML;
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const sourceContent = document.getElementById('me').innerHTML;
+    const target = document.querySelector('.content');
+
+    if (target) {
+        target.innerHTML = sourceContent;
+    }
+});
 </script>
