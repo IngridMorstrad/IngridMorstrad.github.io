@@ -57,19 +57,10 @@ tags: [technical, ai]
   <button class="btn-author" onclick="showAuthor(event, 'CSL')">CSL</button>
 </div>
 
-<div id="JKR" class="content author-content" style="display:none;">
-  <h3>J.K. Rowling</h3>
-  <p>Author of the Harry Potter series.</p>
-</div>
-
-<div id="JRRT" class="content author-content" style="display:none;">
-  <h3>J.R.R. Tolkien</h3>
-  <p>Author of The Lord of the Rings.</p>
-</div>
-
-<div id="CSL" class="content author-content" style="display:none;">
-  <h3>C.S. Lewis</h3>
-  <p>Author of The Chronicles of Narnia.</p>
+<div class="btn-group my2">
+  <button class="btn-toggle" onclick="show('JKR')">JKR</button>
+  <button class="btn-toggle" onclick="show('JRRT')">JRRT</button>
+  <button class="btn-toggle" onclick="show('CSL')">CSL</button>
 </div>
 
 <div id="JKR" style="display:none;">
