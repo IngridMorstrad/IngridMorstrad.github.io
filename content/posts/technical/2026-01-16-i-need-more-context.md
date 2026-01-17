@@ -51,6 +51,13 @@ tags: [technical, ai]
   }
 </style>
 
+<div class="button-nav">
+  <button class="btn-author" onclick="show('me')">Me!</button>
+  <button class="btn-author" onclick="show('JKR')">JKR</button>
+  <button class="btn-author" onclick="show('JRRT')">JRRT</button>
+  <button class="btn-author" onclick="show('CSL')">CSL</button>
+</div>
+
 <div id="JKR" style="display:none;">
 <h1>The Curious Case of the Code Sprite</h1>
 
@@ -146,7 +153,7 @@ For the latter, I had to dive into the trenches. I ended up looking at token usa
 I'll update this post as I learn more!</div>
 
 
-<div id="content">
+<div class="content">
 </div>
 
 <script>
