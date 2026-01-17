@@ -9,7 +9,6 @@ tags: [technical, ai]
   .button-nav {
     display: flex;
     gap: 15px;
-    margin-bottom: 2rem;
     border-bottom: 1px dashed #8c8c8c;
     padding-bottom: 1rem;
   }
@@ -49,13 +48,21 @@ tags: [technical, ai]
     from { opacity: 0; transform: translateY(5px); }
     to { opacity: 1; transform: translateY(0); }
   }
+
+  /* Override h1 margins in content target */
+  #author-content-target h1 {
+    margin-top: 0;
+    margin-block-start: 0;
+  }
 </style>
+
+<p><em>Click the buttons to rewrite the article in the style of different authors</em></p>
 
 <div class="button-nav">
   <button class="btn-author" onclick="show('me')">Me!</button>
-  <button class="btn-author" onclick="show('JKR')">JKR</button>
-  <button class="btn-author" onclick="show('JRRT')">JRRT</button>
-  <button class="btn-author" onclick="show('CSL')">CSL</button>
+  <button class="btn-author" onclick="show('JKR')">J.K. Rowling</button>
+  <button class="btn-author" onclick="show('JRRT')">J.R.R. Tolkien</button>
+  <button class="btn-author" onclick="show('CSL')">C.S. Lewis</button>
 </div>
 
 <div id="JKR" style="display:none;">
@@ -152,18 +159,17 @@ For the latter, I had to dive into the trenches. I ended up looking at token usa
 
 I'll update this post as I learn more!</div>
 
-
-<div class="content">
+<div id="author-content-target">
 </div>
 
 <script>
 function show(id) {
-    document.querySelector('.content').innerHTML = document.getElementById(id).innerHTML;
+    document.getElementById('author-content-target').innerHTML = document.getElementById(id).innerHTML;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     const sourceContent = document.getElementById('me').innerHTML;
-    const target = document.querySelector('.content');
+    const target = document.getElementById('author-content-target');
 
     if (target) {
         target.innerHTML = sourceContent;
