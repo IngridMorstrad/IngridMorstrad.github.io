@@ -5,11 +5,15 @@ title: Optimizing Tack On
 tags: [technical, ai] 
 ---
 
-One of the best parts about building, in an AI world, is that you get to quickly learn and improve based on AI suggestions. I built Tack On (playable on [Hunchle](www.hunchle.com), if you select Tack On from the top) and just asked AI to optimize some of the algorithms. Here are some discoveries, presented as interview questions.
+With AI advancing rapidly, one of the most asked questions these days is, "Are software engineers still needed?". I have some answers! I love optimizations and performance engineering, and decided to dig into my codebase (with Claude Code) to find possible improvements in this domain. If you've worked with these tools, then you know that for an inquizitive person, there is nothing better as with AI, you get to learn and improve at a rapid pace!
+
+For context, I built Tack On (playable on [Hunchle](www.hunchle.com), if you select Tack On from the top) and just asked AI to optimize some of the algorithms. Tack On is a word game where you chain words together where the last two letters of a word in the chain match the first two letters of the next word (playing the game is an easier way to understand it).
+
+I'm happy to report that software engineers still add something to the process. While AI can still build, there is more that I could extract by inspectings its responses and talking with it. Here are some of the discoveries, presented as interview questions.
 
 # Q1
 
-Tack On chains words such that the last two letters of a word are the same as the first two letters of the next one. To do this, it builds a graph. How might you optimize the following code?
+To chain words, Tack On builds an adjacency list. How might you optimize the following code?
 
 ```
 for word1 in word_list:
