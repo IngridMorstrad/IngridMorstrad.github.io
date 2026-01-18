@@ -19,12 +19,11 @@ for word1 in word_list:
 ```
 
 <details>
-<summary>Click to show</summary>
+<summary>Click to show answer</summary>
 A: Create a mapping from prefix[word] -> [word1, word2, ...] which is O(n).  Then, you can go through the word list, and for each word, map it to prefix[word] to get the same graph! Note that you don't want to add the same word into prefix[word], to avoid a "infinite" chain. This was in fact a better solution than the AI found, here's the full convo:
-</details>
 
 <details>
-<summary>Click to expand</summary>
+<summary>Click to expand conversation</summary>
 
 ```
 ❯ For 1. wouldn't the following be even more optimal?
@@ -118,6 +117,7 @@ A: Create a mapping from prefix[word] -> [word1, word2, ...] which is O(n).  The
   You just made the optimization 20× better. Well spotted! 🎯
 ```
 </details>
+</details>
 
 # Q2
 
@@ -132,7 +132,7 @@ This one's a simpler one. We don't want to accept questions with answers that ma
 ```
 
 <details>
-<summary>Click to show</summary>
+<summary>Click to show answer</summary>
 A: Initialize once, and use a set instead of a list.
 </details>
 
@@ -145,7 +145,7 @@ To rate limit calls to the LLM, we want to track timestamps. Why is the below su
 ```
 
 <details>
-<summary>Click to show</summary>
+<summary>Click to show answer</summary>
 A: Use a queue (or a deque). Pop from the front while `now - t < 60`.
 </details>
 
@@ -160,9 +160,8 @@ We sometimes want to replace a single word in the chain. In that case, we do a l
 ```
 
 <details>
-<summary>Click to show</summary>
+<summary>Click to show answer</summary>
 A: This was the AI's initial solution:
-</details>
 ```
   Optimization: Build prefix_dict/suffix_dict once, then:
   # O(k) where k is words with that prefix
@@ -171,7 +170,7 @@ A: This was the AI's initial solution:
 
 But then I prompted with:
 <details>
-<summary>(click to expand)</summary>
+<summary>Click to expand conversation</summary>
 
 ```
 >   For 5. Would it be better to have a mapping from (prefix, suffix) -> [word1, word2] where word1, word2, etc. are words with that prefix AND suffix? Can optimize by pruning
@@ -303,4 +302,6 @@ But then I prompted with:
 
   The pruning is key - without it, 2D uses 45% MORE memory with marginal benefit.
 ```
+</details>
+
 </details>
