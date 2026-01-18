@@ -23,7 +23,6 @@ for word1 in word_list:
 A: Create a mapping from prefix[word] -> [word1, word2, ...] which is O(n).  Then, you can go through the word list, and for each word, map it to prefix[word] to get the same graph! Note that you don't want to add the same word into prefix[word], to avoid a "infinite" chain. This was in fact a better solution than the AI found, here's the full convo:
 </details>
 
-```
 <details>
 <summary>Click to expand</summary>
 
