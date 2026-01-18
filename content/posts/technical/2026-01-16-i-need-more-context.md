@@ -147,7 +147,7 @@ For the latter, I had to dive into the trenches. I ended up looking at token usa
 - When analyzing your token usage, Input:Output ratio should be heavily favored towards Output (code) as this means most of the tokens are consumed to give you something useful. It's a different matter if the output is text or nonsensical unfortunately.
 - Keep Claude's text output brief. Add a line or two to the system prompt telling Claude not to be verbose and to avoid filler words and a preamble. It often feels the need to fawn over you "Ah, that's a great idea!" - ask it to cut that out.
 - .claudeignore: You can add a .claudeignore (like .gitignore) file that lists things Claude should ignore. For the most part, it should ignore anything that is not text. node_modules, *.png, dist/, public/, dirs are all things you should dump in here. It saves token usage when Claude is trying to understand the repo.
-- When refactoring, ask Claude to use a combo of `grep` & `sed` as ascalpel to cut through your codebase. By default, it will run through your codebase - and your tokens - with the excavator that is `Read`.
+- When refactoring, ask Claude to use a combo of `grep` & `sed` as a scalpel to cut through your codebase. By default, it will run through your codebase - and your tokens - with the excavator that is `Read`.
 - Use /compact after each "file read" that it does that doesn't need to stick around.
 - Keep your conversations short! When done, use /clear or just start a new conversation. Else, with each message, the token usage grows exponentially as the entire conversation is sent along for the ride + your newest message.
 - You can use /context to see what exactly is eating up your context. If you can't make sense of it, just send it on to Claude (or other LLM).
