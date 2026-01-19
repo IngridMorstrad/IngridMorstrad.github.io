@@ -51,6 +51,9 @@ weight = 5
   rss = true
   tagsOverview = true
 
+  # Social sharing defaults (add 'images = ["/path/to/image.jpg"]' in post frontmatter to override)
+  images = ["/images/logo.svg"]  # Default fallback - replace with 1200x630px PNG/JPG
+
   # Extra site CSS (loaded after the theme CSS)
   css = ["/assets/css/brand.css"]
 
