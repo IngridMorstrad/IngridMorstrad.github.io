@@ -1,14 +1,11 @@
 theme = "cactus"
-
 baseURL = "https://www.ashwinmenon.com/"
+title = "Ashwin's blog"
+copyright = "Ashwin Menon"
 
 [services]
   [services.googleAnalytics]
     id = "G-5ZWXZPBDDK"
-
-copyright = "Ashwin Menon"
-
-title = "Ashwin's blog"
 
 [[menu.main]]
 name = "Home"

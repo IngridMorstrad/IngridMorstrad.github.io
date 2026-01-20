@@ -1,11 +1,17 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>{{ if .IsPage }} {{ .Title }} | {{ end }}{{ .Site.Title }}</title>
+  <title>{{ if .IsPage }}{{ .Title }} | {{ end }}{{ .Site.Title }}{{ if not .IsPage }}{{ if not .Site.Title }} - Ashwin's blog{{ end }}{{ end }}</title>
   {{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
+  {{ if and .IsPage .Params.comments }}
+  <link rel="stylesheet" href="https://unpkg.com/bluesky-comments@0.3.0/dist/bluesky-comments.css">
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" defer></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" defer></script>
+  <script src="https://unpkg.com/bluesky-comments@0.3.0/dist/bluesky-comments.umd.js" defer></script>
+  {{ end }}
   {{ template "_internal/opengraph.html" . }}
   {{ template "_internal/twitter_cards.html" . }}
   {{/* Theme toggle uses two modes: light + dark.
@@ -46,6 +52,9 @@
     })();
   </script>
   <noscript><link rel="stylesheet" href="{{ "/css/style-white.css" | absURL }}"></noscript>
+  <link rel="preload" href="{{ "lib/font-awesome/webfonts/fa-solid-900.woff2" | absURL }}" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{{ "lib/font-awesome/webfonts/fa-brands-400.woff2" | absURL }}" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="{{ "css/font-display-fix.css" | relURL }}">
   <link rel="stylesheet" href="{{ "css/footnote-popups.css" | relURL }}">
   <!-- Custom CSS -->
   {{ range .Site.Params.css }} <link rel="stylesheet" href="{{ . | absURL }}"> {{ end }}
