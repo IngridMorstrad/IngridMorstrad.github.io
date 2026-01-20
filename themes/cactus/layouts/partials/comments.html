@@ -8,25 +8,19 @@
   {{ .Scratch.Set "enable_comments" true }}
 {{ end }}
 
-{{ if (isset .Params "bsky" ) }}
-  {{ .Scratch.Set "bsky_uri" .Params.Bsky }}
-{{ end }}
-
 {{ $enable_comments := .Scratch.Get "enable_comments" }}
-{{ $bsky_uri := .Scratch.Get "bsky_uri" }}
-{{ if $enable_comments }}
+{{ $bsky_uri := .Params.bsky }}
+{{ if and $enable_comments $bsky_uri }}
 <h2>Comments</h2>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const uri = 'https://bsky.app/profile/ashwinmenon.com/post/{{ $bsky_uri }}';
-      if (uri) {
-        initBlueskyComments('bluesky-comments', uri);
-      } 
-    });
-  </script>
+<link rel="stylesheet" href="https://unpkg.com/bluesky-comments@0.3.0/dist/bluesky-comments.css">
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/bluesky-comments@0.3.0/dist/bluesky-comments.umd.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    initBlueskyComments('bluesky-comments', 'https://bsky.app/profile/ashwinmenon.com/post/{{ $bsky_uri }}');
+  });
+</script>
 <a href="https://bsky.app/profile/ashwinmenon.com/post/{{ $bsky_uri }}">Leave a comment</a>
-<div id="bluesky-comments">
-</div>
-
+<div id="bluesky-comments"></div>
 {{ end }}
-
