@@ -55,7 +55,7 @@ weight = 5
   images = ["/images/logo.svg"]  # Default fallback - replace with 1200x630px PNG/JPG
 
   # Extra site CSS (loaded after the theme CSS)
-  css = ["/assets/css/brand.css"]
+  css = ["/assets/css/brand.css", "/css/font-display-fix.css"]
 
   [params.comments]
     enabled = true

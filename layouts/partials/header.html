@@ -1,0 +1,32 @@
+<header id="header">
+  <a href="{{ .Site.BaseURL }}" aria-label="Home - {{ .Site.Title }}">
+  {{ if (isset .Site.Params "gravatar") }}
+    <div id="logo" style="background-image: url(https://www.gravatar.com/avatar/{{ md5 .Site.Params.gravatar }}?s=100&d=identicon)" role="img" aria-label="Logo"></div>
+  {{ else if (isset .Site.Params "logo") }}
+    <div id="logo" style="background-image: url({{ .Site.Params.logo | absURL }})" role="img" aria-label="Logo"></div>
+  {{ else }}
+    <div id="logo" style="background-image: url({{ "images/logo.svg" | absURL }})" role="img" aria-label="Logo"></div>
+  {{ end}}
+  <div id="title">
+    <h1>{{ .Site.Title }}</h1>
+  </div>
+  </a>
+  <div id="nav">
+    <ul>
+      <li class="icon">
+        <a href="#" aria-label="Toggle navigation menu"><i class="fas fa-bars fa-2x" aria-hidden="true"></i></a>
+      </li>
+      {{ range .Site.Menus.main }}
+        <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+      {{ end }}
+      <li class="theme-toggle">
+        <button id="theme-toggle" class="theme-toggle-button" type="button" aria-label="Toggle theme">
+          <span class="theme-toggle-icon theme-toggle-icon--light" aria-hidden="true">☾</span>
+          <span class="theme-toggle-icon theme-toggle-icon--dark" aria-hidden="true">☀</span>
+          <span class="sr-only">Toggle theme</span>
+        </button>
+      </li>
+    </ul>
+  </div>
+</header>
+

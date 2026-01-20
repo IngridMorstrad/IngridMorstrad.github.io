@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+{{ partial "head.html" . }}
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+    {{ partial "header.html" . }}
+
+    <main>
+    {{ block "main" . }}
+    {{ end }}
+    </main>
+
+    {{ partial "footer.html" . }}
+
+  </div>
+</body>
+
+<link rel="stylesheet" href={{ "lib/font-awesome/css/all.min.css" | relURL }}>
+<script src={{ "js/main.js" | relURL }} defer></script>
+<script src={{ "js/footnote-popups.js" | relURL }} defer></script>
+</html>
