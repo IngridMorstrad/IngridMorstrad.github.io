@@ -37,4 +37,5 @@ Will add more as I find more worth adding here.
 
 ### Specific blog posts I really enjoy
 
-https://buttondown.com/jaffray/archive/my-first-distributed-system/
+https://buttondown.com/jaffray/archive/my-first-distributed-system/  
+This was a great read about how GitHub & PRs change in the AI world: https://tldraw.dev/blog/stay-away-from-my-trash
