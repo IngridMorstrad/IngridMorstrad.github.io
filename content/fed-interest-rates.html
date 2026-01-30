@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Fed Explained | Jerome Powell's Final Stand</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Code+Pro:wght@400;600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-tertiary: #1a1a25;
+            --text-primary: #f0f0f5;
+            --text-secondary: #a0a0b0;
+            --text-muted: #606075;
+            --accent-gold: #d4af37;
+            --accent-gold-dim: #a08020;
+            --accent-green: #22c55e;
+            --accent-red: #ef4444;
+            --accent-blue: #3b82f6;
+            --border-color: #2a2a3a;
+            --gradient-gold: linear-gradient(135deg, #d4af37 0%, #f5d87a 50%, #d4af37 100%);
+            --shadow-glow: 0 0 40px rgba(212, 175, 55, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Noise texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        /* Header */
+        header {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            background: 
+                radial-gradient(ellipse at 20% 80%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+                var(--bg-primary);
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 100px,
+                    rgba(212, 175, 55, 0.03) 100px,
+                    rgba(212, 175, 55, 0.03) 101px
+                );
+            pointer-events: none;
+        }
+
+        .header-label {
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeSlideUp 0.8s ease forwards 0.2s;
+        }
+
+        .header-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 10vw, 8rem);
+            font-weight: 900;
+            text-align: center;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeSlideUp 0.8s ease forwards 0.4s;
+        }
+
+        .header-title .highlight {
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            text-align: center;
+            max-width: 600px;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeSlideUp 0.8s ease forwards 0.6s;
+        }
+
+        .header-meta {
+            display: flex;
+            gap: 2rem;
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            opacity: 0;
+            animation: fadeSlideUp 0.8s ease forwards 0.8s;
+        }
+
+        .header-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards 1.2s;
+        }
+
+        .scroll-indicator::after {
+            content: '';
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--accent-gold), transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes fadeSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.3; transform: scaleY(1); }
+            50% { opacity: 1; transform: scaleY(1.2); }
+        }
+
+        /* Main content */
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Section styling */
+        .section {
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-number {
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.3em;
+            color: var(--accent-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem;
+            color: var(--text-primary);
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        /* Question links */
+        .q-link {
+            color: var(--accent-gold);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--accent-gold-dim);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .q-link:hover {
+            color: #f5d87a;
+            border-bottom-style: solid;
+        }
+
+        .q-link::after {
+            content: '?';
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.65em;
+            vertical-align: super;
+            margin-left: 2px;
+            opacity: 0.7;
+        }
+
+        /* Key points */
+        .key-points {
+            background: var(--bg-secondary);
+            border-left: 3px solid var(--accent-gold);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .key-points h4 {
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+        }
+
+        .key-points ul {
+            list-style: none;
+        }
+
+        .key-points li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .key-points li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-gold-dim);
+        }
+
+        /* Stats grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            text-align: center;
+            border-radius: 8px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .stat-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            line-height: 1;
+        }
+
+        .stat-value.negative {
+            color: var(--accent-red);
+        }
+
+        .stat-value.positive {
+            color: var(--accent-green);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        /* Quote blocks */
+        blockquote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--text-primary);
+            border-left: 3px solid var(--accent-gold);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        blockquote cite {
+            display: block;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.85rem;
+            font-style: normal;
+            color: var(--text-muted);
+            margin-top: 0.75rem;
+        }
+
+        /* Tables */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            background: var(--bg-secondary);
+        }
+
+        td {
+            color: var(--text-secondary);
+        }
+
+        /* Modal/Expandable boxes */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 1001;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 2rem;
+            overflow-y: auto;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-container {
+            width: 100%;
+            max-width: 700px;
+            margin: 2rem auto;
+        }
+
+        .modal-box {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            margin-bottom: 1rem;
+        }
+
+        .modal-overlay.active .modal-box {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .modal-header {
+            background: var(--bg-tertiary);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .modal-question {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.4;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0;
+            line-height: 1;
+            transition: color 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .modal-close:hover {
+            color: var(--accent-gold);
+        }
+
+        .modal-content {
+            padding: 2rem;
+        }
+
+        .modal-content p {
+            margin-bottom: 1rem;
+        }
+
+        .modal-content h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            margin: 1.5rem 0 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .modal-content ul, .modal-content ol {
+            margin: 1rem 0 1rem 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .modal-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-content code {
+            font-family: 'Source Code Pro', monospace;
+            background: var(--bg-tertiary);
+            padding: 0.2em 0.4em;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: var(--accent-gold);
+        }
+
+        /* Nested modal indicator */
+        .modal-box.nested {
+            border-color: var(--accent-gold-dim);
+            margin-left: 1rem;
+            margin-right: 1rem;
+        }
+
+        .modal-box.nested .modal-header {
+            background: linear-gradient(135deg, var(--bg-tertiary), rgba(212, 175, 55, 0.05));
+        }
+
+        /* Breadcrumb in modal */
+        .modal-breadcrumb {
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.1em;
+        }
+
+        .modal-breadcrumb span {
+            color: var(--accent-gold-dim);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        footer .heart {
+            color: var(--accent-red);
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .header-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            h2 {
+                font-size: 1.6rem;
+            }
+
+            .modal-header {
+                padding: 1rem 1.5rem;
+            }
+
+            .modal-content {
+                padding: 1.5rem;
+            }
+
+            .modal-box.nested {
+                margin-left: 0.5rem;
+                margin-right: 0.5rem;
+            }
+        }
+
+        /* Special callout box */
+        .callout {
+            background: linear-gradient(135deg, var(--bg-secondary), rgba(212, 175, 55, 0.05));
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+        }
+
+        .callout-label {
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 0.75rem;
+        }
+
+        /* Divider */
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--border-color), transparent);
+            margin: 3rem 0;
+        }
+
+        /* Emphasis box */
+        .emphasis-box {
+            background: var(--bg-tertiary);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .emphasis-box p:last-child {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-label">Economic Analysis</div>
+        <h1 class="header-title">
+            The Fed's <span class="highlight">Final Stand</span>
+        </h1>
+        <p class="header-subtitle">
+            Jerome Powell holds rates steady as Trump pressures for cuts. A deep dive into what it all means for your money.
+        </p>
+        <div class="header-meta">
+            <span>📅 January 29, 2026</span>
+            <span>⏱ 25 min read</span>
+            <span>💰 Economics</span>
+        </div>
+        <div class="scroll-indicator">Scroll to explore</div>
+    </header>
+
+    <main>
+        <!-- Section 1: Context -->
+        <section class="section" id="context">
+            <div class="section-number">01 — CONTEXT</div>
+            <h2>The Perfect Storm</h2>
+            
+            <p>Jerome Powell is almost done. With just two FOMC meetings left as Fed Chair, he faces perhaps the most politically charged economic environment in decades. Here's what you need to know going in.</p>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">$8.1T</div>
+                    <div class="stat-label">US Billionaire Wealth</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value negative">↓</div>
+                    <div class="stat-label">Consumer Confidence</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">4yr</div>
+                    <div class="stat-label">High in Long-term Unemployment</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">4.25%</div>
+                    <div class="stat-label">Fed Funds Rate</div>
+                </div>
+            </div>
+
+            <div class="key-points">
+                <h4>Key Developments</h4>
+                <ul>
+                    <li>US prosecutors investigated Powell in an attempt to pressure him to lower interest rates</li>
+                    <li>Gold and precious metals have surged almost vertically</li>
+                    <li>The US dollar is weakening against the Swiss franc, <span class="q-link" data-q="weak-dollar-inflation">risking higher inflation</span></li>
+                    <li>Consumer confidence has hit lows not seen since before COVID—actually <em>lower</em> than the depths of the pandemic</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 2: K-Shaped Economy -->
+        <section class="section" id="k-shaped">
+            <div class="section-number">02 — THE DIVIDE</div>
+            <h2>The K-Shaped Economy</h2>
+            
+            <p>When you plot consumer confidence against stock market performance, you see a literal K-shape. <strong>90% of stocks are owned by the top 10% of people.</strong></p>
+
+            <blockquote>
+                "Consumer confidence is collapsing while stock market rises. The people that own the stocks are feeling quite good. People that don't are feeling more and more desperate."
+            </blockquote>
+
+            <p>This divergence explains so much of our current political moment. The economy is "doing great" by traditional metrics while most people feel squeezed.</p>
+        </section>
+
+        <!-- Section 3: The Dual Mandate -->
+        <section class="section" id="dual-mandate">
+            <div class="section-number">03 — THE DILEMMA</div>
+            <h2>Powell's Impossible Choice</h2>
+            
+            <p>The Federal Reserve has a <span class="q-link" data-q="dual-mandate">dual mandate</span>: maximum employment and stable prices. Right now, both sides are flashing warning signs.</p>
+
+            <div class="table-wrapper">
+                <table>
+                    <tr>
+                        <th>If Powell...</th>
+                        <th>It signals...</th>
+                        <th>The risk is...</th>
+                    </tr>
+                    <tr>
+                        <td>Raises rates</td>
+                        <td>Inflation is the bigger threat</td>
+                        <td>Job losses, recession</td>
+                    </tr>
+                    <tr>
+                        <td>Lowers rates</td>
+                        <td>Jobs are the bigger threat</td>
+                        <td>Inflation, looking like he's <span class="q-link" data-q="giving-in-to-trump">giving in to Trump</span></td>
+                    </tr>
+                    <tr>
+                        <td>Holds steady</td>
+                        <td>"We're scared in both directions"</td>
+                        <td>Uncertainty continues</td>
+                    </tr>
+                </table>
+            </div>
+
+            <p>US long-term unemployment is at a 4-year high. People are reporting it takes increasingly longer to find a job, especially one that fits their qualifications. Meanwhile, inflation remains "somewhat elevated."</p>
+        </section>
+
+        <!-- Section 4: The Decision -->
+        <section class="section" id="decision">
+            <div class="section-number">04 — THE DECISION</div>
+            <h2>Hold Steady</h2>
+            
+            <p>Powell chose option three: <strong>do nothing</strong>. No raise, no cut. A wait-and-see approach.</p>
+
+            <div class="callout">
+                <div class="callout-label">Powell's Statement</div>
+                <p>"We see the current stance of monetary policy as appropriate to promote progress toward both our maximum employment and 2% inflation goals."</p>
+            </div>
+
+            <p>Translation: "We're scared to death in both directions. Jobs are not looking good. Inflation's not looking good. We have to wait and see."</p>
+        </section>
+
+        <!-- Section 5: Next Fed Chair -->
+        <section class="section" id="next-chair">
+            <div class="section-number">05 — THE SUCCESSION</div>
+            <h2>Who's Next?</h2>
+            
+            <p>There's been a celebrity apprentice-style hunt for the next Fed Chair. Trump faces a dilemma: he wants someone who will do exactly what he says, but they also need to be <em>trusted by markets</em>.</p>
+
+            <blockquote>
+                "Everyone that I interviewed is great... problem is they change once they get the job. They go in saying everything I want to hear and then they get the job, they're locked in for six years, and all of a sudden, let's raise rates a little bit."
+                <cite>— Donald Trump</cite>
+            </blockquote>
+
+            <p>The current frontrunner is <strong>Rick Rieder of BlackRock</strong>—which is optically problematic given <span class="q-link" data-q="blackrock-bad">BlackRock's unpopularity</span> across the political spectrum. Interestingly, Rieder has donated to Jeb Bush, Pete Buttigieg, and Nikki Haley—all Trump opponents.</p>
+        </section>
+
+        <!-- Section 6: Press Conference Highlights -->
+        <section class="section" id="presser">
+            <div class="section-number">06 — THE PRESS CONFERENCE</div>
+            <h2>Key Q&A Moments</h2>
+
+            <h3>On Fed Independence</h3>
+            <p>When asked what would happen if the Fed loses independence, Powell gave perhaps his most important answer:</p>
+
+            <div class="callout">
+                <div class="callout-label">Powell on Independence</div>
+                <p>"Every advanced economy democracy in the world has come around to this common practice... to not have direct elected official control over the setting of monetary policy. The reason is that monetary policy can be used through an election cycle to affect the economy in a way that will be politically worthwhile."</p>
+            </div>
+
+            <h3>On the US Fiscal Situation</h3>
+            <p>When asked if the US could end up like Japan (where bond markets are in turmoil), Powell was surprisingly direct:</p>
+
+            <blockquote>
+                "The US federal budget deficit is, you know, uncontroversially on an unsustainable path. The level of debt is not unsustainable. It's very much sustainable, but the path is unsustainable. And the sooner we work on it, the better."
+            </blockquote>
+
+            <p>He noted a critical problem: <span class="q-link" data-q="deficit-full-employment">"We're running a very large deficit at essentially full employment"</span>—something that violates basic fiscal principles.</p>
+
+            <h3>On Whether He'll Stay as Governor</h3>
+            <p>Powell's term as Chair ends in May, but he could legally stay on as one of the 12 voting governors. When asked, he gave nothing: "I have nothing for you on that today."</p>
+
+            <p>If he stays, he could become a <span class="q-link" data-q="shadow-fed-chair">"shadow Fed chair"</span>—someone whose opinion carries so much weight he effectively still leads the institution.</p>
+
+            <h3>On GDP vs. Labor Market Data</h3>
+            <p>When asked about the disconnect between strong GDP and weak job markets, Powell dropped some real wisdom:</p>
+
+            <div class="callout">
+                <div class="callout-label">The Lore</div>
+                <p>"The lore is that when GDP and the labor market get into an argument, in the end, labor market data is more reliable. GDP data is very hard to collect and understand."</p>
+            </div>
+
+            <p>This is important: <span class="q-link" data-q="gdp-vs-labor">GDP often gets revised dramatically downward</span>, while labor market data reflects real human experiences.</p>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Deep Dive Section -->
+        <section class="section" id="deep-dives">
+            <div class="section-number">07 — DEEP DIVES</div>
+            <h2>Understanding the Mechanics</h2>
+            
+            <p>The Fed's decisions ripple through every corner of the economy. Here's how the key mechanisms actually work:</p>
+
+            <h3>Interest Rates & Government Debt</h3>
+            <p>Does the <span class="q-link" data-q="fed-rate-deficit">Fed's interest rate decide how much interest the US pays on its deficit</span>? It's complicated—about 1/3 of US debt is short-term and tracks the Fed rate closely, while long-term debt is more influenced by market expectations.</p>
+
+            <p>This raises a question: <span class="q-link" data-q="why-not-short-term-debt">why wouldn't the Treasury make all debt short-term</span> to get lower rates?</p>
+
+            <h3>Corporate Borrowing</h3>
+            <p>Companies like NVIDIA can borrow at rates only slightly above Treasuries. But <span class="q-link" data-q="nvidia-bonds-vs-loans">why would they issue bonds instead of just taking bank loans</span>?</p>
+
+            <h3>Zombie Companies & BNPL</h3>
+            <p>When rates are too low for too long, <span class="q-link" data-q="zombie-companies">zombie companies survive that should die</span>, blocking resources from productive uses. Are <span class="q-link" data-q="bnpl-healthy">any BNPL companies actually healthy today</span>?</p>
+
+            <h3>The Inverted Yield Curve</h3>
+            <p>Right now, <span class="q-link" data-q="inverted-yield-curve">short-term rates are higher than long-term</span>—an unusual situation called an inverted yield curve. Shouldn't this <span class="q-link" data-q="inverted-kill-long-bonds">kill demand for long-term bonds</span>?</p>
+
+            <h3>Can the Fed Go Bust?</h3>
+            <p>The Fed acts as lender of last resort when <span class="q-link" data-q="credit-markets-freeze">credit markets freeze</span>. But <span class="q-link" data-q="fed-go-bust">could the central bank itself go bust</span>?</p>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Big Picture -->
+        <section class="section" id="big-picture">
+            <div class="section-number">08 — THE BIG PICTURE</div>
+            <h2>What Does This Mean For You?</h2>
+            
+            <p>The Fed held rates steady, which means:</p>
+
+            <div class="key-points">
+                <h4>Short-term impacts</h4>
+                <ul>
+                    <li>Mortgage rates stay elevated (~7%)</li>
+                    <li>Savings accounts continue earning decent interest</li>
+                    <li>Credit card rates remain painful</li>
+                    <li>Business borrowing costs unchanged</li>
+                </ul>
+            </div>
+
+            <p>The bigger story is the political pressure on Fed independence. Every advanced democracy keeps its central bank independent from politicians because <strong>politicians will always want to lower rates to boost their popularity</strong>—even when it's economically destructive.</p>
+
+            <p>With midterms approaching and Trump wanting rate cuts "to the bone," the next Fed Chair pick will be one of the most consequential appointments of this administration.</p>
+
+            <div class="emphasis-box">
+                <p><strong>The bottom line:</strong> We're in a K-shaped economy where the metrics say things are fine but most people are struggling. The Fed is stuck between inflation and employment concerns. And the independence that has protected American monetary policy for decades is under unprecedented pressure.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Made with <span class="heart">♥</span> and too much coffee</p>
+        <p style="margin-top: 0.5rem; font-size: 0.75rem;">Click any gold link to explore deeper</p>
+    </footer>
+
+    <!-- Modal Overlay -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-container" id="modalContainer">
+            <!-- Modals will be injected here -->
+        </div>
+    </div>
+
+    <script>
+        // Question & Answer Database
+        const qaDatabase = {
+            'weak-dollar-inflation': {
+                question: "Why does a weak dollar risk higher inflation?",
+                answer: `<p>As the value of your currency gets weaker, the cost of imported goods goes up. The US imports enormous amounts of products—electronics, cars, oil, food ingredients, clothing.</p>
+                <p>If the dollar falls 10% against other currencies, those imports effectively cost 10% more. Companies pass these costs to consumers → prices rise → inflation.</p>
+                <p>This is especially painful for oil (priced in dollars globally) and manufactured goods from Asia and Europe.</p>`
+            },
+            'dual-mandate': {
+                question: "What is the Fed's dual mandate?",
+                answer: `<p>Congress gave the Federal Reserve two goals:</p>
+                <ol>
+                    <li><strong>Maximum employment</strong> — Keep unemployment as low as possible</li>
+                    <li><strong>Price stability</strong> — Keep inflation around 2%</li>
+                </ol>
+                <p>The problem is these goals can conflict. To fight inflation, you raise rates, which can kill jobs. To boost employment, you lower rates, which can spark inflation.</p>
+                <p>Powell has to balance both, which is why he called it his "two men he wants to date" dilemma.</p>`
+            },
+            'giving-in-to-trump': {
+                question: "Why would lowering rates look like giving in to Trump?",
+                answer: `<p>Trump has been <strong>publicly and aggressively</strong> demanding rate cuts. He even opened a criminal investigation into Powell to pressure him.</p>
+                <p>If Powell cuts rates now, even if economically justified, it looks like he caved to political pressure. This would:</p>
+                <ul>
+                    <li>Undermine Fed credibility ("they can be bullied")</li>
+                    <li>Encourage future presidents to pressure the Fed</li>
+                    <li>Damage the principle of central bank independence</li>
+                </ul>
+                <p>The optics matter as much as the economics. Powell has to appear independent even when making decisions that might align with what Trump wants.</p>`
+            },
+            'blackrock-bad': {
+                question: "Why is having a BlackRock executive optically bad for Trump's base?",
+                answer: `<p>BlackRock is deeply unpopular across the political spectrum, but especially with Trump's populist base for several reasons:</p>
+                <ol>
+                    <li><strong>Housing Crisis Blame:</strong> BlackRock and large institutional investors have been accused of buying up residential real estate, driving up prices and making homeownership unaffordable</li>
+                    <li><strong>ESG/"Woke Capitalism":</strong> BlackRock CEO Larry Fink has been a major proponent of ESG investing, which conservatives view as imposing a liberal political agenda through finance</li>
+                    <li><strong>Wall Street Elite:</strong> Trump's base is populist and anti-establishment. BlackRock is the world's largest asset manager (~$10 trillion), representing the ultimate Wall Street elite</li>
+                    <li><strong>Conspiracy Target:</strong> BlackRock features in conspiracy theories about global elites controlling markets and governments</li>
+                </ul>
+                <p>As the commentator put it: "We need to get housing prices down. Let's get the guy from BlackRock" — it's a bad look.</p>`
+            },
+            'deficit-full-employment': {
+                question: 'What does "running a deficit at full employment" mean, and why is it bad?',
+                answer: `<p>Governments typically run deficits (spending more than they collect in taxes) during <strong>recessions</strong> to stimulate the economy. When unemployment is high, you spend to create jobs and boost demand.</p>
+                <p><strong>"Full employment"</strong> means unemployment is at or near its natural rate (~4%)—essentially everyone who wants a job can find one.</p>
+                <h4>Why it's bad:</h4>
+                <ol>
+                    <li><strong>You're supposed to save during good times.</strong> Run deficits in recessions, run surpluses in booms. This is like spending your emergency fund when you're already doing fine.</li>
+                    <li><strong>It's inflationary.</strong> When the economy is already at capacity, pumping more government money in doesn't create jobs—it just bids up prices.</li>
+                    <li><strong>No room for emergencies.</strong> If a recession hits, you've already maxed out the credit card. What do you do then?</li>
+                    <li><strong>Debt servicing grows.</strong> Interest payments become a larger share of the budget.</li>
+                </ol>
+                <p>Powell is essentially saying: "We're spending like we're in a crisis when we're not in a crisis. That's unsustainable."</p>`
+            },
+            'shadow-fed-chair': {
+                question: "What is a shadow Fed chair?",
+                answer: `<p>When Powell's term as Chair ends in May, he has the legal right to stay on as one of the 12 voting governors until 2028.</p>
+                <p>A <strong>"shadow Fed chair"</strong> would be someone who:</p>
+                <ul>
+                    <li>Is no longer the official Chair giving press conferences</li>
+                    <li>But whose opinion carries so much weight among other governors</li>
+                    <li>That they effectively still drive policy decisions</li>
+                </ul>
+                <p>Powell has earned enormous respect during his tenure. If he stays as a governor and the new Chair proposes something he disagrees with, his voice could sway the vote.</p>
+                <p>The unwritten rule is that former Chairs step down and leave. But these are unprecedented times, and some argue Powell should stay as a counterbalance to political pressure.</p>`
+            },
+            'gdp-vs-labor': {
+                question: "Why is labor market data more reliable than GDP?",
+                answer: `<p>Powell said that when GDP and labor market data conflict, "labor market wins." Here's why:</p>
+                <h4>GDP data problems:</h4>
+                <ul>
+                    <li>Collected through surveys and estimates</li>
+                    <li>Heavily revised (sometimes for years after)</li>
+                    <li>Often initially overstated before recessions</li>
+                </ul>
+                <h4>Labor market data advantages:</h4>
+                <ul>
+                    <li>Based on actual employment records, unemployment claims</li>
+                    <li>Harder to fake or misestimate</li>
+                    <li>Reflects real human experiences</li>
+                </ul>
+                <p>During 2007-2009, GDP initially printed at 4% growth, then got revised to 2%, then to -1%, then to -3%. The labor market was showing weakness the whole time.</p>
+                <p><strong>But there's a caveat:</strong> <span class="q-link" data-q="ai-gdp-labor">What if AI boosts productivity</span>? Then GDP growth with job losses wouldn't mean GDP is wrong—it would mean a structural shift.</p>`
+            },
+            'ai-gdp-labor': {
+                question: "What if AI causes GDP growth with job losses?",
+                answer: `<p>You've identified a real problem with Powell's logic.</p>
+                <h4>Powell's point:</h4>
+                <p>When GDP says "everything's great!" but labor data says "people can't find jobs," historically the labor data predicts what's actually happening better.</p>
+                <h4>Your AI scenario:</h4>
+                <ul>
+                    <li>AI massively boosts productivity</li>
+                    <li>Companies produce MORE with FEWER workers</li>
+                    <li>GDP grows (more output)</li>
+                    <li>Employment falls (fewer workers needed)</li>
+                </ul>
+                <p>In this case, GDP growth would be "real" and labor market weakness wouldn't indicate GDP is wrong—it would indicate a <strong>structural shift</strong> in the economy.</p>
+                <h4>The deeper issue:</h4>
+                <p>If this happens, acting on labor market data could be the wrong move. Cutting rates to "stimulate hiring" won't bring back jobs that AI eliminated—it would just create inflation.</p>
+                <p>This is a fiscal policy problem (retraining, safety nets, possibly UBI) not a monetary policy problem. But the Fed only has one tool: interest rates.</p>
+                <p><span class="q-link" data-q="ai-transition">Would the AI transition be painful</span> even if the endpoint is good?</p>`
+            },
+            'ai-transition': {
+                question: "Would the AI transition be painful even if robots make everything cheap?",
+                answer: `<h4>The optimistic vision:</h4>
+                <p>AI and robots produce abundant food, housing, healthcare, entertainment. Costs drop to near zero. People don't need to work. Universal basic income provides spending money. Post-scarcity utopia.</p>
+                <h4>Why this might not happen smoothly:</h4>
+                <ol>
+                    <li><strong>Timing mismatch:</strong> Job loss is immediate (you're fired Tuesday). Price drops are gradual (takes years for AI to fully deploy).</li>
+                    <li><strong>Who owns the robots?</strong> If a few tech billionaires own all productive capacity, they capture all gains. Without redistribution, most people get nothing.</li>
+                    <li><strong>Housing doesn't get cheaper:</strong> Robots can make TVs cheap but can't create more land in desirable cities.</li>
+                    <li><strong>Debt doesn't deflate:</strong> Your mortgage is still $300K even if TVs are free. Deflation makes debt WORSE.</li>
+                    <li><strong>Political instability:</strong> Mass unemployment could produce social unrest, authoritarian backlash, even wars before we reach the good endpoint.</li>
+                </ol>
+                <p>The technology could create abundance, but it requires deliberate policy choices (UBI, universal healthcare, housing reform) that our political system seems incapable of making.</p>`
+            },
+            'fed-rate-deficit': {
+                question: "Does the Fed rate decide how much interest the US pays on its deficit?",
+                answer: `<p><strong>Partially, but not directly.</strong></p>
+                <p>The Fed sets the <strong>federal funds rate</strong>—the rate banks charge each other for overnight loans. This is a short-term rate.</p>
+                <p>The US government borrows by issuing Treasury bonds at various maturities. The interest rates on these are set by <strong>market auctions</strong>.</p>
+                <h4>The connection:</h4>
+                <ul>
+                    <li><strong>Short-term Treasuries</strong> (1-month, 1-year): Track the Fed rate pretty closely</li>
+                    <li><strong>Long-term Treasuries</strong> (10-year, 30-year): Influenced by Fed rate but also by inflation expectations and confidence in US fiscal policy</li>
+                </ul>
+                <h4>Why this matters:</h4>
+                <p>About 1/3 of US debt is short-term and rolls over frequently → Fed rate matters a lot.</p>
+                <p>With ~$36 trillion in debt, even small rate changes mean hundreds of billions in additional interest costs. The US now pays over $1 trillion/year in interest—more than the defense budget.</p>`
+            },
+            'why-not-short-term-debt': {
+                question: "If short-term rates are lower, why not make all government debt short-term?",
+                answer: `<h4>The rollover risk problem:</h4>
+                <p>Imagine the US has $30 trillion in debt, all in 1-month bills. Every single month, the Treasury must find buyers for $30 trillion at whatever rate the market demands.</p>
+                <h4>What happens during a crisis?</h4>
+                <ul>
+                    <li>March 2020 COVID panic</li>
+                    <li>September 2008 financial crisis</li>
+                    <li>A war or major geopolitical event</li>
+                </ul>
+                <p>Credit markets freeze. Investors demand 15% interest instead of 4%. Or worse—no buyers at any price. The US literally cannot pay its bills. Default or money printing (hyperinflation).</p>
+                <h4>Long-term debt protects against this:</h4>
+                <p>If you issued 30-year bonds in 2020 at 2%, you don't care what happens to rates in 2024. You're locked in until 2050.</p>
+                <h4>The UK Gilt Crisis (2022):</h4>
+                <p>When PM Liz Truss announced unfunded tax cuts, <span class="q-link" data-q="uk-gilt-crisis">UK bond prices crashed</span>. If all UK debt had been short-term and needed to roll over during that chaos, it would have been catastrophic.</p>
+                <p>Governments balance flexibility (some short-term) with stability (mostly medium and long-term).</p>`
+            },
+            'uk-gilt-crisis': {
+                question: "What happened in the UK Gilt Crisis?",
+                answer: `<p>In September 2022, new PM Liz Truss announced a "mini-budget" with £45 billion in unfunded tax cuts—no explanation of how to pay for them.</p>
+                <h4>Bond prices crashed because:</h4>
+                <ol>
+                    <li>"She's cutting taxes AND increasing spending?"</li>
+                    <li>"That means MASSIVE new borrowing"</li>
+                    <li>"More supply = lower prices for existing bonds"</li>
+                    <li>"This is fiscally insane. SELL SELL SELL"</li>
+                </ol>
+                <p>30-year gilt yields spiked from ~3.5% to over 5% in days. Bond prices dropped ~25%.</p>
+                <h4>The pension fund disaster:</h4>
+                <p>UK pension funds had used <span class="q-link" data-q="pension-leverage">leverage strategies</span> that required them to post more collateral when bond prices fell. When prices crashed:</p>
+                <ol>
+                    <li>Pension funds got margin calls: "Post more cash!"</li>
+                    <li>They didn't have cash—they had to SELL bonds</li>
+                    <li>Selling pushed prices DOWN further</li>
+                    <li>More margin calls → more selling → death spiral</li>
+                </ol>
+                <p>The Bank of England had to announce emergency unlimited bond buying to stop the collapse. Truss resigned in 45 days.</p>`
+            },
+            'pension-leverage': {
+                question: "Why were pension funds using leverage? Aren't they supposed to be safe?",
+                answer: `<p>You're right to be surprised. UK pension funds had gotten into something called <strong>LDI (Liability-Driven Investment)</strong> strategies.</p>
+                <h4>The problem pension funds face:</h4>
+                <p>They have to pay retirees fixed amounts for decades. To match these liabilities, they buy long-term bonds. But bond yields were incredibly low (1-2%) for years—not enough returns.</p>
+                <h4>The "solution":</h4>
+                <p>Instead of buying £100 million in bonds outright:</p>
+                <ol>
+                    <li>Buy £100 million in bonds</li>
+                    <li>Use those bonds as collateral to borrow money</li>
+                    <li>Use borrowed money to buy MORE bonds</li>
+                    <li>Sometimes 3-4x leverage</li>
+                </ol>
+                <p>This amplified returns when yields were low. But leverage amplifies everything—gains AND losses.</p>
+                <h4>The lesson:</h4>
+                <p>"Safe" and "leveraged" don't mix. The conventional wisdom was "government bonds don't crash" so leverage seemed safe. That assumption was catastrophically wrong.</p>`
+            },
+            'nvidia-bonds-vs-loans': {
+                question: "Why doesn't NVIDIA just take bank loans instead of issuing bonds?",
+                answer: `<p>They do both, but bonds are often better for large amounts.</p>
+                <h4>Why bonds instead of bank loans:</h4>
+                <ol>
+                    <li><strong>Scale:</strong> NVIDIA might want $10 billion. No single bank wants that much exposure to one company. Bonds spread risk across thousands of investors.</li>
+                    <li><strong>Terms:</strong> Bank loans often have covenants (restrictions). Bonds can be more flexible.</li>
+                    <li><strong>Duration:</strong> Banks prefer shorter-term loans (1-5 years). Bonds can be 10, 20, 30 years.</li>
+                    <li><strong>Cost at scale:</strong> For huge amounts, bond markets are often cheaper than negotiating with multiple banks.</li>
+                </ol>
+                <h4>NVIDIA specifically:</h4>
+                <p>NVIDIA has ~$26 billion in cash. They barely need to borrow at all. When they do issue bonds, it's often for:</p>
+                <ul>
+                    <li>Tax optimization (debt interest is tax-deductible)</li>
+                    <li><span class="q-link" data-q="cash-overseas">Keeping cash overseas while spending domestically</span></li>
+                    <li>Opportunistic cheap financing</li>
+                </ul>`
+            },
+            'cash-overseas': {
+                question: "Why is keeping cash overseas beneficial?",
+                answer: `<h4>The tax issue (pre-2017):</h4>
+                <p>US corporations were taxed on worldwide income, BUT could defer taxes on foreign profits until bringing money back ("repatriation").</p>
+                <p><strong>Example:</strong></p>
+                <ul>
+                    <li>Apple Ireland earns €10 billion</li>
+                    <li>If brought to US: pays 35% US tax = $3.5 billion</li>
+                    <li>If left in Ireland: pays ~12.5% Irish tax = €1.25 billion</li>
+                </ul>
+                <p>By 2017, US corporations had ~$2.5 TRILLION sitting overseas.</p>
+                <h4>The debt solution:</h4>
+                <p>Instead of repatriating (paying 35% tax), Apple would:</p>
+                <ol>
+                    <li>Issue bonds in the US at 3% interest</li>
+                    <li>Use bond proceeds for US spending</li>
+                    <li>Keep overseas cash earning interest</li>
+                    <li>Net cost: ~1-2% vs 35% tax hit</li>
+                </ol>
+                <h4>This changed in 2017:</h4>
+                <p>The Tax Cuts and Jobs Act imposed a one-time repatriation tax and switched to a "territorial" system where foreign profits are generally not taxed again by the US. The incentive to keep cash overseas is now much smaller.</p>`
+            },
+            'zombie-companies': {
+                question: "What are zombie companies?",
+                answer: `<p>A zombie company is one that:</p>
+                <ul>
+                    <li>Earns just enough to pay interest on debt</li>
+                    <li>Cannot pay down principal</li>
+                    <li>Cannot invest in growth</li>
+                    <li>Would die if rates rose or revenue dipped</li>
+                    <li>Survives only because borrowing is cheap</li>
+                </ul>
+                <h4>Why they're bad:</h4>
+                <p>They block resources (talent, capital, market share) from more productive companies. The economy gets clogged with inefficient businesses that should have failed.</p>
+                <h4>The 2010-2021 era:</h4>
+                <p>Near-zero rates enabled hundreds of unprofitable startups: WeWork, MoviePass, countless others operating on "growth at all costs" mentality.</p>
+                <h4>The 2022-2024 purge:</h4>
+                <p>Rate hikes have been killing zombies. Many have died. More will follow. This is painful but ultimately healthy—<span class="q-link" data-q="bnpl-healthy">BNPL companies are a good example</span>.</p>`
+            },
+            'bnpl-healthy': {
+                question: "Are any BNPL companies actually healthy and profitable?",
+                answer: `<p><strong>Yes, some have turned the corner:</strong></p>
+                <table style="width:100%; border-collapse:collapse; margin:1rem 0;">
+                    <tr><th style="text-align:left; padding:0.5rem; border-bottom:1px solid var(--border-color);">Company</th><th style="text-align:left; padding:0.5rem; border-bottom:1px solid var(--border-color);">Status (Late 2025)</th></tr>
+                    <tr><td style="padding:0.5rem; border-bottom:1px solid var(--border-color);">Affirm</td><td style="padding:0.5rem; border-bottom:1px solid var(--border-color);">Profitable ($52M net), 34% revenue growth, 28% operating margin</td></tr>
+                    <tr><td style="padding:0.5rem; border-bottom:1px solid var(--border-color);">Klarna</td><td style="padding:0.5rem; border-bottom:1px solid var(--border-color);">Recently turned profitable, IPO'd in 2025</td></tr>
+                </table>
+                <h4>What changed:</h4>
+                <ol>
+                    <li><strong>Cost cutting:</strong> Klarna laid off ~40% of staff</li>
+                    <li><strong>Tighter underwriting:</strong> Pickier about who they lend to</li>
+                    <li><strong>Higher merchant fees:</strong> 4-6% instead of 3-4%</li>
+                    <li><strong>More interest-bearing loans:</strong> Affirm charges interest on 72% of loans now</li>
+                    <li><strong>Late fees:</strong> Klarna generates ~$472M/year from "reminder fees"</li>
+                </ol>
+                <p>The survivors are real businesses now—but they look very different from the 2021 "growth at all costs" versions.</p>`
+            },
+            'inverted-yield-curve': {
+                question: "What is an inverted yield curve and what are current rates?",
+                answer: `<h4>Normal yield curve:</h4>
+                <p>You get paid MORE to lock up money longer (compensation for time/risk):</p>
+                <p>3-month: 2% → 10-year: 4% → 30-year: 5%</p>
+                <h4>Inverted yield curve:</h4>
+                <p>You get paid MORE for short-term:</p>
+                <p>3-month: 5% → 10-year: 4% → 30-year: 4%</p>
+                <h4>Current rates (Jan 2026):</h4>
+                <table style="width:100%; border-collapse:collapse; margin:1rem 0;">
+                    <tr><th style="text-align:left; padding:0.5rem; border-bottom:1px solid var(--border-color);">Maturity</th><th style="text-align:left; padding:0.5rem; border-bottom:1px solid var(--border-color);">Yield</th></tr>
+                    <tr><td style="padding:0.5rem;">Fed Funds Rate</td><td style="padding:0.5rem;">4.25-4.50%</td></tr>
+                    <tr><td style="padding:0.5rem;">3-month T-bill</td><td style="padding:0.5rem;">~4.3%</td></tr>
+                    <tr><td style="padding:0.5rem;">2-year Treasury</td><td style="padding:0.5rem;">~3.9-4.0%</td></tr>
+                    <tr><td style="padding:0.5rem;">10-year Treasury</td><td style="padding:0.5rem;">~4.24%</td></tr>
+                </table>
+                <h4>What inversion signals:</h4>
+                <p>Investors expect the Fed will CUT rates in the future (usually because of recession). So they accept lower yields on long-term bonds to lock in current rates before they drop.</p>`
+            },
+            'inverted-kill-long-bonds': {
+                question: "If short-term rates are higher, shouldn't that kill demand for long-term bonds?",
+                answer: `<p>You'd think so, but several things keep long-term bonds alive:</p>
+                <h4>1. Institutional mandates</h4>
+                <p>Many investors MUST hold long-term bonds:</p>
+                <ul>
+                    <li>Pension funds need to match 30-year liabilities</li>
+                    <li>Insurance companies need long-duration assets</li>
+                    <li>Regulations require banks to hold certain bond mixes</li>
+                    <li>Index funds must track bond indices</li>
+                </ul>
+                <h4>2. Rate expectations</h4>
+                <p>If you buy a 10-year bond at 4% now, and rates drop to 2% next year:</p>
+                <ul>
+                    <li>Your bond paying 4% becomes very valuable</li>
+                    <li>You can sell it at a profit</li>
+                    <li>Or hold it earning 4% while new bonds pay only 2%</li>
+                </ul>
+                <h4>3. Safety during recession</h4>
+                <p>Inverted curves often predict recessions. During recessions, stocks crash but long-term Treasuries RISE in value (flight to safety).</p>
+                <h4>4. The math of duration</h4>
+                <p>If rates drop 1%, a 30-year bond's price rises ~20%. A 3-month bill's price barely moves. Investors betting on rate cuts WANT long-duration bonds.</p>`
+            },
+            'credit-markets-freeze': {
+                question: 'What does it mean when credit markets "freeze"?',
+                answer: `<h4>Normally the Treasury market is ultra-liquid:</h4>
+                <ul>
+                    <li>$25+ trillion outstanding</li>
+                    <li>Billions traded daily</li>
+                    <li>You can sell any amount instantly at fair price</li>
+                </ul>
+                <h4>"Frozen" means:</h4>
+                <ul>
+                    <li>Bid-ask spreads blow out (normally 0.01%, suddenly 0.5%+)</li>
+                    <li>Dealers stop making markets—won't quote prices</li>
+                    <li>Large trades move prices wildly</li>
+                    <li>Some trades just can't execute—no buyers</li>
+                </ul>
+                <h4>Why this is terrifying:</h4>
+                <p>Treasuries are the SAFEST, MOST LIQUID asset on Earth. If you can't sell Treasuries, you can't sell ANYTHING.</p>
+                <h4>March 2020:</h4>
+                <p>Even the Treasury market briefly froze (unprecedented). Everyone tried to sell at once—hedge funds unwinding, foreign central banks raising dollars, mutual funds meeting redemptions.</p>
+                <p>The Fed announced unlimited Treasury purchases, saying "we will buy any amount at reasonable prices." The market unfroze within days.</p>`
+            },
+            'fed-go-bust': {
+                question: "Can the central bank go bust?",
+                answer: `<p><strong>Technically no, practically no, but theoretically... it's complicated.</strong></p>
+                <h4>Why they can't go bust:</h4>
+                <p>A central bank can create unlimited amounts of its own currency. The Fed can't run out of dollars because it literally creates dollars.</p>
+                <p>If the Fed has "losses" on its bond holdings, it doesn't matter operationally. It just creates money to cover any shortfall.</p>
+                <h4>The catch:</h4>
+                <p>If a central bank creates TOO much money, you get hyperinflation. So there are practical limits, even if there are no accounting limits.</p>
+                <h4>When central banks get in trouble:</h4>
+                <ul>
+                    <li><strong>Weimar Germany (1923):</strong> Printed money to pay debts → hyperinflation</li>
+                    <li><strong>Zimbabwe (2008):</strong> 89.7 sextillion percent inflation</li>
+                    <li><strong>Venezuela (2010s):</strong> Same story</li>
+                </ul>
+                <p>The central bank didn't "go bust"—the currency became worthless.</p>
+                <h4>The US situation:</h4>
+                <p>The Fed is currently "losing money" (~$100-200 billion/year) because it bought bonds at low rates and now pays banks higher rates. This is embarrassing but not dangerous. When rates fall, it'll become profitable again.</p>
+                <p><strong>Bottom line:</strong> Central banks can't run out of their own currency, but they can destroy its value through overuse.</p>`
+            },
+            'wealth-tax-math': {
+                question: "Could a 2% wealth tax on billionaires fix Social Security?",
+                answer: `<h4>The numbers:</h4>
+                <ul>
+                    <li>US billionaire wealth (end of 2025): ~$8.1 trillion</li>
+                    <li>Billionaires with >$2 billion hold: ~$7 trillion</li>
+                    <li>Social Security 75-year shortfall: <strong>$25.1 trillion</strong></li>
+                </ul>
+                <h4>Your proposed 2% one-time tax:</h4>
+                <p>$7 trillion × 2% = <strong>$140 billion</strong></p>
+                <h4>Would this fix Social Security?</h4>
+                <p><strong>No. Not even close.</strong></p>
+                <ul>
+                    <li>$140B is only 0.56% of the $25.1T shortfall</li>
+                    <li>The annual shortfall is ~$333 billion/year</li>
+                    <li>A one-time $140B would cover about 5 months</li>
+                </ul>
+                <h4>How much would each person under $100k receive?</h4>
+                <ul>
+                    <li>US adults earning under $100k: ~220 million</li>
+                    <li>$140B ÷ 220M = <strong>~$636 per person</strong></li>
+                </ul>
+                <h4>What WOULD work for Social Security:</h4>
+                <ol>
+                    <li>Remove the payroll tax cap (~$176k) → raises ~$1.5T over 10 years</li>
+                    <li>Raise payroll tax by 2% → roughly closes the gap</li>
+                    <li>Modest benefit adjustments for high earners</li>
+                </ol>
+                <p>Billionaire wealth taxes are popular politically but mathematically insufficient for Social Security's scale.</p>
+                <p><strong>Would healthcare reform matter more?</strong> Absolutely. US healthcare spending is ~$4.5T/year. Reducing costs by 20% would save ~$900 billion PER YEAR—vastly more impactful.</p>`
+            }
+        };
+
+        // Track open modals for recursive display
+        let openModals = [];
+
+        // DOM Elements
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modalContainer = document.getElementById('modalContainer');
+
+        // Event delegation for question links
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('q-link')) {
+                e.preventDefault();
+                const questionId = e.target.dataset.q;
+                if (questionId && qaDatabase[questionId]) {
+                    openModal(questionId);
+                }
+            }
+        });
+
+        // Open modal function
+        function openModal(questionId) {
+            const qa = qaDatabase[questionId];
+            if (!qa) return;
+
+            // Check if this question is already open
+            if (openModals.includes(questionId)) return;
+
+            openModals.push(questionId);
+            
+            const isNested = openModals.length > 1;
+            const depth = openModals.length;
+
+            const modalBox = document.createElement('div');
+            modalBox.className = `modal-box ${isNested ? 'nested' : ''}`;
+            modalBox.dataset.questionId = questionId;
+            modalBox.style.animationDelay = `${(depth - 1) * 0.1}s`;
+
+            // Build breadcrumb for nested modals
+            let breadcrumb = '';
+            if (isNested) {
+                const trail = openModals.slice(0, -1).map(id => {
+                    const q = qaDatabase[id];
+                    return q ? q.question.substring(0, 30) + '...' : '';
+                }).join(' <span>→</span> ');
+                breadcrumb = `<div class="modal-breadcrumb">${trail}</div>`;
+            }
+
+            modalBox.innerHTML = `
+                <div class="modal-header">
+                    <div>
+                        ${breadcrumb}
+                        <div class="modal-question">${qa.question}</div>
+                    </div>
+                    <button class="modal-close" data-question-id="${questionId}">×</button>
+                </div>
+                <div class="modal-content">
+                    ${qa.answer}
+                </div>
+            `;
+
+            modalContainer.appendChild(modalBox);
+            modalOverlay.classList.add('active');
+
+            // Scroll to new modal
+            setTimeout(() => {
+                modalBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        }
+
+        // Close modal function
+        function closeModal(questionId) {
+            const index = openModals.indexOf(questionId);
+            if (index === -1) return;
+
+            // Remove this modal and all modals opened after it
+            const toRemove = openModals.slice(index);
+            openModals = openModals.slice(0, index);
+
+            toRemove.forEach(id => {
+                const box = modalContainer.querySelector(`[data-question-id="${id}"]`);
+                if (box) {
+                    box.style.opacity = '0';
+                    box.style.transform = 'translateY(20px)';
+                    setTimeout(() => box.remove(), 300);
+                }
+            });
+
+            if (openModals.length === 0) {
+                setTimeout(() => {
+                    modalOverlay.classList.remove('active');
+                }, 300);
+            }
+        }
+
+        // Close button handler
+        modalContainer.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal-close')) {
+                const questionId = e.target.dataset.questionId;
+                closeModal(questionId);
+            }
+        });
+
+        // Close on overlay click (but not on modal content)
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) {
+                // Close all modals
+                [...openModals].reverse().forEach(id => closeModal(id));
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && openModals.length > 0) {
+                closeModal(openModals[openModals.length - 1]);
+            }
+        });
+
+        // Intersection Observer for section animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(section => {
+            sectionObserver.observe(section);
+        });
+
+        // Smooth scroll for any anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
