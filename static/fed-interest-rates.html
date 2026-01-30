@@ -998,7 +998,7 @@
                 <p>If you issued 30-year bonds in 2020 at 2%, you don't care what happens to rates in 2024. You're locked in until 2050.</p>
                 <h4>The UK Gilt Crisis (2022):</h4>
                 <p>When PM Liz Truss announced unfunded tax cuts, <span class="q-link" data-q="uk-gilt-crisis">UK bond prices crashed</span>. If all UK debt had been short-term and needed to roll over during that chaos, it would have been catastrophic.</p>
-                <p>Governments balance flexibility (some short-term) with stability (mostly medium and long-term).</p>`
+                <p>Governments balance flexibility (some short-term) with stability (mostly medium and long-term). The Treasury is also worried about <span class="q-link" data-q="market-functioning-yields">"market functioning"</span>—flooding the market with too many long-term bonds can push yields up.</p>`
             },
             'uk-gilt-crisis': {
                 question: "What happened in the UK Gilt Crisis?",
@@ -1107,9 +1107,9 @@
                 <ol>
                     <li><strong>Cost cutting:</strong> Klarna laid off ~40% of staff</li>
                     <li><strong>Tighter underwriting:</strong> Pickier about who they lend to</li>
-                    <li><strong>Higher merchant fees:</strong> 4-6% instead of 3-4%</li>
+                    <li><strong>Higher merchant fees:</strong> <span class="q-link" data-q="bnpl-merchant-model">4-6% instead of 3-4%</span></li>
                     <li><strong>More interest-bearing loans:</strong> Affirm charges interest on 72% of loans now</li>
-                    <li><strong>Late fees:</strong> Klarna generates ~$472M/year from "reminder fees"</li>
+                    <li><strong>Late fees:</strong> Klarna generates ~$472M/year from <span class="q-link" data-q="klarna-reminder-fees">"reminder fees"</span></li>
                 </ol>
                 <p>The survivors are real businesses now—but they look very different from the 2021 "growth at all costs" versions.</p>`
             },
@@ -1153,7 +1153,7 @@
                 <h4>3. Safety during recession</h4>
                 <p>Inverted curves often predict recessions. During recessions, stocks crash but long-term Treasuries RISE in value (flight to safety).</p>
                 <h4>4. The math of duration</h4>
-                <p>If rates drop 1%, a 30-year bond's price rises ~20%. A 3-month bill's price barely moves. Investors betting on rate cuts WANT long-duration bonds.</p>`
+                <p><span class="q-link" data-q="duration-math-example">If rates drop 1%, a 30-year bond's price rises ~20%</span>. A 3-month bill's price barely moves. <span class="q-link" data-q="duration-capital-gains">Investors betting on rate cuts WANT long-duration bonds</span> for the capital gains.</p>`
             },
             'credit-markets-freeze': {
                 question: 'What does it mean when credit markets "freeze"?',
@@ -1192,8 +1192,173 @@
                 </ul>
                 <p>The central bank didn't "go bust"—the currency became worthless.</p>
                 <h4>The US situation:</h4>
-                <p>The Fed is currently "losing money" (~$100-200 billion/year) because it bought bonds at low rates and now pays banks higher rates. This is embarrassing but not dangerous. When rates fall, it'll become profitable again.</p>
+                <p>The Fed is currently "losing money" (~$100-200 billion/year) because it bought bonds at low rates and now <span class="q-link" data-q="fed-reserves-explained">pays banks higher rates on reserves</span>. This is embarrassing but not dangerous. When rates fall, it'll become profitable again.</p>
                 <p><strong>Bottom line:</strong> Central banks can't run out of their own currency, but they can destroy its value through overuse.</p>`
+            },
+            'market-functioning-yields': {
+                question: "How would flooding the market with 30-year bonds push yields up?",
+                answer: `<p>Bond prices and yields move inversely. When there's more supply of something, the price drops.</p>
+                <h4>The mechanism:</h4>
+                <ol>
+                    <li>Treasury announces: "We're issuing $500 billion in 30-year bonds"</li>
+                    <li>Market thinks: "That's a lot of bonds to absorb"</li>
+                    <li>Buyers demand higher yields to buy this flood of supply</li>
+                    <li>Higher yields = lower prices for existing bonds</li>
+                </ol>
+                <h4>Why this is bad for the Treasury:</h4>
+                <p>If they're trying to lock in low rates by issuing long-term debt, but the act of issuing pushes rates UP, they've defeated their own purpose. They wanted to borrow at 4% but now have to pay 4.5%.</p>
+                <h4>"Market functioning" concerns:</h4>
+                <p>Beyond just higher rates, the Treasury worries about:</p>
+                <ul>
+                    <li><strong>Auction failures:</strong> Not enough buyers show up</li>
+                    <li><strong>Volatility:</strong> Large supply shocks destabilize pricing</li>
+                    <li><strong>Liquidity:</strong> Too much supply can make the market less liquid (paradoxically)</li>
+                </ul>
+                <p>The Treasury has to balance "we want long-term debt for stability" against "we can't dump so much that we break the market."</p>`
+            },
+            'bnpl-merchant-model': {
+                question: "Why don't merchants just take bank loans instead of paying BNPL companies 5%?",
+                answer: `<p>The key insight: <strong>who bears the default risk</strong>.</p>
+                <h4>If merchant takes a bank loan:</h4>
+                <ol>
+                    <li>Bank lends merchant $1,000</li>
+                    <li>Merchant sells item to customer</li>
+                    <li>Customer pays merchant over time (or doesn't)</li>
+                    <li>Merchant must repay bank regardless of whether customer pays</li>
+                </ol>
+                <p>The merchant is on the hook for defaults. If 10% of customers don't pay, the merchant eats that loss.</p>
+                <h4>With BNPL (Klarna, Affirm, etc.):</h4>
+                <ol>
+                    <li>Customer buys $1,000 item with Klarna</li>
+                    <li>Klarna pays merchant $950 immediately (minus ~5% fee)</li>
+                    <li>Customer pays Klarna over time (or doesn't)</li>
+                    <li>Klarna absorbs all default risk</li>
+                </ol>
+                <h4>Why merchants accept 5%:</h4>
+                <ul>
+                    <li><strong>Zero credit risk:</strong> Merchant gets paid immediately, guaranteed</li>
+                    <li><strong>Higher conversion:</strong> Customers buy more when they can spread payments</li>
+                    <li><strong>Larger basket sizes:</strong> "I can afford this if it's $50/month"</li>
+                    <li><strong>No collections hassle:</strong> Klarna chases deadbeats, not you</li>
+                </ul>
+                <p>The 5% is essentially insurance premium + outsourced collections + customer acquisition cost.</p>`
+            },
+            'klarna-reminder-fees': {
+                question: "What are Klarna's reminder fees?",
+                answer: `<p>"Reminder fees" is Klarna's euphemism for <strong>late payment fees</strong>.</p>
+                <h4>How it works:</h4>
+                <ol>
+                    <li>You miss a payment deadline</li>
+                    <li>Klarna sends a "reminder" (payment notice)</li>
+                    <li>They charge a fee for this "service"—typically $5-15 per reminder</li>
+                    <li>Multiple reminders = multiple fees</li>
+                </ol>
+                <h4>The numbers:</h4>
+                <p>Klarna generates approximately <strong>$472 million per year</strong> from these fees. That's not nothing—it's about 10% of their total revenue.</p>
+                <h4>The criticism:</h4>
+                <p>Critics argue this is predatory:</p>
+                <ul>
+                    <li>People using BNPL are often financially stretched</li>
+                    <li>Those most likely to miss payments can least afford fees</li>
+                    <li>"Reminder fee" sounds gentler than "late fee" or "penalty"</li>
+                    <li>It's a profit center, not just cost recovery</li>
+                </ul>
+                <h4>Klarna's defense:</h4>
+                <p>They claim fees encourage timely payment and are much lower than credit card late fees or overdraft charges. True, but the target demographic is often younger people who wouldn't qualify for credit cards in the first place.</p>`
+            },
+            'duration-math-example': {
+                question: "How does duration affect bond prices? A concrete example.",
+                answer: `<h4>The concept:</h4>
+                <p>"Duration" measures how sensitive a bond's price is to interest rate changes. Longer bonds have higher duration.</p>
+                <h4>Concrete example with a 30-year bond:</h4>
+                <p>You buy a 30-year Treasury bond paying 4% coupon for $1,000 face value.</p>
+                <p><strong>Scenario: Fed cuts rates by 1%</strong></p>
+                <p>New 30-year bonds now pay only 3%. Your old 4% bond is suddenly valuable—it pays more than new issues!</p>
+                <h4>The math (simplified):</h4>
+                <ul>
+                    <li>Your bond pays $40/year for 30 years</li>
+                    <li>New bonds only pay $30/year</li>
+                    <li>Buyers will pay a premium for your higher payments</li>
+                    <li>Your $1,000 bond is now worth ~$1,200 (roughly 20% gain)</li>
+                </ul>
+                <h4>Same scenario with a 3-month T-bill:</h4>
+                <p>You bought a 3-month T-bill at 4%.</p>
+                <ul>
+                    <li>It matures in 90 days regardless of rate changes</li>
+                    <li>You get your principal back + ~1% interest (4% annualized ÷ 4)</li>
+                    <li>Rate change barely matters—you're getting paid back in 3 months anyway</li>
+                    <li>Price might move 0.25% at most</li>
+                </ul>
+                <h4>The rule of thumb:</h4>
+                <p>A bond's price change ≈ Duration × Rate change</p>
+                <ul>
+                    <li>30-year bond duration: ~20 → 1% rate drop = ~20% price gain</li>
+                    <li>3-month bill duration: ~0.25 → 1% rate drop = ~0.25% price gain</li>
+                </ul>
+                <p>This is why <span class="q-link" data-q="duration-capital-gains">investors betting on rate cuts want long-duration bonds</span>—the leverage on their bet is 80x higher.</p>`
+            },
+            'duration-capital-gains': {
+                question: "If bond prices rise, yields drop. So why do investors want that?",
+                answer: `<p>You're confusing two different things: <strong>yield to maturity</strong> vs. <strong>capital gains</strong>.</p>
+                <h4>Yield to maturity (income):</h4>
+                <p>If you hold a bond to maturity, you earn the yield. A 4% yield means you get 4% per year. Simple.</p>
+                <h4>Capital gains (trading profit):</h4>
+                <p>If you <em>sell before maturity</em>, you can profit from price changes.</p>
+                <h4>The strategy:</h4>
+                <ol>
+                    <li>You think the Fed will cut rates</li>
+                    <li>You buy a 30-year bond today at $1,000 (4% yield)</li>
+                    <li>Fed cuts rates by 1%</li>
+                    <li>Your bond's price rises to $1,200</li>
+                    <li>You sell for $1,200</li>
+                    <li><strong>You made $200 (20% return)</strong>—even though yields dropped</li>
+                </ol>
+                <h4>The key insight:</h4>
+                <p><strong>Falling yields = rising prices.</strong> If you already own the bond, you WANT yields to fall because your asset appreciates.</p>
+                <p>It's like real estate: "Property values rose, so rental yields dropped" sounds bad for new buyers, but if you already owned the property, you're thrilled—your asset is worth more!</p>
+                <h4>Who cares about what:</h4>
+                <ul>
+                    <li><strong>Buy-and-hold investors:</strong> Care about yield (income stream)</li>
+                    <li><strong>Traders:</strong> Care about price movements (capital gains)</li>
+                    <li><strong>Pension funds:</strong> Care about both, depending on their liabilities</li>
+                </ul>`
+            },
+            'fed-reserves-explained': {
+                question: "What are bank reserves and why does the Fed pay interest on them?",
+                answer: `<h4>What are reserves?</h4>
+                <p>Reserves are money that banks keep on deposit at the Federal Reserve. Think of it as the banks' checking account at the Fed.</p>
+                <p>Banks are <em>required</em> to hold a certain amount (reserve requirements) but often hold more (excess reserves).</p>
+                <h4>Why does the Fed pay interest on reserves?</h4>
+                <p>Since 2008, the Fed pays interest on these balances. The rate is called <strong>IORB</strong> (Interest on Reserve Balances), currently ~4.4%.</p>
+                <h4>The purpose:</h4>
+                <p>IORB is how the Fed controls short-term interest rates. Banks won't lend to each other at 3% if they can earn 4.4% risk-free at the Fed. This creates a "floor" for rates.</p>
+                <h4>The current problem:</h4>
+                <ol>
+                    <li>In 2020-2021, the Fed bought trillions in bonds at low rates (~1-2%)</li>
+                    <li>It "paid" for these by crediting banks' reserve accounts (creating new reserves)</li>
+                    <li>Now banks have ~$3+ trillion in reserves at the Fed</li>
+                    <li>The Fed must pay 4.4% on those reserves</li>
+                    <li>But the Fed's bond portfolio only earns ~2% on average</li>
+                    <li><strong>The Fed pays out more than it earns = losses</strong></li>
+                </ol>
+                <h4>Why the Fed isn't "bankrupt":</h4>
+                <p>These losses are just accounting entries. The Fed doesn't need "money"—it creates money. The losses are recorded as a "deferred asset" that will be offset by future profits when rates normalize.</p>
+                <p>But it is <span class="q-link" data-q="fed-losses-political">politically embarrassing</span> and gives ammunition to critics.</p>`
+            },
+            'fed-losses-political': {
+                question: "Why are Fed losses politically embarrassing?",
+                answer: `<p>Normally, the Fed remits ~$80-100 billion in profits to the Treasury each year. These come from interest on its bond holdings.</p>
+                <h4>Now it's the opposite:</h4>
+                <p>Instead of sending money TO the Treasury, the Fed is effectively running losses of $100-200 billion per year.</p>
+                <h4>Why this matters politically:</h4>
+                <ol>
+                    <li><strong>"The Fed is losing taxpayer money"</strong> — Even though it's not really how it works, it's an easy attack line</li>
+                    <li><strong>"They bought bonds at the top"</strong> — The Fed bought trillions at low rates in 2020-2021, which look foolish in hindsight</li>
+                    <li><strong>"Unelected bureaucrats"</strong> — Critics use losses to argue the Fed is incompetent</li>
+                    <li><strong>Independence under attack</strong> — Gives ammunition to those who want to politicize the Fed</li>
+                </ol>
+                <h4>The technical reality:</h4>
+                <p>Fed "losses" don't work like company losses. The Fed can't go bankrupt in its own currency. The losses are an accounting entry that will reverse when rates normalize. But "the Fed lost $200 billion" makes for a much better headline than "the Fed has a temporary negative carry position on its balance sheet."</p>`
             },
             'wealth-tax-math': {
                 question: "Could a 2% wealth tax on billionaires fix Social Security?",
