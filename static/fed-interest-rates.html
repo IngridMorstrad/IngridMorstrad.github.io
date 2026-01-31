@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Fed Explained | Jerome Powell's Final Stand</title>
+    <title>The Fed Explained | Understanding Federal Reserve Policy</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Code+Pro:wght@400;600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
@@ -611,13 +611,100 @@
         .emphasis-box p:last-child {
             margin-bottom: 0;
         }
+
+        /* Sensationalism Slider */
+        .tone-control {
+            max-width: 500px;
+            margin: 2rem auto 1rem;
+            padding: 1.5rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards 1.4s;
+        }
+
+        .tone-control-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .tone-control-label span:first-child {
+            font-weight: 600;
+        }
+
+        .tone-control-label span:last-child {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .tone-slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: linear-gradient(to right,
+                var(--accent-blue) 0%,
+                var(--accent-blue) 33%,
+                var(--accent-gold) 33%,
+                var(--accent-gold) 67%,
+                var(--accent-red) 67%,
+                var(--accent-red) 100%);
+            outline: none;
+            cursor: pointer;
+        }
+
+        .tone-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--text-primary);
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            transition: transform 0.2s ease;
+        }
+
+        .tone-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+
+        .tone-slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--text-primary);
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            border: none;
+            transition: transform 0.2s ease;
+        }
+
+        .tone-slider::-moz-range-thumb:hover {
+            transform: scale(1.2);
+        }
+
+        .tone-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.5rem;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="header-label">Economic Analysis</div>
-        <h1 class="header-title">
-            The Fed's <span class="highlight">Final Stand</span>
+        <h1 class="header-title" id="main-heading">
+            The Fed's <span class="highlight">Balancing Act</span>
         </h1>
         <p class="header-subtitle">
             Jerome Powell holds rates steady as Trump pressures for cuts. A deep dive into what it all means for your money.
@@ -627,6 +714,27 @@
             <span>⏱ 25 min read</span>
             <span>💰 Economics</span>
         </div>
+
+        <div class="tone-control">
+            <div class="tone-control-label">
+                <span>Tone Control</span>
+                <span id="tone-level-display">Balanced</span>
+            </div>
+            <input
+                type="range"
+                min="0"
+                max="100"
+                value="50"
+                class="tone-slider"
+                id="tone-slider"
+                aria-label="Adjust article tone from clinical to dramatic">
+            <div class="tone-labels">
+                <span>Clinical</span>
+                <span>Balanced</span>
+                <span>Dramatic</span>
+            </div>
+        </div>
+
         <div class="scroll-indicator">Scroll to explore</div>
     </header>
 
@@ -634,14 +742,14 @@
         <!-- Section 1: Context -->
         <section class="section" id="context">
             <div class="section-number">01 — CONTEXT</div>
-            <h2>The Perfect Storm</h2>
+            <h2 id="context-heading">Competing Economic Forces</h2>
             
             <p>Jerome Powell is almost done. With just two FOMC meetings left as Fed Chair, he faces perhaps the most politically charged economic environment in decades. Here's what you need to know going in.</p>
 
             <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="stat-value">$8.1T</div>
-                    <div class="stat-label">US Billionaire Wealth</div>
+                    <div class="stat-value">$6.5T</div>
+                    <div class="stat-label">Fed Balance Sheet</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-value negative">↓</div>
@@ -652,7 +760,7 @@
                     <div class="stat-label">High in Long-term Unemployment</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value">4.25%</div>
+                    <div class="stat-value">3.5-3.75%</div>
                     <div class="stat-label">Fed Funds Rate</div>
                 </div>
             </div>
@@ -685,9 +793,11 @@
         <!-- Section 3: The Dual Mandate -->
         <section class="section" id="dual-mandate">
             <div class="section-number">03 — THE DILEMMA</div>
-            <h2>Powell's Impossible Choice</h2>
+            <h2 id="dilemma-heading">The Fed's Challenge</h2>
             
             <p>The Federal Reserve has a <span class="q-link" data-q="dual-mandate">dual mandate</span>: maximum employment and stable prices. Right now, both sides are flashing warning signs.</p>
+
+            <p>This creates a painful dilemma: <span class="q-link" data-q="stagflation-2026">How did we end up with high inflation AND weak jobs at the same time?</span> Normally the Fed can address one or the other—but 2026's unique combination of tariffs, immigration restrictions, and energy bottlenecks has broken the usual playbook.</p>
 
             <div class="table-wrapper">
                 <table>
@@ -783,6 +893,11 @@
             </div>
 
             <p>This is important: <span class="q-link" data-q="gdp-vs-labor">GDP often gets revised dramatically downward</span>, while labor market data reflects real human experiences.</p>
+
+            <h3>On Cutting Rates Without Spurring Inflation</h3>
+            <p>A reporter challenged Powell: Given <span class="q-link" data-q="fiscal-tailwinds-inflation">fiscal tailwinds like big tax refunds and strong growth, how could you cut rates without causing inflation</span>?</p>
+
+            <p>Powell's cryptic response: <span class="q-link" data-q="potential-output-growth">"It would depend on how fast potential output is growing."</span> Translation: If AI and productivity gains are expanding what the economy can produce, maybe rate cuts wouldn't be inflationary. But he's not betting on it.</p>
         </section>
 
         <div class="divider"></div>
@@ -824,7 +939,7 @@
             <div class="key-points">
                 <h4>Short-term impacts</h4>
                 <ul>
-                    <li>Mortgage rates stay elevated (~7%)</li>
+                    <li>Mortgage rates stay elevated (~6%)</li>
                     <li>Savings accounts continue earning decent interest</li>
                     <li>Credit card rates remain painful</li>
                     <li>Business borrowing costs unchanged</li>
@@ -1124,7 +1239,7 @@
                 <h4>Current rates (Jan 2026):</h4>
                 <table style="width:100%; border-collapse:collapse; margin:1rem 0;">
                     <tr><th style="text-align:left; padding:0.5rem; border-bottom:1px solid var(--border-color);">Maturity</th><th style="text-align:left; padding:0.5rem; border-bottom:1px solid var(--border-color);">Yield</th></tr>
-                    <tr><td style="padding:0.5rem;">Fed Funds Rate</td><td style="padding:0.5rem;">4.25-4.50%</td></tr>
+                    <tr><td style="padding:0.5rem;">Fed Funds Rate</td><td style="padding:0.5rem;">3.50-3.75%</td></tr>
                     <tr><td style="padding:0.5rem;">3-month T-bill</td><td style="padding:0.5rem;">~4.3%</td></tr>
                     <tr><td style="padding:0.5rem;">2-year Treasury</td><td style="padding:0.5rem;">~3.9-4.0%</td></tr>
                     <tr><td style="padding:0.5rem;">10-year Treasury</td><td style="padding:0.5rem;">~4.24%</td></tr>
@@ -1329,9 +1444,9 @@
                 <p>Reserves are money that banks keep on deposit at the Federal Reserve. Think of it as the banks' checking account at the Fed.</p>
                 <p>Banks are <em>required</em> to hold a certain amount (reserve requirements) but often hold more (excess reserves).</p>
                 <h4>Why does the Fed pay interest on reserves?</h4>
-                <p>Since 2008, the Fed pays interest on these balances. The rate is called <strong>IORB</strong> (Interest on Reserve Balances), currently ~4.4%.</p>
+                <p>Since 2008, the Fed pays interest on these balances. The rate is called <strong>IORB</strong> (Interest on Reserve Balances), currently 3.65%.</p>
                 <h4>The purpose:</h4>
-                <p>IORB is how the Fed controls short-term interest rates. Banks won't lend to each other at 3% if they can earn 4.4% risk-free at the Fed. This creates a "floor" for rates.</p>
+                <p>IORB is how the Fed controls short-term interest rates. Banks won't lend to each other at 3% if they can earn 3.65% risk-free at the Fed. This creates a "floor" for rates.</p>
                 <h4>The current problem:</h4>
                 <ol>
                     <li>In 2020-2021, the Fed bought trillions in bonds at low rates (~1-2%)</li>
@@ -1359,6 +1474,106 @@
                 </ol>
                 <h4>The technical reality:</h4>
                 <p>Fed "losses" don't work like company losses. The Fed can't go bankrupt in its own currency. The losses are an accounting entry that will reverse when rates normalize. But "the Fed lost $200 billion" makes for a much better headline than "the Fed has a temporary negative carry position on its balance sheet."</p>`
+            },
+            'stagflation-2026': {
+                question: "How did we end up with high inflation AND weak jobs at the same time?",
+                answer: `<p>This situation is often called <strong>"stagflation lite"</strong>—and it happens when the Fed's usual playbook breaks down.</p>
+                <h4>The normal Fed formula:</h4>
+                <ul>
+                    <li>Inflation too high? → Raise rates to cool spending</li>
+                    <li>Jobs too weak? → Lower rates to stimulate economy</li>
+                </ul>
+                <p>But right now, <em>both</em> are problems. Why doesn't the formula work?</p>
+                <h4>Three reasons the teeter-totter breaks:</h4>
+                <ol>
+                    <li><strong>Supply shocks:</strong> If the cost of essential goods spikes due to external factors, prices rise regardless of interest rates. The Fed can't "print" more oil or labor.</li>
+                    <li><strong>Lagged effects:</strong> Monetary policy takes 12–18 months to fully hit. The Fed might keep rates low to help jobs, only to realize too late they've let inflation spiral.</li>
+                    <li><strong>Inflation expectations:</strong> If businesses and workers expect high inflation, they raise prices and wage demands preemptively. This creates a self-fulfilling cycle.</li>
+                </ol>
+                <p>So what specific shocks caused this in 2026? <span class="q-link" data-q="stagflation-causes-2026">Here are the concrete reasons</span>.</p>`
+            },
+            'stagflation-causes-2026': {
+                question: "What specific factors caused the 2026 stagflation situation?",
+                answer: `<p>Four concrete policy shocks broke the usual Fed playbook:</p>
+                <h4>1. The "Tariff Transmission" Lag</h4>
+                <p>On April 2, 2025—"Liberation Day"—Trump declared a national emergency and imposed a 10% baseline tariff on nearly all imports, plus higher reciprocal tariffs on 57 countries (up to 49% on Cambodia, 46% on Vietnam, 34% on China).</p>
+                <ul>
+                    <li><strong>The delay:</strong> Businesses initially used up "old stock" bought before tariffs</li>
+                    <li><strong>Now:</strong> Those inventories are gone—companies are passing 2025 costs to consumers</li>
+                    <li><strong>Result:</strong> <span class="q-link" data-q="cost-push-inflation">Cost-push inflation</span> that interest rates can't easily fix</li>
+                </ul>
+                <h4>2. The Immigration & Labor Supply Shock</h4>
+                <p>The U.S. experienced negative net migration in 2025 for the first time in ~50 years, according to Brookings Institution research.</p>
+                <ul>
+                    <li><strong>The numbers:</strong> Agricultural employment dropped 155,000 workers from March-July 2025 alone</li>
+                    <li><strong>Industries hit:</strong> Construction, agriculture, home health care lost significant workforce</li>
+                    <li><strong>Paradox:</strong> Fewer workers = businesses slow down (fewer jobs) BUT remaining labor costs more (inflation)</li>
+                </ul>
+                <h4>3. Energy "Logistics" vs. Energy Prices</h4>
+                <p>Global oil prices are moderate (WTI ~$65/barrel), but your utility bills haven't dropped.</p>
+                <ul>
+                    <li><strong>The bottleneck:</strong> Massive demand from <span class="q-link" data-q="ai-energy-demand">AI data centers</span> + aging electrical grid</li>
+                    <li><strong>Result:</strong> Even with reasonable fuel costs, getting power where it's needed is expensive</li>
+                    <li>This keeps inflation "sticky" for every business that uses electricity</li>
+                </ul>
+                <h4>4. The Fed's Political Standoff</h4>
+                <p>The Fed is in a defensive crouch due to pressure from the White House to cut rates.</p>
+                <ul>
+                    <li>If they cut while inflation is 2.7% (above 2% target), they lose credibility as "inflation fighters"</li>
+                    <li>Result: "Low-hire, low-fire" phase—holding rates at 3.5-3.75% to prove independence</li>
+                    <li>Even as the job market softens, they won't budge</li>
+                </ul>
+                <h4>Summary: Why the old rules broke</h4>
+                <table style="width:100%; border-collapse:collapse; margin:1rem 0; font-size:0.85rem;">
+                    <tr><th style="text-align:left; padding:0.5rem; border-bottom:1px solid var(--border-color);">Indicator</th><th style="text-align:left; padding:0.5rem; border-bottom:1px solid var(--border-color);">Standard Rule</th><th style="text-align:left; padding:0.5rem; border-bottom:1px solid var(--border-color);">2026 Reality</th></tr>
+                    <tr><td style="padding:0.5rem; border-bottom:1px solid var(--border-color);">Inflation</td><td style="padding:0.5rem; border-bottom:1px solid var(--border-color);">Caused by "too much money"</td><td style="padding:0.5rem; border-bottom:1px solid var(--border-color);">Caused by tariffs + grid bottlenecks</td></tr>
+                    <tr><td style="padding:0.5rem; border-bottom:1px solid var(--border-color);">Jobs</td><td style="padding:0.5rem; border-bottom:1px solid var(--border-color);">Low jobs = economy is "cold"</td><td style="padding:0.5rem; border-bottom:1px solid var(--border-color);">Jobs low because labor supply was cut</td></tr>
+                    <tr><td style="padding:0.5rem;">Fed Response</td><td style="padding:0.5rem;">Cut rates to save jobs</td><td style="padding:0.5rem;">Holding rates to fight tariff-driven price spikes</td></tr>
+                </table>`
+            },
+            'cost-push-inflation': {
+                question: "What is cost-push inflation and why can't rates fix it?",
+                answer: `<h4>Two types of inflation:</h4>
+                <p><strong>Demand-pull inflation:</strong> Too much money chasing too few goods. People are spending like crazy → prices rise.</p>
+                <p><strong>Cost-push inflation:</strong> The cost of producing things goes up → businesses raise prices to maintain margins.</p>
+                <h4>Why rate hikes work for demand-pull:</h4>
+                <ol>
+                    <li>Fed raises rates</li>
+                    <li>Borrowing becomes expensive</li>
+                    <li>People spend less</li>
+                    <li>Less demand → prices stop rising</li>
+                </ol>
+                <h4>Why rate hikes DON'T work for cost-push:</h4>
+                <p>If inflation comes from higher input costs (tariffs, oil shocks, supply chain issues), raising rates doesn't fix the underlying problem:</p>
+                <ul>
+                    <li>The tariff is still there</li>
+                    <li>Oil is still expensive</li>
+                    <li>The factory abroad is still closed</li>
+                </ul>
+                <p>Raising rates just adds ANOTHER cost (borrowing) on top of the existing cost pressures. You might kill demand enough to stop price increases, but you'll also kill jobs—hence stagflation.</p>
+                <h4>The 2026 problem:</h4>
+                <p>Tariffs added ~10-25% to import costs. Rate hikes can't remove tariffs. So the Fed is stuck: raise rates to fight inflation → kill jobs; lower rates to save jobs → let tariff-driven inflation run.</p>
+                <p>This is why Powell keeps saying "we need to see more data"—he's hoping the supply-side issues resolve themselves so he doesn't have to make the impossible choice.</p>`
+            },
+            'ai-energy-demand': {
+                question: "How much energy are AI data centers actually using?",
+                answer: `<p>AI's energy appetite is staggering and growing exponentially.</p>
+                <h4>The numbers:</h4>
+                <ul>
+                    <li>A single ChatGPT query uses ~10x the electricity of a Google search</li>
+                    <li>Training GPT-4 used roughly as much electricity as 1,000 US homes use in a year</li>
+                    <li>US data centers consumed ~4% of total US electricity in 2023</li>
+                    <li>Projected: 6-8% by 2026, possibly 10%+ by 2030</li>
+                </ul>
+                <h4>Why this causes inflation:</h4>
+                <ol>
+                    <li><strong>Grid bottlenecks:</strong> The electrical grid wasn't built for this. Adding gigawatts of demand in specific locations (where data centers cluster) creates local shortages.</li>
+                    <li><strong>Competition for power:</strong> When Microsoft's data center and your local hospital both need more electricity, prices rise for everyone.</li>
+                    <li><strong>Infrastructure lag:</strong> Building new power plants and transmission lines takes 5-10 years. AI demand growth is measured in months.</li>
+                </ol>
+                <h4>The irony:</h4>
+                <p>Tech companies are some of the biggest buyers of renewable energy contracts—but those contracts often don't add NEW capacity. They're just buying existing clean energy, leaving everyone else with the expensive stuff.</p>
+                <p>Meanwhile, some regions are actually <em>restarting coal plants</em> to meet AI demand. The "clean tech" revolution is, at least temporarily, driving dirtier energy use.</p>`
             },
             'wealth-tax-math': {
                 question: "Could a 2% wealth tax on billionaires fix Social Security?",
@@ -1390,6 +1605,70 @@
                 </ol>
                 <p>Billionaire wealth taxes are popular politically but mathematically insufficient for Social Security's scale.</p>
                 <p><strong>Would healthcare reform matter more?</strong> Absolutely. US healthcare spending is ~$4.5T/year. Reducing costs by 20% would save ~$900 billion PER YEAR—vastly more impactful.</p>`
+            },
+            'fiscal-tailwinds-inflation': {
+                question: "Why would fiscal tailwinds + rate cuts cause inflation?",
+                answer: `<p>A reporter asked Powell: "Given fiscal tailwinds—big tax refunds coming, potential tariff dividend, strong growth—how could you cut rates and not spur inflation in that environment?"</p>
+                <h4>The inflationary cocktail:</h4>
+                <p>When you combine several things pumping money into the economy:</p>
+                <ul>
+                    <li><strong>Big tax refunds</strong> → More money in consumers' pockets</li>
+                    <li><strong>Tariff dividend</strong> → (If tariff revenue is redistributed) More money to consumers</li>
+                    <li><strong>Fiscal stimulus from tax cuts</strong> → Businesses and individuals keep more money</li>
+                    <li><strong>Strong growth</strong> → Economy already running hot</li>
+                </ul>
+                <h4>Now add rate cuts on top:</h4>
+                <p>Lower interest rates mean:</p>
+                <ul>
+                    <li>Cheaper mortgages → More home buying → Housing prices rise</li>
+                    <li>Cheaper business loans → More investment/hiring → Wages rise</li>
+                    <li>Cheaper credit cards/auto loans → More consumer spending → Demand rises</li>
+                    <li>Less incentive to save → More spending now</li>
+                </ul>
+                <h4>The inflation mechanism:</h4>
+                <p>When you have MORE money chasing the SAME amount of goods and services, prices rise. That's inflation.</p>
+                <p>If the economy is already strong and you're already pumping fiscal stimulus into it, cutting rates would be like pouring gasoline on a fire. You'd get:</p>
+                <ul>
+                    <li>Too much demand</li>
+                    <li>Not enough supply to meet it</li>
+                    <li>Prices spike</li>
+                </ul>
+                <p>This is exactly Powell's dilemma—cutting rates might help employment but risks reigniting inflation.</p>`
+            },
+            'potential-output-growth': {
+                question: "How does potential output growth affect rate cut decisions?",
+                answer: `<p>Powell responded to the fiscal tailwinds question with a cryptic: "It would depend on how fast potential output is growing."</p>
+                <h4>What is potential output?</h4>
+                <p>The maximum amount of goods and services the economy can produce without causing inflation—basically, productive capacity.</p>
+                <h4>The key insight:</h4>
+                <p>Inflation happens when DEMAND outpaces SUPPLY (productive capacity).</p>
+                <ul>
+                    <li>If you cut rates → demand increases</li>
+                    <li>If productive capacity stays the same → inflation</li>
+                    <li>If productive capacity ALSO increases → prices can stay stable</li>
+                </ul>
+                <h4>Example scenario:</h4>
+                <p>Imagine the economy can produce 100 widgets. Demand is for 100 widgets. Prices are stable.</p>
+                <p><strong>Scenario A: Cut rates, capacity unchanged</strong></p>
+                <ul>
+                    <li>Rate cuts boost demand to 120 widgets</li>
+                    <li>Economy can still only make 100</li>
+                    <li>People bid up prices to get scarce widgets → Inflation</li>
+                </ul>
+                <p><strong>Scenario B: Cut rates, capacity also grows</strong></p>
+                <ul>
+                    <li>Rate cuts boost demand to 120 widgets</li>
+                    <li>BUT productivity gains/investment mean economy can now make 120 widgets</li>
+                    <li>Supply meets demand → No inflation</li>
+                </ul>
+                <h4>What increases potential output?</h4>
+                <ul>
+                    <li>Technology improvements (including AI)</li>
+                    <li>More workers (immigration, population growth)</li>
+                    <li>Capital investment (new factories, equipment)</li>
+                    <li>Better education/skills</li>
+                </ul>
+                <p>Powell is leaving the door open: "If AI or other factors are genuinely expanding how much we can produce, maybe rate cuts wouldn't be inflational." But he's not committing to that view.</p>`
             }
         };
 
@@ -1536,6 +1815,79 @@
                     target.scrollIntoView({ behavior: 'smooth' });
                 }
             });
+        });
+    </script>
+
+    <script>
+        // Sensationalism Slider Controller
+        const toneConfig = {
+            'main-heading': {
+                clinical: 'The Fed\'s <span class="highlight">Policy Update</span>',
+                balanced: 'The Fed\'s <span class="highlight">Balancing Act</span>',
+                dramatic: 'The Fed\'s <span class="highlight">Final Stand</span>'
+            },
+            'context-heading': {
+                clinical: 'Multiple Economic Pressures',
+                balanced: 'Competing Economic Forces',
+                dramatic: 'The Perfect Storm'
+            },
+            'dilemma-heading': {
+                clinical: 'Balancing Competing Objectives',
+                balanced: 'The Fed\'s Challenge',
+                dramatic: 'Powell\'s Impossible Choice'
+            }
+        };
+
+        const toneLabels = ['Clinical', 'Balanced', 'Dramatic'];
+        const slider = document.getElementById('tone-slider');
+        const display = document.getElementById('tone-level-display');
+
+        function getToneLevel(value) {
+            if (value < 34) return 'clinical';
+            if (value < 67) return 'balanced';
+            return 'dramatic';
+        }
+
+        function getToneLabelIndex(value) {
+            if (value < 34) return 0;
+            if (value < 67) return 1;
+            return 2;
+        }
+
+        function updateHeadings(value) {
+            const tone = getToneLevel(value);
+            const labelIndex = getToneLabelIndex(value);
+
+            // Update display label
+            display.textContent = toneLabels[labelIndex];
+
+            // Update all headings
+            Object.keys(toneConfig).forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.innerHTML = toneConfig[id][tone];
+                }
+            });
+
+            // Save preference
+            localStorage.setItem('fedTonePreference', value);
+        }
+
+        // Load saved preference or default to balanced (50)
+        const savedValue = localStorage.getItem('fedTonePreference') || 50;
+        slider.value = savedValue;
+        updateHeadings(savedValue);
+
+        // Handle slider changes
+        slider.addEventListener('input', (e) => {
+            updateHeadings(e.target.value);
+        });
+
+        // Keyboard accessibility
+        slider.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+                setTimeout(() => updateHeadings(slider.value), 0);
+            }
         });
     </script>
 </body>
