@@ -33,17 +33,15 @@
         {{ else if (lt (add $index 1) $length) }}
           {{- print " and " -}}
         {{ else }}
-          {{- print "." -}}
+          {{- print ". " -}}
         {{ end }}
       {{ end }}
-      </p>
-  {{ end }}
-
-  {{ if isset .Site.Params "feeds" }}
-      <p>Feeds:
+      {{ if isset .Site.Params "feeds" }}
+      Feeds:
       {{ $feedLength := (len .Site.Params.feeds) }}
       {{ range $findex, $feed := .Site.Params.feeds }}
         <a href="{{ $feed.link | relURL }}">{{ if eq $feed.name "rss" }}RSS{{ else if eq $feed.name "atom" }}Atom{{ else }}{{ $feed.name }}{{ end }}</a>{{ if (lt (add $findex 1) $feedLength) }}, {{ end }}
+      {{ end }}
       {{ end }}
       </p>
   {{ end }}
@@ -51,21 +49,9 @@
 
   <section id="writing">
     <span class="h1"><a href="{{ .Site.Params.mainSection | absURL }}">Writings</a></span>
-    <span class="h2">Mini-series: Interviewing in tech</span>
-      <ul class="post-list">
-        <li class="post-item">
-          <span><a href="https://www.ashwinmenon.com/posts/thoughts/2022-01-21-tech-interviews-an-origin-story/">Tech interviews: an origin story</a></span>
-        </li>
-        <li class="post-item">
-          <span><a href="https://www.ashwinmenon.com/posts/thoughts/2022-02-10-tech-interviews-beating-the-game/">Tech interviews: beating the game</a></span>
-        </li>
-      </ul>
-    <details class="home-collapsible home-bestsellers">
-      <summary class="h2">
-        <span class="home-collapsible-chevron home-collapsible-chevron--closed" aria-hidden="true">▸</span>
-        <span class="home-collapsible-chevron home-collapsible-chevron--open" aria-hidden="true">▾</span>
-        Best-"sellers"
-      </summary>
+    <div class="home-series-grid">
+      <div>
+        <span class="h2">Best-"sellers"</span>
         <ul class="post-list">
           <li class="post-item">
             <span><a href="https://www.ashwinmenon.com/posts/activities/2017-01-30-a-guide-to-finances/">A guide to finances</a> and <a href="https://www.ashwinmenon.com/posts/thoughts/2024-12-15-a-guide-to-finances-securing-the-foundation/">part two, ten years later</a></span>
@@ -83,7 +69,28 @@
             <span><a href="https://www.ashwinmenon.com/posts/activities/2018-12-20-of-flights-and-men/">Of flights and men</a></span>
           </li>
         </ul>
-    </details>
+      </div>
+      <div>
+        <span class="h2">Mini-series: Interviewing in tech</span>
+        <ul class="post-list">
+          <li class="post-item">
+            <span><a href="https://www.ashwinmenon.com/posts/thoughts/2022-01-21-tech-interviews-an-origin-story/">Tech interviews: an origin story</a></span>
+          </li>
+          <li class="post-item">
+            <span><a href="https://www.ashwinmenon.com/posts/thoughts/2022-02-10-tech-interviews-beating-the-game/">Tech interviews: beating the game</a></span>
+          </li>
+        </ul>
+        <span class="h2">Explainers</span>
+        <ul class="post-list">
+          <li class="post-item">
+            <span><a href="/fed-interest-rates.html">The Fed Explained</a></span>
+          </li>
+          <li class="post-item">
+            <span><a href="/housing.html">The Coming Housing Crisis</a></span>
+          </li>
+        </ul>
+      </div>
+    </div>
     <span class="h2">Most recent</span>
     {{ $showAllPostsOnHomePage := false }}
     {{ if (isset .Site.Params "showallpostsonhomepage") }}

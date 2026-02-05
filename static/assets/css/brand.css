@@ -38,4 +38,18 @@ html[data-theme="light"] {
 .tagcloud a.tag-size-4 { font-size: 2.5rem; }
 .tagcloud a.tag-size-5 { font-size: 3rem; }
 
+/* Home page series grid layout */
+.home-series-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+  .home-series-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 
