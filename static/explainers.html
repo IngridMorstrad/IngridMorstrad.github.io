@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explainers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;900&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-tertiary: #1a1a25;
+            --text-primary: #f0f0f5;
+            --text-secondary: #a0a0b0;
+            --text-muted: #606075;
+            --accent-gold: #d4af37;
+            --accent-gold-dim: #a08020;
+            --accent-green: #22c55e;
+            --accent-red: #ef4444;
+            --accent-blue: #3b82f6;
+            --border-color: #2a2a3a;
+            --gradient-gold: linear-gradient(135deg, #d4af37 0%, #f5d87a 50%, #d4af37 100%);
+            --shadow-glow: 0 0 40px rgba(212, 175, 55, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        header {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            background:
+                radial-gradient(ellipse at 20% 80%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+                var(--bg-primary);
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 100px,
+                    rgba(212, 175, 55, 0.03) 100px,
+                    rgba(212, 175, 55, 0.03) 101px
+                );
+            pointer-events: none;
+        }
+
+        .header-label {
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeSlideUp 0.8s ease forwards 0.2s;
+        }
+
+        .header-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 10vw, 8rem);
+            font-weight: 900;
+            text-align: center;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeSlideUp 0.8s ease forwards 0.4s;
+        }
+
+        .header-title .highlight {
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            text-align: center;
+            max-width: 600px;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeSlideUp 0.8s ease forwards 0.6s;
+        }
+
+        @keyframes fadeSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem 6rem;
+        }
+
+        .explainer-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .explainer-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeSlideUp 0.6s ease forwards;
+        }
+
+        .explainer-card:nth-child(1) {
+            animation-delay: 0.8s;
+        }
+
+        .explainer-card:nth-child(2) {
+            animation-delay: 1s;
+        }
+
+        .explainer-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-glow);
+            border-color: var(--accent-gold-dim);
+        }
+
+        .explainer-card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .explainer-card p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 0;
+        }
+
+        .explainer-arrow {
+            display: inline-block;
+            margin-left: 0.5rem;
+            color: var(--accent-gold);
+            transition: transform 0.3s ease;
+        }
+
+        .explainer-card:hover .explainer-arrow {
+            transform: translateX(5px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: var(--accent-gold);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .header-title {
+                font-size: 3rem;
+            }
+
+            .explainer-card {
+                padding: 1.5rem;
+            }
+
+            .explainer-card h2 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-label">Deep Dives</div>
+        <h1 class="header-title"><span class="highlight">Explainers</span></h1>
+        <p class="header-subtitle">Interactive analyses of economic and social phenomena</p>
+    </header>
+
+    <main>
+        <div class="explainer-list">
+            <a href="/fed-interest-rates.html" class="explainer-card">
+                <h2>The Fed Explained<span class="explainer-arrow">→</span></h2>
+                <p>Understanding Federal Reserve policy, interest rates, and their impact on the economy</p>
+            </a>
+
+            <a href="/housing.html" class="explainer-card">
+                <h2>The Coming Housing Crisis<span class="explainer-arrow">→</span></h2>
+                <p>Comprehensive analysis of housing market dynamics, affordability, and structural issues</p>
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <p><a href="/">← Back to home</a></p>
+    </footer>
+</body>
+</html>
