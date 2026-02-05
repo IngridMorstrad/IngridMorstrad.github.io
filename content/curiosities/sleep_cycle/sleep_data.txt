@@ -1,3 +1,6 @@
+---
+draft: true
+---
 | # | Start | End | Sleep/Awake | Duration | Annotations |
 |---|---|---|---|---|---|
 | 1 | 2024-11-29 12:00 | 2024-11-29 17:19 | Sleep | 5h 19m | |

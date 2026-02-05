@@ -1,3 +1,6 @@
+---
+draft: true
+---
 # Activity Preprocessing Guide
 
 This guide explains how to extract browser activity data and preprocess it into activity blocks.
