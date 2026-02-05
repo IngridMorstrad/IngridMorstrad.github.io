@@ -1,0 +1,229 @@
+---
+title: "CAGR Calculator"
+date: 2026-02-05
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CAGR Calculator</title>
+
+<style>
+    :root {
+        --bg: #faf7f2;
+        --card: #ffffff;
+        --border: #d5c7b8;
+        --text: #2f2a26;
+        --sub: #6a5f58;
+        --accent: #5b8a72;
+        --accent-light: #6fa88a;
+        --radius: 10px;
+    }
+
+    body {
+        font-family: system-ui, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        max-width: 760px;
+        margin: 40px auto;
+        padding: 0 20px;
+        line-height: 1.5;
+    }
+
+    h1 {
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: var(--accent);
+    }
+
+    .description {
+        color: var(--sub);
+        margin-bottom: 24px;
+    }
+
+    .section {
+        background: var(--card);
+        padding: 24px;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        margin-bottom: 20px;
+    }
+
+    .input-group {
+        margin-bottom: 16px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: 500;
+        color: var(--text);
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        font-size: 16px;
+        box-sizing: border-box;
+    }
+
+    input:focus {
+        outline: none;
+        border-color: var(--accent);
+    }
+
+    input.calculated {
+        background: #f0f8f4;
+        border-color: var(--accent-light);
+    }
+
+    button {
+        background: var(--accent);
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+
+    button:hover {
+        background: var(--accent-light);
+    }
+
+    .note {
+        margin-top: 20px;
+        padding: 12px;
+        background: #fef9f0;
+        border-left: 3px solid var(--accent);
+        color: var(--sub);
+        font-size: 14px;
+    }
+</style>
+</head>
+<body>
+
+<h1>CAGR Calculator</h1>
+<p class="description">
+    Enter any 3 values to calculate the 4th. CAGR = Compound Annual Growth Rate.
+</p>
+
+<div class="section">
+    <div class="input-group">
+        <label for="startPrice">Starting Value ($)</label>
+        <input type="number" id="startPrice" placeholder="e.g., 10000" step="0.01">
+    </div>
+
+    <div class="input-group">
+        <label for="endPrice">Ending Value ($)</label>
+        <input type="number" id="endPrice" placeholder="e.g., 15000" step="0.01">
+    </div>
+
+    <div class="input-group">
+        <label for="years">Number of Years</label>
+        <input type="number" id="years" placeholder="e.g., 5" step="0.1" min="0.1">
+    </div>
+
+    <div class="input-group">
+        <label for="cagr">CAGR (%)</label>
+        <input type="number" id="cagr" placeholder="e.g., 8.45" step="0.01">
+    </div>
+
+    <button onclick="clearAll()">Clear All</button>
+
+    <div class="note">
+        <strong>Note:</strong> The calculator automatically computes the missing value when you enter 3 values.
+        The calculated field will be highlighted in green.
+    </div>
+</div>
+
+<script>
+const inputs = {
+    startPrice: document.getElementById('startPrice'),
+    endPrice: document.getElementById('endPrice'),
+    years: document.getElementById('years'),
+    cagr: document.getElementById('cagr')
+};
+
+let lastCalculated = null;
+
+// Add event listeners to all inputs
+Object.values(inputs).forEach(input => {
+    input.addEventListener('input', calculate);
+});
+
+function calculate() {
+    // Count how many fields are filled
+    const filled = {};
+    let filledCount = 0;
+
+    for (let key in inputs) {
+        const val = parseFloat(inputs[key].value);
+        if (!isNaN(val) && inputs[key].value !== '') {
+            filled[key] = val;
+            filledCount++;
+        }
+    }
+
+    // Reset all calculated styling
+    Object.values(inputs).forEach(input => {
+        input.classList.remove('calculated');
+    });
+
+    // Need exactly 3 values to calculate the 4th
+    if (filledCount !== 3) {
+        lastCalculated = null;
+        return;
+    }
+
+    // Determine which one to calculate
+    let toCalculate = null;
+    for (let key in inputs) {
+        if (!(key in filled)) {
+            toCalculate = key;
+            break;
+        }
+    }
+
+    if (!toCalculate) return;
+
+    let result;
+    try {
+        if (toCalculate === 'cagr') {
+            // CAGR = (Ending/Beginning)^(1/Years) - 1
+            result = (Math.pow(filled.endPrice / filled.startPrice, 1 / filled.years) - 1) * 100;
+        } else if (toCalculate === 'endPrice') {
+            // Ending = Beginning * (1 + CAGR)^Years
+            result = filled.startPrice * Math.pow(1 + (filled.cagr / 100), filled.years);
+        } else if (toCalculate === 'startPrice') {
+            // Beginning = Ending / (1 + CAGR)^Years
+            result = filled.endPrice / Math.pow(1 + (filled.cagr / 100), filled.years);
+        } else if (toCalculate === 'years') {
+            // Years = log(Ending/Beginning) / log(1 + CAGR)
+            result = Math.log(filled.endPrice / filled.startPrice) / Math.log(1 + (filled.cagr / 100));
+        }
+
+        if (isFinite(result) && !isNaN(result)) {
+            inputs[toCalculate].value = result.toFixed(2);
+            inputs[toCalculate].classList.add('calculated');
+            lastCalculated = toCalculate;
+        }
+    } catch (e) {
+        console.error('Calculation error:', e);
+    }
+}
+
+function clearAll() {
+    Object.values(inputs).forEach(input => {
+        input.value = '';
+        input.classList.remove('calculated');
+    });
+    lastCalculated = null;
+}
+</script>
+
+</body>
+</html>
