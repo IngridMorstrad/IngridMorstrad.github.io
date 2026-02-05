@@ -1,0 +1,2389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Coming Housing Crisis: A Complete Analysis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;900&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-tertiary: #1a1a25;
+            --text-primary: #f0f0f5;
+            --text-secondary: #a0a0b0;
+            --text-muted: #606075;
+            --accent-gold: #d4af37;
+            --accent-gold-dim: #a08020;
+            --accent-green: #22c55e;
+            --accent-red: #ef4444;
+            --accent-blue: #3b82f6;
+            --border-color: #2a2a3a;
+            --gradient-gold: linear-gradient(135deg, #d4af37 0%, #f5d87a 50%, #d4af37 100%);
+            --shadow-glow: 0 0 40px rgba(212, 175, 55, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        header {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            background: 
+                radial-gradient(ellipse at 20% 80%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+                var(--bg-primary);
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 100px,
+                    rgba(212, 175, 55, 0.03) 100px,
+                    rgba(212, 175, 55, 0.03) 101px
+                );
+            pointer-events: none;
+        }
+
+        .header-label {
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeSlideUp 0.8s ease forwards 0.2s;
+        }
+
+        .header-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            font-weight: 900;
+            text-align: center;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeSlideUp 0.8s ease forwards 0.4s;
+            max-width: 1000px;
+        }
+
+        .header-title .highlight {
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            text-align: center;
+            max-width: 700px;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeSlideUp 0.8s ease forwards 0.6s;
+        }
+
+        .header-meta {
+            display: flex;
+            gap: 2rem;
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            opacity: 0;
+            animation: fadeSlideUp 0.8s ease forwards 0.8s;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .header-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards 1.2s;
+        }
+
+        .scroll-indicator::after {
+            content: '';
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--accent-gold), transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes fadeSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.3; transform: scaleY(1); }
+            50% { opacity: 1; transform: scaleY(1.2); }
+        }
+
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-number {
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.3em;
+            color: var(--accent-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin: 2.5rem 0 1rem;
+            color: var(--text-primary);
+        }
+
+        h4 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem;
+            color: var(--text-primary);
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .key-points {
+            background: var(--bg-secondary);
+            border-left: 3px solid var(--accent-gold);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .key-points h4 {
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin: 0 0 1rem 0;
+        }
+
+        .key-points ul {
+            list-style: none;
+        }
+
+        .key-points li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .key-points li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-gold-dim);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            text-align: center;
+            border-radius: 8px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .stat-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            line-height: 1;
+        }
+
+        .stat-value.negative {
+            color: var(--accent-red);
+        }
+
+        .stat-value.positive {
+            color: var(--accent-green);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.75rem;
+            line-height: 1.4;
+        }
+
+        blockquote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--text-primary);
+            border-left: 3px solid var(--accent-gold);
+            padding-left: 1.5rem;
+            margin: 2.5rem 0;
+            line-height: 1.6;
+        }
+
+        blockquote cite {
+            display: block;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.85rem;
+            font-style: normal;
+            color: var(--text-muted);
+            margin-top: 0.75rem;
+        }
+
+        .callout {
+            background: linear-gradient(135deg, var(--bg-secondary), rgba(212, 175, 55, 0.05));
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+        }
+
+        .callout-label {
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 0.75rem;
+        }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--border-color), transparent);
+            margin: 4rem 0;
+        }
+
+        .emphasis-box {
+            background: var(--bg-tertiary);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .emphasis-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(239, 68, 68, 0.05));
+            border-left: 3px solid var(--accent-red);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            margin: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent-gold), transparent);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent-gold);
+            border: 2px solid var(--bg-primary);
+        }
+
+        .timeline-date {
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.75rem;
+            color: var(--accent-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        footer .heart {
+            color: var(--accent-red);
+        }
+
+        @media (max-width: 768px) {
+            .header-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            h3 {
+                font-size: 1.3rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+
+        ul, ol {
+            margin: 1rem 0 1.5rem 2rem;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Question links */
+        .q-link {
+            color: var(--accent-gold);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--accent-gold-dim);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .q-link:hover {
+            color: #f5d87a;
+            border-bottom-style: solid;
+        }
+
+        .q-link::after {
+            content: '?';
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.65em;
+            vertical-align: super;
+            margin-left: 2px;
+            opacity: 0.7;
+        }
+
+        /* Asterisk verification links (no border, no question mark) */
+        .q-link[data-modal^="verified-"] {
+            border-bottom: none;
+            color: var(--accent-gold);
+        }
+
+        .q-link[data-modal^="verified-"]::after {
+            content: '';
+        }
+
+        .q-link[data-modal^="verified-"]:hover {
+            color: #f5d87a;
+        }
+
+        /* Modal/Expandable boxes */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 1001;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 2rem;
+            overflow-y: auto;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-container {
+            width: 100%;
+            max-width: 700px;
+            margin: 2rem auto;
+        }
+
+        .modal-box {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            margin-bottom: 1rem;
+        }
+
+        .modal-overlay.active .modal-box {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .modal-box.nested {
+            border: 2px solid var(--accent-gold);
+        }
+
+        .modal-breadcrumb {
+            background: var(--bg-tertiary);
+            padding: 0.5rem 1.5rem;
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.7rem;
+            color: var(--accent-gold);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .modal-breadcrumb span {
+            opacity: 0.5;
+            margin: 0 0.5rem;
+        }
+
+        .modal-header {
+            background: var(--bg-tertiary);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .modal-question {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.4;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0;
+            line-height: 1;
+            transition: color 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .modal-close:hover {
+            color: var(--accent-gold);
+        }
+
+        .modal-content {
+            padding: 2rem;
+        }
+
+        .modal-content p {
+            margin-bottom: 1rem;
+        }
+
+        .modal-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .modal-content h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            margin: 1.5rem 0 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .modal-content ul, .modal-content ol {
+            margin: 1rem 0 1rem 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .modal-content li {
+            margin-bottom: 0.75rem;
+        }
+
+        .modal-content strong {
+            color: var(--text-primary);
+        }
+
+        @media (max-width: 768px) {
+            .modal-overlay {
+                padding: 1rem;
+            }
+
+            .modal-content {
+                padding: 1.5rem;
+            }
+
+            .modal-question {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-label">Housing Market Analysis</div>
+        <h1 class="header-title">The Coming <span class="highlight">Housing Crisis</span></h1>
+        <p class="header-subtitle">A comprehensive analysis of structural problems in the US housing market and why a major correction is inevitable</p>
+        <div class="header-meta">
+            <span>📊 Based on Interview with Melody Wright</span>
+            <span>📅 Analysis Period: 1970s - Q2 2026</span>
+            <span>⚠️ Forecast: Material Crisis</span>
+        </div>
+        <div style="margin-top: 2rem; padding: 1rem 2rem; background: rgba(212, 175, 55, 0.1); border: 1px solid var(--accent-gold); border-radius: 8px;">
+            <p style="margin: 0; color: var(--text-primary);">📹 <strong>Video Source:</strong> This article explains and fact-checks the analysis from <a href="https://www.youtube.com/watch?v=pfWoE_zD_AE" target="_blank" style="color: var(--accent-gold); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">this interview</a></p>
+        </div>
+        <div class="scroll-indicator">Scroll to Explore</div>
+    </header>
+
+    <main>
+        <!-- Introduction -->
+        <section class="section">
+            <div class="section-number">00 / OVERVIEW</div>
+            <h2>Executive Summary</h2>
+            <p>The US housing market is approaching a crisis of historic proportions. This analysis, based on extensive research and decades of mortgage industry experience, reveals how government intervention, demographic shifts, and speculative excess have created an unsustainable situation.</p>
+            
+            <div class="callout">
+                <div class="callout-label">Key Insight</div>
+                <p><strong>First-time homebuyers are now 40 years old on average</strong> — up from the late 20s in the 1980s. This dramatic shift signals a fundamental breakdown in housing affordability that government intervention has only delayed, not solved.</p>
+            </div>
+
+            <p>Unlike previous corrections, this crisis emerges from multiple converging forces: unsustainable demographics, government intervention limits reached, and a generation priced out of homeownership. The math is simple and inevitable: <strong>when the median household cannot afford the median home, correction must occur.</strong></p>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Historical Context -->
+        <section class="section">
+            <div class="section-number">01 / HISTORICAL CONTEXT</div>
+            <h2>How We Got Here</h2>
+            
+            <h3>The Perfect Storm: 50 Years in the Making</h3>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">Before 1970s</div>
+                    <p><strong>The Baseline:</strong> Home prices tracked household median income perfectly. Housing was shelter, not investment.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">1970s</div>
+                    <p><strong>Women Enter Workforce:</strong> Dual-income households became standard. Home prices began rising as household buying power increased. Divorce rates increased, driving <span class="q-link" data-modal="divorce-household">household formation</span>—one couple becomes two households needing separate housing.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">1980s</div>
+                    <p><strong><span class="q-link" data-modal="securitization">Securitization</span> Begins:</strong> Banks started packaging mortgages and selling them as bonds. Housing transformed from shelter into an investment vehicle. A pattern emerged: after every economic crisis, lower interest rates and push "every Tom, Dick, and Harry" into housing to restart the economy.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2008</div>
+                    <p><strong>The Financial Crisis:</strong> The crisis was fundamentally about loss of confidence in securitization and <span class="q-link" data-modal="derivatives">derivative</span> markets. When Lehman Brothers' pledged assets were rejected, the entire market collapsed. Shadow markets (derivatives) are now MUCH LARGER than pre-2008.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Post-2008</div>
+                    <p><strong>Critical Shift:</strong> Basel 3 regulations restricted banks. Private lending pulled back. <span class="q-link" data-modal="gse">Government-sponsored agencies</span> (Fannie Mae, Freddie Mac, FHA) absorbed what private markets wouldn't touch.</p>
+                </div>
+            </div>
+
+            <div class="key-points">
+                <h4>Pattern of Intervention</h4>
+                <ul>
+                    <li>Every economic crisis → Lower interest rates</li>
+                    <li>Federal Reserve buying <span class="q-link" data-modal="mbs">mortgage-backed securities</span></li>
+                    <li><span class="q-link" data-modal="housing-as-stimulus">Government using housing to restart economy</span></li>
+                    <li>Each cycle requires more intervention than the last</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Government-Backed Lending -->
+        <section class="section">
+            <div class="section-number">02 / THE FHA PROBLEM</div>
+            <h2>Government-Backed Lending Explosion</h2>
+
+            <h3>A Crisis Hidden in Plain Sight</h3>
+            <p>The <span class="q-link" data-modal="fha">Federal Housing Administration (FHA)</span> was designed to help first-time homebuyers with low down payments. Today, it's become the new subprime.</p>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value negative">10%+</div>
+                    <div class="stat-label">FHA loans currently delinquent</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">13-15%</div>
+                    <div class="stat-label">FHA market share (was 7% pre-crisis)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value negative">580</div>
+                    <div class="stat-label">Minimum credit score accepted</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value negative">3.5%</div>
+                    <div class="stat-label">Minimum down payment required</div>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <p><strong>Critical Comparison:</strong> Before the 2008 crisis, about 15% of the market was subprime (including FHA). Today, FHA alone represents 13-15% of the market with delinquency rates over 10%. We're already in worse territory than 2008, but the loans are government-backed so the risk sits with taxpayers.</p>
+            </div>
+
+            <h3>Lending Standards Destroyed</h3>
+            <p>In 2021, <strong>debt-to-income thresholds were quietly removed</strong> from qualified mortgage standards. Why? Because almost 1 million <span class="q-link" data-modal="gse">Fannie Mae and Freddie Mac</span> loans didn't meet the existing standards. Rather than acknowledge the problem, the government changed the rules.</p>
+
+            <div class="emphasis-box">
+                <p><strong>Current FHA Requirements:</strong></p>
+                <ul>
+                    <li>Down payment: <strong>3.5%</strong> (vs traditional 20%)</li>
+                    <li>Credit score: As low as <strong>580</strong> with compensating factors</li>
+                    <li>Debt-to-income: Over <strong>50%</strong> being approved</li>
+                    <li>Assessment: <strong>"Much worse than anything seen before 2008"</strong></li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- COVID Era Interventions -->
+        <section class="section">
+            <div class="section-number">03 / COVID INTERVENTIONS</div>
+            <h2>The Forbearance Time Bomb</h2>
+
+            <h3>Unprecedented Intervention Scale</h3>
+            <p>COVID-era programs represented intervention "on a scale I've never seen." These weren't temporary emergency measures—they were designed to get through the 2024 election year.</p>
+
+            <h4>Pre-COVID Modification Process</h4>
+            <ul>
+                <li>Full underwriting required</li>
+                <li>Income verification mandatory</li>
+                <li>Extensive documentation needed</li>
+                <li>Rigorous approval process</li>
+            </ul>
+
+            <h4>During COVID—Everything Changed</h4>
+            <div class="key-points">
+                <h4>The New "Standards"</h4>
+                <ul>
+                    <li><span class="q-link" data-modal="loan-modification">Modifications</span> sent in the mail</li>
+                    <li>Only 3 trial payments needed</li>
+                    <li>NO income verification required</li>
+                    <li>Automatic <span class="q-link" data-modal="forbearance">forbearance</span> available</li>
+                    <li>Up to 18 months of non-payment allowed</li>
+                </ul>
+            </div>
+
+            <h3>The Partial Claim Loophole</h3>
+            <p>In June 2023, the "Partial Claim Advanced Loan Modification" program launched:</p>
+            
+            <div class="emphasis-box">
+                <p><strong>How it works:</strong></p>
+                <ol>
+                    <li>Borrower doesn't pay for 3 months</li>
+                    <li>Gets partial claim (forbearance)</li>
+                    <li>Makes 3 payments</li>
+                    <li>Stops paying again</li>
+                    <li><strong>Repeat with NO LIMITATION</strong></li>
+                </ol>
+                <p style="margin-top: 1rem;"><strong>Result:</strong> Payments added to back of loan as non-interest bearing liens, creating <span class="q-link" data-modal="second-lien">"second mortgages"</span>—exactly the problem from the last crisis.</p>
+            </div>
+
+            <div class="callout">
+                <div class="callout-label">⚠️ Warning Sign</div>
+                <p>The current administration has now put guardrails on the FHA program, but the damage is done. Millions of loans are ticking time bombs, with homeowners who never should have qualified now facing payments they can't make.</p>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Investor Speculation -->
+        <section class="section">
+            <div class="section-number">04 / SPECULATIVE EXCESS</div>
+            <h2>Who's Buying and Why</h2>
+
+            <h3>Three Categories of Problematic Investors</h3>
+
+            <h4>1. The Airbnb Speculators</h4>
+            <p>Using tools like <span class="q-link" data-modal="airbnb-problem">AirDNA</span> to project rental income, investors were pitched: <strong>"Why buy one? Buy 10!"</strong></p>
+            
+            <div class="emphasis-box">
+                <p><strong>Case Study: Kyle, Texas (20 miles from Austin)</strong></p>
+                <ul>
+                    <li>Tool predicted: $600/day rentals 55% of the year</li>
+                    <li>Reality: Only booked during South by Southwest</li>
+                    <li>Competition: 15,000+ short-term rentals in Austin area</li>
+                    <li>Problem: Past performance ≠ future returns, especially when everyone uses the same data</li>
+                </ul>
+            </div>
+
+            <h4>2. Builder Self-Dealing</h4>
+            <p>Builders building properties, "flipping" them to themselves, then selling to <span class="q-link" data-modal="gse">GSEs</span> (Fannie/Freddie). The government-sponsored enterprises end up holding the risk.</p>
+
+            <h4>3. Mom & Pop Fraud</h4>
+            <p>Using FHA loans claiming primary residence occupancy while actually renting the properties. Veterans using VA benefits for "primary residences" that are actually investment properties.</p>
+
+            <div class="warning-box">
+                <p><strong>Widespread Fraud:</strong> Veterans using benefits to buy multiple short-term rental properties by claiming each as primary residence. This pattern exists across all programs.</p>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- The Supply Myth -->
+        <section class="section">
+            <div class="section-number">05 / DEMOGRAPHICS</div>
+            <h2>The Supply Myth</h2>
+
+            <h3>Not a Shortage—A Mismatch</h3>
+            <p>The mainstream narrative claims housing shortage is driving prices. The data tells a different story.</p>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">15M</div>
+                    <div class="stat-label">Vacant homes (US Census)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">3M+</div>
+                    <div class="stat-label">Seasonal properties (est. 2-3M Airbnbs)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value negative">2.55</div>
+                    <div class="stat-label">Average household size (was 4.0+)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value negative">70%</div>
+                    <div class="stat-label">Renters age 30+ (all-time high)</div>
+                </div>
+            </div>
+
+            <h3>Demographics Are Destiny</h3>
+            <p>The numbers don't lie, and they can't be changed:</p>
+
+            <div class="key-points">
+                <h4>The Inevitable Math</h4>
+                <ul>
+                    <li>Not having babies at <span class="q-link" data-modal="replacement-rate">replacement rate</span></li>
+                    <li><strong><span class="q-link" data-modal="boomer-deaths">6 million Boomers dying 2025-2035</span></strong> (own majority of homes)</li>
+                    <li><strong>26 million more Boomers dying 2035-2050</strong></li>
+                    <li>Most population growth last year: immigration (now slowing)</li>
+                    <li>Average <span class="q-link" data-modal="household-size">household size</span> approaching "one house per person" (unsustainable)</li>
+                </ul>
+            </div>
+
+            <div class="callout">
+                <div class="callout-label">Critical Insight</div>
+                <p>COVID pulled demand forward. Millennials bought earlier than they normally would, often using their parents' PPP money, ERC money, or EIDL loans. That demand is now exhausted, and the next generation can't afford to buy.</p>
+            </div>
+
+            <h3>Where People Are Leaving</h3>
+            <div class="emphasis-box">
+                <p><strong>Major Population Losses:</strong></p>
+                <ul>
+                    <li><strong>LA County:</strong> Lost 330,000+ people since 2020</li>
+                    <li><strong>New York City:</strong> Empty compared to early 2000s</li>
+                    <li><strong>San Francisco:</strong> Continued exodus</li>
+                </ul>
+                <p style="margin-top: 1rem;">These aren't just people moving—they represent collapsing tax bases and the inability of cities to support high housing prices.</p>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Regional Breakdown -->
+        <section class="section">
+            <div class="section-number">06 / REGIONAL ANALYSIS</div>
+            <h2>Regional Breakdown</h2>
+
+            <h3>Florida & Texas: Drastically Overbuilt</h3>
+            <p>Both states show clear signs of overbuilding with high visible delinquency. The "regional" excuse (same as 2008) doesn't hold when problems appear nationwide.</p>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value negative">12,000+</div>
+                    <div class="stat-label">Airbnbs in San Diego</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value negative">15,000+</div>
+                    <div class="stat-label">Short-term rentals in Austin</div>
+                </div>
+            </div>
+
+            <h3>California: Housing Mismatch</h3>
+            <ul>
+                <li><strong>LA County:</strong> 330,000+ people left, creating housing mismatch (not shortage)</li>
+                <li>Many mom & pop investors holding properties</li>
+                <li>Lower owner-occupancy than national average</li>
+                <li><strong>San Diego:</strong> Year-over-year price declines despite Department of Defense presence</li>
+            </ul>
+
+            <h3>Midwest: Later But Coming</h3>
+            <p>Will take longest to correct along with Northeast. After 2022 rate rises, investors were told "buy in Midwest" (cheap, can still cash flow).</p>
+            
+            <div class="warning-box">
+                <p><strong>Indianapolis in serious trouble:</strong> Inventory now growing again. Later correction due to: (1) More investor activity after 2022, (2) Negative demographics</p>
+            </div>
+
+            <h3>Northeast: Lost the Plot</h3>
+            <p><strong>New York City:</strong> Empty compared to early 2000s</p>
+            
+            <div class="emphasis-box">
+                <p><strong>2019 Rent Control Law Backfire:</strong></p>
+                <ul>
+                    <li>Can only raise rent by certain percentage</li>
+                    <li><strong>~100,000 apartments sitting empty</strong></li>
+                    <li>Landlords can't afford repairs to meet code</li>
+                    <li>Waiting for law to change</li>
+                    <li>Assessment: "Lost the plot" - think they're immune</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Why Intervention Won't Work -->
+        <section class="section">
+            <div class="section-number">07 / LIMITS REACHED</div>
+            <h2>Why Top 10% Can't Save the Market</h2>
+
+            <h3>The Wealth Paradox</h3>
+            <p>The top 10% of earners represent 50% of consumption. This sounds like they could prop up the housing market—but they can't.</p>
+
+            <div class="callout">
+                <div class="callout-label">The Problem</div>
+                <p>Even wealthy buyers need someone to rent their investment properties to. When the middle and lower classes can't afford the rents needed to cover costs, luxury properties sit vacant nationwide.</p>
+            </div>
+
+            <p>Built for luxury in 2021 thinking everyone was getting rich. Now: <strong>$1.3 billion in spec homes<span class="q-link" data-modal="verified-spec-homes" style="font-size: 0.6em; vertical-align: super; margin-left: 2px;">*</span></strong> sitting unsold.</p>
+
+            <h3>No Options Left to Intervene</h3>
+
+            <h4>1. Institutional Investors Can't Save It</h4>
+            <ul>
+                <li>Institutional investors are <strong>net selling</strong> (not buying)</li>
+                <li>Can't make money in this market</li>
+                <li>Blackstone can't get cheap funds anymore</li>
+                <li>Insurance and taxes too high to cash flow</li>
+                <li>Can't save the market even if they wanted to</li>
+            </ul>
+
+            <h4>2. Demographics Can't Be Changed</h4>
+            <ul>
+                <li>Can't change the birth rate overnight</li>
+                <li>Can't stop boomer deaths</li>
+                <li>Immigration slowing down (was most of population growth)</li>
+                <li><strong>"Unless robots need houses"</strong> - no demand replacement</li>
+            </ul>
+
+            <h4>3. Political Pressure Mounting</h4>
+            <div class="warning-box">
+                <p>Younger generations are angry enough. <strong>"Pitchforks will come out"</strong> if the government gives homes away to investors or bails out speculators. Politicians are backed into a corner on what's possible.</p>
+            </div>
+
+            <h4>4. Government Tools Exhausted</h4>
+            <ul>
+                <li>Can't keep giving forbearance (guardrails now in place)</li>
+                <li>Can't print more money without raising prices more</li>
+                <li>FHA already at crisis levels</li>
+                <li>Cities and states bankrupt</li>
+            </ul>
+
+            <h3>What They Might Try</h3>
+            <div class="emphasis-box">
+                <p>Likely next steps (none of which solve the problem):</p>
+                <ul>
+                    <li>Government buying homes from builders/institutional investors</li>
+                    <li>Partner on "affordable programs" (already passed in BBB)</li>
+                    <li>Create lending facilities (like <span class="q-link" data-modal="btfp">SVB's BTFP</span>) - "mark at 100% when really 25%"</li>
+                    <li>Further accounting tricks to hide losses</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- The Foreclosure Wave -->
+        <section class="section">
+            <div class="section-number">08 / THE WAVE BUILDS</div>
+            <h2>The Coming Foreclosure Crisis</h2>
+
+            <h3>Current Reality</h3>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value negative">+14%</div>
+                    <div class="stat-label">Foreclosure starts YoY (2025)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value negative">+14%</div>
+                    <div class="stat-label">Foreclosure sales YoY</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value negative">Q2 2026</div>
+                    <div class="stat-label"><strong>Forecast:</strong> Predicted material crisis</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">85/85<span class="q-link" data-modal="verified-85-cities" style="font-size: 0.6em; vertical-align: super; margin-left: 2px;">*</span></div>
+                    <div class="stat-label">Cities tracked showing increases</div>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <p><strong>Conference Report (3 weeks ago):</strong> "All they talked about was <span class="q-link" data-modal="short-sale">short sales</span>" (asking bank to accept less than owed). These have <strong>"exploded overnight"</strong> according to industry insiders.</p>
+            </div>
+
+            <h3>The Doom Loop</h3>
+            <p>Only takes ONE foreclosure in a neighborhood to impact all <span class="q-link" data-modal="comps">comparable sales</span>:</p>
+
+            <div class="emphasis-box">
+                <p><strong>Hypothetical Example: The $750k Neighborhood</strong></p>
+                <ol>
+                    <li>All homes valued at $750k (everyone feels wealthy)</li>
+                    <li>One distressed sale at $450k</li>
+                    <li><strong>All homes now worth $450k</strong> (<span class="q-link" data-modal="comps">new comp</span>)</li>
+                    <li>Late buyers now <span class="q-link" data-modal="underwater">underwater</span> (owe $700k on $450k house)</li>
+                    <li>Wealth simply <span class="q-link" data-modal="wealth-effect">disappears</span> (seller already got paid and left)</li>
+                    <li>Underwater → can't refinance → can't sell → first financial stress → <strong>foreclosure</strong></li>
+                    <li>Creates cascade: more underwater → more defaults → more sales → lower prices</li>
+                </ol>
+            </div>
+
+            <div class="callout">
+                <div class="callout-label">Why People Default When Underwater</div>
+                <p><strong>It's not just <span class="q-link" data-modal="strategic-default">strategic default</span>.</strong> When you're underwater, you have ZERO flexibility:</p>
+                <ul>
+                    <li>Need to move for a job? <strong>Can't sell</strong> (would owe money at closing)</li>
+                    <li>Want to refinance to lower rate? <strong>Can't</strong> (underwater)</li>
+                    <li>Hit financial trouble? <strong>Can't modify</strong> (already underwater)</li>
+                    <li>ANY financial stress → foreclosure is the only option</li>
+                </ul>
+            </div>
+
+            <h3>Credit Restricting Across System</h3>
+            <p>The trap is tightening:</p>
+            <ul>
+                <li>Can't refinance (underwater or don't qualify)</li>
+                <li>Can't get loan modification (too underwater)</li>
+                <li>Can't sell (underwater)</li>
+                <li><strong>Result: FORECLOSURE is the only exit</strong></li>
+            </ul>
+
+            <h3><span class="q-link" data-modal="mortgage-debt-orange">"The Big Orange"</span></h3>
+            <div class="key-points">
+                <h4>Why Mortgage Debt Matters Most</h4>
+                <ul>
+                    <li>Mortgage debt is BY FAR the largest household debt</li>
+                    <li>Student loans and auto loans much smaller in comparison</li>
+                    <li>Called "the big orange" in Federal Reserve charts</li>
+                    <li><strong>"When the big orange gets in trouble, we're all in trouble"</strong></li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- City Fiscal Crisis -->
+        <section class="section">
+            <div class="section-number">09 / MUNICIPAL CRISIS</div>
+            <h2>Cities and States Face Bankruptcy</h2>
+
+            <h3>How Cities Miscalculated</h3>
+            <p>The <span class="q-link" data-modal="city-budgets">American Rescue Act</span> provided approximately <strong>$350 billion</strong> to cities and states for COVID relief. Cities thought they were "getting rich forever."</p>
+
+            <div class="emphasis-box">
+                <p><strong>Their Assumptions (All Wrong):</strong></p>
+                <ol>
+                    <li><strong>Continued population growth</strong> (Nashville: claimed "100 people moving here every day"—NEVER TRUE)</li>
+                    <li><strong>Home prices continuing to rise</strong> (increasing property tax base)</li>
+                    <li>Federal windfall would last or be repeated</li>
+                </ol>
+                <p style="margin-top: 1rem;"><strong>What They Did:</strong> Spent "like drunken sailors" on hiring, projects, and long-term commitments.</p>
+            </div>
+
+            <h3>Current Reality</h3>
+            <div class="warning-box">
+                <p><strong>Cities are bankrupt:</strong></p>
+                <ul>
+                    <li>Budget deficits across the country</li>
+                    <li>Chicago bonds kicked out of municipal funds</li>
+                    <li>Property tax base collapsing (can't raise taxes enough)</li>
+                    <li>"There's going to be a limit to what they can do"</li>
+                </ul>
+            </div>
+
+            <p>Population reversals mean revenue assumptions are broken. Temporary federal money created permanent spending commitments. The math doesn't work.</p>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Advice Section -->
+        <section class="section">
+            <div class="section-number">10 / WHAT TO DO</div>
+            <h2>Advice for Young People</h2>
+
+            <h3>Financial Principles for the Crisis Ahead</h3>
+
+            <h4>1. Say NO to Debt</h4>
+            <div class="emphasis-box">
+                <ul>
+                    <li>No "buy now, pay later"</li>
+                    <li>No unnecessary credit cards</li>
+                    <li><strong>"Say no to debt slavery"</strong></li>
+                    <li>Every dollar of debt is a claim on your future labor</li>
+                </ul>
+            </div>
+
+            <h4>2. Don't Assume Income Will Always Rise</h4>
+            <div class="warning-box">
+                <p><strong>Reality Check:</strong> "I work hard, I'm capable" ≠ job security. At a certain age, you become a liability to companies. You're first out the door regardless of productivity. White collar layoffs are accelerating.</p>
+            </div>
+
+            <h4>3. Build Skills Continuously</h4>
+            <ul>
+                <li>Keep learning new skills</li>
+                <li>Develop ability to pivot quickly</li>
+                <li>Don't rely on credentials alone</li>
+                <li>Make yourself adaptable</li>
+            </ul>
+
+            <h4>4. Save Money Aggressively</h4>
+            <div class="key-points">
+                <h4>Where to Keep Cash</h4>
+                <ul>
+                    <li>Short-term US Treasuries</li>
+                    <li>Money market accounts</li>
+                    <li>High-yield savings accounts</li>
+                    <li>Build substantial cash reserves (6-12 months minimum)</li>
+                </ul>
+            </div>
+
+            <h4>5. Get Real Financial Education</h4>
+            <ul>
+                <li>Follow credible sources (not influencers trying to make money off you)</li>
+                <li>Understand the actual mechanics of markets</li>
+                <li>Learn to read financial statements</li>
+                <li>Question mainstream narratives</li>
+            </ul>
+
+            <h3>Housing Specific Advice</h3>
+            <div class="callout">
+                <div class="callout-label">⚠️ Critical Recommendation</div>
+                <p><strong>WAIT.</strong> The affordability crisis MUST resolve. Those who gambled on housing will lose money. Prices WILL come down. "Absolutely" will become affordable again.</p>
+            </div>
+
+            <blockquote>
+                "The good news is you'll be able to afford shelter and pass it to your children. Housing returns to being shelter, not a get-rich scheme."
+                <cite>— The Silver Lining</cite>
+            </blockquote>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Data Manipulation -->
+        <section class="section">
+            <div class="section-number">11 / DATA ISSUES</div>
+            <h2>Mainstream Narrative Breakdown</h2>
+
+            <h3>Why You Can't Trust Official Numbers</h3>
+            <p>Numbers reported by mainstream sources are <strong>modeled, not actual results</strong>. NAR (National Association of Realtors) data particularly questionable.</p>
+
+            <div class="emphasis-box">
+                <p><strong>Statistical Impossibility:</strong> Median list price reported as "exactly the same as year ago"—this is statistically impossible in a market of millions of homes with continuous trading.</p>
+            </div>
+
+            <h3>What People Actually See vs. What's Reported</h3>
+            <div class="key-points">
+                <h4>On-the-Ground Reality</h4>
+                <ul>
+                    <li>For sale signs everywhere (especially Texas/Florida)</li>
+                    <li>Zillow showing: price cut, price cut, price cut</li>
+                    <li>Endless emails about price reductions</li>
+                    <li><span class="q-link" data-modal="short-sale">Short sales</span> exploding</li>
+                </ul>
+            </div>
+
+            <h3>Failed Marketing Slogans</h3>
+            <ul>
+                <li><strong>"Survive till 25"</strong> (said in 2024, didn't happen)</li>
+                <li><strong>"Marry the house, date the rate"</strong> (rates didn't fall)</li>
+                <li>All premised on rates falling—they haven't</li>
+            </ul>
+
+            <div class="callout">
+                <div class="callout-label">Why Rates Haven't Fallen</div>
+                <p>Mortgage rates don't follow the Federal Reserve's rate cuts. They follow the <span class="q-link" data-modal="mortgage-rates-treasury">US 10-year Treasury bond</span>, which reflects the bond market's view of US creditworthiness and inflation expectations. The 10-year remains stubborn because the world requires higher rates to lend to the US.</p>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Similar Problems Across Debt -->
+        <section class="section">
+            <div class="section-number">12 / BROADER CONTEXT</div>
+            <h2>Similar Issues Across All Debt Markets</h2>
+
+            <p>The housing crisis isn't isolated—it's part of a broader debt crisis affecting multiple sectors:</p>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value negative">↑</div>
+                    <div class="stat-label">Commercial Real Estate Defaults</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value negative">↑</div>
+                    <div class="stat-label">Auto Loan Defaults</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value negative">↑</div>
+                    <div class="stat-label">Student Loan Defaults</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value negative">↑</div>
+                    <div class="stat-label">Buy Now Pay Later Defaults</div>
+                </div>
+            </div>
+
+            <h3>Commercial Real Estate: <span class="q-link" data-modal="extend-pretend">"Extend and Pretend"</span></h3>
+            <p>Banks are adjusting <strong><span class="q-link" data-modal="covenant">internal covenants</span></strong> (their own risk management rules) to avoid calling loans in default. Example: Instead of requiring action when property value drops 20% below loan amount, they change internal rule to 40%.</p>
+
+            <div class="emphasis-box">
+                <p><strong>This lets them keep loans marked as "performing" on their books even though by normal standards they should be in default.</strong> It's "extend and pretend" everywhere.</p>
+            </div>
+
+            <h3>Job Losses Accelerating</h3>
+            <p>White collar workers getting "decimated" with continuing layoff announcements. Opinion: "Nothing to do with AI"—companies cutting regardless of performance.</p>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Timeline and Conclusion -->
+        <section class="section">
+            <div class="section-number">13 / TIMELINE</div>
+            <h2>What's Coming and When</h2>
+
+            <h3>The Predicted Timeline</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">Now</div>
+                    <p><strong>Building Phase:</strong> Foreclosures increasing in all 85 tracked cities. Short sales "exploded overnight." Credit restriction accelerating across the system.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Q2 2026</div>
+                    <p><strong>Material Crisis:</strong> Predicted arrival of material foreclosure population. Forbearance programs fully exhausted. Government guardrails preventing further extension of loans.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Beyond</div>
+                    <p><strong>Long Correction:</strong> Demographics take decades to change. Boomer deaths will continue releasing housing supply through 2050. Market needs to find sustainable equilibrium between prices and median household income.</p>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <p><strong>Changed Life 3 Years Ago:</strong> Melody Wright saw this coming and completely changed her life to prepare. "It was just math. When the median household can't afford the median home, eventual correction must occur."</p>
+            </div>
+
+            <h3>Additional Warning Signs</h3>
+            <ul>
+                <li><strong>Tourism down significantly</strong> (revenge travel over)</li>
+                <li><strong>Las Vegas "getting pummeled"</strong> (would "terrify you" to see the data)</li>
+                <li>Can't all go on vacation indefinitely (COVID-era spending exhausted)</li>
+                <li>Reality becoming visible despite data manipulation</li>
+            </ul>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Final Summary -->
+        <section class="section">
+            <div class="section-number">14 / CONCLUSION</div>
+            <h2>The Inevitable Correction</h2>
+
+            <blockquote>
+                "It was just math."
+                <cite>— Melody Wright on why this is inevitable</cite>
+            </blockquote>
+
+            <h3>Why This Time Really Is Different</h3>
+
+            <div class="key-points">
+                <h4>Factors Making This Correction Unique</h4>
+                <ul>
+                    <li><strong>Demographics:</strong> Can't be changed. Math is inexorable.</li>
+                    <li><strong>Government capacity:</strong> Already at intervention limits. Political constraints prevent further bailouts.</li>
+                    <li><strong>No buyer of last resort:</strong> Institutional investors can't make money. Top 10% can't absorb supply.</li>
+                    <li><strong>Debt levels:</strong> Households, cities, and federal government all overleveraged.</li>
+                    <li><strong>Awareness:</strong> Younger generations see the scam, won't participate at current prices.</li>
+                </ul>
+            </div>
+
+            <h3>The Path Forward</h3>
+            <p>Markets always eventually find equilibrium. The question isn't <em>if</em> prices will correct—it's <em>when</em> and <em>how severe</em>.</p>
+
+            <div class="emphasis-box">
+                <p><strong>What correction looks like:</strong></p>
+                <ul>
+                    <li>Housing returns to being shelter, not investment</li>
+                    <li>Prices fall to levels where median household can afford median home</li>
+                    <li>Speculation and excess investor activity washed out</li>
+                    <li>Some pain in transition, but healthier market long-term</li>
+                    <li>Homeownership becomes achievable for young people again</li>
+                </ul>
+            </div>
+
+            <div class="callout">
+                <div class="callout-label">The Silver Lining</div>
+                <p>After the correction, housing becomes affordable again. You can buy shelter and pass it to your children. The market returns to sanity. This is ultimately good news—painful in the short term, but necessary and beneficial long-term.</p>
+            </div>
+
+            <h3>Resources for Further Research</h3>
+            <ul>
+                <li><strong>Melody Wright's Substack:</strong> Free version contains full arguments and ongoing analysis</li>
+                <li><strong>"The Big Short" (film):</strong> Essential for understanding securitization mechanics</li>
+                <li><strong>Track local foreclosure data:</strong> Your area may show trends before national data reflects reality</li>
+                <li><strong>Follow actual data, not narratives:</strong> Official statistics increasingly disconnected from on-the-ground reality</li>
+            </ul>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Final Warning -->
+        <section class="section">
+            <div class="callout">
+                <div class="callout-label">⚠️ Final Reminder</div>
+                <p>This analysis represents one expert's view based on extensive data and decades of industry experience. While the structural problems are real and well-documented, timing predictions are inherently uncertain. Make your own financial decisions based on your circumstances, risk tolerance, and due diligence.</p>
+                <p style="margin-top: 1rem;"><strong>What's certain:</strong> The median household cannot afford the median home. This is mathematically unsustainable and must correct. Everything else is about timing and severity.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Analysis compiled from interview with housing market expert Melody Wright</p>
+        <p style="margin-top: 0.5rem;">For educational and informational purposes only • Not financial advice</p>
+        <p style="margin-top: 1rem; opacity: 0.5;">Made with <span class="heart">♥</span> to understand what's really happening</p>
+    </footer>
+
+    <script>
+        // Modal content definitions
+        const modalContent = {
+            'fha': {
+                title: 'What is FHA?',
+                content: `
+                    <p><strong>Federal Housing Administration (FHA)</strong></p>
+                    <p>Created in 1934 during the Great Depression, the FHA is a government agency that insures mortgages to make homeownership more accessible.</p>
+                    <h4>How it works:</h4>
+                    <ul>
+                        <li>Private lenders make the loans</li>
+                        <li>FHA insures them (government backs them)</li>
+                        <li>If borrower defaults, <span class="q-link" data-modal="fha-pays">FHA pays the lender</span></li>
+                        <li>Allows lower down payments (3.5% vs conventional 20%)</li>
+                        <li>Accepts lower credit scores (as low as 580)</li>
+                    </ul>
+                    <p><strong>The risk:</strong> Taxpayers are ultimately on the hook if FHA runs out of money.</p>
+                `
+            },
+            'fha-pays': {
+                title: 'What happens when FHA pays?',
+                content: `
+                    <p>When an FHA-insured loan defaults:</p>
+                    <ol>
+                        <li>Lender forecloses on the property</li>
+                        <li>FHA pays the lender the remaining loan balance</li>
+                        <li>FHA takes ownership of the property</li>
+                        <li>FHA sells the property (usually at a loss)</li>
+                    </ol>
+                    <p><strong>The loss is covered by:</strong></p>
+                    <ul>
+                        <li>FHA's Mutual Mortgage Insurance Fund</li>
+                        <li>If fund is depleted: <span class="q-link" data-modal="taxpayer-bailout">Taxpayer bailout required</span></li>
+                    </ul>
+                `
+            },
+            'taxpayer-bailout': {
+                title: 'How do taxpayer bailouts work?',
+                content: `
+                    <p>When a government agency runs out of money:</p>
+                    <ol>
+                        <li><strong>Congress appropriates funds</strong> - votes to give the agency money</li>
+                        <li><strong>Money comes from:</strong> Tax revenue or borrowing (adding to national debt)</li>
+                        <li><strong>If borrowing:</strong> Federal Reserve may print money to buy government bonds</li>
+                    </ol>
+                    <p><strong>The effects:</strong></p>
+                    <ul>
+                        <li>Increased national debt</li>
+                        <li>Potential inflation (if money is printed)</li>
+                        <li>Higher taxes (eventually someone has to pay)</li>
+                        <li>Reduced spending on other programs</li>
+                    </ul>
+                `
+            },
+            'gse': {
+                title: 'What are GSEs?',
+                content: `
+                    <p><strong>Government-Sponsored Enterprises (GSEs)</strong></p>
+                    <p>Privately owned but government-chartered corporations. Main housing GSEs:</p>
+                    <ul>
+                        <li><strong>Fannie Mae</strong> (Federal National Mortgage Association)</li>
+                        <li><strong>Freddie Mac</strong> (Federal Home Loan Mortgage Corporation)</li>
+                        <li><strong>Ginnie Mae</strong> (Government National Mortgage Association)</li>
+                    </ul>
+                    <h4>What they do:</h4>
+                    <ol>
+                        <li><span class="q-link" data-modal="gse-buy">Buy mortgages from lenders</span></li>
+                        <li>Package them into securities (<span class="q-link" data-modal="mbs">MBS</span>)</li>
+                        <li>Sell securities to investors</li>
+                        <li>This gives lenders money to make new loans</li>
+                    </ol>
+                    <p><strong>Important:</strong> Since 2008, Fannie/Freddie have been in "conservatorship" - the government actually controls them.</p>
+                `
+            },
+            'gse-buy': {
+                title: 'How do GSEs buy mortgages?',
+                content: `
+                    <p>The mortgage pipeline:</p>
+                    <ol>
+                        <li><strong>You get a mortgage from a bank</strong> (say, $300,000)</li>
+                        <li><strong>Bank sells your mortgage to Fannie Mae</strong> for $300,000</li>
+                        <li><strong>Bank now has $300,000 cash</strong> to make new loans</li>
+                        <li><strong>You still pay your mortgage</strong> - but now to Fannie Mae (or their servicer)</li>
+                    </ol>
+                    <p><strong>Why banks do this:</strong></p>
+                    <ul>
+                        <li>Get money back immediately (don't have to wait 30 years)</li>
+                        <li>Reduce risk on their balance sheet</li>
+                        <li>Can make more loans (earn more fees)</li>
+                    </ul>
+                    <p><strong>Why it matters:</strong> Banks can make risky loans because they know GSEs will buy them.</p>
+                `
+            },
+            'mbs': {
+                title: 'What are Mortgage-Backed Securities?',
+                content: `
+                    <p><strong>Mortgage-Backed Securities (MBS)</strong></p>
+                    <p>A bond made up of thousands of mortgages bundled together.</p>
+                    <h4>How it works:</h4>
+                    <ol>
+                        <li>Fannie Mae buys 10,000 mortgages</li>
+                        <li>Bundles them into a security</li>
+                        <li>Sells shares of this security to investors</li>
+                        <li>Investors receive monthly payments from all the mortgages</li>
+                    </ol>
+                    <p><strong>The 2008 problem:</strong></p>
+                    <ul>
+                        <li>Many mortgages in MBS were subprime (risky)</li>
+                        <li>When people defaulted, MBS lost value</li>
+                        <li><span class="q-link" data-modal="derivatives">Derivatives</span> based on MBS collapsed</li>
+                        <li>Entire financial system froze</li>
+                    </ul>
+                `
+            },
+            'derivatives': {
+                title: 'What are derivatives?',
+                content: `
+                    <p><strong>Derivatives</strong> are financial contracts whose value depends on something else.</p>
+                    <h4>In housing (2008 crisis):</h4>
+                    <ul>
+                        <li><strong>CDOs</strong> (Collateralized Debt Obligations) - bundles of MBS</li>
+                        <li><strong>Synthetic CDOs</strong> - bets on whether CDOs will fail</li>
+                        <li><strong>Credit Default Swaps</strong> - insurance on bonds/CDOs</li>
+                    </ul>
+                    <p><strong>The pyramid:</strong></p>
+                    <ol>
+                        <li>Mortgages (bottom)</li>
+                        <li><span class="q-link" data-modal="mbs">MBS</span> (bundles of mortgages)</li>
+                        <li>CDOs (bundles of MBS)</li>
+                        <li>Synthetic CDOs (bets on CDOs)</li>
+                    </ol>
+                    <p>When mortgages started failing, the entire pyramid collapsed. The <strong>"shadow market"</strong> of these derivatives was MUCH larger than the actual mortgages.</p>
+                `
+            },
+            'forbearance': {
+                title: 'What is forbearance?',
+                content: `
+                    <p><strong>Forbearance</strong> = temporarily not having to make mortgage payments.</p>
+                    <h4>How it works:</h4>
+                    <ul>
+                        <li>You stop making payments (with lender approval)</li>
+                        <li>Interest typically still accrues</li>
+                        <li>Missed payments added to loan balance or due at the end</li>
+                        <li>Doesn't count as default or hurt credit (during forbearance period)</li>
+                    </ul>
+                    <h4>COVID-era forbearance:</h4>
+                    <ul>
+                        <li>Up to 18 months allowed</li>
+                        <li>Could be used <strong>multiple times with no limit</strong></li>
+                        <li>Payments added as <span class="q-link" data-modal="second-lien">non-interest bearing lien</span></li>
+                    </ul>
+                    <p><strong>The problem:</strong> Creates the illusion that borrower can afford the home. When forbearance ends, reality hits.</p>
+                `
+            },
+            'second-lien': {
+                title: 'What is a second lien mortgage?',
+                content: `
+                    <p><strong>Second Lien</strong> = a second loan secured by the same property.</p>
+                    <h4>Example:</h4>
+                    <ul>
+                        <li><strong>First mortgage:</strong> $300,000</li>
+                        <li><strong>Second lien:</strong> $50,000 (from forbearance)</li>
+                        <li><strong>Total debt:</strong> $350,000</li>
+                    </ul>
+                    <h4>The problem in 2008:</h4>
+                    <p>People took second mortgages (HELOCs, home equity loans) to extract cash from home value. When prices fell, they owed more than home was worth.</p>
+                    <h4>The problem now:</h4>
+                    <p>Forbearance creates second liens. Borrower now has TWO loans to pay, often when they couldn't afford the first one.</p>
+                `
+            },
+            'underwater': {
+                title: 'What does "underwater" mean?',
+                content: `
+                    <p><strong>Underwater</strong> = owing more on mortgage than home is worth.</p>
+                    <h4>Example:</h4>
+                    <ul>
+                        <li>You bought house for $750,000 (put down $50k, borrowed $700k)</li>
+                        <li>House value drops to $450,000</li>
+                        <li>You still owe $700,000</li>
+                        <li>You're <strong>$250,000 underwater</strong></li>
+                    </ul>
+                    <h4>Why this traps you:</h4>
+                    <ul>
+                        <li><strong>Can't sell:</strong> Would owe $250k at closing</li>
+                        <li><strong>Can't refinance:</strong> No lender will refinance an underwater loan</li>
+                        <li><strong>Can't modify:</strong> Already underwater, no equity</li>
+                        <li><strong>Any financial stress → foreclosure</strong></li>
+                    </ul>
+                    <p>This is why underwater homeowners default at much higher rates.</p>
+                `
+            },
+            'comps': {
+                title: 'What are "comps"?',
+                content: `
+                    <p><strong>Comps</strong> (comparables) = recent sales of similar homes used to determine value.</p>
+                    <h4>How appraisers value homes:</h4>
+                    <ol>
+                        <li>Find 3-5 similar homes that sold recently (within 6 months)</li>
+                        <li>Same neighborhood, similar size, features, condition</li>
+                        <li>Adjust for differences</li>
+                        <li>Average them to get your home's value</li>
+                    </ol>
+                    <h4>Why ONE foreclosure matters:</h4>
+                    <ul>
+                        <li>Foreclosure sale at $450k in neighborhood of $750k homes</li>
+                        <li>Appraiser must use it as a comp</li>
+                        <li><strong>ALL nearby homes now worth less</strong></li>
+                        <li>Creates cascade as more homes go underwater</li>
+                    </ul>
+                    <p>This is the <strong>"doom loop"</strong> - one foreclosure triggers more foreclosures.</p>
+                `
+            },
+            'strategic-default': {
+                title: 'What is strategic default?',
+                content: `
+                    <p><strong>Strategic Default</strong> = choosing to stop paying mortgage even though you can afford it.</p>
+                    <h4>Why people do it:</h4>
+                    <ul>
+                        <li>Severely <span class="q-link" data-modal="underwater">underwater</span> (owe way more than home is worth)</li>
+                        <li>Realize they'll never recover the loss</li>
+                        <li>Calculate it's better to walk away and take credit hit</li>
+                    </ul>
+                    <h4>Example calculation:</h4>
+                    <ul>
+                        <li>Owe $700,000 on home worth $400,000</li>
+                        <li>$300,000 underwater</li>
+                        <li>Even if home appreciates 3%/year, takes 10+ years to break even</li>
+                        <li>After 7 years, credit recovers and can buy a cheaper home</li>
+                    </ul>
+                    <p><strong>Was common in 2008-2011.</strong> Many people walked away from homes in Nevada, Florida, Arizona.</p>
+                `
+            },
+            'btfp': {
+                title: 'Bank Term Funding Program (BTFP)',
+                content: `
+                    <p><strong>Created March 2023</strong> after Silicon Valley Bank collapsed.</p>
+                    <h4>The problem it "solved":</h4>
+                    <ul>
+                        <li>Banks owned long-term bonds bought when rates were low</li>
+                        <li>Interest rates rose sharply</li>
+                        <li>Bonds lost value (worth maybe 25-75% of face value)</li>
+                        <li>But banks didn't have to mark them down if <span class="q-link" data-modal="htm">held to maturity</span></li>
+                    </ul>
+                    <h4>How BTFP works:</h4>
+                    <ol>
+                        <li>Bank can borrow from Federal Reserve</li>
+                        <li>Use bonds as collateral</li>
+                        <li><strong>Bonds valued at 100% (par) not market value</strong></li>
+                        <li>Even if bonds only worth 25% in market</li>
+                    </ol>
+                    <h4>The risk:</h4>
+                    <p>If bank can't repay loan, Fed holds bonds worth 25% but lent 100%. <strong>$75 loss per $100 = taxpayers pay.</strong></p>
+                    <p>Total unrealized losses in banking system: <strong>$600+ billion</strong> when program launched.</p>
+                `
+            },
+            'htm': {
+                title: 'Held to Maturity (HTM) Accounting',
+                content: `
+                    <p><strong>HTM</strong> = accounting classification that lets banks avoid marking assets to market.</p>
+                    <h4>Two categories for bank securities:</h4>
+                    <ul>
+                        <li><strong>Available for Sale (AFS):</strong> Must mark to market every quarter (show current value)</li>
+                        <li><strong>Held to Maturity (HTM):</strong> Keep at original price, no mark-to-market needed</li>
+                    </ul>
+                    <h4>Example:</h4>
+                    <ul>
+                        <li>Bank buys $100 bond in 2020</li>
+                        <li>Interest rates rise, bond now worth $60</li>
+                        <li><strong>If AFS:</strong> Must show $40 loss on balance sheet</li>
+                        <li><strong>If HTM:</strong> Keep at $100, pretend no loss</li>
+                    </ul>
+                    <h4>The catch:</h4>
+                    <p>If you sell ANY security from HTM portfolio, must reclassify ENTIRE portfolio to AFS and mark everything to market.</p>
+                    <p><strong>This is why SVB collapsed</strong> - they were forced to sell, had to recognize losses, depositors panicked.</p>
+                `
+            },
+            'covenant': {
+                title: 'What is a loan covenant?',
+                content: `
+                    <p><strong>Covenant</strong> = a promise or requirement in a loan agreement.</p>
+                    <h4>Types of covenants:</h4>
+                    <ul>
+                        <li><strong>Affirmative:</strong> Things borrower must do (maintain insurance, pay taxes)</li>
+                        <li><strong>Negative:</strong> Things borrower can't do (take on more debt, sell assets)</li>
+                        <li><strong>Financial:</strong> Maintain certain ratios (debt-to-equity, interest coverage)</li>
+                    </ul>
+                    <h4>Internal covenants:</h4>
+                    <p>Bank's own internal policies about when to call a loan, separate from legal contract.</p>
+                    <h4>"Extend and pretend":</h4>
+                    <p>Banks changing their <strong>internal covenants</strong> to avoid calling loans:</p>
+                    <ul>
+                        <li><strong>Old rule:</strong> Call loan if property drops 20% below loan value</li>
+                        <li><strong>New rule:</strong> Wait until 40% drop</li>
+                        <li>Lets bank pretend loan is fine on their books</li>
+                    </ul>
+                `
+            },
+            'short-sale': {
+                title: 'What is a short sale?',
+                content: `
+                    <p><strong>Short Sale</strong> = selling home for less than what's owed on the mortgage.</p>
+                    <h4>Example:</h4>
+                    <ul>
+                        <li>You owe $700,000 on mortgage</li>
+                        <li>Home only worth $450,000</li>
+                        <li>You sell for $450,000</li>
+                        <li>Bank agrees to accept $450,000 and forgive the $250,000 difference</li>
+                    </ul>
+                    <h4>Why banks agree:</h4>
+                    <ul>
+                        <li>Cheaper than foreclosure process</li>
+                        <li>Get more money than at foreclosure auction</li>
+                        <li>Avoid maintaining vacant property</li>
+                    </ul>
+                    <h4>Why it's a warning sign:</h4>
+                    <p>When short sales "explode," it means:</p>
+                    <ul>
+                        <li>Many people underwater</li>
+                        <li>Can't afford to stay</li>
+                        <li>Banks willing to take losses</li>
+                        <li><strong>Crisis is accelerating</strong></li>
+                    </ul>
+                `
+            },
+            'airbnb-problem': {
+                title: 'The Airbnb Speculation Problem',
+                content: `
+                    <h4>The Pitch (using AirDNA):</h4>
+                    <ul>
+                        <li>Tool shows historical rental data</li>
+                        <li>Projects: "$600/day, 55% occupancy = $120k/year"</li>
+                        <li>Investors think: "I'll get rich!"</li>
+                        <li>Banks say: "Why buy one? Buy 10!"</li>
+                    </ul>
+                    <h4>The Problem:</h4>
+                    <ol>
+                        <li><strong>Everyone sees same data</strong></li>
+                        <li>Everyone invests at once</li>
+                        <li>Market gets saturated (Austin: 15,000+ STRs)</li>
+                        <li>Occupancy drops, prices fall</li>
+                        <li>Investors can't cover mortgages</li>
+                    </ol>
+                    <h4>Real example - Kyle, TX:</h4>
+                    <ul>
+                        <li>20 miles from Austin</li>
+                        <li>Projections showed high rental income</li>
+                        <li><strong>Reality:</strong> Only books during South by Southwest</li>
+                        <li>Rest of year: empty</li>
+                        <li>Investors defaulting</li>
+                    </ul>
+                    <p><strong>Classic past performance ≠ future returns.</strong> Especially when everyone uses same data.</p>
+                `
+            },
+            'household-size': {
+                title: 'Why does household size matter?',
+                content: `
+                    <p><strong>Household size</strong> = average number of people per housing unit.</p>
+                    <h4>Historical trend:</h4>
+                    <ul>
+                        <li><strong>1950s-1960s:</strong> 4.0+ people per household</li>
+                        <li><strong>1980s:</strong> ~3.0 people</li>
+                        <li><strong>Today:</strong> 2.55 people</li>
+                        <li><strong>Trend:</strong> Approaching 2.0, heading toward 1.0</li>
+                    </ul>
+                    <h4>Why it's dropping:</h4>
+                    <ul>
+                        <li>People marrying later (or not at all)</li>
+                        <li>Fewer children per family</li>
+                        <li>More single-person households</li>
+                        <li>Divorce creating two households from one</li>
+                    </ul>
+                    <h4>The housing implication:</h4>
+                    <ul>
+                        <li>Same population needs MORE houses</li>
+                        <li>But: fewer young people to buy them</li>
+                        <li>Approaching "one house per person" is unsustainable</li>
+                        <li><strong>Demand will collapse as boomers die</strong></li>
+                    </ul>
+                `
+            },
+            'boomer-deaths': {
+                title: 'The Boomer Death Wave',
+                content: `
+                    <p><strong>Baby Boomers:</strong> Born 1946-1964 (currently 60-78 years old)</p>
+                    <h4>The numbers:</h4>
+                    <ul>
+                        <li><strong>6 million dying 2025-2035</strong></li>
+                        <li><strong>26 million more dying 2035-2050</strong></li>
+                        <li>Boomers own majority of homes (highest homeownership rate)</li>
+                        <li>These homes will flood the market</li>
+                    </ul>
+                    <h4>Who's buying them?</h4>
+                    <ul>
+                        <li><strong>Gen X:</strong> Smaller generation, many already own</li>
+                        <li><strong>Millennials:</strong> Priced out, many already bought during COVID</li>
+                        <li><strong>Gen Z:</strong> Can't afford at current prices</li>
+                        <li><strong>Immigration:</strong> Slowing down</li>
+                    </ul>
+                    <h4>The result:</h4>
+                    <p><strong>Massive supply, limited demand = prices must fall.</strong></p>
+                    <p>This isn't speculation - it's demographic inevitability. Can't change birth rates or death rates.</p>
+                `
+            },
+            'replacement-rate': {
+                title: 'What is replacement rate?',
+                content: `
+                    <p><strong>Replacement Rate</strong> = fertility rate needed to maintain population (without immigration).</p>
+                    <h4>The math:</h4>
+                    <ul>
+                        <li>Each couple needs 2.1 children on average</li>
+                        <li>2.0 to replace the two parents</li>
+                        <li>0.1 extra for childhood mortality and those who don't reproduce</li>
+                    </ul>
+                    <h4>US current rate:</h4>
+                    <ul>
+                        <li><strong>~1.6-1.7 children per woman</strong></li>
+                        <li>Well below replacement</li>
+                        <li>Has been below replacement since 2007</li>
+                    </ul>
+                    <h4>Housing implications:</h4>
+                    <ul>
+                        <li>Fewer young people to form households</li>
+                        <li>Less demand for housing over time</li>
+                        <li>Can't be fixed quickly (takes 20+ years for babies to become home buyers)</li>
+                        <li><strong>Demographics are destiny</strong></li>
+                    </ul>
+                `
+            },
+            'securitization': {
+                title: 'What is mortgage securitization?',
+                content: `
+                    <p><strong>Securitization</strong> = turning loans into securities (bonds) that can be traded.</p>
+                    <h4>The process:</h4>
+                    <ol>
+                        <li>Bank makes 10,000 mortgages</li>
+                        <li>Bundles them together</li>
+                        <li>Creates shares/bonds backed by these mortgages</li>
+                        <li>Sells shares to investors</li>
+                        <li>Investors get paid from mortgage payments</li>
+                    </ol>
+                    <h4>Why banks do it:</h4>
+                    <ul>
+                        <li>Get money back immediately (don't wait 30 years)</li>
+                        <li>Transfer risk to investors</li>
+                        <li>Can make more loans (earn more fees)</li>
+                    </ul>
+                    <h4>The problem:</h4>
+                    <ul>
+                        <li>Bank doesn't keep the loan (no "skin in the game")</li>
+                        <li>Can make risky loans without consequences</li>
+                        <li>Quality deteriorates ("originate to distribute")</li>
+                        <li>When loans fail, entire securities market collapses</li>
+                    </ul>
+                    <p><strong>This is what broke in 2008.</strong> Nobody knew which securities were good vs toxic.</p>
+                `
+            },
+            'divorce-household': {
+                title: 'How does divorce drive household formation?',
+                content: `
+                    <p><strong>Household Formation</strong> = creating new housing units that need to be occupied.</p>
+                    <h4>The divorce effect:</h4>
+                    <ul>
+                        <li><strong>Before divorce:</strong> 1 couple = 1 household = 1 house</li>
+                        <li><strong>After divorce:</strong> 2 people = 2 households = 2 houses</li>
+                        <li>Housing demand INCREASES without any population growth</li>
+                    </ul>
+                    <h4>Why this matters economically:</h4>
+                    <ul>
+                        <li>Creates artificial demand for housing</li>
+                        <li>Same number of people need more houses</li>
+                        <li>Drives up prices and construction</li>
+                        <li>But not sustainable long-term</li>
+                    </ul>
+                    <p>Divorce rates increased in 2008-2012, artificially boosting housing demand during the recovery.</p>
+                `
+            },
+            'wealth-effect': {
+                title: 'What is the wealth effect collapse / doom loop?',
+                content: `
+                    <p><strong>Wealth Effect Collapse</strong> = when falling home prices create a downward spiral.</p>
+                    <h4>The cascade (using $750k neighborhood example):</h4>
+                    <ol>
+                        <li>One home sells at foreclosure for $450k</li>
+                        <li>Appraisers use it as a <span class="q-link" data-modal="comps">comp</span></li>
+                        <li><strong>ALL homes in neighborhood now valued at $450k</strong></li>
+                        <li>Late buyers who paid $750k are now <span class="q-link" data-modal="underwater">underwater</span></li>
+                        <li>They default too (can't sell, can't refinance, can't move)</li>
+                        <li>More foreclosures at $450k</li>
+                        <li>Prices fall further to $350k, $250k...</li>
+                        <li>More people go underwater</li>
+                        <li>More defaults</li>
+                    </ol>
+                    <h4>Why wealth "disappears":</h4>
+                    <p>Homeowner paid $750k → previous seller kept that money. But new homeowner's house is now worth $450k. The $300k difference didn't go to anyone - it vanished.</p>
+                    <p><strong>Critical point:</strong> This is deflationary. Wealth destroyed without being transferred. Everyone's balance sheets shrink.</p>
+                `
+            },
+            'top-10-percent': {
+                title: "Why can't the top 10% save the housing market?",
+                content: `
+                    <p>Even if wealthy buyers have money, they can't absorb enough supply.</p>
+                    <h4>The math:</h4>
+                    <ul>
+                        <li>Top 10% already own multiple properties</li>
+                        <li>Luxury properties sitting vacant nationwide</li>
+                        <li>Can't rent them (renters can't afford the rent needed to cover costs)</li>
+                        <li>Already bought what they want</li>
+                    </ul>
+                    <h4>The real problem:</h4>
+                    <ul>
+                        <li>Housing market needs <strong>volume</strong> to function</li>
+                        <li>90% of market can't afford current prices</li>
+                        <li>Without first-time buyers, no one can sell to "move up"</li>
+                        <li>Chain breaks: No starter home buyers → no move-up buyers → luxury stagnates</li>
+                    </ul>
+                    <p><strong>Bottom line:</strong> You need a functioning market at ALL price levels. Top 10% can't replace 90% of buyers.</p>
+                `
+            },
+            'airdna': {
+                title: 'What is AirDNA?',
+                content: `
+                    <p><strong>AirDNA</strong> = data analytics tool showing historical Airbnb rental performance.</p>
+                    <h4>What it does:</h4>
+                    <ul>
+                        <li>Shows past rental rates for specific areas</li>
+                        <li>Projects occupancy rates and income</li>
+                        <li>Used by investors to evaluate STR (short-term rental) investments</li>
+                    </ul>
+                    <h4>The Kyle, TX example:</h4>
+                    <ul>
+                        <li>Tool showed high projected rental income</li>
+                        <li>20 miles from Austin</li>
+                        <li><strong>Reality:</strong> Only books during South by Southwest (1 week/year)</li>
+                        <li>Rest of year: empty</li>
+                        <li>Investors can't cover mortgages → defaulting</li>
+                    </ul>
+                    <h4>Why the tool failed:</h4>
+                    <ol>
+                        <li><strong>Everyone saw the same data</strong></li>
+                        <li>Everyone invested at once</li>
+                        <li>Market saturated (Austin: 15,000+ STRs)</li>
+                        <li>Past performance ≠ future returns</li>
+                        <li>Concentrated demand (SXSW) not evenly distributed</li>
+                    </ol>
+                    <p><strong>Classic case</strong> of data-driven herd behavior creating its own failure.</p>
+                `
+            },
+            'investor-categories': {
+                title: 'What are the three investor categories causing problems?',
+                content: `
+                    <p>Melody identified three problematic investor groups:</p>
+                    <h4>1. Airbnb Bros (STR Speculators)</h4>
+                    <ul>
+                        <li>Bought properties for short-term rentals</li>
+                        <li>Used tools like <span class="q-link" data-modal="airdna">AirDNA</span> to project income</li>
+                        <li>Markets became oversaturated</li>
+                        <li>Can't cover mortgages when occupancy drops</li>
+                    </ul>
+                    <h4>2. Builders</h4>
+                    <ul>
+                        <li>Building homes, flipping to themselves</li>
+                        <li>Creating artificial sales to inflate prices</li>
+                        <li>Selling to <span class="q-link" data-modal="gse">GSEs</span> (Fannie/Freddie)</li>
+                        <li>Not genuine buyers - financial engineering</li>
+                    </ul>
+                    <h4>3. Mom & Pop Investors</h4>
+                    <ul>
+                        <li>Using <span class="q-link" data-modal="fha">FHA loans</span> claiming "primary residence"</li>
+                        <li>Actually renting them out (fraud)</li>
+                        <li>Also: Veterans abusing VA benefits same way</li>
+                        <li>Low down payment + fraudulent intent = high default risk</li>
+                    </ul>
+                    <p><strong>All three groups</strong> bought with little equity, using leverage, with business models that don't work at current prices.</p>
+                `
+            },
+            'mortgage-debt-orange': {
+                title: 'What does "mortgage debt is the big orange" mean?',
+                content: `
+                    <p>Reference to how the Federal Reserve displays debt types in charts.</p>
+                    <h4>The visual:</h4>
+                    <ul>
+                        <li>Fed charts show consumer debt by category</li>
+                        <li>Mortgage debt appears in ORANGE</li>
+                        <li>Dwarfs all other debts (auto loans, student loans, credit cards)</li>
+                    </ul>
+                    <h4>The scale:</h4>
+                    <ul>
+                        <li><strong>Mortgage debt:</strong> ~$12+ trillion</li>
+                        <li><strong>Student loans:</strong> ~$1.7 trillion</li>
+                        <li><strong>Auto loans:</strong> ~$1.6 trillion</li>
+                        <li><strong>Credit cards:</strong> ~$1 trillion</li>
+                    </ul>
+                    <h4>Why it matters:</h4>
+                    <p><strong>"When the big orange gets in trouble, we're ALL in trouble."</strong></p>
+                    <ul>
+                        <li>Mortgage debt is systemic - touches entire economy</li>
+                        <li>Banks, pension funds, insurance companies all exposed</li>
+                        <li>Can't bail out $12 trillion without massive consequences</li>
+                        <li>Not like student loans or cars - scale is different</li>
+                    </ul>
+                `
+            },
+            'city-budgets': {
+                title: 'Why did cities miscalculate their budgets?',
+                content: `
+                    <p>Cities and states made bad assumptions that created fiscal crises.</p>
+                    <h4>What they got (2021):</h4>
+                    <ul>
+                        <li><strong>American Rescue Act:</strong> $350 billion to state/local governments</li>
+                        <li>One-time COVID relief money</li>
+                        <li>Cities treated it like permanent revenue</li>
+                    </ul>
+                    <h4>Two bad assumptions:</h4>
+                    <ol>
+                        <li><strong>Population would keep growing</strong>
+                            <ul>
+                                <li>Nashville claimed "100 people per day" (never true)</li>
+                                <li>Actually: population declines or reversals</li>
+                            </ul>
+                        </li>
+                        <li><strong>Home prices would keep rising</strong>
+                            <ul>
+                                <li>Property tax base would expand</li>
+                                <li>Actually: prices falling, tax base shrinking</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <h4>What they did:</h4>
+                    <ul>
+                        <li>Spent "like drunken sailors" (interview quote)</li>
+                        <li>Made long-term hiring and program commitments</li>
+                        <li>Based on temporary windfall + false assumptions</li>
+                    </ul>
+                    <h4>Now:</h4>
+                    <ul>
+                        <li>One-time money gone</li>
+                        <li>Population declining</li>
+                        <li>Property values falling</li>
+                        <li>Facing massive budget deficits</li>
+                    </ul>
+                `
+            },
+            'housing-as-stimulus': {
+                title: 'How does government use housing to restart economy?',
+                content: `
+                    <p><strong>Pattern from 1970s onward:</strong> Government uses housing market as primary economic stimulus tool.</p>
+                    <h4>The toolkit:</h4>
+                    <ol>
+                        <li><strong>Cut interest rates</strong> (Fed lowers rates)</li>
+                        <li><strong>Buy mortgage-backed securities</strong> (Fed purchases MBS)</li>
+                        <li><strong>Expand FHA/GSE lending</strong> (easier qualification)</li>
+                        <li><strong>First-time buyer credits</strong> ($8,000 in 2008-2010)</li>
+                        <li><strong>Forbearance programs</strong> (delay payments)</li>
+                    </ol>
+                    <h4>Why housing specifically?</h4>
+                    <ul>
+                        <li>Large purchases (high dollar value)</li>
+                        <li>Multiplier effects (furniture, appliances, contractors)</li>
+                        <li>Makes people "feel wealthy" (wealth effect)</li>
+                        <li>Construction employs many workers</li>
+                    </ul>
+                    <h4>The problem now:</h4>
+                    <ul>
+                        <li>Used housing stimulus too many times</li>
+                        <li>Created dependency on rising prices</li>
+                        <li>Demographics no longer support it</li>
+                        <li><strong>Can't restart economy this way anymore</strong></li>
+                    </ul>
+                    <p>Melody's point: We've exhausted this tool through overuse.</p>
+                `
+            },
+            'extend-pretend': {
+                title: 'What is "extend and pretend"?',
+                content: `
+                    <p><strong>Extend and Pretend</strong> = delaying loan defaults by extending terms, pretending everything is fine.</p>
+                    <h4>How it works:</h4>
+                    <ol>
+                        <li>Borrower can't pay back loan on schedule</li>
+                        <li>Bank extends the loan term (5 years → 10 years)</li>
+                        <li>Or restructures payments (interest-only for a while)</li>
+                        <li>Avoids declaring loan as "in default"</li>
+                        <li>Bank doesn't have to recognize loss on balance sheet</li>
+                    </ol>
+                    <h4>Commercial real estate example:</h4>
+                    <ul>
+                        <li>Office building worth $50M, loan is $80M</li>
+                        <li>Should be foreclosed (underwater)</li>
+                        <li>Bank changes <span class="q-link" data-modal="covenant">internal covenants</span></li>
+                        <li>Extends loan instead of calling it</li>
+                        <li>Pretends building will recover in value</li>
+                    </ul>
+                    <h4>Why banks do it:</h4>
+                    <ul>
+                        <li>Avoid taking loss NOW</li>
+                        <li>Hope value recovers (rarely does)</li>
+                        <li>Regulatory pressure to avoid marking down assets</li>
+                        <li>Kicking can down the road</li>
+                    </ul>
+                    <h4>The danger:</h4>
+                    <p>Just delays the inevitable. Makes the eventual collapse worse because losses compound.</p>
+                `
+            },
+            'mortgage-rates-treasury': {
+                title: 'Why don\'t mortgage rates fall when Fed cuts rates?',
+                content: `
+                    <p>Mortgage rates don't directly follow the Federal Funds Rate.</p>
+                    <h4>What they actually track:</h4>
+                    <p><strong>US 10-Year Treasury Bond yield</strong></p>
+                    <h4>Why the 10-year?</h4>
+                    <ul>
+                        <li>Most mortgages held ~7-10 years (even on 30-year term)</li>
+                        <li>10-year Treasury is the benchmark for long-term rates</li>
+                        <li>Mortgage rates typically = 10-year yield + 1.5-2% spread</li>
+                    </ul>
+                    <h4>What determines the 10-year yield?</h4>
+                    <ul>
+                        <li><strong>Market expectations</strong> of future Fed policy</li>
+                        <li><strong>Inflation expectations</strong> over next decade</li>
+                        <li><strong>US creditworthiness</strong> (can we pay our debt?)</li>
+                        <li><strong>Global demand</strong> for US bonds</li>
+                    </ul>
+                    <h4>Why it stays high even when Fed cuts:</h4>
+                    <ol>
+                        <li>Market doesn't believe Fed can keep rates low</li>
+                        <li>Inflation concerns persist</li>
+                        <li>US debt sustainability questioned</li>
+                        <li>Foreign buyers demanding higher yield</li>
+                    </ol>
+                    <p><strong>Example now:</strong> Fed cut rates but 10-year stayed elevated because bond market sees inflation risk and fiscal problems.</p>
+                `
+            },
+            'loan-modification': {
+                title: 'What is a loan modification?',
+                content: `
+                    <p><strong>Loan Modification</strong> = permanently changing loan terms to make it more affordable.</p>
+                    <h4>Typical changes:</h4>
+                    <ul>
+                        <li><strong>Lower interest rate</strong> (8% → 4%)</li>
+                        <li><strong>Extend loan term</strong> (25 years left → 30 years)</li>
+                        <li><strong>Capitalize missed payments</strong> (add them to principal)</li>
+                        <li><strong>Reduce principal</strong> (rare, but happened in 2008-2012)</li>
+                    </ul>
+                    <h4>vs. Forbearance:</h4>
+                    <ul>
+                        <li><strong>Forbearance:</strong> Temporary pause, debt still owed</li>
+                        <li><strong>Modification:</strong> Permanent restructure to affordable payment</li>
+                    </ul>
+                    <h4>COVID-era partial claim modification (June 2023):</h4>
+                    <ul>
+                        <li>Make 3 monthly payments → qualify for modification</li>
+                        <li>Missed payments moved to <span class="q-link" data-modal="second-lien">second lien</span></li>
+                        <li><strong>Could be done REPEATEDLY</strong> with no limit</li>
+                        <li>Created second mortgages people can't afford</li>
+                    </ul>
+                    <h4>Why it matters:</h4>
+                    <p>Modifications delay foreclosures but don't solve affordability if borrower fundamentally can't afford the home.</p>
+                `
+            },
+            'verified-85-cities': {
+                title: 'Verification Note: 85/85 Cities Claim',
+                content: `
+                    <p><strong>Interview Claim:</strong> 85 out of 85 tracked cities showing foreclosure increases.</p>
+                    <h4>What We Verified:</h4>
+                    <ul>
+                        <li><strong>Confirmed:</strong> <a href="https://www.housingwire.com/articles/foreclosure-filings-2025-rise/" target="_blank">Foreclosure filings up 14% nationally in 2025</a></li>
+                        <li><strong>Confirmed:</strong> <a href="https://www.housingwire.com/articles/foreclosure-filings-2025-rise/" target="_blank">Increases are "broad-based across regions"</a></li>
+                        <li><strong>Confirmed:</strong> Year-over-year increases in "nearly every state"</li>
+                    </ul>
+                    <h4>What We Couldn't Verify:</h4>
+                    <p>The specific "85 out of 85" count. Sources confirm widespread increases across tracked metropolitan areas, but don't cite this exact figure.</p>
+                    <h4>Conclusion:</h4>
+                    <p>The underlying claim (widespread foreclosure increases across all tracked cities) is supported by data, though the precise "85/85" number comes from the expert interview.</p>
+                `
+            },
+            'verified-spec-homes': {
+                title: 'Verification Note: $1.3B Spec Homes Claim',
+                content: `
+                    <p><strong>Interview Claim:</strong> $1.3 billion in spec homes sitting unsold.</p>
+                    <h4>What We Verified:</h4>
+                    <ul>
+                        <li><strong>Confirmed:</strong> <a href="https://wolfstreet.com/2024/09/25/here-comes-the-inventory-of-new-spec-houses-highest-since-2009-sales-jump-builders-take-share-from-homeowners/" target="_blank">Unsold spec home inventory at highest level since 2009</a></li>
+                        <li><strong>Confirmed:</strong> <a href="https://www.fastcompany.com/91254612/housing-market-builders-most-unsold-inventory-since-2009-what-it-means" target="_blank">Builders have most unsold inventory in 16 years</a></li>
+                        <li><strong>Confirmed:</strong> 113,000 unsold completed homes in October 2024</li>
+                    </ul>
+                    <h4>What We Couldn't Verify:</h4>
+                    <p>The specific $1.3 billion dollar figure. This likely refers to a specific market or development, but we couldn't find this exact number in national data.</p>
+                    <h4>Conclusion:</h4>
+                    <p>The underlying claim (massive unsold spec inventory) is strongly supported. The trend is at a 16-year high, validating the core concern even if the specific dollar amount isn't independently confirmed.</p>
+                `
+            }
+        };
+
+        // Modal management system
+        let modalStack = [];
+        let nextZIndex = 1002;
+
+        function createModal(contentKey, parentModal = null) {
+            const content = modalContent[contentKey];
+            if (!content) {
+                console.error('Modal content not found:', contentKey);
+                return;
+            }
+
+            const modalId = `modal-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+            const zIndex = nextZIndex++;
+            
+            // Create overlay
+            const overlay = document.createElement('div');
+            overlay.className = 'modal-overlay';
+            overlay.id = modalId;
+            overlay.style.zIndex = zIndex;
+            
+            // Create container
+            const container = document.createElement('div');
+            container.className = 'modal-container';
+            
+            // Create modal box
+            const box = document.createElement('div');
+            box.className = parentModal ? 'modal-box nested' : 'modal-box';
+            
+            // Create breadcrumb if nested
+            let breadcrumb = '';
+            if (parentModal) {
+                const depth = modalStack.length;
+                breadcrumb = `<div class="modal-breadcrumb">Level ${depth + 1} <span>›</span></div>`;
+            }
+            
+            // Build modal HTML
+            box.innerHTML = `
+                ${breadcrumb}
+                <div class="modal-header">
+                    <div class="modal-question">${content.title}</div>
+                    <button class="modal-close" aria-label="Close">×</button>
+                </div>
+                <div class="modal-content">
+                    ${content.content}
+                </div>
+            `;
+            
+            container.appendChild(box);
+            overlay.appendChild(container);
+            document.body.appendChild(overlay);
+            
+            // Store in stack
+            modalStack.push({
+                id: modalId,
+                element: overlay,
+                zIndex: zIndex,
+                parentModal: parentModal
+            });
+            
+            // Activate modal with slight delay for animation
+            setTimeout(() => {
+                overlay.classList.add('active');
+            }, 10);
+            
+            // Setup close button
+            const closeBtn = box.querySelector('.modal-close');
+            closeBtn.addEventListener('click', () => closeModal(modalId));
+            
+            // Close on overlay click (but not on modal content)
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) {
+                    closeModal(modalId);
+                }
+            });
+            
+            // Setup nested links
+            const nestedLinks = box.querySelectorAll('.q-link');
+            nestedLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const nestedKey = link.dataset.modal;
+                    if (nestedKey) {
+                        createModal(nestedKey, modalId);
+                    }
+                });
+            });
+            
+            // ESC key to close topmost modal
+            const escHandler = (e) => {
+                if (e.key === 'Escape') {
+                    const topModal = modalStack[modalStack.length - 1];
+                    if (topModal) {
+                        closeModal(topModal.id);
+                    }
+                }
+            };
+            document.addEventListener('keydown', escHandler);
+            overlay.dataset.escHandler = 'registered';
+            
+            return modalId;
+        }
+
+        function closeModal(modalId) {
+            const modalIndex = modalStack.findIndex(m => m.id === modalId);
+            if (modalIndex === -1) return;
+            
+            const modal = modalStack[modalIndex];
+            
+            // Close this modal and all children
+            const childModals = modalStack.filter(m => {
+                let parent = m.parentModal;
+                while (parent) {
+                    if (parent === modalId) return true;
+                    const parentModal = modalStack.find(p => p.id === parent);
+                    parent = parentModal ? parentModal.parentModal : null;
+                }
+                return false;
+            });
+            
+            // Close children first
+            childModals.reverse().forEach(child => {
+                child.element.classList.remove('active');
+                setTimeout(() => {
+                    child.element.remove();
+                }, 300);
+            });
+            
+            // Close this modal
+            modal.element.classList.remove('active');
+            setTimeout(() => {
+                modal.element.remove();
+            }, 300);
+            
+            // Remove from stack
+            modalStack = modalStack.filter(m => 
+                m.id !== modalId && !childModals.some(c => c.id === m.id)
+            );
+            
+            // Reset z-index if all modals closed
+            if (modalStack.length === 0) {
+                nextZIndex = 1002;
+            }
+        }
+
+        // Initialize modal links when DOM loads
+        document.addEventListener('DOMContentLoaded', () => {
+            // Setup all q-links in main content
+            document.querySelectorAll('.q-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const modalKey = link.dataset.modal;
+                    if (modalKey) {
+                        createModal(modalKey);
+                    }
+                });
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Smooth scroll for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
