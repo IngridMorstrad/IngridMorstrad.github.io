@@ -32,6 +32,11 @@ name = "Hunchle"
 url = "https://www.hunchle.com"
 weight = 5
 
+[[menu.main]]
+name = "Vibes"
+url = "/vibes"
+weight = 6
+
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
