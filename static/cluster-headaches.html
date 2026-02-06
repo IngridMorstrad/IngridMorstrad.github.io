@@ -1,0 +1,1538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cluster Headaches Explained | The Suicide Headache</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Code+Pro:wght@400;600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-tertiary: #1a1a25;
+            --text-primary: #f0f0f5;
+            --text-secondary: #a0a0b0;
+            --text-muted: #606075;
+            --accent-gold: #d4af37;
+            --accent-gold-dim: #a08020;
+            --accent-green: #22c55e;
+            --accent-red: #ef4444;
+            --accent-blue: #3b82f6;
+            --border-color: #2a2a3a;
+            --gradient-gold: linear-gradient(135deg, #d4af37 0%, #f5d87a 50%, #d4af37 100%);
+            --shadow-glow: 0 0 40px rgba(212, 175, 55, 0.15);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        header {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            background:
+                radial-gradient(ellipse at 20% 80%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(239, 68, 68, 0.05) 0%, transparent 50%),
+                var(--bg-primary);
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                repeating-linear-gradient(90deg, transparent, transparent 100px, rgba(212, 175, 55, 0.03) 100px, rgba(212, 175, 55, 0.03) 101px);
+            pointer-events: none;
+        }
+
+        .header-label {
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeSlideUp 0.8s ease forwards 0.2s;
+        }
+
+        .header-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 10vw, 7rem);
+            font-weight: 900;
+            text-align: center;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeSlideUp 0.8s ease forwards 0.4s;
+        }
+
+        .header-title .highlight {
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            text-align: center;
+            max-width: 600px;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeSlideUp 0.8s ease forwards 0.6s;
+        }
+
+        .header-meta {
+            display: flex;
+            gap: 2rem;
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            opacity: 0;
+            animation: fadeSlideUp 0.8s ease forwards 0.8s;
+        }
+
+        .header-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards 1.2s;
+        }
+
+        .scroll-indicator::after {
+            content: '';
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--accent-gold), transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn { to { opacity: 1; } }
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.3; transform: scaleY(1); }
+            50% { opacity: 1; transform: scaleY(1.2); }
+        }
+
+        main { max-width: 800px; margin: 0 auto; padding: 4rem 2rem; }
+
+        .section {
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .section.visible { opacity: 1; transform: translateY(0); }
+
+        .section-number {
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.3em;
+            color: var(--accent-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem;
+            color: var(--text-primary);
+        }
+
+        p { margin-bottom: 1.5rem; color: var(--text-secondary); }
+        strong { color: var(--text-primary); font-weight: 600; }
+
+        .q-link {
+            color: var(--accent-gold);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--accent-gold-dim);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        .q-link:hover { color: #f5d87a; border-bottom-style: solid; }
+        .q-link::after {
+            content: '?';
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.65em;
+            vertical-align: super;
+            margin-left: 2px;
+            opacity: 0.7;
+        }
+
+        .key-points {
+            background: var(--bg-secondary);
+            border-left: 3px solid var(--accent-gold);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .key-points h4 {
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+        }
+        .key-points ul { list-style: none; }
+        .key-points li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-secondary);
+        }
+        .key-points li::before {
+            content: '\2192';
+            position: absolute;
+            left: 0;
+            color: var(--accent-gold-dim);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .stat-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            text-align: center;
+            border-radius: 8px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .stat-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-glow); }
+        .stat-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            line-height: 1;
+        }
+        .stat-value.negative { color: var(--accent-red); }
+        .stat-value.positive { color: var(--accent-green); }
+        .stat-label { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem; }
+
+        blockquote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--text-primary);
+            border-left: 3px solid var(--accent-gold);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+        }
+        blockquote cite {
+            display: block;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.85rem;
+            font-style: normal;
+            color: var(--text-muted);
+            margin-top: 0.75rem;
+        }
+
+        .table-wrapper { overflow-x: auto; margin: 2rem 0; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+        th, td { padding: 1rem; text-align: left; border-bottom: 1px solid var(--border-color); }
+        th {
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            background: var(--bg-secondary);
+        }
+        td { color: var(--text-secondary); }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 1001;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 2rem;
+            overflow-y: auto;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+        .modal-container { width: 100%; max-width: 700px; margin: 2rem auto; }
+        .modal-box {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            margin-bottom: 1rem;
+        }
+        .modal-overlay.active .modal-box { transform: translateY(0); opacity: 1; }
+        .modal-header {
+            background: var(--bg-tertiary);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        .modal-question {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.4;
+        }
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0;
+            line-height: 1;
+            transition: color 0.2s ease;
+            flex-shrink: 0;
+        }
+        .modal-close:hover { color: var(--accent-gold); }
+        .modal-content { padding: 2rem; }
+        .modal-content p { margin-bottom: 1rem; }
+        .modal-content h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            margin: 1.5rem 0 0.75rem;
+            color: var(--text-primary);
+        }
+        .modal-content ul, .modal-content ol { margin: 1rem 0 1rem 1.5rem; color: var(--text-secondary); }
+        .modal-content li { margin-bottom: 0.5rem; }
+        .modal-content code {
+            font-family: 'Source Code Pro', monospace;
+            background: var(--bg-tertiary);
+            padding: 0.2em 0.4em;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: var(--accent-gold);
+        }
+        .modal-box.nested { border-color: var(--accent-gold-dim); margin-left: 1rem; margin-right: 1rem; }
+        .modal-box.nested .modal-header { background: linear-gradient(135deg, var(--bg-tertiary), rgba(212, 175, 55, 0.05)); }
+        .modal-breadcrumb {
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.1em;
+        }
+        .modal-breadcrumb span { color: var(--accent-gold-dim); }
+
+        footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+        footer .heart { color: var(--accent-red); }
+
+        .callout {
+            background: linear-gradient(135deg, var(--bg-secondary), rgba(212, 175, 55, 0.05));
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+        }
+        .callout-label {
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 0.75rem;
+        }
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--border-color), transparent);
+            margin: 3rem 0;
+        }
+        .emphasis-box {
+            background: var(--bg-tertiary);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .emphasis-box p:last-child { margin-bottom: 0; }
+
+        @media (max-width: 600px) {
+            .header-meta { flex-direction: column; gap: 0.5rem; }
+            h2 { font-size: 1.6rem; }
+            .modal-header { padding: 1rem 1.5rem; }
+            .modal-content { padding: 1.5rem; }
+            .modal-box.nested { margin-left: 0.5rem; margin-right: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-label">Neurology / Biochemistry</div>
+        <h1 class="header-title">
+            <span class="highlight">Cluster</span> Headaches
+        </h1>
+        <p class="header-subtitle">
+            The most painful condition known to medicine, and why a vitamin protocol works for 80% of sufferers.
+        </p>
+        <div class="header-meta">
+            <span>30 min read</span>
+            <span>Personal Research</span>
+        </div>
+        <div class="scroll-indicator">Scroll to explore</div>
+    </header>
+
+    <main>
+        <div class="callout" style="margin-bottom: 3rem; border: 1px solid var(--accent-red); background: linear-gradient(135deg, var(--bg-secondary), rgba(239, 68, 68, 0.05));">
+            <div class="callout-label" style="color: var(--accent-red);">Disclaimer</div>
+            <p><strong>This is not medical advice.</strong> This is a personal collection of research for reference and self-education. Nothing here constitutes a recommendation to take any supplement or treatment. Talk to a qualified healthcare provider before making any changes to your health regimen. High-dose vitamin D supplementation carries real risks (hypercalcemia, kidney stones) and requires lab monitoring.</p>
+        </div>
+
+        <!-- Section 1: What It Is -->
+        <section class="section" id="what">
+            <div class="section-number">01 &mdash; WHAT IT IS</div>
+            <h2>The Suicide Headache</h2>
+
+            <p>Cluster headache is a neurological disorder characterized by episodes of severe, unilateral pain around the eye and temple, lasting 15&ndash;180 minutes per attack (Headache Classification Committee of the IHS, <em>Cephalalgia</em>, 2018). The pain is considered <span class="q-link" data-q="pain-severity">among the most severe known to medical science</span>.</p>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">~0.1%</div>
+                    <div class="stat-label">of population affected</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">3:1</div>
+                    <div class="stat-label">male-to-female ratio</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value negative">92.8%</div>
+                    <div class="stat-label">of CH patients Vitamin D deficient (Modar et al., 2018)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value positive">81%</div>
+                    <div class="stat-label">respond to D3 protocol (Batcheller, 7,000 patients)</div>
+                </div>
+            </div>
+
+            <p>Attacks come in "clusters"&mdash;periods of weeks to months where sufferers may get <strong>1&ndash;8 attacks per day</strong>, often at the same time each day. Then remission, sometimes for months or years. Some sufferers are <span class="q-link" data-q="episodic-vs-chronic">chronic rather than episodic</span>.</p>
+
+            <div class="key-points">
+                <h4>During an attack</h4>
+                <ul>
+                    <li>Excruciating unilateral pain around one eye or temple</li>
+                    <li><span class="q-link" data-q="autonomic-symptoms">Autonomic symptoms</span>: tearing, nasal congestion, drooping eyelid, pupil constriction</li>
+                    <li>Restlessness and agitation (unlike migraine, sufferers pace and rock)</li>
+                    <li>75% of untreated attacks last under 60 minutes</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 2: The Clock -->
+        <section class="section" id="clock">
+            <div class="section-number">02 &mdash; THE CLOCK</div>
+            <h2>The Alarm Clock Headache</h2>
+
+            <p>Cluster headaches have a remarkable periodicity that points to the <span class="q-link" data-q="hypothalamus">hypothalamus</span> as the central player. Attacks often strike at the exact same time each day. Cluster periods often begin around seasonal changes&mdash;solstices and equinoxes.</p>
+
+            <blockquote>
+                "It's called the alarm clock headache because it wakes you at the same time every night. 2 AM, like clockwork, for weeks."
+            </blockquote>
+
+            <p>This circadian and circannual rhythm is the strongest clue to the underlying cause. <span class="q-link" data-q="pet-scans">PET scans</span> during attacks show activation in the hypothalamus (May et al., <em>The Lancet</em>, 1998). Attacks frequently occur during <span class="q-link" data-q="rem-sleep">REM sleep</span>. The condition's seasonal timing aligns with variations in sunlight exposure&mdash;and therefore <span class="q-link" data-q="vitd-seasonal">vitamin D synthesis</span>. Notably, above ~37&deg;N latitude, the sun's angle is too low during winter for the body to produce any vitamin D from sunlight (Webb et al., <em>J Clin Endocrinol Metab</em>, 1988).</p>
+
+            <div class="callout">
+                <div class="callout-label">The Seasonal Pattern</div>
+                <p>Cluster periods often begin around equinoxes and solstices, when daylight hours change most rapidly. A 2018 study found that patients with winter-to-spring periodicity had even lower vitamin D levels than those with summer-to-autumn periodicity (Modar et al., <em>Cephalalgia</em>, 2018).</p>
+            </div>
+        </section>
+
+        <!-- Section 3: The Pain Cascade -->
+        <section class="section" id="cascade">
+            <div class="section-number">03 &mdash; THE PAIN CASCADE</div>
+            <h2>How Cluster Headaches Happen</h2>
+
+            <p>Cluster headaches are classified as <span class="q-link" data-q="tac">"trigeminal autonomic cephalalgias" (TACs)</span>. The pain involves a pathological link between the <span class="q-link" data-q="trigeminal-nerve">trigeminal nerve</span> and the autonomic nervous system:</p>
+
+            <div class="emphasis-box">
+                <p><strong>The cascade:</strong> Trigeminal nerve activation &rarr; releases <span class="q-link" data-q="cgrp">CGRP</span> and other inflammatory neuropeptides &rarr; vasodilation of blood vessels around the trigeminal nerve &rarr; neurogenic inflammation &rarr; excruciating periorbital pain &rarr; autonomic symptoms (tearing, congestion, drooping eyelid)</p>
+            </div>
+
+            <p><span class="q-link" data-q="cgrp">CGRP (Calcitonin Gene-Related Peptide)</span> is the key molecule. It's elevated in cranial venous blood during attacks (Goadsby &amp; Edvinsson, <em>Annals of Neurology</em>, 1994). It causes vasodilation, drives inflammation, and&mdash;critically&mdash;it sensitizes more trigeminal neurons to further activation, creating a <strong>positive feedback loop</strong> (Messlinger et al., <em>Brain Sciences</em>, 2020).</p>
+
+            <p>This is why stopping an attack early matters: once the CGRP cascade is fully engaged, it becomes self-reinforcing.</p>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Section 4: The Cofactor Chain -->
+        <section class="section" id="cofactor-chain">
+            <div class="section-number">04 &mdash; THE COFACTOR CHAIN</div>
+            <h2>Vitamin D, Magnesium, Calcium &amp; K2</h2>
+
+            <p>The most effective treatment for cluster headaches isn't a drug. It's a <span class="q-link" data-q="d3-protocol">vitamin D3 protocol</span> with specific cofactors. Understanding <em>why</em> it works requires tracing a biochemical chain from D3 ingestion to CGRP suppression in the trigeminal nerve.</p>
+
+            <h3>Step 1: Magnesium Activates Vitamin D</h3>
+
+            <p>Vitamin D3 (cholecalciferol) is <strong>biologically inert</strong>. It must undergo two <span class="q-link" data-q="hydroxylation">hydroxylation steps</span> to become the active hormone calcitriol:</p>
+
+            <div class="key-points">
+                <h4>The Activation Chain</h4>
+                <ul>
+                    <li><strong>Liver:</strong> D3 &rarr; 25(OH)D (calcidiol) via enzyme CYP2R1. <em>Requires magnesium.</em></li>
+                    <li><strong>Kidney:</strong> 25(OH)D &rarr; 1,25(OH)&#8322;D (calcitriol) via enzyme CYP27B1. <em>Requires magnesium.</em></li>
+                    <li>The deactivating enzymes (CYP24A1, CYP3A4) also require magnesium</li>
+                    <li><strong>Every enzyme in the entire vitamin D pathway requires magnesium as a cofactor</strong></li>
+                </ul>
+            </div>
+
+            <p>Without sufficient magnesium, these steps stall. Vitamin D stays in its inactive storage form. This has been documented as <span class="q-link" data-q="mg-resistant-rickets">"magnesium-dependent vitamin D-resistant rickets"</span>&mdash;where even 600,000 IU of vitamin D produces zero improvement, but magnesium supplementation alone reverses the resistance (Reddy &amp; Sivakumar, <em>The Lancet</em>, 1974).</p>
+
+            <p>A randomized trial found that magnesium acts as a <span class="q-link" data-q="mg-thermostat">"thermostat" for vitamin D</span>: it raises levels in deficient people but brings them down in sufficient people (Dai et al., <em>American Journal of Clinical Nutrition</em>, 2018). Up to <strong>50% of Americans</strong> may have vitamin D that remains stored and inactive due to subclinical <span class="q-link" data-q="mg-testing">magnesium deficiency</span> (Uwitonze &amp; Razzaque, <em>JAOA</em>, 2018).</p>
+
+            <h3>Step 2: Calcitriol Absorbs Calcium and Signals for Bone Proteins</h3>
+
+            <p>Once activated, calcitriol binds to the <span class="q-link" data-q="vdr">Vitamin D Receptor (VDR)</span> and upregulates:</p>
+
+            <div class="key-points">
+                <h4>What Active Vitamin D Does</h4>
+                <ul>
+                    <li><strong>TRPV6 calcium channels</strong> + <strong>calbindin</strong> in the intestine: calcium absorption rises from ~10&ndash;15% to ~30&ndash;40%</li>
+                    <li><strong>Osteocalcin gene transcription</strong>: produced by osteoblasts (bone-building cells)</li>
+                    <li><strong>Matrix Gla Protein (MGP) gene transcription</strong>: produced in vascular smooth muscle</li>
+                    <li><strong>CGRP gene suppression</strong>: calcitriol inhibits the transcription of CGRP&mdash;the key neuropeptide in cluster headache (Ghorbani et al., <em>Curr Clin Pharmacol</em>, 2019)</li>
+                </ul>
+            </div>
+
+            <p>Here's the critical point: <strong>calcitriol creates osteocalcin and MGP in their inactive, undercarboxylated forms.</strong> They need one more step to function.</p>
+
+            <h3>Step 3: Vitamin K2 Directs Calcium</h3>
+
+            <p>Vitamin K2 is the cofactor for <span class="q-link" data-q="carboxylation">gamma-glutamyl carboxylase</span>, which activates the proteins D3 just produced:</p>
+
+            <div class="table-wrapper">
+                <table>
+                    <tr>
+                        <th>Protein</th>
+                        <th>Without K2</th>
+                        <th>With K2</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Osteocalcin</strong></td>
+                        <td>Cannot bind calcium effectively</td>
+                        <td>Escorts calcium into bone matrix (hydroxyapatite)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Matrix Gla Protein</strong></td>
+                        <td>Inactive</td>
+                        <td>Most potent inhibitor of <span class="q-link" data-q="vascular-calcification">vascular calcification</span> known</td>
+                    </tr>
+                </table>
+            </div>
+
+            <p>Without K2, high-dose D3 creates the <span class="q-link" data-q="calcium-paradox">"calcium paradox"</span>: bones lose calcium while arteries gain it (Masterjohn, <em>Medical Hypotheses</em>, 2007; Vermeer, <em>Food &amp; Nutrition Research</em>, 2012). This is why the protocol includes both <span class="q-link" data-q="mk4-vs-mk7">MK-4 and MK-7 forms of K2</span>.</p>
+
+            <h3>The "Magnesium Burn"</h3>
+
+            <p>Taking D3 <em>without</em> sufficient magnesium actively <span class="q-link" data-q="mg-burn">depletes magnesium stores</span>. D3 metabolism consumes magnesium as cofactor, and the extra calcium it absorbs competes with magnesium at renal reabsorption sites. Symptoms blamed on "vitamin D side effects"&mdash;cramps, headaches, insomnia, heart palpitations&mdash;are frequently the magnesium depletion that D3 is causing.</p>
+
+            <h3>The PTH Feedback Loop</h3>
+
+            <p><span class="q-link" data-q="pth">Parathyroid hormone (PTH)</span> is the master regulator. When calcium drops, PTH rises to stimulate calcitriol production and calcium reabsorption. But severe magnesium deficiency <span class="q-link" data-q="mg-paradox">paradoxically blocks PTH secretion</span>&mdash;creating hypocalcemia that won't correct until magnesium is repleted (Rude et al., <em>J Clin Endocrinol Metab</em>, 1976).</p>
+
+            <h3>Why Calcium Labs Matter</h3>
+
+            <p>At high D3 doses, the labs reveal whether the <span class="q-link" data-q="lab-interpretation">cofactor system is working</span>:</p>
+
+            <div class="key-points">
+                <h4>Reading the Labs</h4>
+                <ul>
+                    <li><strong>Stable calcium + dropping PTH + rising 25(OH)D:</strong> System working. Calcium is being absorbed and properly deposited.</li>
+                    <li><strong>Rising calcium:</strong> Calcium absorbed but NOT deposited&mdash;possible K2 or Mg insufficiency, or D3 overdose.</li>
+                    <li><strong>PTH not dropping:</strong> Possible vitamin D resistance from magnesium deficiency.</li>
+                    <li><strong>Hypercalcemia symptoms</strong> (nausea, excessive thirst, kidney stones): Danger&mdash;regulatory systems overwhelmed.</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Section 5: Why This Causes Cluster Headaches -->
+        <section class="section" id="connection">
+            <div class="section-number">05 &mdash; THE CONNECTION</div>
+            <h2>From Mineral Imbalance to Cluster Attack</h2>
+
+            <p>Here's the complete pathological cascade when the D3&ndash;Mg&ndash;Ca&ndash;K2 axis is dysfunctional:</p>
+
+            <div class="emphasis-box">
+                <p><strong>1.</strong> Magnesium deficiency impairs D3 activation (hydroxylation enzymes stall)</p>
+                <p><strong>2.</strong> Low active calcitriol fails to suppress <span class="q-link" data-q="cgrp">CGRP gene transcription</span></p>
+                <p><strong>3.</strong> Low magnesium lifts the <span class="q-link" data-q="nmda">NMDA receptor block</span> on trigeminal neurons &rarr; hyperexcitability</p>
+                <p><strong>4.</strong> Excess glutamate signaling through unblocked NMDA receptors &rarr; intracellular calcium surges</p>
+                <p><strong>5.</strong> Calcium spikes trigger <strong>CGRP exocytosis</strong> from trigeminal nerve terminals</p>
+                <p><strong>6.</strong> CGRP &rarr; vasodilation, neurogenic inflammation, periorbital pain</p>
+                <p><strong>7.</strong> CGRP sensitizes more neurons to NMDA activation (positive feedback loop)</p>
+                <p><strong>8.</strong> Taking high-dose D3 without magnesium worsens depletion, deepening the spiral</p>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <tr>
+                        <th>Missing Cofactor</th>
+                        <th>What Breaks</th>
+                        <th>Consequence</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Vitamin D3</strong></td>
+                        <td>CGRP not suppressed; calcium absorption poor</td>
+                        <td>Trigeminal inflammation unchecked</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Magnesium</strong></td>
+                        <td>D3 can't activate; NMDA receptors unblocked</td>
+                        <td>Neuronal hyperexcitability + CGRP cascade</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vitamin K2</strong></td>
+                        <td>Calcium misdirected to arteries, not bones</td>
+                        <td>Hypercalcemia risk at high D3 doses</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="callout">
+                <div class="callout-label">Caveat</div>
+                <p>The direct causal link between vitamin D deficiency and cluster headache remains <strong>correlational, not proven</strong>. Vitamin D deficiency is common in the general population. Most CGRP/magnesium/NMDA research has been done in migraine, not cluster headache specifically, though they share the trigeminovascular system.</p>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Section 6: Treatments -->
+        <section class="section" id="treatments">
+            <div class="section-number">06 &mdash; TREATMENTS</div>
+            <h2>What Works</h2>
+
+            <p>Different treatments target different parts of the multi-system dysfunction. No single treatment works for everyone, which is why combining approaches often works best.</p>
+
+            <h3>The D3 Protocol</h3>
+            <p>The <span class="q-link" data-q="d3-protocol">Clusterbusters anti-inflammatory regimen</span> has produced 81.3% response rates across 7,000+ patients (Batcheller, VitaminDWiki, 2022). The target is serum 25(OH)D of ~80 ng/mL with essential cofactors. For non-responders, the <span class="q-link" data-q="full-monty">"Full Monty"</span> adds turmeric, quercetin, resveratrol, and high-dose vitamin C.</p>
+
+            <h3>Acute Abortives</h3>
+            <p><span class="q-link" data-q="oxygen">High-flow oxygen</span> (12&ndash;15+ L/min) is the gold standard, effective for ~70% of sufferers within 10&ndash;15 minutes (Cohen et al., <em>JAMA</em>, 2009). <span class="q-link" data-q="cold-method">Cold/brain freeze</span> activates the vagus nerve and can abort attacks in minutes. <span class="q-link" data-q="exercise-abort">Intense exercise</span> works if caught early&mdash;one user tracked 56/60 successful aborts via 90-second treadmill sprints. <span class="q-link" data-q="caffeine-abort">Caffeine</span> (chugged quickly as Red Bull or strong coffee) works as a vasoconstrictor.</p>
+
+            <h3>The Vagus Nerve Approach</h3>
+            <p>The <span class="q-link" data-q="vagus-nerve">vagus nerve</span> regulates inflammation through the cholinergic anti-inflammatory pathway. This may explain why such diverse interventions help: cold exposure, <span class="q-link" data-q="humming">humming</span>, GammaCore VNS devices, sleeping on your right side, deep breathing, and ASMR.</p>
+
+            <h3>Psychedelics</h3>
+            <p><span class="q-link" data-q="psychedelics">Psilocybin, LSD, and DMT</span> are repeatedly described as "life-saving" by sufferers. They act on serotonin receptors (like triptans) but may go further&mdash;potentially "resetting" dysfunctional neural circuits through neuroplasticity (Schindler et al., <em>Neurology</em>, 2015). A single dose can end an entire cluster cycle.</p>
+
+            <h3>Pharmaceuticals</h3>
+            <p><span class="q-link" data-q="emgality">Emgality</span> (galcanezumab; FDA-approved 2019; Goadsby et al., <em>NEJM</em>, 2019) directly blocks CGRP. <span class="q-link" data-q="spg-block">SPG nerve blocks</span> interrupt the trigeminal-autonomic reflex. <span class="q-link" data-q="triptans-rebound">Triptans</span> can abort acute attacks but carry rebound risk. <span class="q-link" data-q="verapamil-problems">Verapamil</span> is the standard preventive but causes edema and may interfere with D3.</p>
+
+            <h3>Circadian Management</h3>
+            <p>Given the hypothalamic connection, <span class="q-link" data-q="melatonin">melatonin</span> (10&ndash;20 mg before bed) helps many sufferers. Maintaining fixed sleep schedules and consistent wake times may reduce attack frequency. One user's Apple Watch data showed a correlation: more than 1 hour of deep sleep correlated with significantly fewer attacks.</p>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Section 7: The Complete Picture -->
+        <section class="section" id="big-picture">
+            <div class="section-number">07 &mdash; THE BIG PICTURE</div>
+            <h2>A Multi-System Problem</h2>
+
+            <p>Cluster headaches involve at least six interacting systems:</p>
+
+            <div class="key-points">
+                <h4>The Systems</h4>
+                <ul>
+                    <li><strong>Hypothalamus</strong> sets the clock (when attacks occur)</li>
+                    <li><strong>Trigeminal nerve</strong> generates the pain signal</li>
+                    <li><strong>Autonomic system</strong> produces accompanying symptoms</li>
+                    <li><strong>CGRP and neuropeptides</strong> drive inflammation and vasodilation</li>
+                    <li><strong>Histamine / mast cells</strong> may act as triggers</li>
+                    <li><strong>Vagus nerve</strong> can modulate the inflammatory response</li>
+                </ul>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <tr>
+                        <th>Treatment</th>
+                        <th>Proposed Mechanism</th>
+                    </tr>
+                    <tr>
+                        <td>Vitamin D3 + cofactors</td>
+                        <td>Down-regulates CGRP via calcitriol; Mg blocks NMDA</td>
+                    </tr>
+                    <tr>
+                        <td>Oxygen</td>
+                        <td>Possibly vasoconstriction, reduces CGRP release</td>
+                    </tr>
+                    <tr>
+                        <td>Psychedelics</td>
+                        <td>Serotonin receptors, neural "reset," neuroplasticity</td>
+                    </tr>
+                    <tr>
+                        <td>Cold / brain freeze</td>
+                        <td>Vagus nerve stimulation, SPG "reset"</td>
+                    </tr>
+                    <tr>
+                        <td>Exercise</td>
+                        <td>Oxygenation, vagal activation, endorphins</td>
+                    </tr>
+                    <tr>
+                        <td>Melatonin</td>
+                        <td>Hypothalamic / circadian regulation</td>
+                    </tr>
+                    <tr>
+                        <td>Emgality</td>
+                        <td>Direct CGRP blockade</td>
+                    </tr>
+                    <tr>
+                        <td>SPG blocks / lidocaine</td>
+                        <td>Interrupts trigeminal-autonomic reflex</td>
+                    </tr>
+                    <tr>
+                        <td>Caffeine</td>
+                        <td>Vasoconstriction</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="emphasis-box">
+                <p><strong>The bottom line:</strong> The multi-system nature of cluster headaches explains why no single treatment works for everyone, and why combining approaches&mdash;D3 protocol for prevention, oxygen for breakthroughs, circadian management for regulation&mdash;often works better than any single therapy. The D3&ndash;Mg&ndash;Ca&ndash;K2 axis addresses the biochemical foundation, but the clock, the nerve, and the inflammation all need attention.</p>
+            </div>
+
+        </section>
+    </main>
+
+    <section style="max-width: 800px; margin: 0 auto; padding: 0 2rem 4rem;">
+        <div class="divider"></div>
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 1.5rem;">References</h2>
+        <ol style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.8; padding-left: 1.5rem;">
+            <li>Headache Classification Committee of the International Headache Society. "The International Classification of Headache Disorders, 3rd edition." <em>Cephalalgia</em> 38.1 (2018): 1&ndash;211.</li>
+            <li>May A, Bahra A, Buchel C, et al. "Hypothalamic activation in cluster headache attacks." <em>The Lancet</em> 352.9124 (1998): 275&ndash;278.</li>
+            <li>Goadsby PJ, Edvinsson L. "Human in vivo evidence for trigeminovascular activation in cluster headache." <em>Annals of Neurology</em> 35.2 (1994): 183&ndash;189.</li>
+            <li>Goadsby PJ, Lipton RB, Ferrari MD. "Migraine&mdash;current understanding and treatment." <em>NEJM</em> 346.4 (2002): 257&ndash;270.</li>
+            <li>Goadsby PJ, et al. "Trial of Galcanezumab in Prevention of Episodic Cluster Headache." <em>NEJM</em> 381 (2019): 132&ndash;141.</li>
+            <li>Messlinger K, Vogler B, Engel MA. "CGRP and the Trigeminal System in Cluster Headache." <em>Brain Sciences</em> 10.1 (2020): 30.</li>
+            <li>Modar KMH, et al. "Vitamin D deficiency in patients with cluster headache: a preliminary study." <em>Cephalalgia</em> (2018). PMC6049846.</li>
+            <li>Batcheller P. "Cluster headaches virtually eliminated in 7,000 people with high-dose vitamin D and cofactors." VitaminDWiki (2022).</li>
+            <li>Reddy V, Sivakumar B. "Magnesium-dependent vitamin-D-resistant rickets." <em>The Lancet</em> 1.7864 (1974): 963&ndash;965.</li>
+            <li>Dai Q, et al. "Magnesium status and supplementation influence vitamin D status and metabolism: results from a randomized trial." <em>American Journal of Clinical Nutrition</em> 108.6 (2018): 1249&ndash;1258.</li>
+            <li>Uwitonze AM, Razzaque MS. "Role of Magnesium in Vitamin D Activation and Function." <em>JAOA</em> 118.3 (2018): 181&ndash;189.</li>
+            <li>Rude RK, Oldham SB, Singer FR. "Functional hypoparathyroidism and parathyroid hormone end-organ resistance in human magnesium deficiency." <em>Clin Endocrinol</em> 5.3 (1976): 209&ndash;224.</li>
+            <li>Masterjohn C. "Vitamin D toxicity redefined: vitamin K and the molecular mechanism." <em>Medical Hypotheses</em> 68.5 (2007): 1026&ndash;1034.</li>
+            <li>Vermeer C. "Vitamin K: the effect on health beyond coagulation&mdash;an overview." <em>Food &amp; Nutrition Research</em> 56 (2012): 5329.</li>
+            <li>Knapen MH, et al. "Menaquinone-7 supplementation improves arterial stiffness in healthy postmenopausal women." <em>Thrombosis and Haemostasis</em> 113.5 (2015): 1135&ndash;1144.</li>
+            <li>van Ballegooijen AJ, et al. "The Synergistic Interplay between Vitamins D and K for Bone and Cardiovascular Health." <em>Int J Endocrinology</em> (2017): 7454376.</li>
+            <li>Ramagopalan SV, et al. "A ChIP-seq defined genome-wide map of vitamin D receptor binding." <em>Genome Research</em> 20.10 (2010): 1352&ndash;1360.</li>
+            <li>Bhatt DK, et al. "Small physiologic changes in calcium and magnesium alter excitability and burst firing of CA1 pyramidal cells." <em>J Neurophysiol</em> 92.2 (2004): 987&ndash;996.</li>
+            <li>Rosanoff A, Weaver CM, Rude RK. "Suboptimal magnesium status in the United States." <em>Nutrition Reviews</em> 70.3 (2012): 153&ndash;164.</li>
+            <li>Cohen AS, et al. "High-flow oxygen for treatment of cluster headache." <em>JAMA</em> 302.22 (2009): 2451&ndash;2457.</li>
+            <li>Schindler EA, et al. "Indoleamine hallucinogens in cluster headache: results of the Clusterbusters medication use survey." <em>J Psychoactive Drugs</em> 47.5 (2015): 372&ndash;381.</li>
+            <li>Leone M, et al. "Long-term follow-up of bilateral hypothalamic stimulation for intractable cluster headache." <em>Brain</em> 127.10 (2004): 2259&ndash;2264.</li>
+            <li>Holick MF. "Vitamin D deficiency." <em>NEJM</em> 357.3 (2007): 266&ndash;281.</li>
+            <li>Ghorbani Z, et al. "The role of vitamin D in primary headache." <em>Curr Clin Pharmacol</em> (2019). PMC7019347.</li>
+            <li>Webb AR, Kline L, Holick MF. "Influence of season and latitude on the cutaneous synthesis of vitamin D3." <em>J Clin Endocrinol Metab</em> 67.2 (1988): 373&ndash;378.</li>
+        </ol>
+    </section>
+
+    <footer>
+        <p>Made with <span class="heart">&hearts;</span> and too much research</p>
+        <p style="margin-top: 0.5rem; font-size: 0.75rem;">Click any gold link to explore deeper</p>
+    </footer>
+
+    <!-- Modal Overlay -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-container" id="modalContainer"></div>
+    </div>
+
+    <script>
+        const qaDatabase = {
+            'pain-severity': {
+                question: "How severe is cluster headache pain?",
+                answer: `<p>Cluster headache is consistently rated as the most painful condition in medicine. On clinical pain scales, it ranks above childbirth, kidney stones, gunshot wounds, and burns.</p>
+                <blockquote>"Women with cluster headache will tell you that an attack is worse than giving birth."<cite>&mdash; Dr. Peter Goadsby, King's College London (Goadsby et al., <em>NEJM</em>, 2002)</cite></blockquote>
+                <p>The informal name&mdash;<strong>"suicide headache"</strong>&mdash;reflects the desperation sufferers experience. During an attack, patients are typically unable to sit still. They pace, rock, press their head against walls, and sometimes injure themselves trying to override the pain with a different sensation.</p>
+                <p>Unlike migraine (where people seek darkness and quiet), cluster headache produces <strong>intense agitation and restlessness</strong>. This behavioral difference is actually used diagnostically.</p>`
+            },
+            'episodic-vs-chronic': {
+                question: "What is the difference between episodic and chronic cluster headache?",
+                answer: `<h4>Episodic (85&ndash;90% of sufferers):</h4>
+                <ul>
+                    <li>Cluster periods last 2&ndash;12 weeks, typically 8&ndash;10 weeks</li>
+                    <li>Remission periods of months to years between clusters</li>
+                    <li>Often seasonal (same time each year)</li>
+                    <li>87% respond to the D3 protocol</li>
+                </ul>
+                <h4>Chronic (10&ndash;15% of sufferers):</h4>
+                <ul>
+                    <li>Attacks occur for more than a year without remission, or remission lasts less than 3 months</li>
+                    <li>No significant break from attacks</li>
+                    <li>Harder to treat (64% response to D3 protocol vs. 87% episodic)</li>
+                    <li>Some episodic sufferers transition to chronic over time</li>
+                </ul>
+                <p>About 10&ndash;15% of chronic cases can revert to episodic, sometimes spontaneously.</p>`
+            },
+            'autonomic-symptoms': {
+                question: "What are autonomic symptoms and why do they occur?",
+                answer: `<p>The autonomic nervous system controls involuntary body functions. During a cluster attack, the <span class="q-link" data-q="trigeminal-nerve">trigeminal nerve</span> activation pathologically triggers autonomic responses on the same side as the pain:</p>
+                <ul>
+                    <li><strong>Lacrimation:</strong> Excessive tearing from one eye</li>
+                    <li><strong>Rhinorrhea / congestion:</strong> Runny or blocked nose on the affected side</li>
+                    <li><strong>Ptosis:</strong> Drooping eyelid</li>
+                    <li><strong>Miosis:</strong> Constricted pupil</li>
+                    <li><strong>Conjunctival injection:</strong> Red, bloodshot eye</li>
+                    <li><strong>Facial sweating or flushing</strong> on the affected side</li>
+                </ul>
+                <p>These symptoms are caused by activation of the <span class="q-link" data-q="spg-block">sphenopalatine ganglion (SPG)</span>&mdash;a cluster of nerve cells behind the nose that connects the trigeminal nerve to the autonomic system. This is why SPG nerve blocks can interrupt the attack.</p>`
+            },
+            'hypothalamus': {
+                question: "What is the hypothalamus and why is it implicated?",
+                answer: `<p>The hypothalamus is a small region at the base of the brain that acts as the body's <strong>master clock</strong>. It regulates:</p>
+                <ul>
+                    <li>Circadian rhythm (sleep/wake cycle)</li>
+                    <li>Body temperature</li>
+                    <li>Hormone release (including melatonin)</li>
+                    <li>Hunger and thirst</li>
+                </ul>
+                <h4>Evidence for hypothalamic involvement in cluster headache:</h4>
+                <ul>
+                    <li><strong>Circadian patterns:</strong> Attacks at the same time daily ("alarm clock")</li>
+                    <li><strong>Circannual patterns:</strong> Clusters around solstices/equinoxes</li>
+                    <li><strong>PET scans:</strong> Show <span class="q-link" data-q="pet-scans">hypothalamic activation</span> during attacks</li>
+                    <li><strong>Sleep connection:</strong> Attacks during <span class="q-link" data-q="rem-sleep">REM sleep</span></li>
+                    <li><strong>Melatonin:</strong> Hypothalamic melatonin regulation is disrupted; supplementation helps</li>
+                </ul>
+                <p>Critically, the hypothalamus contains <strong>vitamin D receptors (VDR)</strong>, 1-alpha-hydroxylase (the enzyme that activates vitamin D), and vitamin D-binding protein. This suggests vitamin D acts directly on the brain region governing cluster headache timing.</p>`
+            },
+            'pet-scans': {
+                question: "What do PET scans show during cluster attacks?",
+                answer: `<p>Positron emission tomography (PET) studies of patients during active cluster headache attacks consistently show activation of the <strong>ipsilateral posterior hypothalamic gray matter</strong>&mdash;the region on the same side as the headache pain (May et al., <em>The Lancet</em>, 1998).</p>
+                <p>This activation is not seen in other headache types. It is specific to cluster headache and strongly suggests the hypothalamus acts as a "pacemaker" or trigger for attacks, rather than simply responding to the pain.</p>
+                <p>This finding is one reason deep brain stimulation (DBS) of the posterior hypothalamus has been explored as a treatment for refractory chronic cluster headache, though this remains experimental (Leone et al., <em>Brain</em>, 2004).</p>`
+            },
+            'rem-sleep': {
+                question: "Why do attacks happen during REM sleep?",
+                answer: `<p>Cluster headache attacks frequently occur during REM (rapid eye movement) sleep&mdash;the phase associated with dreaming. Several possible explanations:</p>
+                <ul>
+                    <li><strong>Oxygen desaturation:</strong> Breathing becomes irregular during REM, and oxygen levels can drop. Since high-flow oxygen is the most effective abortive, this may trigger attacks.</li>
+                    <li><strong>Autonomic instability:</strong> The autonomic nervous system is highly active during REM, with fluctuating heart rate and blood pressure.</li>
+                    <li><strong>Hypothalamic activity:</strong> The hypothalamus is active during sleep transitions. REM onset may trigger the hypothalamic activation seen in PET scans.</li>
+                </ul>
+                <p>This REM connection explains why <span class="q-link" data-q="melatonin">melatonin</span> (which regulates sleep architecture) and maintaining deep sleep help some sufferers. One user found via Apple Watch tracking that more than 1 hour of deep sleep correlated with significantly fewer attacks.</p>`
+            },
+            'vitd-seasonal': {
+                question: "How does seasonal vitamin D variation connect to cluster timing?",
+                answer: `<p>The skin produces vitamin D3 when exposed to UVB radiation from sunlight. This production varies dramatically with season and latitude:</p>
+                <ul>
+                    <li><strong>Summer:</strong> High UVB exposure &rarr; high D3 production &rarr; higher serum 25(OH)D</li>
+                    <li><strong>Winter:</strong> Low UVB (especially above ~35&deg; latitude) &rarr; minimal D3 production &rarr; falling serum levels</li>
+                    <li><strong>Equinoxes:</strong> Transition periods where D3 levels are changing most rapidly</li>
+                </ul>
+                <h4>The 37&deg;N latitude problem:</h4>
+                <p>Above approximately 37&deg;N latitude (roughly San Francisco, Seville, Athens, Seoul), <strong>the sun's angle is too low during winter months for UVB rays to penetrate the atmosphere</strong> sufficiently to trigger vitamin D synthesis in skin (Webb et al., <em>J Clin Endocrinol Metab</em>, 1988). For roughly 4&ndash;6 months of the year, no amount of sun exposure will produce meaningful D3. This means anyone living above this line&mdash;including most of the US, all of Canada, nearly all of Europe, the UK, Scandinavia, Russia, northern China, Japan, and South Korea&mdash;is essentially dependent on diet or supplementation for vitamin D during winter.</p>
+                <p>This geographic constraint may help explain cluster headache's seasonal periodicity: as winter approaches and UVB-driven D3 production drops to zero, serum levels fall, calcitriol production declines, CGRP suppression weakens, and the trigeminal system becomes vulnerable to attack.</p>
+                <p>Cluster headache periods often begin around seasonal transitions&mdash;exactly when vitamin D levels are shifting most rapidly. Pete Batcheller, who developed the D3 protocol, first noticed his own cluster headaches disappeared during summers when he spent time outdoors.</p>
+                <p>A 2018 study found <strong>92.8% of cluster headache patients had vitamin D deficiency</strong> (mean serum 25(OH)D of 14.0 ng/mL, far below the 30 ng/mL considered "sufficient") (Modar et al., <em>Cephalalgia</em>, 2018). When subjects stopped D3 supplementation, cluster headaches typically returned within 7&ndash;8 days (Batcheller, VitaminDWiki, 2022).</p>`
+            },
+            'tac': {
+                question: "What are trigeminal autonomic cephalalgias?",
+                answer: `<p>TACs are a group of primary headache disorders characterized by two features:</p>
+                <ol>
+                    <li><strong>Trigeminal distribution pain:</strong> Severe, unilateral pain in the area innervated by the trigeminal nerve (forehead, eye, cheek, jaw)</li>
+                    <li><strong>Ipsilateral autonomic features:</strong> Tearing, nasal congestion, ptosis, etc., on the same side as the pain</li>
+                </ol>
+                <h4>The TAC family includes:</h4>
+                <ul>
+                    <li><strong>Cluster headache:</strong> 15&ndash;180 min attacks, 1&ndash;8/day</li>
+                    <li><strong>Paroxysmal hemicrania:</strong> 2&ndash;30 min attacks, 5&ndash;40/day; responds to indomethacin</li>
+                    <li><strong>SUNCT/SUNA:</strong> 1&ndash;600 sec attacks, up to 200/day</li>
+                    <li><strong>Hemicrania continua:</strong> Continuous, fluctuating pain; responds to indomethacin</li>
+                </ul>
+                <p>All TACs involve the <span class="q-link" data-q="trigeminal-nerve">trigeminal-autonomic reflex</span>, but cluster headache is the most common and most painful.</p>`
+            },
+            'trigeminal-nerve': {
+                question: "What is the trigeminal nerve?",
+                answer: `<p>The trigeminal nerve (cranial nerve V) is the largest cranial nerve. It innervates the face, eyes, sinuses, and jaw. It has three branches:</p>
+                <ul>
+                    <li><strong>V1 (Ophthalmic):</strong> Forehead, upper eyelid, nose bridge &mdash; <em>this is the primary branch involved in cluster headache</em></li>
+                    <li><strong>V2 (Maxillary):</strong> Cheek, upper lip, upper teeth</li>
+                    <li><strong>V3 (Mandibular):</strong> Lower jaw, lower teeth, tongue</li>
+                </ul>
+                <h4>Why it matters for cluster headache:</h4>
+                <p>The <strong>trigeminal ganglion</strong> (where the nerve cell bodies live) contains mast cells that release histamine. When activated, trigeminal nerve endings release inflammatory neuropeptides:</p>
+                <ul>
+                    <li><span class="q-link" data-q="cgrp">CGRP</span> &mdash; the key pain driver</li>
+                    <li>Substance P</li>
+                    <li>VIP (vasoactive intestinal peptide)</li>
+                    <li>PACAP (pituitary adenylate cyclase-activating polypeptide)</li>
+                </ul>
+                <p>One Reddit user found their cluster headaches were caused by pressure on the trigeminal nerve <em>inside their nostril</em>. Keeping the nostril clean and hydrated ended 4 years of attacks. This direct mechanical irritation of the trigeminal nerve is a simple but plausible trigger.</p>`
+            },
+            'cgrp': {
+                question: "What is CGRP and why is it the key molecule?",
+                answer: `<p><strong>Calcitonin Gene-Related Peptide (CGRP)</strong> is a 37-amino-acid neuropeptide and one of the most potent vasodilators known. It's the central player in cluster headache (and migraine) pathophysiology.</p>
+                <h4>What CGRP does during an attack:</h4>
+                <ol>
+                    <li>Released from trigeminal nerve endings via <span class="q-link" data-q="nmda">calcium-dependent exocytosis</span></li>
+                    <li>Binds to receptors on blood vessel walls</li>
+                    <li>Activates eNOS (endothelial nitric oxide synthase) &rarr; produces nitric oxide (NO)</li>
+                    <li>NO causes vasodilation of intracranial blood vessels</li>
+                    <li>NO diffuses back to trigeminal terminals and <strong>enhances further CGRP release</strong> (positive feedback)</li>
+                    <li>Causes neurogenic inflammation, mast cell degranulation, plasma extravasation</li>
+                    <li>Sensitizes more trigeminal neurons to activation (more positive feedback)</li>
+                </ol>
+                <h4>Why it's the therapeutic target:</h4>
+                <p><span class="q-link" data-q="emgality">Emgality</span> (galcanezumab) is a monoclonal antibody that blocks CGRP. Vitamin D3 suppresses CGRP <em>gene transcription</em>&mdash;a more fundamental intervention. Triptans work partly by inhibiting CGRP release.</p>
+                <p>CGRP is elevated in the cranial venous outflow during active cluster headache attacks and returns to baseline after the attack ends.</p>`
+            },
+            'nmda': {
+                question: "What are NMDA receptors and how does magnesium block them?",
+                answer: `<p><strong>NMDA (N-methyl-D-aspartate) receptors</strong> are glutamate receptors found throughout the nervous system, including on trigeminal ganglion neurons. They're ion channels that allow calcium to flow into cells when activated.</p>
+                <h4>The magnesium block:</h4>
+                <p>At normal resting potential, a <strong>magnesium ion (Mg&sup2;+) physically sits inside the NMDA channel</strong>, blocking it. Even if glutamate binds, calcium can't flow through. This is called the "voltage-dependent magnesium block."</p>
+                <h4>When magnesium is depleted:</h4>
+                <ol>
+                    <li>The Mg&sup2;+ block is weakened or removed</li>
+                    <li>Glutamate can now activate NMDA receptors freely</li>
+                    <li>Excessive calcium floods into trigeminal neurons</li>
+                    <li>This calcium triggers CGRP release via vesicular exocytosis</li>
+                    <li>CGRP sensitizes more neurons to NMDA activation (positive feedback)</li>
+                </ol>
+                <p>This is called <strong>glutamate-mediated excitotoxicity</strong>. It's the key link between magnesium deficiency and the CGRP pain cascade. Research confirms that small, physiologically subtle decreases in both extracellular calcium and magnesium lead to increased excitability and burst firing patterns in neurons (Bhatt et al., <em>J Neurophysiol</em>, 2004; Bhargava, <em>NCBI Bookshelf: Magnesium in Headache</em>).</p>
+                <p>NMDA receptor involvement also explains why <span class="q-link" data-q="psychedelics">psychedelics</span> and <span class="q-link" data-q="ketamine">ketamine</span> (an NMDA antagonist) may help some sufferers.</p>`
+            },
+            'hydroxylation': {
+                question: "What is hydroxylation?",
+                answer: `<p>Hydroxylation is a chemical reaction that adds a hydroxyl group (&ndash;OH) to a molecule. For vitamin D, two sequential hydroxylations convert the inert storage form into the active hormone:</p>
+                <h4>Step 1 &mdash; In the liver:</h4>
+                <p>Enzyme <strong>CYP2R1</strong> (25-hydroxylase) adds an &ndash;OH at the 25th carbon position:</p>
+                <p><code>Vitamin D3 &rarr; 25(OH)D (calcidiol)</code></p>
+                <p>This is what blood tests measure as your "vitamin D level."</p>
+                <h4>Step 2 &mdash; In the kidney (and locally in other tissues):</h4>
+                <p>Enzyme <strong>CYP27B1</strong> (1&alpha;-hydroxylase) adds another &ndash;OH at the 1st carbon position:</p>
+                <p><code>25(OH)D &rarr; 1,25(OH)&#8322;D (calcitriol)</code></p>
+                <p>Calcitriol is the biologically active hormone that binds the vitamin D receptor.</p>
+                <p>Both enzymes are <strong>cytochrome P450 enzymes</strong> that require magnesium as a cofactor. Without magnesium, the hydroxylation reactions cannot proceed efficiently, and vitamin D remains trapped in its inactive forms.</p>`
+            },
+            'mg-resistant-rickets': {
+                question: "What is magnesium-dependent vitamin D-resistant rickets?",
+                answer: `<p>Documented by Reddy and Sivakumar in <em>The Lancet</em> (1974), this condition demonstrates the absolute dependence of vitamin D on magnesium:</p>
+                <h4>The finding:</h4>
+                <p>Patients received <strong>massive doses of vitamin D</strong>&mdash;up to 600,000 IU intramuscularly&mdash;with zero biochemical improvement. Their rickets persisted, calcium levels didn't normalize, and vitamin D appeared completely ineffective.</p>
+                <h4>The resolution:</h4>
+                <p><strong>Magnesium supplementation alone</strong> substantially reversed the resistance. Once magnesium was repleted, the vitamin D that had been sitting inert in the body could finally be hydroxylated into its active form.</p>
+                <h4>Why this matters for cluster headache:</h4>
+                <p>If you're taking high-dose D3 for cluster headaches but are magnesium-deficient, your D3 may be doing nothing. Your blood test might even show adequate 25(OH)D levels, but without magnesium to drive the second hydroxylation in the kidney, active calcitriol is not being produced&mdash;and CGRP is not being suppressed.</p>
+                <p>The Clusterbusters protocol addresses this by recommending <strong>400 mg magnesium daily, doubled during loading</strong>.</p>`
+            },
+            'mg-thermostat': {
+                question: "How does magnesium act as a thermostat for vitamin D?",
+                answer: `<p>A randomized trial by Dai et al. (2018, <em>American Journal of Clinical Nutrition</em>) revealed a bidirectional regulatory effect:</p>
+                <h4>When baseline 25(OH)D is low (&lt;30 ng/mL):</h4>
+                <p>Magnesium supplementation <strong>upregulates the activating enzymes</strong> (CYP2R1, CYP27B1), raising vitamin D levels. The body has inactive D3 sitting around; magnesium enables the machinery to process it.</p>
+                <h4>When baseline 25(OH)D is sufficient (&gt;30 ng/mL):</h4>
+                <p>Magnesium <strong>enhances the deactivating enzyme</strong> (CYP3A4), bringing levels back down. This prevents excessive calcitriol, which could cause hypercalcemia.</p>
+                <h4>The implication:</h4>
+                <p>Magnesium doesn't just "raise" vitamin D. It <em>optimizes</em> it. This may explain why some people who supplement with D3 see their levels rise dramatically while others see little change&mdash;the difference may be magnesium status.</p>`
+            },
+            'mg-testing': {
+                question: "Why is magnesium deficiency so hard to detect?",
+                answer: `<p>Only <strong>~1% of body magnesium is in the blood</strong>. The remaining 99% is intracellular (in cells) and in bone (~60% of total body Mg is in bone, where it's a structural component of hydroxyapatite crystal).</p>
+                <h4>The diagnostic problem:</h4>
+                <p>Standard <strong>serum magnesium tests</strong> measure that 1% in blood. This means:</p>
+                <ul>
+                    <li>Intracellular stores can be <strong>severely depleted</strong> while serum levels appear "normal"</li>
+                    <li>The body actively maintains serum Mg levels by pulling from cells and bone</li>
+                    <li>By the time serum Mg drops below normal, total-body depletion is already severe</li>
+                </ul>
+                <h4>Better tests (but rarely ordered):</h4>
+                <ul>
+                    <li><strong>RBC magnesium:</strong> Measures magnesium inside red blood cells; more representative of intracellular status</li>
+                    <li><strong>Ionized magnesium:</strong> Measures biologically active (free) magnesium</li>
+                    <li><strong>24-hour urine magnesium:</strong> Low excretion suggests deficiency (body conserving Mg)</li>
+                </ul>
+                <p>Estimates suggest <strong>up to 50% of Americans</strong> may be magnesium-deficient, and up to 80% don't meet the RDA through diet alone (Rosanoff et al., <em>Nutrition Reviews</em>, 2012). Modern agriculture has depleted soil magnesium, reducing food content. Processing and refining further removes it.</p>`
+            },
+            'vdr': {
+                question: "What is the Vitamin D Receptor?",
+                answer: `<p>The <strong>Vitamin D Receptor (VDR)</strong> is a nuclear receptor&mdash;a protein that sits in the cell nucleus and directly regulates gene expression when activated. It belongs to the same family as thyroid hormone, estrogen, and cortisol receptors.</p>
+                <h4>How it works:</h4>
+                <ol>
+                    <li>Active vitamin D (calcitriol) enters a cell</li>
+                    <li>It binds to the VDR in the nucleus</li>
+                    <li>VDR forms a heterodimer with the Retinoid X Receptor (RXR)</li>
+                    <li>This complex binds to <strong>Vitamin D Response Elements (VDREs)</strong> in DNA</li>
+                    <li>It up-regulates beneficial genes and down-regulates harmful ones</li>
+                </ol>
+                <p>Over <strong>~2,000 VDREs</strong> have been identified in the human genome, with ~900 genes directly regulated (Ramagopalan et al., <em>Genome Research</em>, 2010). VDRs are found in nearly every tissue, including the hypothalamus, trigeminal ganglion, immune cells, and intestinal epithelium.</p>
+                <p>This gene-level mechanism explains why the D3 protocol takes <strong>days to work</strong>&mdash;it's changing gene expression, not just blocking a receptor. And it explains why the effects are broad: vitamin D doesn't just affect one pathway, it modulates hundreds of genes including those controlling CGRP, inflammation, and immune function.</p>`
+            },
+            'carboxylation': {
+                question: "What is carboxylation and why does it matter?",
+                answer: `<p><strong>Carboxylation</strong> is a post-translational modification where the enzyme gamma-glutamyl carboxylase converts glutamic acid (Glu) residues into gamma-carboxyglutamic acid (Gla) residues on specific proteins. Vitamin K2 is the essential cofactor for this enzyme.</p>
+                <h4>Why this chemical change matters:</h4>
+                <p>The Gla residues have a unique shape that gives them <strong>high affinity for calcium ions</strong>. Without carboxylation, the proteins can be produced but they can't bind calcium&mdash;they're functionally useless.</p>
+                <h4>The two key proteins:</h4>
+                <ul>
+                    <li><strong>Osteocalcin:</strong> When carboxylated, its Gla residues bind calcium and incorporate it into bone mineral (hydroxyapatite). Undercarboxylated osteocalcin in blood is a sensitive marker of vitamin K insufficiency and is associated with lower bone mineral density.</li>
+                    <li><strong>Matrix Gla Protein (MGP):</strong> When carboxylated, it binds calcium crystals in arterial walls and prevents them from growing. It also inhibits BMP-2, which otherwise causes vascular smooth muscle cells to transform into bone-like cells.</li>
+                </ul>
+                <p>Think of it as: D3 produces the workers (osteocalcin, MGP). K2 gives them their tools (calcium-binding Gla residues). Without K2, you have workers standing around with nothing to work with.</p>`
+            },
+            'calcium-paradox': {
+                question: 'What is the "calcium paradox"?',
+                answer: `<p>Coined by researcher Cees Vermeer, the calcium paradox describes the seemingly contradictory observation that <strong>bones lose calcium</strong> (osteoporosis) while <strong>arteries gain calcium</strong> (vascular calcification) at the same time.</p>
+                <h4>The mechanism when high-dose D3 is taken without K2:</h4>
+                <ol>
+                    <li>D3 floods the body with calcium from the gut (absorption rises dramatically)</li>
+                    <li>D3 upregulates osteocalcin and MGP gene transcription</li>
+                    <li>But without K2, both proteins remain undercarboxylated&mdash;non-functional</li>
+                    <li>Osteocalcin cannot deposit calcium into bones</li>
+                    <li>MGP cannot prevent calcium from depositing in <span class="q-link" data-q="vascular-calcification">arteries</span></li>
+                    <li><strong>Result:</strong> Blood calcium rises. It deposits in soft tissue and arteries. Bones are deprived.</li>
+                </ol>
+                <p>This is why the D3 protocol includes K2&mdash;not as an afterthought, but as a <strong>critical safety measure</strong>. At the 10,000&ndash;50,000+ IU doses used for cluster headache, the calcium paradox is a real risk without adequate K2.</p>`
+            },
+            'vascular-calcification': {
+                question: "Why is vascular calcification dangerous?",
+                answer: `<p>When calcium deposits in arterial walls, those arteries become stiff and lose their ability to expand and contract with blood flow. This leads to:</p>
+                <ul>
+                    <li><strong>Arterial stiffness:</strong> Higher blood pressure, more cardiac workload</li>
+                    <li><strong>Atherosclerosis:</strong> Calcified plaques narrow arteries, reducing blood flow</li>
+                    <li><strong>Heart attack and stroke risk:</strong> Calcified plaques can rupture, triggering blood clots</li>
+                </ul>
+                <p>A clinical trial showed that 180 mcg/day of MK-7 significantly <strong>improved arterial stiffness</strong> and reduced inactive MGP (dephosphorylated uncarboxylated MGP, or dp-ucMGP) in postmenopausal women over 3 years (Knapen et al., <em>Thrombosis and Haemostasis</em>, 2015).</p>
+                <p>For cluster headache sufferers taking high-dose D3, vascular calcification from inadequate K2 would be a slow, silent harm&mdash;not something you'd notice day-to-day, but potentially dangerous over years of supplementation.</p>`
+            },
+            'mk4-vs-mk7': {
+                question: "What's the difference between MK-4 and MK-7?",
+                answer: `<p>Both are forms of vitamin K2 (menaquinones), but they differ in important ways:</p>
+                <h4>MK-4 (Menaquinone-4):</h4>
+                <ul>
+                    <li><strong>Short half-life:</strong> ~1&ndash;2 hours; requires multiple daily doses</li>
+                    <li>Found in animal products (organ meats, egg yolks, grass-fed butter)</li>
+                    <li>All tissues can convert K1 into MK-4 locally</li>
+                    <li>Has unique roles beyond carboxylation: activates the SXR/PXR nuclear receptor for bone metabolism</li>
+                    <li>May have brain-specific functions (important for cluster headache?)</li>
+                    <li>Therapeutic doses in Japanese osteoporosis studies: <strong>45 mg/day</strong> (very high)</li>
+                </ul>
+                <h4>MK-7 (Menaquinone-7):</h4>
+                <ul>
+                    <li><strong>Long half-life:</strong> ~72 hours; once-daily dosing works</li>
+                    <li>Primary dietary source: natto (fermented soybeans)</li>
+                    <li>More efficiently carboxylates osteocalcin and MGP at lower doses (100&ndash;200 mcg/day)</li>
+                    <li>Better bioavailability and more stable serum levels</li>
+                    <li>The form used in most clinical trials</li>
+                </ul>
+                <p>The Clusterbusters protocol recommends <strong>both forms</strong>&mdash;MK-4 for its unique tissue-specific roles (especially brain), and MK-7 for efficient systemic carboxylation.</p>`
+            },
+            'mg-burn': {
+                question: 'What is the "magnesium burn"?',
+                answer: `<p>The "magnesium burn" describes how taking vitamin D <strong>actively depletes magnesium</strong> through two mechanisms:</p>
+                <h4>1. Enzymatic consumption:</h4>
+                <p>Every step of D3 metabolism&mdash;activation AND deactivation&mdash;consumes magnesium as a cofactor. Higher D3 doses mean more enzymatic activity, meaning more magnesium consumed. If dietary intake is already borderline, supplementation tips the balance into deficiency.</p>
+                <h4>2. Calcium-mediated displacement:</h4>
+                <p>D3 increases calcium absorption from the gut. Elevated serum calcium competes with magnesium at renal tubular reabsorption sites. More calcium absorbed &rarr; more magnesium excreted in urine.</p>
+                <h4>The vicious cycle:</h4>
+                <p>Mg depletion &rarr; impairs D3 activation &rarr; impairs calcium absorption &rarr; triggers <span class="q-link" data-q="pth">PTH release</span> &rarr; further depletes Mg &rarr; deeper depletion.</p>
+                <h4>Symptoms often blamed on "vitamin D side effects":</h4>
+                <ul>
+                    <li>Muscle cramps and spasms</li>
+                    <li>Headaches (ironic for cluster headache patients)</li>
+                    <li>Insomnia</li>
+                    <li>Heart palpitations</li>
+                    <li>Acid reflux</li>
+                    <li>Anxiety</li>
+                </ul>
+                <p>These are symptoms of the magnesium depletion that the D3 is causing. This is why the protocol doubles magnesium during the loading phase.</p>`
+            },
+            'pth': {
+                question: "What is parathyroid hormone and what does it do?",
+                answer: `<p><strong>Parathyroid hormone (PTH)</strong> is produced by four tiny glands behind the thyroid. It's the master regulator of calcium balance.</p>
+                <h4>The feedback loop:</h4>
+                <ol>
+                    <li>Low serum calcium sensed by calcium-sensing receptors (CaSR) on parathyroid glands</li>
+                    <li>PTH secretion rises</li>
+                    <li>PTH stimulates: the kidney to produce more calcitriol; calcium reabsorption in kidneys; osteoclast activity (releasing calcium from bone stores)</li>
+                    <li>Rising calcium and calcitriol provide negative feedback &rarr; PTH suppressed</li>
+                </ol>
+                <h4>In the D3 protocol context:</h4>
+                <p>As D3 supplementation raises 25(OH)D, more calcitriol is produced, calcium absorption increases, and <strong>PTH should drop</strong> (it's being suppressed by rising calcium). If PTH <em>doesn't</em> drop, it may indicate <span class="q-link" data-q="mg-paradox">vitamin D resistance from magnesium deficiency</span>.</p>
+                <p>This is why the protocol monitors PTH alongside calcium and 25(OH)D&mdash;the three numbers together reveal whether the system is functioning.</p>`
+            },
+            'mg-paradox': {
+                question: "How does magnesium deficiency paradoxically block PTH?",
+                answer: `<p>This is one of the most counterintuitive findings in mineral metabolism:</p>
+                <h4>Mild magnesium deficiency:</h4>
+                <p>Can actually <em>stimulate</em> PTH release (similar to how low calcium does).</p>
+                <h4>Severe magnesium deficiency:</h4>
+                <p>Causes a <strong>paradoxical block</strong> of PTH secretion. The parathyroid glands become unable to secrete PTH despite low calcium. The mechanism: defective cAMP (cyclic adenosine monophosphate) generation in parathyroid cells, which requires magnesium.</p>
+                <h4>Compounding the problem:</h4>
+                <p>Even if some PTH is secreted, magnesium deficiency also impairs <strong>end-organ response to PTH</strong>&mdash;bone and kidney stop responding, again through defective cAMP signaling.</p>
+                <h4>The result:</h4>
+                <p><strong>Hypocalcemia that is refractory to calcium or vitamin D supplementation.</strong> No amount of calcium or D3 will fix it. It will not correct until magnesium is repleted.</p>
+                <p>This is termed "functional hypoparathyroidism" and is rapidly reversible (within hours) with magnesium repletion, confirming it's a secretory defect, not structural damage.</p>`
+            },
+            'lab-interpretation': {
+                question: "How do you interpret the lab results?",
+                answer: `<p>The D3 protocol recommends baseline labs and follow-up at ~30 days. The three key numbers and what they mean together:</p>
+                <h4>25(OH)D (vitamin D level):</h4>
+                <ul>
+                    <li>Target: ~80 ng/mL (200 nmol/L) for cluster headache</li>
+                    <li>Standard "sufficient" threshold: 30 ng/mL (the CH target is much higher)</li>
+                    <li>Average CH patient at baseline: ~14&ndash;23 ng/mL (severely deficient)</li>
+                </ul>
+                <h4>Serum calcium:</h4>
+                <ul>
+                    <li>Normal range: 8.5&ndash;10.5 mg/dL</li>
+                    <li>Should stay in normal range even as D3 rises</li>
+                    <li>If it rises above normal: possible <span class="q-link" data-q="calcium-paradox">K2 insufficiency</span>, Mg insufficiency, or D3 overdose</li>
+                </ul>
+                <h4>PTH:</h4>
+                <ul>
+                    <li>Should drop as D3 rises (negative feedback / "mirror image" of calcium)</li>
+                    <li>If it <em>doesn't</em> drop: possible vitamin D resistance from Mg deficiency</li>
+                    <li>If suppressed to very low levels with high calcium: D3 toxicity</li>
+                </ul>
+                <h4>The healthy pattern:</h4>
+                <p>25(OH)D rising toward 80 + calcium stable in normal range + PTH gradually declining = everything is working.</p>`
+            },
+            'd3-protocol': {
+                question: "What is the Clusterbusters D3 protocol?",
+                answer: `<p>Developed by Pete Batcheller, a retired Navy fighter pilot with a chemistry degree who suffered from cluster headaches himself. He noticed his clusters disappeared during summers spent outdoors and traced it to vitamin D.</p>
+                <h4>Loading phase (first 1&ndash;2 weeks):</h4>
+                <ul>
+                    <li><strong>Vitamin D3:</strong> 50,000&ndash;100,000 IU/day for 5&ndash;12 days (total ~600,000&ndash;700,000 IU)</li>
+                    <li><strong>Magnesium:</strong> 800 mg/day (doubled from maintenance)</li>
+                    <li>Hydration: 2.5 liters water daily</li>
+                </ul>
+                <h4>Maintenance:</h4>
+                <ul>
+                    <li><strong>Vitamin D3:</strong> 10,000 IU/day (or 50,000 IU weekly)</li>
+                    <li><strong>Magnesium:</strong> 400 mg (glycinate, citrate, or malate)</li>
+                    <li><strong>Vitamin K2:</strong> MK-4 + MK-7</li>
+                    <li><strong>Omega-3 fish oil</strong></li>
+                    <li><strong>B-complex</strong> (important: one user reports B-complex cessation triggered breakthrough attacks)</li>
+                    <li><strong>Zinc, Boron, Vitamin A</strong></li>
+                    <li>Take with largest meal (stomach acid needed for absorption)</li>
+                </ul>
+                <h4>Target:</h4>
+                <p>Serum 25(OH)D near <strong>80 ng/mL</strong>. Episodic: 80&ndash;100 ng/mL. Chronic: 90&ndash;120 ng/mL.</p>
+                <h4>Results (from 7,000+ patients):</h4>
+                <ul>
+                    <li>81.3% achieved significant reductions (&ge;70% in frequency, severity, and duration)</li>
+                    <li>~60% achieved substantial pain-free responses</li>
+                    <li>Daily cost: under 50 cents</li>
+                </ul>
+                <p>If no improvement after 5 days of loading, the protocol escalates to the <span class="q-link" data-q="full-monty">"Full Monty"</span>.</p>`
+            },
+            'full-monty': {
+                question: 'What is the "Full Monty"?',
+                answer: `<p>An escalation protocol for D3 non-responders. It adds aggressive anti-inflammatory and antihistamine agents on top of the base D3 regimen:</p>
+                <ul>
+                    <li><strong>Turmeric/curcumin:</strong> 3 g/day</li>
+                    <li><strong>Resveratrol:</strong> 3 g/day</li>
+                    <li><strong>Quercetin:</strong> 3 g/day</li>
+                    <li><strong>Omega-3 fish oil:</strong> increase to 3&ndash;4 capsules</li>
+                    <li><strong>Vitamin C:</strong> 6&ndash;8 g/day (dissolve powder in water, sip throughout day)</li>
+                    <li><strong>Melatonin:</strong> 10 mg/day</li>
+                </ul>
+                <h4>Why these specific supplements:</h4>
+                <p>All share anti-inflammatory or <span class="q-link" data-q="histamine-hypothesis">antihistamine</span> properties. The hypothesis is that some non-responders have additional inflammatory or histamine-driven triggers that the base D3 protocol doesn't fully address. Many of these supplements also modulate the immune system and reduce oxidative stress.</p>
+                <p>The "Full Monty" name reflects the "throw everything at it" approach. While anecdotal, forum users report it works for a significant fraction of those who don't respond to D3 alone.</p>`
+            },
+            'histamine-hypothesis': {
+                question: "How does histamine connect to cluster headaches?",
+                answer: `<p>The connection between histamine and cluster headaches is stronger than many realize:</p>
+                <ul>
+                    <li><strong>Histamine injections can trigger cluster attacks</strong> in diagnosed sufferers (used diagnostically)</li>
+                    <li>The trigeminal ganglion contains <strong>mast cells</strong> that release histamine</li>
+                    <li>Histamine causes vasodilation and inflammation&mdash;key features of cluster attacks</li>
+                    <li>One Reddit user achieved <strong>3.5 years remission</strong> with daily Claritin + low-histamine diet alone</li>
+                    <li>Benadryl helps some sufferers during attacks</li>
+                </ul>
+                <h4>The vitamin D connection:</h4>
+                <p>Vitamin D modulates immune function, including mast cell activity. Up to 70% of the immune system involves gut-associated lymphoid tissue (GALT), which is heavily influenced by vitamin D status. The "Full Monty" supplements (quercetin, resveratrol, vitamin C) all have antihistamine properties&mdash;quercetin in particular is a potent mast cell stabilizer.</p>`
+            },
+            'oxygen': {
+                question: "How does oxygen therapy work for cluster headaches?",
+                answer: `<p><strong>High-flow oxygen</strong> (12&ndash;15+ L/min via non-rebreather mask for 15&ndash;20 minutes) is the medical gold standard for aborting acute cluster attacks, with ~70% effectiveness.</p>
+                <h4>Proposed mechanisms (not definitively established):</h4>
+                <ul>
+                    <li><strong>Vasoconstriction:</strong> Oxygen may constrict dilated blood vessels around the trigeminal nerve, directly countering CGRP-driven vasodilation</li>
+                    <li><strong>CGRP inhibition:</strong> May reduce CGRP release from trigeminal terminals</li>
+                    <li><strong>Trigeminal nerve modulation:</strong> May directly affect nerve firing patterns</li>
+                </ul>
+                <h4>Important details:</h4>
+                <ul>
+                    <li><strong>Flow rate matters enormously:</strong> 5 L/min is too low. Many sufferers need 15&ndash;25 L/min.</li>
+                    <li><strong>O2 concentrators typically don't work</strong>&mdash;they produce lower concentration and lower flow than compressed O2 tanks</li>
+                    <li>Must be 100% oxygen via non-rebreather mask (not nasal cannula)</li>
+                    <li>Some use a "demand valve" system for even higher flow on inhalation</li>
+                </ul>
+                <p>The RN with 25+ years of CH experience rated oxygen as only partially effective compared to <span class="q-link" data-q="emgality">Emgality</span>. But for many sufferers it's an essential part of the toolkit.</p>`
+            },
+            'cold-method': {
+                question: "How does the cold/brain freeze method work?",
+                answer: `<p>Multiple independent Reddit users report that inducing <strong>brain freeze</strong>&mdash;drinking ice slushies, holding ice cubes against the palate, or chugging ice water through a straw aimed at the roof of the mouth&mdash;can abort cluster attacks.</p>
+                <blockquote>"I chug ice water through a straw, keep the straw at the roof of my mouth. It forces an ice cream headache and hurts like a motherfucker for a bit, but then starts to fade!"</blockquote>
+                <h4>Proposed mechanism:</h4>
+                <p>The roof of the mouth is directly adjacent to the <span class="q-link" data-q="spg-block">sphenopalatine ganglion (SPG)</span>&mdash;the nerve cluster connecting the trigeminal and autonomic systems. Intense cold may:</p>
+                <ul>
+                    <li><strong>Stimulate the <span class="q-link" data-q="vagus-nerve">vagus nerve</span></strong>&mdash;cold is a known vagal activator, and vagal stimulation reduces inflammation</li>
+                    <li><strong>"Reset" the SPG</strong>&mdash;interrupting the pathological trigeminal-autonomic reflex</li>
+                    <li>Cause local vasoconstriction, countering CGRP-driven vasodilation</li>
+                </ul>
+                <p>One user reports it works "100% of the time if caught early" and has blasted the AC during attacks as well. Multiple confirmations in replies, including: "This actually worked for me, which is insane."</p>`
+            },
+            'exercise-abort': {
+                question: "Can exercise really abort a cluster headache?",
+                answer: `<p>Yes, and it's remarkably well-documented. Multiple independent Reddit users confirm it works if caught early.</p>
+                <h4>The evidence:</h4>
+                <p>One user meticulously tracked <strong>56 out of 60 successful aborts</strong> via 90-second sprints on a treadmill. Others report push-ups, jumping jacks (20 minutes), or running.</p>
+                <h4>Proposed mechanisms:</h4>
+                <ul>
+                    <li><strong>Increased blood oxygen:</strong> Essentially mimicking O2 therapy</li>
+                    <li><strong>Endorphin release:</strong> Natural painkillers</li>
+                    <li><strong>Vagal activation:</strong> Intense exertion stimulates the <span class="q-link" data-q="vagus-nerve">vagus nerve</span></li>
+                    <li><strong>Rapid breathing:</strong> Changes CO2 levels, affecting blood vessel tone</li>
+                    <li><strong>Heart rate elevation:</strong> Changes blood flow patterns in the cranial vasculature</li>
+                </ul>
+                <h4>The catch:</h4>
+                <p>Must be caught <em>early</em> in the attack. Once the CGRP cascade is fully engaged, exercise may not overcome it. Some sufferers also report that exercise can occasionally <em>trigger</em> attacks during cluster periods, so results vary.</p>`
+            },
+            'caffeine-abort': {
+                question: "How does caffeine work as an abortive?",
+                answer: `<p>Red Bull and strong coffee are frequently mentioned as effective abortives when consumed quickly at the first sign of an attack.</p>
+                <h4>Mechanism:</h4>
+                <p>Caffeine is an <strong>adenosine receptor antagonist</strong>. Adenosine normally causes vasodilation; blocking it causes <strong>vasoconstriction</strong>&mdash;directly countering the CGRP-driven vasodilation of cluster headache.</p>
+                <h4>How to use it:</h4>
+                <ul>
+                    <li>Must be consumed <strong>quickly</strong> at the first sign of an attack</li>
+                    <li>Red Bull is commonly cited (the cold + caffeine may both help)</li>
+                    <li>"If I down it quickly as an attack starts, I can usually mitigate it to a shadow"</li>
+                </ul>
+                <h4>Caution:</h4>
+                <p>Paradoxically, too much caffeine <em>between</em> attacks may trigger attacks (caffeine withdrawal causes rebound vasodilation). It works as an abortive during an attack but should be used judiciously as a preventive.</p>`
+            },
+            'vagus-nerve': {
+                question: "What is the vagus nerve and how does it help?",
+                answer: `<p>The <strong>vagus nerve</strong> (cranial nerve X) is the longest cranial nerve, running from the brainstem through the neck, chest, and abdomen. It's the main nerve of the <strong>parasympathetic nervous system</strong>.</p>
+                <h4>The cholinergic anti-inflammatory pathway:</h4>
+                <p>When the vagus nerve is stimulated, it releases acetylcholine, which activates the "cholinergic anti-inflammatory pathway"&mdash;suppressing production of inflammatory cytokines (TNF-&alpha;, IL-1, IL-6) and reducing systemic inflammation.</p>
+                <h4>What stimulates the vagus nerve:</h4>
+                <ul>
+                    <li><strong>Cold exposure:</strong> Slushies, ice on palate, cold showers, ice packs on neck</li>
+                    <li><strong>Humming/singing:</strong> Vibration in the throat directly stimulates vagal branches</li>
+                    <li><strong>Deep breathing:</strong> Slow exhalation activates vagal tone (Wim Hof breathing)</li>
+                    <li><strong>GammaCore device:</strong> Electrical vagus nerve stimulation (VNS)</li>
+                    <li><strong>Exercise:</strong> Intense exertion increases vagal activity</li>
+                    <li><strong>Sleep position:</strong> Sleeping on right side may improve vagal tone (back is worst)</li>
+                    <li><strong>Yawning:</strong> Activates the vagus via jaw and throat muscles</li>
+                </ul>
+                <p>This may explain why such an improbable array of interventions&mdash;from brain freeze to humming to ASMR videos&mdash;can all help with cluster headaches. They all activate the same anti-inflammatory pathway.</p>`
+            },
+            'humming': {
+                question: "How does humming help with cluster headaches?",
+                answer: `<p>Multiple users report that humming or singing provides some relief during cluster attacks. The mechanism likely involves the <span class="q-link" data-q="vagus-nerve">vagus nerve</span>:</p>
+                <ul>
+                    <li>Humming creates vibration in the throat and sinuses</li>
+                    <li>The vagus nerve has branches in the throat (laryngeal branches) that are stimulated by this vibration</li>
+                    <li>Humming also increases <strong>nasal nitric oxide</strong> production by 15&ndash;20x, which may improve sinus ventilation</li>
+                    <li>The forced slow exhalation of sustained humming activates parasympathetic (calming) response</li>
+                </ul>
+                <p>One user in a Reddit thread on aborting attacks listed ASMR, yawning repeatedly, scratching the scalp, and hot showers alongside humming&mdash;all of which can stimulate the vagus nerve through different pathways.</p>`
+            },
+            'psychedelics': {
+                question: "How do psychedelics help cluster headaches?",
+                answer: `<p>Psilocybin (magic mushrooms), LSD, and DMT are repeatedly described as the most effective treatments by sufferers, with some calling them "life-saving."</p>
+                <h4>The evidence:</h4>
+                <ul>
+                    <li>One user reports <strong>4+ years pain-free</strong> from dosing every 3 months</li>
+                    <li>DMT reported to have <strong>100% success rate</strong> aborting attacks by some users</li>
+                    <li>A single dose can end an <em>entire cluster cycle</em>&mdash;not just one attack</li>
+                </ul>
+                <h4>How they work:</h4>
+                <p>Psychedelics act primarily on <strong>5-HT2A serotonin receptors</strong> (triptans, in contrast, primarily bind to 5-HT1B and 5-HT1D receptors). DMT is structurally similar to sumatriptan. But psychedelics likely go beyond simple receptor binding:</p>
+                <ul>
+                    <li><strong>Neuroplasticity:</strong> Psychedelics promote dendritic growth and new neural connections</li>
+                    <li><strong>Network "reset":</strong> They may disrupt entrenched dysfunctional patterns in the hypothalamic-trigeminal circuits</li>
+                    <li><strong>Anti-inflammatory:</strong> 5-HT2A activation modulates neuroinflammation</li>
+                </ul>
+                <h4>Dosing patterns:</h4>
+                <ul>
+                    <li><strong>Full dose:</strong> 2&ndash;3 g dried mushrooms; breakthrough DMT dose. 5&ndash;7 days between doses.</li>
+                    <li><strong>Microdose:</strong> Sub-perceptual amounts. Reported less effective by most users.</li>
+                    <li>Some use LSD tabs as an alternative to mushrooms</li>
+                </ul>
+                <p>Legal barriers remain the primary obstacle to wider use.</p>`
+            },
+            'ketamine': {
+                question: "Can ketamine help cluster headaches?",
+                answer: `<p>Ketamine is an <strong>NMDA receptor antagonist</strong>&mdash;it blocks the same receptor that magnesium normally blocks. Given the role of <span class="q-link" data-q="nmda">NMDA receptors</span> in the cluster headache cascade, there's theoretical basis for its use.</p>
+                <h4>Current evidence:</h4>
+                <p>Limited but growing. Ketamine nasal sprays have been explored for acute migraine and cluster headache, with some case reports of efficacy. The mechanism would be:</p>
+                <ul>
+                    <li>Blocks NMDA receptors on trigeminal neurons</li>
+                    <li>Prevents glutamate-driven calcium influx</li>
+                    <li>Reduces CGRP release downstream</li>
+                    <li>May have neuroplastic effects (like psychedelics) at sub-anesthetic doses</li>
+                </ul>
+                <p>This is an area of active research. Ketamine is legally available (unlike psilocybin/LSD in most jurisdictions) but is not yet a standard treatment for cluster headache.</p>`
+            },
+            'emgality': {
+                question: "What is Emgality and how does it work?",
+                answer: `<p><strong>Emgality (galcanezumab)</strong> is a monoclonal antibody that directly blocks CGRP&mdash;the key neuropeptide driving cluster headache pain.</p>
+                <blockquote>"Truly saved and returned me to a normal and 98% pain-free life."<cite>&mdash; Registered nurse with 25+ years of cluster headache</cite></blockquote>
+                <h4>How it works:</h4>
+                <p>Galcanezumab binds to CGRP molecules in the bloodstream and prevents them from reaching their receptors on blood vessel walls. No CGRP binding &rarr; no vasodilation &rarr; no pain cascade.</p>
+                <h4>Administration:</h4>
+                <ul>
+                    <li>Self-administered injection (subcutaneous)</li>
+                    <li>Monthly dosing for migraine; loading dose for cluster headache</li>
+                    <li>FDA-approved for episodic cluster headache (2019)</li>
+                </ul>
+                <h4>Compared to D3 protocol:</h4>
+                <p>Emgality blocks CGRP in the bloodstream (downstream). D3/calcitriol suppresses CGRP <em>gene transcription</em> (upstream). Both target CGRP but at different points. Some sufferers use both together.</p>
+                <p>Emgality is expensive (~$500&ndash;700/month without insurance). The D3 protocol costs under 50 cents/day. But Emgality works faster and doesn't require the cofactor infrastructure.</p>`
+            },
+            'spg-block': {
+                question: "What is an SPG nerve block?",
+                answer: `<p>The <strong>sphenopalatine ganglion (SPG)</strong> is a cluster of nerve cells located behind the nose, in the pterygopalatine fossa. It's the key junction connecting the trigeminal nerve to the autonomic nervous system&mdash;the exact pathway that produces cluster headache symptoms.</p>
+                <h4>How SPG blocks work:</h4>
+                <p>A catheter device (no needles) delivers anesthetic to the membrane directly above the SPG, essentially "numbing" the ganglion. This interrupts the trigeminal-autonomic reflex and can "reset the system."</p>
+                <h4>The RN's experience:</h4>
+                <p>The registered nurse with 25 years of cluster headache rated SPG blocks highly&mdash;describing them as able to interrupt the pain cycle. Combined with <span class="q-link" data-q="emgality">Emgality</span>, SPG blocks were part of what finally gave her 98% pain-free living.</p>
+                <h4>Lidocaine nasal spray (4%):</h4>
+                <p>A simpler version of SPG targeting. Sprayed into the nostril, it anesthetizes the membrane above the SPG. Available by prescription and used for acute attacks.</p>
+                <p>This is also why the <span class="q-link" data-q="cold-method">brain freeze method</span> may work&mdash;the roof of the mouth is adjacent to the SPG, and intense cold stimulation may achieve a similar "reset" effect.</p>`
+            },
+            'triptans-rebound': {
+                question: "Why are triptans risky for cluster headache?",
+                answer: `<p><strong>Sumatriptan</strong> (and other triptans) are 5-HT1B/1D serotonin receptor agonists that can abort acute cluster attacks quickly, especially the injectable form.</p>
+                <h4>The rebound problem:</h4>
+                <p>Multiple sufferers report that frequent triptan use causes <strong>rebound headaches</strong>&mdash;the medication itself triggers new attacks once it wears off, creating a cycle of:</p>
+                <ol>
+                    <li>Attack &rarr; take sumatriptan &rarr; relief</li>
+                    <li>Medication wears off &rarr; rebound attack &rarr; take more sumatriptan</li>
+                    <li>Escalating frequency of attacks</li>
+                </ol>
+                <p>The RN with 25 years of cluster headache experience warned strongly against sumatriptan, calling it a source of "terrible rebound attacks."</p>
+                <h4>The mechanism:</h4>
+                <p>Chronic serotonin receptor stimulation may cause receptor downregulation or sensitization of pain pathways, making the underlying condition worse over time even as each individual dose provides relief.</p>
+                <p>Triptans may be appropriate for occasional use but are risky as a primary abortive for frequent cluster attacks.</p>`
+            },
+            'verapamil-problems': {
+                question: "What are the problems with verapamil?",
+                answer: `<p><strong>Verapamil</strong> is a calcium channel blocker and the recommended first-line <em>preventive</em> for cluster headache. But it has significant issues:</p>
+                <h4>Side effects:</h4>
+                <ul>
+                    <li><strong>Peripheral edema:</strong> Swelling of legs and feet (the RN experienced this)</li>
+                    <li>Constipation</li>
+                    <li>Cardiac conduction abnormalities (requires ECG monitoring at higher doses)</li>
+                    <li>Dizziness, fatigue</li>
+                </ul>
+                <h4>D3 interaction:</h4>
+                <p>One user reports that the D3 protocol <strong>only worked after stopping verapamil completely</strong>. The mechanism isn't clear, but verapamil blocks calcium channels, and the D3 protocol works partly by regulating calcium handling&mdash;they may work at cross-purposes.</p>
+                <p>Some Clusterbusters forum users report that combining D3 with verapamil may worsen symptoms. Batcheller (D3 protocol developer) notes that verapamil can be tapered off after a favorable D3 response.</p>`
+            },
+            'melatonin': {
+                question: "How does melatonin help cluster headaches?",
+                answer: `<p><strong>Melatonin</strong> is a hormone produced by the pineal gland (regulated by the hypothalamus) that governs the sleep-wake cycle. It's implicated in cluster headache through the hypothalamic connection.</p>
+                <h4>Evidence:</h4>
+                <ul>
+                    <li>Multiple Reddit users report effectiveness at <strong>10&ndash;20 mg before bed</strong></li>
+                    <li>The D3 "Full Monty" protocol includes 10 mg melatonin</li>
+                    <li>Melatonin levels are often abnormal in cluster headache patients</li>
+                    <li>It may help by improving deep sleep quality (attacks often occur during REM)</li>
+                </ul>
+                <h4>Why the dose seems high:</h4>
+                <p>Standard melatonin supplements are 0.5&ndash;5 mg. The 10&ndash;20 mg used for cluster headache is much higher. At these doses, melatonin may have anti-inflammatory effects beyond its sleep-regulating role&mdash;it's a potent antioxidant and has been shown to modulate CGRP pathways.</p>
+                <h4>Circadian management:</h4>
+                <p>Beyond supplementation, maintaining fixed sleep schedules, consistent wake times, and managing blue light exposure may help by stabilizing the hypothalamic clock that governs attack timing.</p>`
+            }
+        };
+
+        // Track open modals
+        let openModals = [];
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modalContainer = document.getElementById('modalContainer');
+
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('q-link')) {
+                e.preventDefault();
+                const questionId = e.target.dataset.q;
+                if (questionId && qaDatabase[questionId]) {
+                    openModal(questionId);
+                }
+            }
+        });
+
+        function openModal(questionId) {
+            const qa = qaDatabase[questionId];
+            if (!qa) return;
+            if (openModals.includes(questionId)) return;
+
+            openModals.push(questionId);
+            const isNested = openModals.length > 1;
+            const depth = openModals.length;
+
+            const modalBox = document.createElement('div');
+            modalBox.className = `modal-box ${isNested ? 'nested' : ''}`;
+            modalBox.dataset.questionId = questionId;
+            modalBox.style.animationDelay = `${(depth - 1) * 0.1}s`;
+
+            let breadcrumb = '';
+            if (isNested) {
+                const trail = openModals.slice(0, -1).map(id => {
+                    const q = qaDatabase[id];
+                    return q ? q.question.substring(0, 30) + '...' : '';
+                }).join(' <span>\u2192</span> ');
+                breadcrumb = `<div class="modal-breadcrumb">${trail}</div>`;
+            }
+
+            modalBox.innerHTML = `
+                <div class="modal-header">
+                    <div>
+                        ${breadcrumb}
+                        <div class="modal-question">${qa.question}</div>
+                    </div>
+                    <button class="modal-close" data-question-id="${questionId}">\u00d7</button>
+                </div>
+                <div class="modal-content">
+                    ${qa.answer}
+                </div>
+            `;
+
+            modalContainer.appendChild(modalBox);
+            modalOverlay.classList.add('active');
+
+            setTimeout(() => {
+                modalBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        }
+
+        function closeModal(questionId) {
+            const index = openModals.indexOf(questionId);
+            if (index === -1) return;
+
+            const toRemove = openModals.slice(index);
+            openModals = openModals.slice(0, index);
+
+            toRemove.forEach(id => {
+                const box = modalContainer.querySelector(`[data-question-id="${id}"]`);
+                if (box) {
+                    box.style.opacity = '0';
+                    box.style.transform = 'translateY(20px)';
+                    setTimeout(() => box.remove(), 300);
+                }
+            });
+
+            if (openModals.length === 0) {
+                setTimeout(() => {
+                    modalOverlay.classList.remove('active');
+                }, 300);
+            }
+        }
+
+        modalContainer.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal-close')) {
+                closeModal(e.target.dataset.questionId);
+            }
+        });
+
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) {
+                [...openModals].reverse().forEach(id => closeModal(id));
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && openModals.length > 0) {
+                closeModal(openModals[openModals.length - 1]);
+            }
+        });
+
+        // Section scroll animations
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.section').forEach(section => {
+            sectionObserver.observe(section);
+        });
+    </script>
+</body>
+</html>
