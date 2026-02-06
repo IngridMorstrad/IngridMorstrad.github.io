@@ -124,7 +124,7 @@ date: 2026-02-05
 
     <div class="input-group">
         <label for="years">Number of Years</label>
-        <input type="number" id="years" placeholder="e.g., 5" step="0.1" min="0.1">
+        <input type="number" id="years" placeholder="e.g., 5" step="any" min="0.1">
     </div>
 
     <div class="input-group">
@@ -141,78 +141,60 @@ date: 2026-02-05
 </div>
 
 <script>
-const inputs = {
-    startPrice: document.getElementById('startPrice'),
-    endPrice: document.getElementById('endPrice'),
-    years: document.getElementById('years'),
-    cagr: document.getElementById('cagr')
-};
+const fields = ['startPrice', 'endPrice', 'years', 'cagr'];
+const inputs = Object.fromEntries(fields.map(id => [id, document.getElementById(id)]));
 
 let lastCalculated = null;
 
-// Add event listeners to all inputs
 Object.values(inputs).forEach(input => {
-    input.addEventListener('input', calculate);
+    input.addEventListener('input', (e) => calculate(e.target));
 });
 
-function calculate() {
-    // Count how many fields are filled
-    const filled = {};
-    let filledCount = 0;
-
-    for (let key in inputs) {
-        const val = parseFloat(inputs[key].value);
-        if (!isNaN(val) && inputs[key].value !== '') {
-            filled[key] = val;
-            filledCount++;
-        }
+function calculate(triggerField) {
+    // Clear previously calculated field to allow manual edits
+    if (lastCalculated) {
+        inputs[lastCalculated].value = '';
+        lastCalculated = null;
     }
 
     // Reset all calculated styling
-    Object.values(inputs).forEach(input => {
-        input.classList.remove('calculated');
-    });
+    Object.values(inputs).forEach(input => input.classList.remove('calculated'));
+
+    // If user is clearing the trigger field, don't recalculate
+    if (triggerField && triggerField.value === '') return;
+
+    // Count filled fields
+    const filled = {};
+    for (const key of fields) {
+        const val = parseFloat(inputs[key].value);
+        if (!isNaN(val) && inputs[key].value !== '') {
+            filled[key] = val;
+        }
+    }
 
     // Need exactly 3 values to calculate the 4th
-    if (filledCount !== 3) {
-        lastCalculated = null;
-        return;
-    }
-
-    // Determine which one to calculate
-    let toCalculate = null;
-    for (let key in inputs) {
-        if (!(key in filled)) {
-            toCalculate = key;
-            break;
-        }
-    }
-
-    if (!toCalculate) return;
+    const toCalculate = fields.find(key => !(key in filled));
+    if (!toCalculate || Object.keys(filled).length !== 3) return;
 
     let result;
-    try {
-        if (toCalculate === 'cagr') {
-            // CAGR = (Ending/Beginning)^(1/Years) - 1
-            result = (Math.pow(filled.endPrice / filled.startPrice, 1 / filled.years) - 1) * 100;
-        } else if (toCalculate === 'endPrice') {
-            // Ending = Beginning * (1 + CAGR)^Years
-            result = filled.startPrice * Math.pow(1 + (filled.cagr / 100), filled.years);
-        } else if (toCalculate === 'startPrice') {
-            // Beginning = Ending / (1 + CAGR)^Years
-            result = filled.endPrice / Math.pow(1 + (filled.cagr / 100), filled.years);
-        } else if (toCalculate === 'years') {
-            // Years = log(Ending/Beginning) / log(1 + CAGR)
-            result = Math.log(filled.endPrice / filled.startPrice) / Math.log(1 + (filled.cagr / 100));
-        }
+    if (toCalculate === 'cagr') {
+        // CAGR = (Ending/Beginning)^(1/Years) - 1
+        result = (Math.pow(filled.endPrice / filled.startPrice, 1 / filled.years) - 1) * 100;
+    } else if (toCalculate === 'endPrice') {
+        // Ending = Beginning * (1 + CAGR)^Years
+        result = filled.startPrice * Math.pow(1 + (filled.cagr / 100), filled.years);
+    } else if (toCalculate === 'startPrice') {
+        // Beginning = Ending / (1 + CAGR)^Years
+        result = filled.endPrice / Math.pow(1 + (filled.cagr / 100), filled.years);
+    } else if (toCalculate === 'years') {
+        // Years = log(Ending/Beginning) / log(1 + CAGR)
+        result = Math.log(filled.endPrice / filled.startPrice) / Math.log(1 + (filled.cagr / 100));
+    }
 
-        if (isFinite(result) && !isNaN(result)) {
-            inputs[toCalculate].value = result.toFixed(2);
-            inputs[toCalculate].classList.add('calculated');
-            lastCalculated = toCalculate;
-        }
-    } catch (e) {
-        console.error('Calculation error:', e);
+    if (isFinite(result) && !isNaN(result)) {
+        inputs[toCalculate].value = result.toFixed(2);
+        inputs[toCalculate].classList.add('calculated');
+        lastCalculated = toCalculate;
     }
 }
 
