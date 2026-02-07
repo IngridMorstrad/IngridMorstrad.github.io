@@ -5,6 +5,8 @@ date: "2025-12-02"
 title: YouTube videos
 ---
 
+## 12/02/2025
+
 Jensen's talk at the Stanford Graduate School of Business ([link](https://www.youtube.com/watch?v=lXLBTBBil2U)).
 
 ## My takeaways
@@ -16,6 +18,69 @@ Jensen's talk at the Stanford Graduate School of Business ([link](https://www.yo
 - Regulations should be done by specialists in the field (53:05). Interesting thought. I agree and wonder why this level of nuance is not there in most governments (and for that matter most discussions) around the world. Why not have a young tech advisor or tech-enabler to allow governments to digitize and democratize access to information?
 
 ### Other notes
-He also looks back on life to decide what to do, which (to me) is similar to Bezos' regret minimization framework.  
-I didn't understand his point about tokens floating in space (51:10).  
-Quotes indicate I paraphrased something in the talk. They aren't exact quotations as you may expect, so I have this note here.   
+He also looks back on life to decide what to do, which (to me) is similar to Bezos' regret minimization framework.
+I didn't understand his point about tokens floating in space (51:10).
+Quotes indicate I paraphrased something in the talk. They aren't exact quotations as you may expect, so I have this note here.
+
+---
+
+## 11/02/2024
+
+### Scalene Python profiler
+https://www.youtube.com/watch?v=vVUnCXKuNOg
+
+Great talk on a new python profiler (Scalene)
+
+**Main takeaway:** When coding in Python, for performance, write your programs in C and call them :) (also, be wary of copies when crossing the language interface boundary)
+
+---
+
+## 02/2024 (date approximated)
+
+### HTML/React/CSS talk
+https://www.youtube.com/watch?v=m8SmXOTM8Ec
+
+Seemed like a code in search of a problem talk to me.
+
+**Main takeaway:** Specific technical things about coding in HTML/react/CSS. Appreciate that there's technical info to be shared, would be useful for devs that use I presume.
+
+---
+
+## 08/2023
+
+### Dan Abramov - The Wet Codebase
+https://www.deconstructconf.com/2019/dan-abramov-the-wet-codebase
+
+Somewhat useful
+
+**Main takeaway #1:** Don't abstract too early. Feel free to inline code (un-abstract), and then re-abstract later if needed.
+**Main takeaway #2:** Best practices might be summarized, so really think about the underlying reason for the best practice before applying it.
+
+### Vaidehi Joshi - Setting Up to Fail
+https://www.deconstructconf.com/2019/vaidehi-joshi-setting-up-to-fail
+
+Goes over some types of distributed system failures. Useful if you are a new SDE in the industry, working on distributed systems. Else, not.
+
+**Main takeaway:** Distributed systems can fail in various ways and if you work with distributed systems, it may be useful to learn this (+ ways to address these, which the talk doesn't cover)
+
+### Hillary Anderson - The Odyssey
+https://www.deconstructconf.com/2019/hillary-anderson-the-odyssey-lessons-learned-from-learning
+
+Didn't find it too useful. About learning, working in the data science field.
+
+**Main takeaway:** Teach others to learn better. Community helps.
+
+### Karla Burnett - 2-Factor 4 Humans
+https://www.deconstructconf.com/2019/karla-burnett-2-factor-4-humans
+
+Useful and highly recommended if you are new to security & interested to learn.
+
+**Main takeaway:** Too many to list.
+
+### Allison Kaptur - Clock Skew and You
+https://www.deconstructconf.com/2019/allison-kaptur-clock-skew-and-you
+
+Worth a watch if you work with distributed systems.
+- SSL certs are affected by clock skew. This was solved by shipping a key with chrome, maintaining time servers in google's DC to know accurate times, and prompting users to fix their client clock, which surfaced that most ssl issues are due to time.
+- How NTP works (layers of computers from high accuracy to lower). SNTP differs in that it is P2P synchronization (? not explained in talk, independent research)
+- Shows how to calculate clock skew, but only if skew is symmetric in request & response.   
