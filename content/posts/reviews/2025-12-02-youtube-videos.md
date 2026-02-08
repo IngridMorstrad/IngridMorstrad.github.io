@@ -35,7 +35,7 @@ Great talk on a new python profiler (Scalene)
 
 ---
 
-## 02/2024 (date approximated)
+## 11/2024 (date approximated)
 
 ### HTML/React/CSS talk
 https://www.youtube.com/watch?v=m8SmXOTM8Ec
@@ -46,22 +46,19 @@ Seemed like a code in search of a problem talk to me.
 
 ---
 
-## 08/2023
+## 08/25/2023
 
-### Dan Abramov - The Wet Codebase
-https://www.deconstructconf.com/2019/dan-abramov-the-wet-codebase
+### Allison Kaptur - Clock Skew and You
+https://www.deconstructconf.com/2019/allison-kaptur-clock-skew-and-you
 
-Somewhat useful
+Worth a watch if you work with distributed systems.
+- SSL certs are affected by clock skew. This was solved by shipping a key with chrome, maintaining time servers in google's DC to know accurate times, and prompting users to fix their client clock, which surfaced that most ssl issues are due to time.
+- How NTP works (layers of computers from high accuracy to lower). SNTP differs in that it is P2P synchronization (? not explained in talk, independent research)
+- Shows how to calculate clock skew, but only if skew is symmetric in request & response.
 
-**Main takeaway #1:** Don't abstract too early. Feel free to inline code (un-abstract), and then re-abstract later if needed.
-**Main takeaway #2:** Best practices might be summarized, so really think about the underlying reason for the best practice before applying it.
+---
 
-### Vaidehi Joshi - Setting Up to Fail
-https://www.deconstructconf.com/2019/vaidehi-joshi-setting-up-to-fail
-
-Goes over some types of distributed system failures. Useful if you are a new SDE in the industry, working on distributed systems. Else, not.
-
-**Main takeaway:** Distributed systems can fail in various ways and if you work with distributed systems, it may be useful to learn this (+ ways to address these, which the talk doesn't cover)
+## 08/24/2023
 
 ### Hillary Anderson - The Odyssey
 https://www.deconstructconf.com/2019/hillary-anderson-the-odyssey-lessons-learned-from-learning
@@ -77,10 +74,21 @@ Useful and highly recommended if you are new to security & interested to learn.
 
 **Main takeaway:** Too many to list.
 
-### Allison Kaptur - Clock Skew and You
-https://www.deconstructconf.com/2019/allison-kaptur-clock-skew-and-you
+---
 
-Worth a watch if you work with distributed systems.
-- SSL certs are affected by clock skew. This was solved by shipping a key with chrome, maintaining time servers in google's DC to know accurate times, and prompting users to fix their client clock, which surfaced that most ssl issues are due to time.
-- How NTP works (layers of computers from high accuracy to lower). SNTP differs in that it is P2P synchronization (? not explained in talk, independent research)
-- Shows how to calculate clock skew, but only if skew is symmetric in request & response.   
+## 08/22/2023
+
+### Dan Abramov - The Wet Codebase
+https://www.deconstructconf.com/2019/dan-abramov-the-wet-codebase
+
+Somewhat useful
+
+**Main takeaway #1:** Don't abstract too early. Feel free to inline code (un-abstract), and then re-abstract later if needed.
+**Main takeaway #2:** Best practices might be summarized, so really think about the underlying reason for the best practice before applying it.
+
+### Vaidehi Joshi - Setting Up to Fail
+https://www.deconstructconf.com/2019/vaidehi-joshi-setting-up-to-fail
+
+Goes over some types of distributed system failures. Useful if you are a new SDE in the industry, working on distributed systems. Else, not.
+
+**Main takeaway:** Distributed systems can fail in various ways and if you work with distributed systems, it may be useful to learn this (+ ways to address these, which the talk doesn't cover)   

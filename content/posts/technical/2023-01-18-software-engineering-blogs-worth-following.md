@@ -19,36 +19,55 @@ _Approximately in the order I'd recommend them in_
 
 Unranked (haven't gotten to yet):
 
-[Carlos Arguelles](https://carloarg02.medium.com/) (haven't gotten to it yet)
-[Brandon Rhodes](https://rhodesmill.org/brandon/)
-[explog.in](https://explog.in/)
-[evalapply.org](https://www.evalapply.org/)
-[the.scapegoat.dev](https://the.scapegoat.dev/blog/)
-[Manuel's Obsidian](https://publish.obsidian.md/manuel/Public/INDEX)
-[Lily Mara's talks](https://lilymara.xyz/talks/)
-[Lily Mara's blogroll](https://lilymara.xyz/pages/blogroll/)
-[Mara's blog](https://blog.m-ou.se/)
-[near.blog links](https://near.blog/links/)
-[Architecture Notes](https://architecturenotes.co/)
-[Mahdi Yusuf](https://mahdiyusuf.com/)
-[Franco Fernando's newsletter](https://newsletter.francofernando.com/)
-[Chris Munns talks](https://chrismunns.com/talks.html)
+[Carlos Arguelles](https://carloarg02.medium.com/) (haven't gotten to it yet)  
+[Brandon Rhodes](https://rhodesmill.org/brandon/)  
+[explog.in](https://explog.in/)  
+[evalapply.org](https://www.evalapply.org/)  
+[the.scapegoat.dev](https://the.scapegoat.dev/blog/)  
+[Manuel's Obsidian](https://publish.obsidian.md/manuel/Public/INDEX)  
+[Lily Mara's talks](https://lilymara.xyz/talks/)  
+[Lily Mara's blogroll](https://lilymara.xyz/pages/blogroll/)  
+[Mara's blog](https://blog.m-ou.se/)  
+[near.blog links](https://near.blog/links/)  
+[Architecture Notes](https://architecturenotes.co/)  
+[Mahdi Yusuf](https://mahdiyusuf.com/)  
+[Franco Fernando's newsletter](https://newsletter.francofernando.com/)  
+[Chris Munns talks](https://chrismunns.com/talks.html)  
 
 Will add more as I find more worth adding here.
 
 ### Specific blog posts I really enjoy
 
-**2024-02-06:** [Time management at work](https://brooker.co.za/blog/2024/02/06/time.html) - Interesting to know he still implements algorithms to understand new concepts better. Specifics on meeting frequency with manager was useful.
+**2024-02-06:** https://brooker.co.za/blog/2024/02/06/time.html
+- Main takeaway: Interesting to know he still implements algorithms to understand new concepts better.
+- Rest was usual self help kind of advice. This makes me think the main difference is executing on plans, not planning (despite what the post says!).
+- Specifics was interesting (how often he meets with his manager to discuss this).
 
-**2024-02:** [Making Big Changes](https://brooker.co.za/blog/2020/10/19/big-changes.html) - Great post, worth reading again. Be clear about the problem and what "solved" looks like. Engaging with doubters, dealing with comments from leadership, making a case for the work.
+**2024-02:** https://brooker.co.za/blog/2020/10/19/big-changes.html
+- Great post, worth reading again.
+- Takeaway 1: Be clear about the problem and what a "solved problem" would look like
+- Takeaway 2: Engaging with doubters (comments), kinds of comments and how to deal with them
+- Takeaway 3: How to engage with comments from leadership, making a case for the work. Politics, and why it is good
 
-**2024-02:** [The hardest problem](https://benv.ca/blog/posts/the-hardest-problem) - Code is in service of the business problem, not the ultimate thing itself.
+**2024-02:** https://benv.ca/blog/posts/the-hardest-problem
+The takeaway isn't something new to me.
+- Main takeaway: Code is in service of the business problem, and code is not the ultimate thing itself
 
-**2024-02:** [Stupid](https://antonz.org/stupid/) - Keep things simple due to limited mental capacity. Complexity is overrated.
+**2024-02:** https://antonz.org/stupid/
+Small, nice post.
+Main takeaway: The dev prefers to keep things simple due to limited mental capacity these days (I can relate). He doesn't say it, but it implies that complexity is overrated. This somewhat misunderstands why that complexity may be needed also.
 
-**2023-09:** [Do Not End The Week With Nothing](https://training.kalzumeus.com/newsletters/archive/do-not-end-the-week-with-nothing) - Open source, code in public, build on your capital (non-work capital).
+**2023-09:** https://training.kalzumeus.com/newsletters/archive/do-not-end-the-week-with-nothing
+- Worth reading the summary below:
+- open source, code in public
+- have something to show, prefer places that lets you do something in public
+- build on your capital (non-work capital)
 
-**2023-09:** [Glue work](https://noidea.dog/glue) - Useful if struggling to get promoted/recognized. Talks about glue work biases, tips on promotion (do what company wants, create a story, align with manager).
+**2023-09:** https://noidea.dog/glue
+- Useful if you're struggling to get promoted/recognized at work
+- Talks about glue work, and highlights some biases around it
+- Gives some tips on how to get promoted (do what the company wants, create a story that highlights the work you're doing, align with your manager, create a plan & follow up)
+- Personal note: Interestingly some companies can lean too much to either following the defined promotion process (not recognizing glue work at all, and thus suffering) while others may recognize glue work too much (well-defined tasks do not get done)
 
 https://buttondown.com/jaffray/archive/my-first-distributed-system/
 This was a great read about how GitHub & PRs change in the AI world: https://tldraw.dev/blog/stay-away-from-my-trash
