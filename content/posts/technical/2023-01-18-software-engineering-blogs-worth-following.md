@@ -38,36 +38,36 @@ Will add more as I find more worth adding here.
 
 ### Specific blog posts I really enjoy
 
+**2025-06-26:** https://buttondown.com/jaffray/archive/my-first-distributed-system/
+- This was a great read about how GitHub & PRs change in the AI world: https://tldraw.dev/blog/stay-away-from-my-trash
+
+**2024-03-06:** https://benv.ca/blog/posts/the-hardest-problem
+- The takeaway isn't something new to me.
+- Main takeaway: Code is in service of the business problem, and code is not the ultimate thing itself
+
+**2024-03-06:** https://antonz.org/stupid/
+- Small, nice post.
+- Main takeaway: The dev prefers to keep things simple due to limited mental capacity these days (I can relate). He doesn't say it, but it implies that complexity is overrated. This somewhat misunderstands why that complexity may be needed also.
+
 **2024-02-06:** https://brooker.co.za/blog/2024/02/06/time.html
 - Main takeaway: Interesting to know he still implements algorithms to understand new concepts better.
 - Rest was usual self help kind of advice. This makes me think the main difference is executing on plans, not planning (despite what the post says!).
 - Specifics was interesting (how often he meets with his manager to discuss this).
 
-**2024-02:** https://brooker.co.za/blog/2020/10/19/big-changes.html
+**2024-02-06:** https://brooker.co.za/blog/2020/10/19/big-changes.html
 - Great post, worth reading again.
 - Takeaway 1: Be clear about the problem and what a "solved problem" would look like
 - Takeaway 2: Engaging with doubters (comments), kinds of comments and how to deal with them
 - Takeaway 3: How to engage with comments from leadership, making a case for the work. Politics, and why it is good
 
-**2024-02:** https://benv.ca/blog/posts/the-hardest-problem
-The takeaway isn't something new to me.
-- Main takeaway: Code is in service of the business problem, and code is not the ultimate thing itself
-
-**2024-02:** https://antonz.org/stupid/
-Small, nice post.
-Main takeaway: The dev prefers to keep things simple due to limited mental capacity these days (I can relate). He doesn't say it, but it implies that complexity is overrated. This somewhat misunderstands why that complexity may be needed also.
-
-**2023-09:** https://training.kalzumeus.com/newsletters/archive/do-not-end-the-week-with-nothing
-- Worth reading the summary below:
-- open source, code in public
-- have something to show, prefer places that lets you do something in public
-- build on your capital (non-work capital)
-
-**2023-09:** https://noidea.dog/glue
+**2023-09-14:** https://noidea.dog/glue
 - Useful if you're struggling to get promoted/recognized at work
 - Talks about glue work, and highlights some biases around it
 - Gives some tips on how to get promoted (do what the company wants, create a story that highlights the work you're doing, align with your manager, create a plan & follow up)
 - Personal note: Interestingly some companies can lean too much to either following the defined promotion process (not recognizing glue work at all, and thus suffering) while others may recognize glue work too much (well-defined tasks do not get done)
 
-https://buttondown.com/jaffray/archive/my-first-distributed-system/
-This was a great read about how GitHub & PRs change in the AI world: https://tldraw.dev/blog/stay-away-from-my-trash
+**2023-09-02:** https://training.kalzumeus.com/newsletters/archive/do-not-end-the-week-with-nothing
+- Worth reading the summary below.
+- Open source, code in public
+- Have something to show, prefer places that lets you do something in public
+- Build on your capital (non-work capital)
