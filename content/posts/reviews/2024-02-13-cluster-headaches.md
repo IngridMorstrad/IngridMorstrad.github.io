@@ -230,18 +230,69 @@ The hypothalamus—the brain's "biological clock"—is strongly implicated in cl
 
 Critically, the hypothalamus contains vitamin D receptors (VDR), 1α-hydroxylase (CYP27B1—the enzyme that converts 25(OH)D to calcitriol), and vitamin D-binding protein. This means the hypothalamus can produce its own active calcitriol locally for paracrine/autocrine signaling, independent of kidney-produced systemic calcitriol (Cui et al., *J Steroid Biochem Mol Biol*, 2017).
 
-The hypothalamus also has **direct CGRP-ergic projections** to the trigeminal nucleus caudalis (the first synapse for trigeminal pain signals). Dopaminergic neurons in the A11 nucleus of the posterior hypothalamus co-express CGRP and send bilateral projections to the outer laminae of the trigeminal nucleus caudalis (Charbit et al., *Ann Neurol*, 2009). This suggests a dual role:
+The hypothalamus also has **direct CGRP-ergic projections** to the trigeminal nucleus caudalis (the first synapse for trigeminal pain signals).
+
+**Understanding "-ergic" terminology:**
+The suffix "-ergic" means "using that neurotransmitter/neuropeptide." Examples:
+- Dopaminergic = uses dopamine
+- Serotonergic = uses serotonin
+- Cholinergic = uses acetylcholine
+- **CGRP-ergic** = uses CGRP
+
+"Hypothalamic CGRP-ergic projections" means: hypothalamic neurons that produce and release CGRP, whose axons project to TNC, and when they fire, they release CGRP (not glutamate, dopamine, etc.). This specifies which neurotransmitter that specific pathway uses—important because the hypothalamus contains many neuron types (dopaminergic, GABAergic, orexinergic, etc.).
+
+Dopaminergic neurons in the A11 nucleus of the posterior hypothalamus co-express CGRP and send bilateral projections (have axons—permanent nerve fibers grown during development—that reach) to the outer laminae of the trigeminal nucleus caudalis (Charbit et al., *Ann Neurol*, 2009). This suggests a dual role:
 - **Timing/trigger:** The circadian clock activates attacks at specific times
 - **Modulation:** Hypothalamic CGRP neurons can amplify or gate trigeminal pain signals
 
 **The mechanism:** When vitamin D levels are adequate → hypothalamus produces local calcitriol → VDR activation suppresses CGRP gene transcription → baseline CGRP production stays low → circadian triggers less likely to provoke attacks. When D levels are insufficient → CGRP genes not suppressed → circadian/sleep transitions more easily trigger the trigeminal cascade.
+
+#### Two CGRP Sources: Hypothalamus vs. Trigeminal Nerve
+
+**Hypothalamic CGRP = Upstream Modulator:**
+- Sensitizes TNC neurons (lowers threshold)
+- Part of circadian/autonomic trigger mechanism
+- **Sets the stage** but doesn't directly cause pain
+- Acts only centrally (at TNC), no peripheral inflammation
+- Necessary but not sufficient for full attack
+
+**Trigeminal CGRP = Downstream Effector:**
+- Activated by hypothalamic/autonomic signals
+- **Peripheral release** → vasodilation, neurogenic inflammation (actual pain source)
+- **Central release (at TNC)** → transmits pain signal
+- **Executes the attack**
+- Has peripheral terminals (blood vessels/meninges) that hypothalamus lacks
+
+**Sequential/Hierarchical Model (most likely):**
+```
+Hypothalamus dysregulation (circadian/autonomic)
+    ↓
+Parasympathetic activation + CGRP to TNC (sensitization)
+    ↓
+Trigeminal nerve activation (reflex arc)
+    ↓
+CGRP release (peripheral + central)
+    ↓
+Vasodilation + inflammation + pain transmission
+    ↓
+ATTACK
+```
+
+**Why trigeminal activation is required:**
+- Hypothalamic CGRP at TNC alone wouldn't cause peripheral symptoms (lacrimation, rhinorrhea, Horner's)
+- Cluster headache pain has peripheral vascular/inflammatory component
+- Trigeminal activation necessary for full attack phenotype
+
+**Why this distinction matters:**
+- CGRP antagonists (gepants) block receptor at TNC—work regardless of source
+- Understanding source hierarchy explains why attacks are circadian (hypothalamic pacemaker), why autonomic symptoms occur (hypothalamic-parasympathetic link), and why pain is unilateral/trigeminal distribution (trigeminal effector pathway)
 
 This may explain why **fixed sleep schedules**, **melatonin**, and **circadian rhythm management** (consistent wake times, blue light restriction) help prevent attacks.
 
 Notably, above approximately **37°N latitude** (roughly San Francisco, Seville, Athens, Seoul), the sun's angle is too low during winter months for UVB rays to penetrate the atmosphere sufficiently to trigger vitamin D synthesis in skin (Webb et al., *J Clin Endocrinol Metab*, 1988). For roughly 4–6 months of the year, no amount of sun exposure will produce meaningful D3. This means anyone living above this line—most of the US, all of Canada, nearly all of Europe, Scandinavia, Russia, northern China, Japan, Korea—is dependent on diet or supplementation for vitamin D during winter. This geographic constraint may partly explain cluster headache's seasonal periodicity.
 
 ### The Trigeminal-Autonomic Reflex
-Cluster headaches are classified as "trigeminal autonomic cephalalgias" (TACs). The trigeminal nerve (which innervates the face, eye, and sinuses) and the autonomic nervous system become pathologically linked:
+Cluster headaches are classified as "trigeminal autonomic cephalalgias" (TACs). The trigeminal nerve (which innervates—supplies nerve connections to—the face, eye, and sinuses) and the autonomic nervous system become pathologically linked:
 - Trigeminal nerve activation → releases inflammatory neuropeptides (CGRP, Substance P, VIP, PACAP)
 - These cause vasodilation, inflammation, and the characteristic pain around the eye
 - Autonomic symptoms follow: tearing, nasal congestion, drooping eyelid, pupil constriction
@@ -251,16 +302,102 @@ This explains why **SPG (sphenopalatine ganglion) nerve blocks**, **lidocaine na
 ### The CGRP Connection
 Calcitonin gene-related peptide (CGRP) is a 37-amino-acid neuropeptide and one of the most potent vasodilators known. It's elevated during cluster attacks and is a major player in the pain cascade:
 
+**Where CGRP is Released: Peripheral vs. Central Terminals**
+
+Trigeminal nerve neurons have **two types of terminals:**
+1. **Peripheral terminals** (in blood vessels, meninges around the ophthalmic branch):
+   - Release CGRP locally → causes vasodilation, neurogenic inflammation
+   - This is the primary pain source
+   - Location of the CGRP → NO positive feedback loop (see below)
+
+2. **Central terminals** (in trigeminal nucleus caudalis, TNC, in brainstem):
+   - Release CGRP to transmit pain signals centrally
+   - Different from hypothalamic CGRP (which is released FROM hypothalamus TO TNC as a modulatory signal)
+
 **How CGRP is released during attacks:**
 - When NMDA receptors on trigeminal neurons lose their magnesium block, glutamate activates them
 - Ca²⁺ floods into the neuron
 - High intracellular calcium triggers **vesicular exocytosis**—CGRP is released from nerve terminals
 - CGRP is stored in ~50% of trigeminal ganglion neurons, primarily small-to-medium C-type unmyelinated fibers (Edvinsson et al., *J Headache Pain*, 2018)
 
+**What activates C-fibers to release CGRP:**
+C-fibers are sensory nerves that detect pain and inflammation. They activate in response to chemical stimuli (H⁺ ions/acidity, bradykinin, prostaglandins, histamine from mast cells, ATP from damaged cells), mechanical stimuli (tissue stretch, swelling), and thermal stimuli (heat, cold). In cluster headaches, the primary triggers are glutamate release (from other neurons) → NMDA receptor activation (when magnesium block is lost) → Ca²⁺ influx → CGRP release. The "inflammatory soup" (bradykinin, prostaglandins, histamine, NO) then sustains activation. C-fibers have ion channels (TRPV1 for heat/capsaicin/acid, TRPA1 for cold/irritants, ASIC for acid, NMDA for glutamate, P2X for ATP) that open → depolarization → action potential → CGRP release.
+
 **What CGRP does during attacks:**
 - Causes vasodilation and neurogenic inflammation
-- Creates a positive feedback loop: CGRP → nitric oxide production → more vasodilation → more CGRP release
+- Creates a positive feedback loop (see detailed mechanism below)
 - Sensitizes more trigeminal neurons, amplifying the attack
+
+**Positive Feedback Loop (CGRP → NO → more CGRP):**
+
+The self-amplifying cycle at peripheral trigeminal terminals:
+
+1. **CGRP released** from trigeminal nerve terminal (peripheral, not TNC)
+2. **CGRP binds receptors** on blood vessel endothelial cells
+3. **Activates eNOS** (endothelial nitric oxide synthase) in vessel wall
+4. **NO (nitric oxide) produced**—a gas that diffuses freely
+5. **NO diffuses in two directions:**
+   - Into vessel smooth muscle → activates guanylate cyclase → **cGMP increases** → muscle relaxes → **vasodilation**
+   - Back to nerve terminal → activates guanylate cyclase in nerve → **cGMP** → enhances neurotransmitter release → **MORE CGRP released**
+6. Back to step 1 → each cycle produces MORE CGRP
+
+**What is cGMP?**
+cGMP (cyclic Guanosine Monophosphate) is a second messenger molecule (like cAMP). Produced when NO activates guanylate cyclase (GTP → cGMP). Effects:
+- Activates protein kinase G (PKG)
+- Causes smooth muscle relaxation (vasodilation)
+- Can trigger neurotransmitter release (including CGRP)
+
+**Why does this pathway exist?**
+CGRP → NO is part of normal neurovascular function, not inherently pathological. Physiological (normal) roles:
+- **Neurovascular coupling:** Matching blood flow to neural activity
+- **Wound healing:** Vasodilation brings immune cells, nutrients to injured tissue
+- **Protective inflammation:** Appropriate response to injury
+- **Nociception:** Pain signaling to prevent tissue damage
+
+This adaptive mechanism coordinates sensory nerve activation with blood supply. In cluster headache, it becomes **pathological**—excessive activation, positive feedback escapes normal regulation.
+
+**How treatments interrupt this loop:**
+- **Triptans:** Inhibit CGRP release (presynaptic inhibition) AND cause vasoconstriction
+- **Oxygen:** Causes vasoconstriction (may also reduce CGRP/NO, but mechanism unclear)
+- **Magnesium:** Prevents initial trigger via NMDA blockade
+- **Vitamin D:** Suppresses CGRP gene transcription → less CGRP available to release
+
+**Why doesn't the feedback loop always run away?**
+
+In healthy people or between cluster attacks, several **brakes** prevent runaway escalation:
+
+1. **Limited CGRP stores:** Nerve terminals have finite CGRP vesicles. Once depleted through rapid release, the loop fizzles (can't release what you don't have). Replenishing stores requires gene transcription → protein synthesis → vesicle packaging (takes hours).
+
+2. **CGRP gene suppression (vitamin D's role!):** Adequate calcitriol → CGRP transcription suppressed → less CGRP protein made → smaller reserves → loop can't build momentum.
+
+3. **CGRP degradation:** Peptidases in blood and tissues break down CGRP. Half-life ~10 minutes. Rapid clearance prevents buildup and limits amplification.
+
+4. **NO scavenging:** Hemoglobin binds NO (removes it from circulation). Superoxide dismutase converts NO to inactive forms. NO half-life is extremely short (~seconds). Rapid clearance limits the feedback signal.
+
+5. **Negative feedback mechanisms:** Prostaglandins (some types, e.g., PGI₂) inhibit CGRP release. Somatostatin inhibits CGRP release. Opioid receptors on trigeminal terminals inhibit CGRP when activated by endogenous opioids (endorphins).
+
+6. **Magnesium block on NMDA:** Prevents initial glutamate-driven CGRP release trigger. Acts as a strong brake at the source before the cascade begins.
+
+**Why it runs away in cluster attacks:**
+- Initial trigger overcomes threshold (circadian signal, alcohol, histamine, sleep transition)
+- Low vitamin D → high baseline CGRP production (large reserves ready for release)
+- Low magnesium → NMDA receptors easily activated (weak brake)
+- Mast cell activation → histamine → more CGRP release
+- Central sensitization → TNC amplifies signals → more peripheral activation (descending facilitation creates a second amplifying loop)
+- Hypothalamic gating → at specific circadian times, the brake is actively removed
+
+**Comparison:** Normal people: small CGRP release → brakes engage quickly → loop stops → no attack. Cluster patients: large CGRP release → brakes weak/absent → loop accelerates exponentially → attack.
+
+**Why attacks eventually stop:** CGRP stores depleted (exhaustion—vesicles empty); inflammatory mediators degraded (histamine, bradykinin cleared); circadian signal changes (hypothalamic gating shifts); body's homeostatic mechanisms eventually override (negative feedback accumulates). This explains why early intervention works better—aborting within the first 15 minutes (oxygen, triptans, exercise) stops the loop before it builds to unstoppable levels. Once full amplification occurs, you often must wait for CGRP exhaustion (~1-3 hours).
+
+**What is NMDA?**
+NMDA = N-Methyl-D-Aspartate (a synthetic compound used to name the receptor). NMDA receptors are glutamate receptors (ionotropic) with key roles in excitatory neurotransmission, synaptic plasticity, and pain sensitization.
+
+**Magnesium's NMDA blockade:**
+- Mg²⁺ physically blocks the NMDA receptor channel (voltage-dependent)
+- Prevents excessive glutamate-mediated excitation
+- Reduces central sensitization/pain amplification
+- **In cluster headaches:** Blocks glutamate-triggered calcium influx → prevents CGRP release from trigeminal terminals
 
 **CGRP's normal beneficial roles:**
 
@@ -271,7 +408,18 @@ However, CGRP isn't inherently pathological. It has crucial protective functions
 - **Gastrointestinal function:** Regulates motility, inhibits gastric acid
 - **Immune regulation:** Modulates T cells, B cells, dendritic cells
 
-The problem in cluster headache is **excessive CGRP release in the trigeminal system specifically**—not systemic CGRP.
+**Understanding CGRP's immune effects — Th1 differentiation:**
+
+CGRP inhibits Th1 differentiation, meaning naïve T cells exposed to CGRP are less likely to become pro-inflammatory Th1 cells and instead shift toward Th2 or Treg phenotypes. Quick primer on T helper cell types:
+
+- **Th1 cells:** Pro-inflammatory. Secrete IFN-γ, IL-2, TNF-α. Fight intracellular pathogens. Overactive in autoimmune diseases (MS, type 1 diabetes).
+- **Th2 cells:** Anti-inflammatory/allergic. Secrete IL-4, IL-5, IL-13. Fight parasites. Overactive in allergies/asthma.
+- **Th17 cells:** Pro-inflammatory. Secrete IL-17, IL-22. Fight extracellular bacteria/fungi. Overactive in rheumatoid arthritis.
+- **Treg cells:** Regulatory/suppressive. Secrete IL-10, TGF-β. Dampen immune responses to prevent autoimmunity.
+
+CGRP's suppression of Th1 differentiation makes it generally **anti-inflammatory systemically**, which is why CGRP blockade (Emgality) has few immunological side effects clinically despite blocking this immune-modulatory molecule.
+
+The problem in cluster headache is **excessive CGRP release in the trigeminal system specifically**—not systemic CGRP. This tissue-specific dysfunction is crucial to understand.
 
 **Why treatments target CGRP:**
 
@@ -343,6 +491,59 @@ The trigeminal ganglion contains mast cells that release histamine. If histamine
 
 **Practical approach:** Daily H1 blocker (Zyrtec or Claritin 10mg morning); optional H2 addition (famotidine 20mg twice daily); 2-4 week trial; consider low-histamine diet (avoid aged cheese, wine, fermented foods, cured meats); add quercetin for mast cell stabilization.
 
+#### Balancing Gastric Acidity: Reducing Excess Without Eliminating Protection
+
+H2 blockers (famotidine/Pepcid) are mentioned above for both histamine reduction and gastric acid control. Understanding how to manage acidity without disrupting protective mechanisms is important, especially since **PPIs (proton pump inhibitors) deplete magnesium**—critical for cluster headache prevention.
+
+**Goal:** Reduce excess acid, not eliminate protective functions (digestion, pathogen killing, nutrient absorption).
+
+**Pathways to PRESERVE (protective):**
+- **Prostaglandins (PGE2, PGI2):** Increase mucus, blood flow; inhibit acid. Preserve by avoiding chronic NSAID use; take with food if needed.
+- **Somatostatin:** Inhibits gastrin → less acid. Preserve with adequate protein; avoid extreme fasting.
+- **CGRP:** Increases gastric blood flow, mild acid inhibition. Vitamin D's CGRP suppression appears tissue-selective—doesn't severely affect GI CGRP clinically.
+
+**Pathways to MODULATE (not eliminate):**
+- **Histamine/H2:** If hyperacid, use H2 blocker (famotidine) PRN, not chronically. Lowest effective dose, drug holidays. H2 blockers may also reduce histamine-triggered cluster attacks (dual benefit).
+- **Gastrin:** Modulated by stomach acidity (negative feedback) and somatostatin. **Avoid chronic PPIs** (omeprazole, esomeprazole)—cause rebound high gastrin → worse acid when stopped; deplete magnesium; reduce B12/iron absorption.
+- **Acetylcholine/vagal:** Don't block. Balance via stress reduction, mindful eating.
+
+**Practical:**
+- Dietary: Identify triggers (coffee, alcohol, spicy, tomato, citrus). Reduce offenders, don't eliminate all. Eat regularly.
+- Lifestyle: Elevate head of bed; don't eat 2-3 hours before bed; stress management; avoid smoking.
+- Supplements (non-blocking): Zinc-carnosine, DGL (deglycyrrhizinated licorice), slippery elm, probiotics (reduce H. pylori).
+- Medications: Antacids PRN → H2 blocker PRN → Avoid chronic PPIs.
+- **Check for H. pylori:** Eradication (antibiotics + short PPI course) often resolves chronic acidity permanently.
+
+**Critical for cluster patients:** PPIs deplete magnesium. You need magnesium for prophylaxis. Catch-22: PPI → low Mg → worsens CH. Solution: Avoid PPIs; if must use, supplement magnesium aggressively.
+
+### Tissue-Specific CGRP Suppression: Trigeminal vs. Enteric Neurons
+
+A common question: If vitamin D suppresses CGRP gene transcription, why don't high-dose D3 users experience gastrointestinal dysfunction? CGRP regulates gut motility and inhibits gastric acid—severe suppression should cause constipation or gastroparesis. Yet this doesn't happen clinically.
+
+**The hypothesis: CGRP suppression is tissue-selective.**
+
+**Why tissues might differ:**
+
+VDREs (vitamin D response elements) are gene-specific, not inherently tissue-specific. But **chromatin accessibility** varies by tissue due to epigenetic modifications (DNA methylation, histone marks):
+
+- **Trigeminal neurons:** CGRP gene promoter in "open" chromatin → VDR can access and bind VDRE → CGRP transcription suppressed
+- **Enteric neurons:** CGRP gene promoter in "closed" chromatin → VDR can't access → CGRP transcription unaffected
+
+**What we know:**
+- **Trigeminal:** VDR present in trigeminal ganglion (Keasley et al., 2017); vitamin D suppresses CGRP in headache context (Ghorbani 2019).
+- **Enteric:** VDR present in enteric neurons (Cantorna 2017); vitamin D affects gut immunity and motility; CGRP suppression status unknown.
+
+**Evidence for selectivity:**
+- Clinical observation: High-dose D3 users (50,000 IU/day) don't report constipation, gastroparesis, or other GI signs of severe CGRP suppression.
+- Inference: If enteric CGRP were severely suppressed, GI motility issues would be common.
+
+**How to establish definitively:**
+- **ChIP-seq:** Map VDR binding sites in trigeminal vs. enteric neurons. Does VDR bind CGRP promoter equally?
+- **RNA-seq:** Compare vitamin D-responsive gene sets in each tissue.
+- **Functional assays:** Treat cultured neurons with calcitriol, measure CGRP production. Prediction: trigeminal CGRP drops, enteric unchanged.
+
+**Bottom line:** Tissue-specific CGRP suppression is **assumed based on clinical observation** (no widespread GI side effects) but **not rigorously proven**. Epigenetics likely determines which genes are "available" for VDR regulation in each tissue. This is a testable hypothesis for future research and may explain why the D3 protocol is well-tolerated despite suppressing a molecule with broad physiological roles.
+
 ### The Vagus Nerve Connection
 The vagus nerve regulates inflammation via the "cholinergic anti-inflammatory pathway." Vagal stimulation can reduce systemic inflammation. This may explain why such diverse interventions help:
 - **Cold exposure** (slushies, brain freeze, ice on palate): Cold activates the vagus nerve
@@ -357,18 +558,29 @@ The brain freeze method may work by stimulating the sphenopalatine ganglion (loc
 ### The Oxygen/Vasculature Theory
 High-flow oxygen is the gold standard abortive. Why it works:
 - Cluster headaches involve vasodilation of blood vessels around the trigeminal nerve
-- Oxygen causes vasoconstriction, counteracting this (fact-check: the exact mechanism is still unclear; vasoconstriction is one hypothesis, but some research suggests oxygen may work via CGRP inhibition, trigeminal nerve modulation, or other pathways—the mechanism is not definitively established)
-- It may also reduce CGRP release
+- **Vasoconstriction:** Oxygen causes vasoconstriction, counteracting CGRP-driven vasodilation (the exact mechanism is still unclear; vasoconstriction is one hypothesis, but research suggests oxygen may also work via CGRP inhibition or trigeminal nerve modulation)
+- **CGRP inhibition:** May reduce CGRP release from trigeminal terminals
 - The "trigeminal vascular complex" (blood vessels in/around the trigeminal ganglia) is a key site
+
+**NOTE:** Claims that oxygen reduces nitric oxide (NO) production are speculative and lack strong evidence. The vasoconstriction mechanism is more established.
 
 This explains why **caffeine** (a vasoconstrictor) works as an abortive, and why **exercise/running** might help—it changes blood flow patterns and oxygenation rapidly.
 
 ### The Serotonin/Tryptamine Connection
-Triptans (sumatriptan, etc.) are serotonin receptor agonists. Psychedelics (psilocybin, LSD, DMT) also act on serotonin receptors:
-- Both bind to 5-HT receptors, particularly 5-HT2A (fact-check: triptans primarily bind to 5-HT1B and 5-HT1D receptors, NOT 5-HT2A; psychedelics like psilocybin/LSD primarily bind to 5-HT2A. They work on different serotonin receptor subtypes)
-- DMT is structurally similar to sumatriptan
-- Psychedelics may "reset" dysfunctional neural circuits
-- They may also promote neuroplasticity, allowing the brain to break the cluster cycle
+
+**How Triptans Work:**
+Triptans (sumatriptan, etc.) are **5-HT1B/1D receptor agonists**. These receptors are located on trigeminal nerve terminals (both peripheral and central). When activated:
+- **Presynaptic inhibition:** Activates Gi/Go proteins → decreases cAMP → closes calcium channels → reduces neurotransmitter release (including CGRP)
+- **Vasoconstriction:** 5-HT1B receptors on vascular smooth muscle cause vasoconstriction, counteracting CGRP-driven vasodilation
+- **Evidence:** Well-established. Triptans reduce CGRP levels in jugular vein blood during migraine/cluster attacks
+
+**Psychedelics:**
+Psychedelics (psilocybin, LSD, DMT) act on **different** serotonin receptor subtypes:
+- **Psychedelics:** Primarily bind to 5-HT2A receptors (not 5-HT1B/1D)
+- **Triptans:** Primarily bind to 5-HT1B and 5-HT1D receptors (not 5-HT2A)
+- DMT is structurally similar to sumatriptan but acts on different receptor subtypes
+- Psychedelics may "reset" dysfunctional neural circuits through neuroplasticity
+- They may promote new neural connections, allowing the brain to break the cluster cycle
 
 This may explain why a single psychedelic dose can end an entire cluster cycle (not just abort one attack)—it's potentially rewiring the hypothalamic/trigeminal dysfunction rather than just treating symptoms.
 
@@ -384,17 +596,17 @@ Cluster headaches likely involve multiple interacting systems:
 Different treatments target different parts of this system:
 | Treatment | Proposed Mechanism |
 |-----------|-------------------|
-| Vitamin D3 + cofactors | Down-regulates CGRP/inflammatory genes via calcitriol |
-| Oxygen | Possibly vasoconstriction, reduces CGRP release (mechanism unclear) |
-| Triptans | Serotonin receptor activation, vasoconstriction |
-| Psychedelics | Serotonin receptors, neural "reset," neuroplasticity |
+| Vitamin D3 + cofactors | Down-regulates CGRP gene transcription via calcitriol; Mg blocks NMDA |
+| Oxygen | Vasoconstriction and/or CGRP inhibition (mechanism not fully established) |
+| Triptans | 5-HT1B/1D agonists → presynaptic CGRP inhibition + vasoconstriction |
+| Psychedelics | 5-HT2A receptors, neural "reset," neuroplasticity |
 | Cold/brain freeze | Vagus nerve stimulation, SPG "reset" |
 | Exercise | Oxygenation, vagal activation, endorphins |
 | Melatonin | Hypothalamic/circadian regulation |
-| Emgality | Direct CGRP blockade |
+| Emgality | Direct CGRP blockade (monoclonal antibody) |
 | SPG blocks/lidocaine | Interrupts trigeminal-autonomic reflex |
-| Antihistamines | Blocks histamine-triggered inflammation |
-| Caffeine | Vasoconstriction |
+| Antihistamines | Blocks mast cell-mediated inflammation |
+| Caffeine | Adenosine antagonist → vasoconstriction |
 
 This multi-system involvement explains why no single treatment works for everyone, and why combining approaches (e.g., D3 regimen + oxygen for breakthroughs + circadian management) often works better than monotherapy.
 
@@ -578,6 +790,36 @@ The molecular mechanism of vitamin D action operates at the gene level:
 
 This gene-level mechanism explains why the D3 protocol takes days to work—it's changing gene expression, not just blocking receptors—and why effects are broad: vitamin D modulates hundreds of genes controlling CGRP, inflammation, and immune function.
 
+#### RXR, Vitamin A, and Cancer: Why RXR Matters
+
+**RXR (Retinoid X Receptor)** is the obligate binding partner for VDR—without RXR, vitamin D cannot regulate genes. This partnership is critical but rarely discussed in cluster headache contexts.
+
+**Which cancers use rexinoids (RXR activators)?**
+
+*FDA-approved:*
+- **Bexarotene (Targretin)** for Cutaneous T-Cell Lymphoma (CTCL), approved 1999. Activates RXR → induces apoptosis in malignant T-cells.
+
+*Experimental:*
+- **Breast cancer:** RXR activation induces differentiation; combination with tamoxifen studied
+- **Lung cancer (NSCLC):** RXR agonists + retinoids in Phase II trials
+- **Prostate cancer:** RXR/VDR pathway disrupted; rexinoids restore differentiation
+- **Leukemia (APL):** All-trans retinoic acid (ATRA) + arsenic trioxide is curative, works partly via RXR
+- **Colon cancer:** RXR/VDR activation in colonocytes → differentiation (experimental)
+
+**Why RXR is not usually discussed in cluster headaches:**
+
+Vitamin A deficiency is rare in developed countries (~2% vs. 40-60% for vitamin D). Dietary sources are abundant (liver, eggs, dairy, carrots, sweet potatoes), and the body stores months to years of vitamin A in the liver. Deficiency manifests as night blindness and skin issues, not typically headaches.
+
+**Could RXR variants contribute to cluster headaches?**
+
+This is an **unstudied hypothesis.** RXR gene polymorphisms could reduce RXR expression or function → impair VDR-RXR heterodimer formation → vitamin D resistance even with adequate D and A levels. No studies have examined RXR variants in cluster headache populations.
+
+**Clinical implication:** Patients on very high-dose D3 (50,000 IU/day) should ensure adequate (not megadose) vitamin A intake to optimize VDR function, as VDR competes with other nuclear receptors for limited RXR.
+
+**The connection:** Same VDR/RXR pathways control both cell differentiation (preventing cancer) and gene suppression (reducing CGRP in cluster headache)—different tissue contexts, same molecular machinery.
+
+---
+
 Here is the critical point: **calcitriol creates osteocalcin and MGP in their inactive, undercarboxylated forms.** They need one more step to function.
 
 ### Step 3: Vitamin K2 directs calcium to bones and away from arteries
@@ -628,6 +870,53 @@ Parathyroid hormone (PTH) is the master regulator tying this system together:
 3. Rising calcium and calcitriol provide negative feedback → PTH suppressed
 
 **The magnesium paradox:** Severe magnesium deficiency *paradoxically blocks* PTH secretion (via defective cAMP generation in parathyroid cells) AND causes PTH end-organ resistance (bone and kidney stop responding to PTH). The result is hypocalcemia that **will not correct until magnesium is repleted**, regardless of how much calcium or D3 is given. This condition—"functional hypoparathyroidism"—is rapidly reversible with magnesium repletion.
+
+#### How the Body Prioritizes Calcium Homeostasis Short-Term
+
+The body treats blood calcium as **emergency-critical**—muscles, nerves, and heart require it for second-to-second function. When vitamin D is low, the body sacrifices long-term tissue functions to maintain blood calcium levels.
+
+**Phase 1 (seconds to minutes) — Emergency response:**
+
+1. Low Ca²⁺ detected by **calcium-sensing receptors (CaSR)** on parathyroid glands
+2. **PTH surges IMMEDIATELY**
+3. PTH triggers:
+   - Osteoclast activation → **bone resorption** (mobilizes calcium from skeleton)
+   - Kidney reabsorption → stops calcium loss in urine
+4. Blood calcium rises quickly (from bone stores)
+
+**Phase 2 (hours) — Hormonal adjustment:**
+
+1. PTH stimulates kidney **1α-hydroxylase**
+2. Converts **ALL available 25(OH)D → calcitriol** (uses up substrate)
+3. Calcitriol increases gut calcium absorption
+4. **Serum calcitriol may appear "normal"** on labs (kidneys worked overtime to convert everything available)
+
+**The sacrifice — What gets neglected:**
+
+- **No 25(OH)D substrate left** for local tissue production
+- Hypothalamus can't make local calcitriol → **CGRP not suppressed**
+- Immune cells can't make local calcitriol → **immune dysfunction**
+- Other tissues starved of calcitriol for gene regulation
+
+**Why this explains the testing paradox:**
+
+*Person with 25(OH)D = 15 ng/mL (severe deficiency):*
+- Serum calcitriol: "Normal" (kidneys converted everything available for survival)
+- Blood calcium: "Normal" (short-term maintained via bone resorption + gut absorption)
+- Doctor says: "Your vitamin D is fine" (looking at calcitriol)
+- **Reality:** Tissues can't make local calcitriol → CGRP unchecked → cluster attacks continue
+
+*After D3 supplementation (25(OH)D → 80 ng/mL):*
+- Kidney: Less stressed → moderate 1α-hydroxylase → still "normal" serum calcitriol (PTH feedback)
+- **Hypothalamus:** NOW has abundant 25(OH)D substrate → produces own calcitriol → **CGRP suppressed** → fewer attacks
+- Immune cells: Can make local calcitriol → immune function restored
+
+**Key insight:**
+
+- **Renal (kidney) 1α-hydroxylase:** Regulated by PTH/calcium (homeostatic—maintains blood calcium for survival)
+- **Extrarenal (tissue) 1α-hydroxylase:** Substrate-dependent (more 25(OH)D → more local calcitriol → better CGRP suppression, immune function, etc.)
+
+This is why testing **25(OH)D, not calcitriol**, is critical. Serum calcitriol can be "normal" while tissues are starving for substrate. **The body prioritizes survival (blood calcium) over long-term health (CGRP regulation).** This explains why measuring serum calcitriol is misleading and why the Clusterbusters protocol targets 25(OH)D levels of ~80 ng/mL—ensuring tissues have abundant substrate for local calcitriol production.
 
 ### Why calcium labs matter
 
