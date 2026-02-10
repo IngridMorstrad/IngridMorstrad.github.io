@@ -422,6 +422,15 @@
         }
         .emphasis-box p:last-child { margin-bottom: 0; }
 
+        .diagram-container {
+            margin: 2.5rem 0;
+        }
+        .diagram-container svg {
+            width: 100%;
+            display: block;
+            margin: 0 auto;
+        }
+
         @media (max-width: 600px) {
             .header-meta { flex-direction: column; gap: 0.5rem; }
             h2 { font-size: 1.6rem; }
@@ -525,6 +534,73 @@
             <p><span class="q-link" data-q="cgrp">CGRP (Calcitonin Gene-Related Peptide)</span> is the key molecule. It's elevated in cranial venous blood during attacks (Goadsby &amp; Edvinsson, <em>Annals of Neurology</em>, 1994). It causes vasodilation, drives inflammation, and&mdash;critically&mdash;it sensitizes more trigeminal neurons to further activation, creating a <strong>positive feedback loop</strong> (Messlinger et al., <em>Brain Sciences</em>, 2020).</p>
 
             <p>This is why stopping an attack early matters: once the CGRP cascade is fully engaged, it becomes self-reinforcing.</p>
+
+            <div class="diagram-container">
+                <svg viewBox="0 0 700 560" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <marker id="ah1" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                            <path d="M0,0 L8,3 L0,6" fill="none" stroke="#d4af37" stroke-width="1.2"/>
+                        </marker>
+                        <marker id="ah1r" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                            <path d="M0,0 L8,3 L0,6" fill="none" stroke="#ef4444" stroke-width="1.2"/>
+                        </marker>
+                    </defs>
+                    <rect width="700" height="560" rx="12" fill="#12121a" stroke="#2a2a3a"/>
+                    <text x="350" y="30" text-anchor="middle" fill="#d4af37" font-family="monospace" font-size="10" letter-spacing="3">THE PAIN CASCADE</text>
+
+                    <!-- Hypothalamus -->
+                    <rect x="220" y="48" width="260" height="50" rx="8" fill="#1a1a25" stroke="#d4af37" stroke-width="1.2"/>
+                    <text x="350" y="70" text-anchor="middle" fill="#f0f0f5" font-family="sans-serif" font-size="14" font-weight="bold">Hypothalamus</text>
+                    <text x="350" y="88" text-anchor="middle" fill="#a0a0b0" font-family="sans-serif" font-size="11">circadian trigger</text>
+                    <line x1="350" y1="98" x2="350" y2="120" stroke="#d4af37" stroke-width="1.2" marker-end="url(#ah1)"/>
+
+                    <!-- Trigeminal Nerve -->
+                    <rect x="220" y="124" width="260" height="50" rx="8" fill="#1a1a25" stroke="#2a2a3a"/>
+                    <text x="350" y="146" text-anchor="middle" fill="#f0f0f5" font-family="sans-serif" font-size="14" font-weight="bold">Trigeminal Nerve</text>
+                    <text x="350" y="164" text-anchor="middle" fill="#a0a0b0" font-family="sans-serif" font-size="11">activation</text>
+                    <line x1="350" y1="174" x2="350" y2="196" stroke="#d4af37" stroke-width="1.2" marker-end="url(#ah1)"/>
+
+                    <!-- CGRP Release -->
+                    <rect x="220" y="200" width="260" height="50" rx="8" fill="#1a1a25" stroke="#ef4444" stroke-width="1.2"/>
+                    <text x="350" y="222" text-anchor="middle" fill="#ef4444" font-family="sans-serif" font-size="14" font-weight="bold">CGRP Release</text>
+                    <text x="350" y="240" text-anchor="middle" fill="#a0a0b0" font-family="sans-serif" font-size="11">+ inflammatory neuropeptides</text>
+                    <line x1="350" y1="250" x2="350" y2="272" stroke="#d4af37" stroke-width="1.2" marker-end="url(#ah1)"/>
+
+                    <!-- Vasodilation -->
+                    <rect x="220" y="276" width="260" height="50" rx="8" fill="#1a1a25" stroke="#2a2a3a"/>
+                    <text x="350" y="298" text-anchor="middle" fill="#f0f0f5" font-family="sans-serif" font-size="14" font-weight="bold">Vasodilation</text>
+                    <text x="350" y="316" text-anchor="middle" fill="#a0a0b0" font-family="sans-serif" font-size="11">blood vessels expand</text>
+                    <line x1="350" y1="326" x2="350" y2="348" stroke="#d4af37" stroke-width="1.2" marker-end="url(#ah1)"/>
+
+                    <!-- Neurogenic Inflammation -->
+                    <rect x="220" y="352" width="260" height="50" rx="8" fill="#1a1a25" stroke="#2a2a3a"/>
+                    <text x="350" y="374" text-anchor="middle" fill="#f0f0f5" font-family="sans-serif" font-size="14" font-weight="bold">Neurogenic Inflammation</text>
+                    <text x="350" y="392" text-anchor="middle" fill="#a0a0b0" font-family="sans-serif" font-size="11">swelling, sensitization</text>
+
+                    <!-- Fork arrows -->
+                    <line x1="290" y1="402" x2="200" y2="432" stroke="#d4af37" stroke-width="1.2" marker-end="url(#ah1)"/>
+                    <line x1="410" y1="402" x2="500" y2="432" stroke="#d4af37" stroke-width="1.2" marker-end="url(#ah1)"/>
+
+                    <!-- Pain -->
+                    <rect x="100" y="436" width="200" height="50" rx="8" fill="#1a1a25" stroke="#ef4444" stroke-width="1.2"/>
+                    <text x="200" y="458" text-anchor="middle" fill="#ef4444" font-family="sans-serif" font-size="14" font-weight="bold">Excruciating Pain</text>
+                    <text x="200" y="476" text-anchor="middle" fill="#a0a0b0" font-family="sans-serif" font-size="11">periorbital, unilateral</text>
+
+                    <!-- Autonomic -->
+                    <rect x="400" y="436" width="200" height="50" rx="8" fill="#1a1a25" stroke="#2a2a3a"/>
+                    <text x="500" y="458" text-anchor="middle" fill="#f0f0f5" font-family="sans-serif" font-size="14" font-weight="bold">Autonomic Symptoms</text>
+                    <text x="500" y="476" text-anchor="middle" fill="#a0a0b0" font-family="sans-serif" font-size="11">tearing, congestion, ptosis</text>
+
+                    <!-- Feedback loop -->
+                    <path d="M 480 225 Q 560 225 560 149 Q 560 124 510 124" fill="none" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="6,3" marker-end="url(#ah1r)"/>
+                    <text x="592" y="190" fill="#ef4444" font-family="sans-serif" font-size="9" text-anchor="start" transform="rotate(90,592,155)">CGRP sensitizes</text>
+                    <text x="608" y="190" fill="#ef4444" font-family="sans-serif" font-size="9" text-anchor="start" transform="rotate(90,608,162)">more neurons</text>
+
+                    <!-- Label -->
+                    <rect x="180" y="510" width="340" height="32" rx="6" fill="none" stroke="#ef4444" stroke-width="1" stroke-dasharray="4,3"/>
+                    <text x="350" y="531" text-anchor="middle" fill="#ef4444" font-family="monospace" font-size="10">POSITIVE FEEDBACK LOOP — SELF-REINFORCING</text>
+                </svg>
+            </div>
         </section>
 
         <div class="divider"></div>
@@ -617,6 +693,111 @@
                     <li><strong>Hypercalcemia symptoms</strong> (nausea, excessive thirst, kidney stones): Danger&mdash;regulatory systems overwhelmed.</li>
                 </ul>
             </div>
+
+            <div class="diagram-container">
+                <svg viewBox="0 0 700 620" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <marker id="ah2" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                            <path d="M0,0 L8,3 L0,6" fill="none" stroke="#d4af37" stroke-width="1.2"/>
+                        </marker>
+                        <marker id="ah2g" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                            <path d="M0,0 L8,3 L0,6" fill="none" stroke="#22c55e" stroke-width="1.2"/>
+                        </marker>
+                    </defs>
+                    <rect width="700" height="620" rx="12" fill="#12121a" stroke="#2a2a3a"/>
+                    <text x="350" y="30" text-anchor="middle" fill="#d4af37" font-family="monospace" font-size="10" letter-spacing="3">THE COFACTOR CHAIN</text>
+
+                    <!-- D3 (inert) -->
+                    <rect x="250" y="48" width="200" height="46" rx="8" fill="#1a1a25" stroke="#2a2a3a"/>
+                    <text x="350" y="68" text-anchor="middle" fill="#f0f0f5" font-family="sans-serif" font-size="13" font-weight="bold">Vitamin D3</text>
+                    <text x="350" y="85" text-anchor="middle" fill="#606075" font-family="sans-serif" font-size="10">cholecalciferol — biologically inert</text>
+
+                    <!-- Arrow + Mg label -->
+                    <line x1="350" y1="94" x2="350" y2="122" stroke="#d4af37" stroke-width="1.2" marker-end="url(#ah2)"/>
+                    <rect x="460" y="96" width="100" height="22" rx="4" fill="#22c55e" fill-opacity="0.15" stroke="#22c55e" stroke-width="0.8"/>
+                    <text x="510" y="111" text-anchor="middle" fill="#22c55e" font-family="monospace" font-size="10">Mg required</text>
+
+                    <!-- Calcidiol -->
+                    <rect x="250" y="126" width="200" height="46" rx="8" fill="#1a1a25" stroke="#2a2a3a"/>
+                    <text x="350" y="146" text-anchor="middle" fill="#f0f0f5" font-family="sans-serif" font-size="13" font-weight="bold">Calcidiol — 25(OH)D</text>
+                    <text x="350" y="163" text-anchor="middle" fill="#606075" font-family="sans-serif" font-size="10">liver hydroxylation (CYP2R1)</text>
+
+                    <!-- Arrow + Mg label -->
+                    <line x1="350" y1="172" x2="350" y2="200" stroke="#d4af37" stroke-width="1.2" marker-end="url(#ah2)"/>
+                    <rect x="460" y="174" width="100" height="22" rx="4" fill="#22c55e" fill-opacity="0.15" stroke="#22c55e" stroke-width="0.8"/>
+                    <text x="510" y="189" text-anchor="middle" fill="#22c55e" font-family="monospace" font-size="10">Mg required</text>
+
+                    <!-- Calcitriol -->
+                    <rect x="225" y="204" width="250" height="46" rx="8" fill="#1a1a25" stroke="#d4af37" stroke-width="1.2"/>
+                    <text x="350" y="224" text-anchor="middle" fill="#d4af37" font-family="sans-serif" font-size="13" font-weight="bold">Calcitriol — 1,25(OH)&#8322;D</text>
+                    <text x="350" y="241" text-anchor="middle" fill="#606075" font-family="sans-serif" font-size="10">kidney hydroxylation (CYP27B1) — ACTIVE</text>
+
+                    <!-- Four branches from calcitriol -->
+                    <!-- Branch lines -->
+                    <line x1="200" y1="250" x2="100" y2="290" stroke="#d4af37" stroke-width="1" marker-end="url(#ah2)"/>
+                    <line x1="290" y1="250" x2="270" y2="290" stroke="#d4af37" stroke-width="1" marker-end="url(#ah2)"/>
+                    <line x1="410" y1="250" x2="430" y2="290" stroke="#d4af37" stroke-width="1" marker-end="url(#ah2)"/>
+                    <line x1="500" y1="250" x2="600" y2="290" stroke="#d4af37" stroke-width="1" marker-end="url(#ah2)"/>
+
+                    <!-- Branch 1: CGRP suppression -->
+                    <rect x="20" y="294" width="160" height="46" rx="8" fill="#1a1a25" stroke="#22c55e" stroke-width="1.2"/>
+                    <text x="100" y="314" text-anchor="middle" fill="#22c55e" font-family="sans-serif" font-size="12" font-weight="bold">CGRP Suppression</text>
+                    <text x="100" y="331" text-anchor="middle" fill="#a0a0b0" font-family="sans-serif" font-size="9">gene transcription &#8595;</text>
+
+                    <!-- Branch 2: Ca absorption -->
+                    <rect x="190" y="294" width="160" height="46" rx="8" fill="#1a1a25" stroke="#2a2a3a"/>
+                    <text x="270" y="314" text-anchor="middle" fill="#f0f0f5" font-family="sans-serif" font-size="12" font-weight="bold">Ca&#178;&#8314; Absorption</text>
+                    <text x="270" y="331" text-anchor="middle" fill="#a0a0b0" font-family="sans-serif" font-size="9">TRPV6 + calbindin &#8593;</text>
+
+                    <!-- Branch 3: Osteocalcin -->
+                    <rect x="360" y="294" width="140" height="46" rx="8" fill="#1a1a25" stroke="#2a2a3a"/>
+                    <text x="430" y="314" text-anchor="middle" fill="#f0f0f5" font-family="sans-serif" font-size="12" font-weight="bold">Osteocalcin</text>
+                    <text x="430" y="331" text-anchor="middle" fill="#ef4444" font-family="sans-serif" font-size="9">inactive form</text>
+
+                    <!-- Branch 4: MGP -->
+                    <rect x="520" y="294" width="160" height="46" rx="8" fill="#1a1a25" stroke="#2a2a3a"/>
+                    <text x="600" y="314" text-anchor="middle" fill="#f0f0f5" font-family="sans-serif" font-size="12" font-weight="bold">Matrix Gla Protein</text>
+                    <text x="600" y="331" text-anchor="middle" fill="#ef4444" font-family="sans-serif" font-size="9">inactive form</text>
+
+                    <!-- K2 activation arrows for Osteocalcin -->
+                    <line x1="430" y1="340" x2="430" y2="382" stroke="#22c55e" stroke-width="1.2" marker-end="url(#ah2g)"/>
+                    <rect x="458" y="348" width="82" height="22" rx="4" fill="#3b82f6" fill-opacity="0.15" stroke="#3b82f6" stroke-width="0.8"/>
+                    <text x="499" y="363" text-anchor="middle" fill="#3b82f6" font-family="monospace" font-size="10">K2 required</text>
+
+                    <!-- K2 activation arrows for MGP -->
+                    <line x1="600" y1="340" x2="600" y2="382" stroke="#22c55e" stroke-width="1.2" marker-end="url(#ah2g)"/>
+                    <rect x="628" y="348" width="62" height="22" rx="4" fill="#3b82f6" fill-opacity="0.15" stroke="#3b82f6" stroke-width="0.8"/>
+                    <text x="659" y="363" text-anchor="middle" fill="#3b82f6" font-family="monospace" font-size="10">K2 req.</text>
+
+                    <!-- Activated Osteocalcin -->
+                    <rect x="360" y="386" width="140" height="46" rx="8" fill="#1a1a25" stroke="#22c55e" stroke-width="1.2"/>
+                    <text x="430" y="406" text-anchor="middle" fill="#22c55e" font-family="sans-serif" font-size="12" font-weight="bold">Active Osteocalcin</text>
+                    <text x="430" y="423" text-anchor="middle" fill="#a0a0b0" font-family="sans-serif" font-size="9">Ca &#8594; bone matrix</text>
+
+                    <!-- Activated MGP -->
+                    <rect x="520" y="386" width="160" height="46" rx="8" fill="#1a1a25" stroke="#22c55e" stroke-width="1.2"/>
+                    <text x="600" y="406" text-anchor="middle" fill="#22c55e" font-family="sans-serif" font-size="12" font-weight="bold">Active MGP</text>
+                    <text x="600" y="423" text-anchor="middle" fill="#a0a0b0" font-family="sans-serif" font-size="9">blocks vascular calcification</text>
+
+                    <!-- Without K2 warning -->
+                    <rect x="130" y="460" width="440" height="44" rx="8" fill="none" stroke="#ef4444" stroke-width="1" stroke-dasharray="5,3"/>
+                    <text x="350" y="478" text-anchor="middle" fill="#ef4444" font-family="monospace" font-size="10">WITHOUT K2: "CALCIUM PARADOX"</text>
+                    <text x="350" y="494" text-anchor="middle" fill="#a0a0b0" font-family="sans-serif" font-size="10">bones lose calcium &#8226; arteries gain calcium</text>
+
+                    <!-- Mg burn warning -->
+                    <rect x="130" y="518" width="440" height="44" rx="8" fill="none" stroke="#ef4444" stroke-width="1" stroke-dasharray="5,3"/>
+                    <text x="350" y="536" text-anchor="middle" fill="#ef4444" font-family="monospace" font-size="10">WITHOUT Mg: "MAGNESIUM BURN"</text>
+                    <text x="350" y="552" text-anchor="middle" fill="#a0a0b0" font-family="sans-serif" font-size="10">D3 metabolism depletes Mg stores &#8226; Ca competes at kidneys</text>
+
+                    <!-- Legend -->
+                    <rect x="18" y="570" width="10" height="10" rx="2" fill="none" stroke="#22c55e" stroke-width="1.2"/>
+                    <text x="34" y="579" fill="#606075" font-family="sans-serif" font-size="9">Working correctly</text>
+                    <rect x="140" y="570" width="10" height="10" rx="2" fill="none" stroke="#ef4444" stroke-width="1.2"/>
+                    <text x="156" y="579" fill="#606075" font-family="sans-serif" font-size="9">Problem / risk</text>
+                    <rect x="240" y="570" width="10" height="10" rx="2" fill="none" stroke="#d4af37" stroke-width="1.2"/>
+                    <text x="256" y="579" fill="#606075" font-family="sans-serif" font-size="9">Key node</text>
+                </svg>
+            </div>
         </section>
 
         <div class="divider"></div>
@@ -662,6 +843,118 @@
                         <td>Hypercalcemia risk at high D3 doses</td>
                     </tr>
                 </table>
+            </div>
+
+            <div class="diagram-container">
+                <svg viewBox="0 0 700 680" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <marker id="ah3" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                            <path d="M0,0 L8,3 L0,6" fill="none" stroke="#d4af37" stroke-width="1.2"/>
+                        </marker>
+                        <marker id="ah3r" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                            <path d="M0,0 L8,3 L0,6" fill="none" stroke="#ef4444" stroke-width="1.2"/>
+                        </marker>
+                    </defs>
+                    <rect width="700" height="680" rx="12" fill="#12121a" stroke="#2a2a3a"/>
+                    <text x="350" y="30" text-anchor="middle" fill="#d4af37" font-family="monospace" font-size="10" letter-spacing="3">FROM MINERAL IMBALANCE TO CLUSTER ATTACK</text>
+
+                    <!-- Step 1 -->
+                    <circle cx="50" cy="72" r="14" fill="#1a1a25" stroke="#d4af37" stroke-width="1.2"/>
+                    <text x="50" y="77" text-anchor="middle" fill="#d4af37" font-family="monospace" font-size="12" font-weight="bold">1</text>
+                    <rect x="76" y="52" width="590" height="40" rx="6" fill="#1a1a25" stroke="#2a2a3a"/>
+                    <text x="90" y="72" fill="#f0f0f5" font-family="sans-serif" font-size="12" font-weight="bold">Mg deficiency</text>
+                    <text x="214" y="72" fill="#a0a0b0" font-family="sans-serif" font-size="12">&#8594; D3 hydroxylation enzymes stall</text>
+                    <text x="90" y="86" fill="#606075" font-family="sans-serif" font-size="10">Vitamin D stays in inactive storage form</text>
+
+                    <line x1="350" y1="92" x2="350" y2="108" stroke="#d4af37" stroke-width="1" marker-end="url(#ah3)"/>
+
+                    <!-- Step 2 -->
+                    <circle cx="50" cy="130" r="14" fill="#1a1a25" stroke="#d4af37" stroke-width="1.2"/>
+                    <text x="50" y="135" text-anchor="middle" fill="#d4af37" font-family="monospace" font-size="12" font-weight="bold">2</text>
+                    <rect x="76" y="110" width="590" height="40" rx="6" fill="#1a1a25" stroke="#2a2a3a"/>
+                    <text x="90" y="130" fill="#f0f0f5" font-family="sans-serif" font-size="12" font-weight="bold">Low calcitriol</text>
+                    <text x="190" y="130" fill="#a0a0b0" font-family="sans-serif" font-size="12">&#8594; fails to suppress CGRP gene transcription</text>
+                    <text x="90" y="144" fill="#606075" font-family="sans-serif" font-size="10">CGRP production unchecked</text>
+
+                    <line x1="350" y1="150" x2="350" y2="166" stroke="#d4af37" stroke-width="1" marker-end="url(#ah3)"/>
+
+                    <!-- Step 3 -->
+                    <circle cx="50" cy="188" r="14" fill="#1a1a25" stroke="#ef4444" stroke-width="1.2"/>
+                    <text x="50" y="193" text-anchor="middle" fill="#ef4444" font-family="monospace" font-size="12" font-weight="bold">3</text>
+                    <rect x="76" y="168" width="590" height="40" rx="6" fill="#1a1a25" stroke="#ef4444" stroke-width="0.8"/>
+                    <text x="90" y="188" fill="#f0f0f5" font-family="sans-serif" font-size="12" font-weight="bold">Low Mg lifts NMDA block</text>
+                    <text x="280" y="188" fill="#a0a0b0" font-family="sans-serif" font-size="12">&#8594; trigeminal neurons become hyperexcitable</text>
+                    <text x="90" y="202" fill="#606075" font-family="sans-serif" font-size="10">Mg normally blocks NMDA receptor ion channel</text>
+
+                    <line x1="350" y1="208" x2="350" y2="224" stroke="#d4af37" stroke-width="1" marker-end="url(#ah3)"/>
+
+                    <!-- Step 4 -->
+                    <circle cx="50" cy="246" r="14" fill="#1a1a25" stroke="#ef4444" stroke-width="1.2"/>
+                    <text x="50" y="251" text-anchor="middle" fill="#ef4444" font-family="monospace" font-size="12" font-weight="bold">4</text>
+                    <rect x="76" y="226" width="590" height="40" rx="6" fill="#1a1a25" stroke="#ef4444" stroke-width="0.8"/>
+                    <text x="90" y="246" fill="#f0f0f5" font-family="sans-serif" font-size="12" font-weight="bold">Excess glutamate</text>
+                    <text x="226" y="246" fill="#a0a0b0" font-family="sans-serif" font-size="12">through unblocked NMDA &#8594; Ca&#178;&#8314; surges in neurons</text>
+                    <text x="90" y="260" fill="#606075" font-family="sans-serif" font-size="10">Intracellular calcium rises sharply</text>
+
+                    <line x1="350" y1="266" x2="350" y2="282" stroke="#d4af37" stroke-width="1" marker-end="url(#ah3)"/>
+
+                    <!-- Step 5 -->
+                    <circle cx="50" cy="304" r="14" fill="#1a1a25" stroke="#ef4444" stroke-width="1.2"/>
+                    <text x="50" y="309" text-anchor="middle" fill="#ef4444" font-family="monospace" font-size="12" font-weight="bold">5</text>
+                    <rect x="76" y="284" width="590" height="40" rx="6" fill="#1a1a25" stroke="#ef4444" stroke-width="0.8"/>
+                    <text x="90" y="304" fill="#f0f0f5" font-family="sans-serif" font-size="12" font-weight="bold">Ca&#178;&#8314; spikes</text>
+                    <text x="183" y="304" fill="#a0a0b0" font-family="sans-serif" font-size="12">trigger CGRP exocytosis from trigeminal terminals</text>
+                    <text x="90" y="318" fill="#606075" font-family="sans-serif" font-size="10">CGRP floods into perivascular space</text>
+
+                    <line x1="350" y1="324" x2="350" y2="340" stroke="#d4af37" stroke-width="1" marker-end="url(#ah3)"/>
+
+                    <!-- Step 6 -->
+                    <circle cx="50" cy="362" r="14" fill="#1a1a25" stroke="#ef4444" stroke-width="1.2"/>
+                    <text x="50" y="367" text-anchor="middle" fill="#ef4444" font-family="monospace" font-size="12" font-weight="bold">6</text>
+                    <rect x="76" y="342" width="590" height="40" rx="6" fill="#1a1a25" stroke="#ef4444" stroke-width="1.2"/>
+                    <text x="90" y="362" fill="#ef4444" font-family="sans-serif" font-size="12" font-weight="bold">CGRP &#8594; vasodilation, neurogenic inflammation, pain</text>
+                    <text x="90" y="376" fill="#606075" font-family="sans-serif" font-size="10">The cluster headache attack begins</text>
+
+                    <line x1="350" y1="382" x2="350" y2="398" stroke="#d4af37" stroke-width="1" marker-end="url(#ah3)"/>
+
+                    <!-- Step 7 (feedback) -->
+                    <circle cx="50" cy="420" r="14" fill="#1a1a25" stroke="#ef4444" stroke-width="1.2"/>
+                    <text x="50" y="425" text-anchor="middle" fill="#ef4444" font-family="monospace" font-size="12" font-weight="bold">7</text>
+                    <rect x="76" y="400" width="590" height="40" rx="6" fill="#1a1a25" stroke="#ef4444" stroke-width="0.8"/>
+                    <text x="90" y="420" fill="#f0f0f5" font-family="sans-serif" font-size="12" font-weight="bold">CGRP sensitizes more neurons</text>
+                    <text x="318" y="420" fill="#a0a0b0" font-family="sans-serif" font-size="12">to NMDA activation &#8594; positive feedback loop</text>
+                    <text x="90" y="434" fill="#606075" font-family="sans-serif" font-size="10">Attack becomes self-reinforcing</text>
+
+                    <!-- Feedback arrow from step 7 back to step 3 -->
+                    <path d="M 666 420 Q 690 420 690 304 Q 690 188 666 188" fill="none" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="5,3" marker-end="url(#ah3r)"/>
+                    <text x="685" y="304" fill="#ef4444" font-family="sans-serif" font-size="8" text-anchor="end" transform="rotate(90,682,270)">feedback loop</text>
+
+                    <line x1="350" y1="440" x2="350" y2="456" stroke="#d4af37" stroke-width="1" marker-end="url(#ah3)"/>
+
+                    <!-- Step 8 (vicious cycle) -->
+                    <circle cx="50" cy="478" r="14" fill="#1a1a25" stroke="#ef4444" stroke-width="1.2"/>
+                    <text x="50" y="483" text-anchor="middle" fill="#ef4444" font-family="monospace" font-size="12" font-weight="bold">8</text>
+                    <rect x="76" y="458" width="590" height="40" rx="6" fill="#1a1a25" stroke="#ef4444" stroke-width="0.8"/>
+                    <text x="90" y="478" fill="#f0f0f5" font-family="sans-serif" font-size="12" font-weight="bold">High-dose D3 without Mg</text>
+                    <text x="310" y="478" fill="#a0a0b0" font-family="sans-serif" font-size="12">&#8594; further Mg depletion, deepening the spiral</text>
+                    <text x="90" y="492" fill="#606075" font-family="sans-serif" font-size="10">Vicious cycle: the "cure" worsens the root cause</text>
+
+                    <!-- Vicious cycle arrow from step 8 back to step 1 -->
+                    <path d="M 76 478 Q 20 478 20 275 Q 20 72 36 72" fill="none" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="6,3" marker-end="url(#ah3r)"/>
+                    <text x="12" y="290" fill="#ef4444" font-family="monospace" font-size="8" transform="rotate(-90,12,290)">VICIOUS CYCLE</text>
+
+                    <!-- Summary box -->
+                    <rect x="76" y="520" width="548" height="50" rx="8" fill="#1a1a25" stroke="#d4af37" stroke-width="1"/>
+                    <text x="350" y="541" text-anchor="middle" fill="#d4af37" font-family="monospace" font-size="10">RESOLUTION</text>
+                    <text x="350" y="559" text-anchor="middle" fill="#a0a0b0" font-family="sans-serif" font-size="11">D3 + Mg + K2 together break the cycle at steps 1, 2, 3, and 5</text>
+
+                    <!-- Color key -->
+                    <rect x="76" y="586" width="548" height="40" rx="8" fill="none" stroke="#2a2a3a" stroke-width="0.5"/>
+                    <text x="100" y="604" fill="#d4af37" font-family="sans-serif" font-size="10">&#9679; Upstream cause</text>
+                    <text x="250" y="604" fill="#ef4444" font-family="sans-serif" font-size="10">&#9679; Escalating damage</text>
+                    <text x="430" y="604" fill="#606075" font-family="sans-serif" font-size="10">- - - Feedback / vicious cycle</text>
+                    <text x="290" y="620" fill="#606075" font-family="sans-serif" font-size="9">Read bottom to top for the treatment logic</text>
+                </svg>
             </div>
 
             <div class="callout">
@@ -766,6 +1059,113 @@
 
             <div class="emphasis-box">
                 <p><strong>The bottom line:</strong> The multi-system nature of cluster headaches explains why no single treatment works for everyone, and why combining approaches&mdash;D3 protocol for prevention, oxygen for breakthroughs, circadian management for regulation&mdash;often works better than any single therapy. The D3&ndash;Mg&ndash;Ca&ndash;K2 axis addresses the biochemical foundation, but the clock, the nerve, and the inflammation all need attention.</p>
+            </div>
+
+            <div class="diagram-container">
+                <svg viewBox="0 0 700 540" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <marker id="ah4" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto">
+                            <path d="M0,0 L7,2.5 L0,5" fill="none" stroke="#a0a0b0" stroke-width="1"/>
+                        </marker>
+                    </defs>
+                    <rect width="700" height="540" rx="12" fill="#12121a" stroke="#2a2a3a"/>
+                    <text x="350" y="30" text-anchor="middle" fill="#d4af37" font-family="monospace" font-size="10" letter-spacing="3">TREATMENTS MAPPED TO SYSTEMS</text>
+
+                    <!-- Center: 6 system nodes in two rows -->
+                    <!-- Row 1: Hypothalamus, Trigeminal, CGRP -->
+                    <rect x="50" y="60" width="170" height="56" rx="8" fill="#1a1a25" stroke="#d4af37" stroke-width="1.2"/>
+                    <text x="135" y="84" text-anchor="middle" fill="#d4af37" font-family="sans-serif" font-size="13" font-weight="bold">Hypothalamus</text>
+                    <text x="135" y="104" text-anchor="middle" fill="#606075" font-family="sans-serif" font-size="9">circadian clock</text>
+
+                    <rect x="265" y="60" width="170" height="56" rx="8" fill="#1a1a25" stroke="#d4af37" stroke-width="1.2"/>
+                    <text x="350" y="84" text-anchor="middle" fill="#d4af37" font-family="sans-serif" font-size="13" font-weight="bold">Trigeminal Nerve</text>
+                    <text x="350" y="104" text-anchor="middle" fill="#606075" font-family="sans-serif" font-size="9">pain generator</text>
+
+                    <rect x="480" y="60" width="170" height="56" rx="8" fill="#1a1a25" stroke="#ef4444" stroke-width="1.2"/>
+                    <text x="565" y="84" text-anchor="middle" fill="#ef4444" font-family="sans-serif" font-size="13" font-weight="bold">CGRP</text>
+                    <text x="565" y="104" text-anchor="middle" fill="#606075" font-family="sans-serif" font-size="9">inflammation driver</text>
+
+                    <!-- Row 2: Autonomic, Vagus, Histamine -->
+                    <rect x="50" y="140" width="170" height="56" rx="8" fill="#1a1a25" stroke="#2a2a3a"/>
+                    <text x="135" y="164" text-anchor="middle" fill="#f0f0f5" font-family="sans-serif" font-size="13" font-weight="bold">Autonomic System</text>
+                    <text x="135" y="184" text-anchor="middle" fill="#606075" font-family="sans-serif" font-size="9">accompanying symptoms</text>
+
+                    <rect x="265" y="140" width="170" height="56" rx="8" fill="#1a1a25" stroke="#22c55e" stroke-width="1.2"/>
+                    <text x="350" y="164" text-anchor="middle" fill="#22c55e" font-family="sans-serif" font-size="13" font-weight="bold">Vagus Nerve</text>
+                    <text x="350" y="184" text-anchor="middle" fill="#606075" font-family="sans-serif" font-size="9">anti-inflammatory pathway</text>
+
+                    <rect x="480" y="140" width="170" height="56" rx="8" fill="#1a1a25" stroke="#2a2a3a"/>
+                    <text x="565" y="164" text-anchor="middle" fill="#f0f0f5" font-family="sans-serif" font-size="13" font-weight="bold">Histamine / Mast</text>
+                    <text x="565" y="184" text-anchor="middle" fill="#606075" font-family="sans-serif" font-size="9">possible triggers</text>
+
+                    <!-- Divider -->
+                    <line x1="40" y1="220" x2="660" y2="220" stroke="#2a2a3a" stroke-width="0.5"/>
+                    <text x="350" y="240" text-anchor="middle" fill="#606075" font-family="monospace" font-size="9" letter-spacing="2">TREATMENTS</text>
+
+                    <!-- Treatment boxes with connection lines -->
+                    <!-- D3 Protocol -->
+                    <rect x="30" y="260" width="190" height="52" rx="8" fill="#1a1a25" stroke="#22c55e" stroke-width="1.2"/>
+                    <text x="125" y="282" text-anchor="middle" fill="#22c55e" font-family="sans-serif" font-size="12" font-weight="bold">D3 + Cofactors</text>
+                    <text x="125" y="301" text-anchor="middle" fill="#a0a0b0" font-family="sans-serif" font-size="9">&#8595;CGRP via calcitriol; Mg blocks NMDA</text>
+                    <!-- Lines to CGRP and Trigeminal -->
+                    <line x1="180" y1="260" x2="350" y2="116" stroke="#a0a0b0" stroke-width="0.7" stroke-dasharray="3,2" marker-end="url(#ah4)"/>
+                    <line x1="220" y1="260" x2="540" y2="116" stroke="#a0a0b0" stroke-width="0.7" stroke-dasharray="3,2" marker-end="url(#ah4)"/>
+
+                    <!-- Oxygen -->
+                    <rect x="250" y="260" width="190" height="52" rx="8" fill="#1a1a25" stroke="#22c55e" stroke-width="1.2"/>
+                    <text x="345" y="282" text-anchor="middle" fill="#22c55e" font-family="sans-serif" font-size="12" font-weight="bold">High-Flow Oxygen</text>
+                    <text x="345" y="301" text-anchor="middle" fill="#a0a0b0" font-family="sans-serif" font-size="9">vasoconstriction, &#8595;CGRP release</text>
+                    <line x1="400" y1="260" x2="540" y2="116" stroke="#a0a0b0" stroke-width="0.7" stroke-dasharray="3,2" marker-end="url(#ah4)"/>
+
+                    <!-- Psychedelics -->
+                    <rect x="470" y="260" width="200" height="52" rx="8" fill="#1a1a25" stroke="#3b82f6" stroke-width="1.2"/>
+                    <text x="570" y="282" text-anchor="middle" fill="#3b82f6" font-family="sans-serif" font-size="12" font-weight="bold">Psychedelics</text>
+                    <text x="570" y="301" text-anchor="middle" fill="#a0a0b0" font-family="sans-serif" font-size="9">5-HT receptors, neural "reset"</text>
+                    <line x1="520" y1="260" x2="350" y2="116" stroke="#a0a0b0" stroke-width="0.7" stroke-dasharray="3,2" marker-end="url(#ah4)"/>
+                    <line x1="570" y1="260" x2="135" y2="116" stroke="#a0a0b0" stroke-width="0.7" stroke-dasharray="3,2" marker-end="url(#ah4)"/>
+
+                    <!-- Cold / VNS -->
+                    <rect x="30" y="332" width="190" height="52" rx="8" fill="#1a1a25" stroke="#22c55e" stroke-width="1.2"/>
+                    <text x="125" y="354" text-anchor="middle" fill="#22c55e" font-family="sans-serif" font-size="12" font-weight="bold">Cold / VNS / Humming</text>
+                    <text x="125" y="373" text-anchor="middle" fill="#a0a0b0" font-family="sans-serif" font-size="9">vagus nerve stimulation</text>
+                    <line x1="165" y1="332" x2="330" y2="196" stroke="#a0a0b0" stroke-width="0.7" stroke-dasharray="3,2" marker-end="url(#ah4)"/>
+
+                    <!-- Melatonin -->
+                    <rect x="250" y="332" width="190" height="52" rx="8" fill="#1a1a25" stroke="#3b82f6" stroke-width="1.2"/>
+                    <text x="345" y="354" text-anchor="middle" fill="#3b82f6" font-family="sans-serif" font-size="12" font-weight="bold">Melatonin</text>
+                    <text x="345" y="373" text-anchor="middle" fill="#a0a0b0" font-family="sans-serif" font-size="9">circadian regulation</text>
+                    <line x1="330" y1="332" x2="135" y2="116" stroke="#a0a0b0" stroke-width="0.7" stroke-dasharray="3,2" marker-end="url(#ah4)"/>
+
+                    <!-- Emgality -->
+                    <rect x="470" y="332" width="200" height="52" rx="8" fill="#1a1a25" stroke="#22c55e" stroke-width="1.2"/>
+                    <text x="570" y="354" text-anchor="middle" fill="#22c55e" font-family="sans-serif" font-size="12" font-weight="bold">Emgality</text>
+                    <text x="570" y="373" text-anchor="middle" fill="#a0a0b0" font-family="sans-serif" font-size="9">direct CGRP blockade</text>
+                    <line x1="565" y1="332" x2="565" y2="116" stroke="#a0a0b0" stroke-width="0.7" stroke-dasharray="3,2" marker-end="url(#ah4)"/>
+
+                    <!-- SPG Blocks -->
+                    <rect x="30" y="404" width="190" height="52" rx="8" fill="#1a1a25" stroke="#2a2a3a"/>
+                    <text x="125" y="426" text-anchor="middle" fill="#f0f0f5" font-family="sans-serif" font-size="12" font-weight="bold">SPG Blocks</text>
+                    <text x="125" y="445" text-anchor="middle" fill="#a0a0b0" font-family="sans-serif" font-size="9">trigeminal-autonomic reflex</text>
+                    <line x1="125" y1="404" x2="135" y2="196" stroke="#a0a0b0" stroke-width="0.7" stroke-dasharray="3,2" marker-end="url(#ah4)"/>
+                    <line x1="160" y1="404" x2="310" y2="116" stroke="#a0a0b0" stroke-width="0.7" stroke-dasharray="3,2" marker-end="url(#ah4)"/>
+
+                    <!-- Caffeine / Exercise -->
+                    <rect x="250" y="404" width="190" height="52" rx="8" fill="#1a1a25" stroke="#2a2a3a"/>
+                    <text x="345" y="426" text-anchor="middle" fill="#f0f0f5" font-family="sans-serif" font-size="12" font-weight="bold">Caffeine / Exercise</text>
+                    <text x="345" y="445" text-anchor="middle" fill="#a0a0b0" font-family="sans-serif" font-size="9">vasoconstriction, vagal tone</text>
+                    <line x1="380" y1="404" x2="540" y2="116" stroke="#a0a0b0" stroke-width="0.7" stroke-dasharray="3,2" marker-end="url(#ah4)"/>
+                    <line x1="320" y1="404" x2="350" y2="196" stroke="#a0a0b0" stroke-width="0.7" stroke-dasharray="3,2" marker-end="url(#ah4)"/>
+
+                    <!-- Legend -->
+                    <rect x="40" y="480" width="620" height="44" rx="8" fill="none" stroke="#2a2a3a" stroke-width="0.5"/>
+                    <rect x="60" y="498" width="12" height="12" rx="3" fill="none" stroke="#22c55e" stroke-width="1.2"/>
+                    <text x="80" y="509" fill="#606075" font-family="sans-serif" font-size="9">Strong evidence</text>
+                    <rect x="190" y="498" width="12" height="12" rx="3" fill="none" stroke="#3b82f6" stroke-width="1.2"/>
+                    <text x="210" y="509" fill="#606075" font-family="sans-serif" font-size="9">Moderate / emerging</text>
+                    <rect x="350" y="498" width="12" height="12" rx="3" fill="none" stroke="#2a2a3a" stroke-width="1.2"/>
+                    <text x="370" y="509" fill="#606075" font-family="sans-serif" font-size="9">Adjunctive</text>
+                    <text x="500" y="509" fill="#606075" font-family="sans-serif" font-size="9">- - - targets system</text>
+                </svg>
             </div>
 
         </section>
