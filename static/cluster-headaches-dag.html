@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cluster Headaches Explainer — Q-Link DAG</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0a0a0f; color: #e0dcd0; font-family: 'Georgia', serif; overflow: hidden; }
+
+  #controls {
+    position: fixed; top: 16px; left: 16px; z-index: 10;
+    background: rgba(20,20,30,0.92); border: 1px solid #333; border-radius: 8px;
+    padding: 14px 18px; max-width: 320px; font-size: 13px; line-height: 1.5;
+  }
+  #controls h2 { font-size: 15px; color: #f5d87a; margin-bottom: 6px; }
+  #controls .stat { color: #999; font-size: 12px; }
+
+  .legend { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 10px; }
+  .legend-item { display: flex; align-items: center; gap: 5px; font-size: 12px; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 50%; }
+
+  #tooltip {
+    position: fixed; pointer-events: none; z-index: 20;
+    background: rgba(15,15,25,0.95); border: 1px solid #f5d87a;
+    border-radius: 6px; padding: 10px 14px; max-width: 340px;
+    font-size: 13px; line-height: 1.4; display: none;
+  }
+  #tooltip .q-id { color: #f5d87a; font-weight: bold; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
+  #tooltip .q-text { margin-top: 4px; }
+
+  svg { display: block; }
+
+  /* Category label styling */
+  #category-labels label { cursor: pointer; display: block; padding: 2px 0; }
+  #category-labels input { margin-right: 5px; }
+</style>
+</head>
+<body>
+
+<div id="controls">
+  <div style="display:flex; justify-content:space-between; align-items:center;">
+    <h2>Q-Link DAG</h2>
+    <button id="toggleLegend" style="background:none;border:1px solid #555;color:#999;border-radius:4px;cursor:pointer;font-size:16px;width:26px;height:26px;line-height:1;padding:0;" title="Collapse legend">−</button>
+  </div>
+  <div id="legendBody">
+    <div class="stat">68 nodes · 58 edges · White ring = root entry point</div>
+    <div style="margin-top:10px; font-size:11px; color:#777;">
+      Drag nodes · Scroll to zoom · Drag background to pan<br>
+      Click a node to highlight its neighborhood
+    </div>
+    <div id="category-labels" style="margin-top:12px;">
+      <div style="font-size:12px; color:#aaa; margin-bottom:4px;">Categories:</div>
+    </div>
+  </div>
+</div>
+
+<div id="tooltip">
+  <div class="q-id"></div>
+  <div class="q-text"></div>
+</div>
+
+<svg id="graph"></svg>
+
+<script>
+// ── DAG Data ──
+const dag = {
+  root_links: new Set(["pain-severity","episodic-vs-chronic","autonomic-symptoms","hypothalamus","pet-scans","rem-sleep","vitd-seasonal","tac","trigeminal-nerve","cgrp","neurogenic-inflammation","d3-protocol","hydroxylation","mg-resistant-rickets","mg-thermostat","mg-testing","vdr","carboxylation","vascular-calcification","calcium-paradox","mk4-vs-mk7","mg-burn","pth","calcium-homeostasis-priority","mg-paradox","lab-interpretation","nmda","full-monty","oxygen","cold-method","exercise-abort","caffeine-abort","vagus-nerve","humming","psychedelics","emgality","spg-block","triptans-rebound","verapamil-problems","melatonin"]),
+  nodes: {
+    "pain-severity":{"q":"How severe is cluster headache pain?","to":[]},
+    "episodic-vs-chronic":{"q":"What is the difference between episodic and chronic cluster headache?","to":[]},
+    "autonomic-symptoms":{"q":"What are autonomic symptoms and why do they occur?","to":["trigeminal-nerve","spg-block"]},
+    "hypothalamus":{"q":"What is the hypothalamus and why is it implicated?","to":["pet-scans","rem-sleep","extrarenal-calcitriol","ergic-suffix","axons-clarification","cgrp-source-confusion"]},
+    "pet-scans":{"q":"What do PET scans show during cluster attacks?","to":[]},
+    "rem-sleep":{"q":"Why do attacks happen during REM sleep?","to":["melatonin"]},
+    "vitd-seasonal":{"q":"How does seasonal vitamin D variation connect to cluster timing?","to":[]},
+    "tac":{"q":"What are trigeminal autonomic cephalalgias?","to":["innervation-meaning","trigeminal-nerve"]},
+    "trigeminal-nerve":{"q":"What is the trigeminal nerve?","to":["cgrp"]},
+    "cgrp":{"q":"What is CGRP and why is it the key molecule?","to":["nmda","neurogenic-inflammation","gastric-acidity-balance","th1-differentiation","tissue-specific-vdr","emgality"]},
+    "neurogenic-inflammation":{"q":"What is neurogenic inflammation and why does it cause pain?","to":["cgrp-release-mechanism","c-fiber-activation","positive-feedback","central-sensitization"]},
+    "cgrp-release-mechanism":{"q":"How is CGRP released from nerve endings?","to":["glutamate","nmda"]},
+    "positive-feedback":{"q":"What are the positive feedback loops?","to":["cgmp","cgrp-no-purpose","cgrp-feedback-brakes"]},
+    "central-sensitization":{"q":"What is central sensitization?","to":[]},
+    "glutamate":{"q":"What is glutamate and what role does it play?","to":["nmda"]},
+    "nmda":{"q":"What are NMDA receptors and how does magnesium block them?","to":["psychedelics","ketamine"]},
+    "hydroxylation":{"q":"What is hydroxylation?","to":[]},
+    "mg-resistant-rickets":{"q":"What is magnesium-dependent vitamin D-resistant rickets?","to":[]},
+    "mg-thermostat":{"q":"How does magnesium act as a thermostat for vitamin D?","to":[]},
+    "mg-testing":{"q":"Why is magnesium deficiency so hard to detect?","to":[]},
+    "vdr":{"q":"What is the Vitamin D Receptor?","to":["rexinoids-cancer","gene-promoter"]},
+    "gene-promoter":{"q":"What is a gene promoter?","to":[]},
+    "carboxylation":{"q":"What is carboxylation and why does it matter?","to":[]},
+    "calcium-paradox":{"q":"The calcium paradox","to":["vascular-calcification"]},
+    "vascular-calcification":{"q":"Why is vascular calcification dangerous?","to":[]},
+    "mk4-vs-mk7":{"q":"What's the difference between MK-4 and MK-7?","to":[]},
+    "mg-burn":{"q":"How D3 depletes magnesium","to":["pth"]},
+    "pth":{"q":"What is parathyroid hormone?","to":["mg-paradox"]},
+    "mg-paradox":{"q":"How does magnesium deficiency paradoxically block PTH?","to":[]},
+    "lab-interpretation":{"q":"How do you interpret the lab results?","to":["calcium-paradox"]},
+    "d3-protocol":{"q":"What is the Clusterbusters D3 protocol?","to":["full-monty"]},
+    "full-monty":{"q":"The Full Monty protocol","to":["histamine-hypothesis"]},
+    "histamine-hypothesis":{"q":"How does histamine connect to cluster headaches?","to":[]},
+    "oxygen":{"q":"How does oxygen therapy work?","to":["cgrp","emgality"]},
+    "cold-method":{"q":"How does the brain freeze method work?","to":["spg-block","vagus-nerve"]},
+    "exercise-abort":{"q":"Can exercise abort a cluster headache?","to":["vagus-nerve"]},
+    "caffeine-abort":{"q":"How does caffeine work as an abortive?","to":[]},
+    "vagus-nerve":{"q":"What is the vagus nerve and how does it help?","to":[]},
+    "humming":{"q":"How does humming help?","to":["vagus-nerve"]},
+    "psychedelics":{"q":"How do psychedelics help cluster headaches?","to":[]},
+    "ketamine":{"q":"Can ketamine help cluster headaches?","to":["nmda"]},
+    "emgality":{"q":"What is Emgality and how does it work?","to":[]},
+    "spg-block":{"q":"What is an SPG nerve block?","to":["emgality","cold-method"]},
+    "triptans-rebound":{"q":"Why are triptans risky?","to":["cgrp"]},
+    "verapamil-problems":{"q":"What are the problems with verapamil?","to":[]},
+    "melatonin":{"q":"How does melatonin help?","to":[]},
+    "why-attacks-end":{"q":"Why do attacks end after 15 min to 3 hours?","to":[]},
+    "cluster-genetics":{"q":"Is cluster headache genetic?","to":[]},
+    "caffeine-paradox":{"q":"Does caffeine help or hurt?","to":[]},
+    "circadian-gating":{"q":"What is circadian gating?","to":[]},
+    "antihistamines-ch":{"q":"Can antihistamines help prevent cluster headaches?","to":[]},
+    "why-test-25ohd":{"q":"Why test 25(OH)D instead of calcitriol?","to":[]},
+    "cgmp":{"q":"What is cGMP?","to":["cgrp"]},
+    "ergic-suffix":{"q":"What does the '-ergic' suffix mean?","to":["cgrp","hypothalamus"]},
+    "cgrp-source-confusion":{"q":"Hypothalamic CGRP vs. Trigeminal CGRP","to":[]},
+    "cgrp-no-purpose":{"q":"Why does CGRP cause NO production?","to":["cgrp","positive-feedback"]},
+    "rexinoids-cancer":{"q":"Which cancers use rexinoids?","to":["boost-vdr-signaling"]},
+    "th1-differentiation":{"q":"What is Th1 differentiation?","to":[]},
+    "tissue-specific-vdr":{"q":"Is CGRP suppression by vitamin D tissue-specific?","to":[]},
+    "gastric-acidity-balance":{"q":"How to manage acidity?","to":[]},
+    "calcium-homeostasis-priority":{"q":"How does the body prioritize calcium homeostasis?","to":["extrarenal-calcitriol"]},
+    "innervation-meaning":{"q":"What does 'innervation' mean?","to":[]},
+    "vagal-afferents-meaning":{"q":"What are vagal afferents?","to":[]},
+    "axons-clarification":{"q":"What does 'send axons' mean?","to":[]},
+    "c-fiber-activation":{"q":"What causes C-fibers to activate?","to":["nmda","mg-paradox"]},
+    "cgrp-feedback-brakes":{"q":"Why doesn't the CGRP→NO loop always run away?","to":["central-sensitization"]},
+    "boost-vdr-signaling":{"q":"What does 'boost VDR signaling' mean?","to":[]},
+    "extrarenal-calcitriol":{"q":"Where else is calcitriol produced besides kidneys?","to":[]}
+  }
+};
+
+// ── Categorize nodes ──
+const categories = {
+  "Pain & Diagnosis": ["pain-severity","episodic-vs-chronic","autonomic-symptoms","tac","innervation-meaning","why-attacks-end","cluster-genetics"],
+  "Brain & Circadian": ["hypothalamus","pet-scans","rem-sleep","vitd-seasonal","circadian-gating","melatonin","axons-clarification"],
+  "Trigeminal Cascade": ["trigeminal-nerve","cgrp","neurogenic-inflammation","cgrp-release-mechanism","positive-feedback","central-sensitization","glutamate","nmda","cgmp","cgrp-no-purpose","cgrp-feedback-brakes","cgrp-source-confusion","c-fiber-activation","ergic-suffix","vagal-afferents-meaning"],
+  "D3 Protocol": ["d3-protocol","hydroxylation","vdr","gene-promoter","carboxylation","full-monty","histamine-hypothesis","rexinoids-cancer","boost-vdr-signaling","extrarenal-calcitriol","why-test-25ohd","calcium-homeostasis-priority","tissue-specific-vdr","th1-differentiation"],
+  "Magnesium & Calcium": ["mg-resistant-rickets","mg-thermostat","mg-testing","mg-burn","mg-paradox","pth","calcium-paradox","vascular-calcification","mk4-vs-mk7","lab-interpretation","gastric-acidity-balance"],
+  "Treatments": ["oxygen","cold-method","exercise-abort","caffeine-abort","vagus-nerve","humming","psychedelics","ketamine","emgality","spg-block","triptans-rebound","verapamil-problems","caffeine-paradox","antihistamines-ch"]
+};
+
+const catColors = {
+  "Pain & Diagnosis": "#e8606a",
+  "Brain & Circadian": "#c490e0",
+  "Trigeminal Cascade": "#f5d87a",
+  "D3 Protocol": "#6ad4a0",
+  "Magnesium & Calcium": "#f0a050",
+  "Treatments": "#7aacf5"
+};
+
+const nodeToCat = {};
+for (const [cat, ids] of Object.entries(categories)) {
+  for (const id of ids) nodeToCat[id] = cat;
+}
+
+// ── Build graph data ──
+const nodeIds = Object.keys(dag.nodes);
+const nodes = nodeIds.map(id => {
+  const d = dag.nodes[id];
+  const outDegree = d.to.length;
+  const isRoot = dag.root_links.has(id);
+  const cat = nodeToCat[id] || "Treatments";
+  return { id, question: d.q, outDegree, isRoot, category: cat };
+});
+
+const links = [];
+for (const [src, d] of Object.entries(dag.nodes)) {
+  for (const tgt of d.to) {
+    links.push({ source: src, target: tgt });
+  }
+}
+
+// Compute in-degree
+const inDegree = {};
+nodeIds.forEach(id => inDegree[id] = 0);
+links.forEach(l => inDegree[l.target] = (inDegree[l.target]||0) + 1);
+nodes.forEach(n => n.inDegree = inDegree[n.id] || 0);
+
+// ── SVG Setup ──
+const W = window.innerWidth, H = window.innerHeight;
+const svg = document.getElementById('graph');
+svg.setAttribute('width', W);
+svg.setAttribute('height', H);
+
+// Create SVG namespace helper
+const ns = 'http://www.w3.org/2000/svg';
+function svgEl(tag, attrs) {
+  const el = document.createElementNS(ns, tag);
+  for (const [k,v] of Object.entries(attrs||{})) el.setAttribute(k, v);
+  return el;
+}
+
+// Defs for arrowhead
+const defs = svgEl('defs');
+const marker = svgEl('marker', { id:'arrow', viewBox:'0 0 10 10', refX:'28', refY:'5',
+  markerWidth:'6', markerHeight:'6', orient:'auto-start-reverse', fill:'#555' });
+marker.appendChild(svgEl('path', { d:'M 0 0 L 10 5 L 0 10 z' }));
+defs.appendChild(marker);
+svg.appendChild(defs);
+
+// Groups
+const gLinks = svgEl('g', { class:'links' });
+const gNodes = svgEl('g', { class:'nodes' });
+svg.appendChild(gLinks);
+svg.appendChild(gNodes);
+
+// ── Draw links ──
+const linkEls = {};
+links.forEach(l => {
+  const line = svgEl('line', {
+    stroke: '#333', 'stroke-width': '1.2', 'marker-end': 'url(#arrow)', opacity: '0.6'
+  });
+  line.dataset.source = typeof l.source === 'object' ? l.source.id : l.source;
+  line.dataset.target = typeof l.target === 'object' ? l.target.id : l.target;
+  gLinks.appendChild(line);
+  const key = `${line.dataset.source}->${line.dataset.target}`;
+  linkEls[key] = line;
+});
+const linkElArray = Array.from(gLinks.children);
+
+// ── Draw nodes ──
+const nodeEls = {};
+const labelEls = {};
+nodes.forEach(n => {
+  const g = svgEl('g', { cursor: 'pointer' });
+  const radius = Math.max(6, Math.min(16, 6 + (n.outDegree + n.inDegree) * 1.5));
+  n.radius = radius;
+
+  const color = catColors[n.category] || '#888';
+  const strokeColor = n.isRoot ? '#fff' : 'transparent';
+
+  const circle = svgEl('circle', {
+    r: radius, fill: color, stroke: strokeColor, 'stroke-width': n.isRoot ? '2' : '0',
+    opacity: '0.9'
+  });
+  g.appendChild(circle);
+
+  // Short label
+  const shortLabel = n.id.length > 18 ? n.id.slice(0,16)+'…' : n.id;
+  const text = svgEl('text', {
+    'text-anchor':'middle', dy: radius + 13, fill:'#999',
+    'font-size':'10px', 'font-family':'monospace', 'pointer-events':'none'
+  });
+  text.textContent = shortLabel;
+  g.appendChild(text);
+
+  gNodes.appendChild(g);
+  nodeEls[n.id] = { g, circle, text };
+  n.el = g;
+});
+
+// ── Tooltip ──
+const tooltip = document.getElementById('tooltip');
+const tipId = tooltip.querySelector('.q-id');
+const tipText = tooltip.querySelector('.q-text');
+
+function showTooltip(n, x, y) {
+  tipId.textContent = n.id;
+  tipText.innerHTML = n.question + '<br><span style="color:#888;font-size:11px;">'
+    + (n.isRoot ? '⬡ Root' : '◇ Deep') + ' · out:' + n.outDegree + ' · in:' + n.inDegree
+    + ' · ' + n.category + '</span>';
+  tooltip.style.display = 'block';
+  tooltip.style.left = Math.min(x + 14, W - 360) + 'px';
+  tooltip.style.top = Math.min(y + 14, H - 100) + 'px';
+}
+function hideTooltip() { tooltip.style.display = 'none'; }
+
+// ── Force simulation (vanilla) ──
+// Simple force-directed layout
+const nodeMap = {};
+nodes.forEach(n => {
+  n.x = W/2 + (Math.random()-0.5)*400;
+  n.y = H/2 + (Math.random()-0.5)*400;
+  n.vx = 0; n.vy = 0;
+  nodeMap[n.id] = n;
+});
+
+// Assign initial positions by category cluster
+const catCenters = {
+  "Pain & Diagnosis":      { x: W*0.2,  y: H*0.2 },
+  "Brain & Circadian":     { x: W*0.5,  y: H*0.15 },
+  "Trigeminal Cascade":    { x: W*0.5,  y: H*0.5 },
+  "D3 Protocol":           { x: W*0.75, y: H*0.35 },
+  "Magnesium & Calcium":   { x: W*0.75, y: H*0.7 },
+  "Treatments":            { x: W*0.25, y: H*0.7 }
+};
+
+nodes.forEach(n => {
+  const c = catCenters[n.category] || { x: W/2, y: H/2 };
+  n.x = c.x + (Math.random()-0.5)*120;
+  n.y = c.y + (Math.random()-0.5)*120;
+});
+
+let alpha = 1;
+const alphaDecay = 0.997;
+const alphaMin = 0.001;
+
+function tick() {
+  if (alpha < alphaMin) { requestAnimationFrame(tick); return; }
+
+  const repulsionStrength = 800;
+  const linkStrength = 0.06;
+  const linkDistance = 90;
+  const catGravity = 0.008;
+  const centerGravity = 0.003;
+  const damping = 0.85;
+
+  // Repulsion (Barnes-Hut would be ideal but brute force is fine for 68 nodes)
+  for (let i = 0; i < nodes.length; i++) {
+    for (let j = i+1; j < nodes.length; j++) {
+      const a = nodes[i], b = nodes[j];
+      let dx = b.x - a.x, dy = b.y - a.y;
+      let dist = Math.sqrt(dx*dx + dy*dy) || 1;
+      let force = repulsionStrength * alpha / (dist * dist);
+      let fx = dx/dist * force, fy = dy/dist * force;
+      a.vx -= fx; a.vy -= fy;
+      b.vx += fx; b.vy += fy;
+    }
+  }
+
+  // Link attraction
+  links.forEach(l => {
+    const s = nodeMap[typeof l.source === 'object' ? l.source.id : l.source];
+    const t = nodeMap[typeof l.target === 'object' ? l.target.id : l.target];
+    if (!s || !t) return;
+    let dx = t.x - s.x, dy = t.y - s.y;
+    let dist = Math.sqrt(dx*dx + dy*dy) || 1;
+    let force = (dist - linkDistance) * linkStrength * alpha;
+    let fx = dx/dist * force, fy = dy/dist * force;
+    s.vx += fx; s.vy += fy;
+    t.vx -= fx; t.vy -= fy;
+  });
+
+  // Category clustering gravity
+  nodes.forEach(n => {
+    const c = catCenters[n.category];
+    if (c) {
+      n.vx += (c.x - n.x) * catGravity * alpha;
+      n.vy += (c.y - n.y) * catGravity * alpha;
+    }
+  });
+
+  // Center gravity
+  nodes.forEach(n => {
+    n.vx += (W/2 - n.x) * centerGravity * alpha;
+    n.vy += (H/2 - n.y) * centerGravity * alpha;
+  });
+
+  // Apply velocity + damping
+  nodes.forEach(n => {
+    if (n.fixed) return;
+    n.vx *= damping;
+    n.vy *= damping;
+    n.x += n.vx;
+    n.y += n.vy;
+    // Bounds
+    n.x = Math.max(40, Math.min(W-40, n.x));
+    n.y = Math.max(40, Math.min(H-40, n.y));
+  });
+
+  alpha *= alphaDecay;
+
+  // Update SVG
+  nodes.forEach(n => {
+    const el = nodeEls[n.id];
+    el.g.setAttribute('transform', `translate(${n.x},${n.y})`);
+  });
+
+  linkElArray.forEach(line => {
+    const s = nodeMap[line.dataset.source];
+    const t = nodeMap[line.dataset.target];
+    if (s && t) {
+      line.setAttribute('x1', s.x); line.setAttribute('y1', s.y);
+      line.setAttribute('x2', t.x); line.setAttribute('y2', t.y);
+    }
+  });
+
+  requestAnimationFrame(tick);
+}
+requestAnimationFrame(tick);
+
+// ── Zoom/pan state (declared early so drag can reference it) ──
+let scale = 1, tx = 0, ty = 0;
+
+// ── Interaction ──
+let selectedNode = null;
+
+nodes.forEach(n => {
+  const el = nodeEls[n.id];
+  el.g.addEventListener('mouseenter', e => showTooltip(n, e.clientX, e.clientY));
+  el.g.addEventListener('mousemove', e => showTooltip(n, e.clientX, e.clientY));
+  el.g.addEventListener('mouseleave', hideTooltip);
+
+  el.g.addEventListener('click', () => {
+    if (selectedNode === n.id) { clearHighlight(); selectedNode = null; return; }
+    selectedNode = n.id;
+    highlightNeighborhood(n.id);
+  });
+
+  // Drag (coordinates must account for zoom transform)
+  let dragging = false, dragOffX, dragOffY;
+  el.g.addEventListener('mousedown', e => {
+    if (e.shiftKey) return; // shift+drag = pan
+    dragging = true;
+    n.fixed = true;
+    dragOffX = e.clientX - (n.x * scale + tx);
+    dragOffY = e.clientY - (n.y * scale + ty);
+    e.preventDefault();
+    e.stopPropagation();
+  });
+  document.addEventListener('mousemove', e => {
+    if (!dragging) return;
+    n.x = (e.clientX - dragOffX - tx) / scale;
+    n.y = (e.clientY - dragOffY - ty) / scale;
+    alpha = Math.max(alpha, 0.05); // reheat
+  });
+  document.addEventListener('mouseup', () => {
+    if (dragging) { dragging = false; n.fixed = false; }
+  });
+});
+
+function highlightNeighborhood(id) {
+  const neighbors = new Set([id]);
+  links.forEach(l => {
+    const s = typeof l.source === 'object' ? l.source.id : l.source;
+    const t = typeof l.target === 'object' ? l.target.id : l.target;
+    if (s === id) neighbors.add(t);
+    if (t === id) neighbors.add(s);
+  });
+
+  nodes.forEach(n => {
+    const el = nodeEls[n.id];
+    if (neighbors.has(n.id)) {
+      el.circle.setAttribute('opacity', '1');
+      el.text.setAttribute('fill', '#ddd');
+    } else {
+      el.circle.setAttribute('opacity', '0.12');
+      el.text.setAttribute('fill', '#444');
+    }
+  });
+
+  linkElArray.forEach(line => {
+    const s = line.dataset.source, t = line.dataset.target;
+    if (s === id || t === id) {
+      line.setAttribute('stroke', '#f5d87a');
+      line.setAttribute('opacity', '0.9');
+      line.setAttribute('stroke-width', '2');
+    } else {
+      line.setAttribute('stroke', '#222');
+      line.setAttribute('opacity', '0.15');
+      line.setAttribute('stroke-width', '1');
+    }
+  });
+}
+
+function clearHighlight() {
+  nodes.forEach(n => {
+    const el = nodeEls[n.id];
+    el.circle.setAttribute('opacity', '0.9');
+    el.text.setAttribute('fill', '#999');
+  });
+  linkElArray.forEach(line => {
+    line.setAttribute('stroke', '#333');
+    line.setAttribute('opacity', '0.6');
+    line.setAttribute('stroke-width', '1.2');
+  });
+}
+
+// Click background to deselect
+svg.addEventListener('click', e => {
+  if (e.target === svg) { clearHighlight(); selectedNode = null; }
+});
+
+// ── Category legend with toggle ──
+const catLabelsDiv = document.getElementById('category-labels');
+for (const [cat, color] of Object.entries(catColors)) {
+  const label = document.createElement('label');
+  label.innerHTML = `<input type="checkbox" checked data-cat="${cat}">
+    <span class="legend-dot" style="background:${color};display:inline-block;width:10px;height:10px;border-radius:50%;vertical-align:middle;"></span>
+    <span style="font-size:11px;">${cat}</span>`;
+  catLabelsDiv.appendChild(label);
+
+  label.querySelector('input').addEventListener('change', function() {
+    const show = this.checked;
+    const cat = this.dataset.cat;
+    nodes.forEach(n => {
+      if (n.category === cat) {
+        nodeEls[n.id].g.style.display = show ? '' : 'none';
+      }
+    });
+    linkElArray.forEach(line => {
+      const s = nodeMap[line.dataset.source];
+      const t = nodeMap[line.dataset.target];
+      if ((s && s.category === cat) || (t && t.category === cat)) {
+        line.style.display = show ? '' : 'none';
+      }
+    });
+  });
+}
+
+// ── Zoom/pan via wheel ──
+const content = svgEl('g');
+while (svg.firstChild) content.appendChild(svg.firstChild);
+svg.appendChild(content);
+
+svg.addEventListener('wheel', e => {
+  e.preventDefault();
+  const factor = e.deltaY > 0 ? 0.93 : 1.07;
+  const newScale = Math.max(0.3, Math.min(4, scale * factor));
+  // zoom toward mouse position
+  const rect = svg.getBoundingClientRect();
+  const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+  tx = mx - (mx - tx) * (newScale/scale);
+  ty = my - (my - ty) * (newScale/scale);
+  scale = newScale;
+  content.setAttribute('transform', `translate(${tx},${ty}) scale(${scale})`);
+}, { passive: false });
+
+// Pan: left-click drag on background (node drag calls stopPropagation, so no conflict)
+let panning = false, panStartX, panStartY, panTxStart, panTyStart;
+svg.addEventListener('mousedown', e => {
+  if (e.button === 0 || e.button === 1) {
+    panning = true; panStartX = e.clientX; panStartY = e.clientY;
+    panTxStart = tx; panTyStart = ty; e.preventDefault();
+  }
+});
+document.addEventListener('mousemove', e => {
+  if (!panning) return;
+  tx = panTxStart + (e.clientX - panStartX);
+  ty = panTyStart + (e.clientY - panStartY);
+  content.setAttribute('transform', `translate(${tx},${ty}) scale(${scale})`);
+});
+document.addEventListener('mouseup', () => { panning = false; });
+
+// ── Legend collapse/expand ──
+const toggleBtn = document.getElementById('toggleLegend');
+const legendBody = document.getElementById('legendBody');
+toggleBtn.addEventListener('click', () => {
+  const hidden = legendBody.style.display === 'none';
+  legendBody.style.display = hidden ? '' : 'none';
+  toggleBtn.textContent = hidden ? '−' : '+';
+  toggleBtn.title = hidden ? 'Collapse legend' : 'Expand legend';
+});
+</script>
+</body>
+</html>
