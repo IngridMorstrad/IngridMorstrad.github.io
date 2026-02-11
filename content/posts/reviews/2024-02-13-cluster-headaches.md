@@ -120,6 +120,12 @@ A comprehensive protocol combining high-dose vitamin D3 with cofactors and antih
 **VitaminDWiki 7,000 Patient Study:**
 Pete Batcheller's research documented 81.3% of cluster headache sufferers achieving significant reductions (≥70%) in frequency, severity, and duration. Approximately 60% achieved substantial pain-free responses. Pre-treatment serum levels averaged 22.8 ng/mL; post-treatment averaged 83.4 ng/mL. When subjects stopped vitamin D3, cluster headaches typically recurred within 7-8 days. Daily cost remains under 50 cents.
 
+**UTHealth Houston Clinical Trial (NCT04570475):**
+An ethics-board-approved vitamin D clinical trial was started at UTHealth Houston in 2021: https://clinicaltrials.gov/study/NCT04570475?cond=cluster%20headache&term=vitamin%20D&rank=1
+- **Study drug:** A variation of the Batcheller regimen: 2 pills (Vitamin D 10,000 IU and a multivitamin) daily, without the additional vitamins/supplements
+- **Study duration:** 3 weeks, with blood sampling before and after to check calcium, Vitamin D, and other labs
+- **Study outcome:** Indeterminate. The study was stopped in 2024 due to a lack of enrollment (too few people were recruited during the pandemic). It was not stopped for safety reasons. There was insufficient data to say that Vitamin D was effective, ineffective, dangerous, or safe.
+
 **VitaminDWiki Interview with Pete Batcheller (127 min video transcript):**
 Pete Batcheller, a 77-year-old retired Navy fighter pilot with a chemistry degree, developed the anti-inflammatory regimen after discovering his own cluster headaches disappeared when he spent time outdoors in summer (vitamin D from sun exposure). Key points from the interview:
 

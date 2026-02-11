@@ -528,7 +528,7 @@
             <p>Cluster headaches are classified as <span class="q-link" data-q="tac">"trigeminal autonomic cephalalgias" (TACs)</span>. The pain involves a pathological link between the <span class="q-link" data-q="trigeminal-nerve">trigeminal nerve</span> and the autonomic nervous system:</p>
 
             <div class="emphasis-box">
-                <p><strong>The cascade:</strong> <span class="q-link" data-q="trigeminal-nerve">Trigeminal nerve</span> activation &rarr; releases <span class="q-link" data-q="cgrp">CGRP</span> and other inflammatory neuropeptides &rarr; vasodilation of blood vessels around the trigeminal nerve &rarr; <span class="q-link" data-q="neurogenic-inflammation">neurogenic inflammation</span> &rarr; excruciating periorbital pain &rarr; autonomic symptoms (tearing, congestion, drooping eyelid)</p>
+                <p><strong>The cascade:</strong> <span class="q-link" data-q="trigeminal-nerve">Trigeminal nerve</span> activation &rarr; releases <span class="q-link" data-q="cgrp">CGRP</span> and other inflammatory neuropeptides &rarr; <span class="q-link" data-q="neurogenic-inflammation">vasodilation &amp; neurogenic inflammation</span> &rarr; excruciating periorbital pain &rarr; autonomic symptoms (tearing, congestion, drooping eyelid)</p>
             </div>
 
             <p><span class="q-link" data-q="cgrp">CGRP (Calcitonin Gene-Related Peptide)</span> is the key molecule. It's elevated in cranial venous blood during attacks (Goadsby &amp; Edvinsson, <em>Annals of Neurology</em>, 1994). It causes vasodilation, drives inflammation, and&mdash;critically&mdash;it sensitizes more trigeminal neurons to further activation, creating a <strong>positive feedback loop</strong> (Messlinger et al., <em>Brain Sciences</em>, 2020).</p>
@@ -536,7 +536,7 @@
             <p>This is why stopping an attack early matters: once the CGRP cascade is fully engaged, it becomes self-reinforcing.</p>
 
             <div class="diagram-container">
-                <svg viewBox="0 0 700 560" xmlns="http://www.w3.org/2000/svg">
+                <svg viewBox="0 0 700 500" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                         <marker id="ah1" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
                             <path d="M0,0 L8,3 L0,6" fill="none" stroke="#d4af37" stroke-width="1.2"/>
@@ -545,7 +545,7 @@
                             <path d="M0,0 L8,3 L0,6" fill="none" stroke="#ef4444" stroke-width="1.2"/>
                         </marker>
                     </defs>
-                    <rect width="700" height="560" rx="12" fill="#12121a" stroke="#2a2a3a"/>
+                    <rect width="700" height="500" rx="12" fill="#12121a" stroke="#2a2a3a"/>
                     <text x="350" y="30" text-anchor="middle" fill="#d4af37" font-family="monospace" font-size="10" letter-spacing="3">THE PAIN CASCADE</text>
 
                     <!-- Hypothalamus -->
@@ -566,30 +566,25 @@
                     <text x="350" y="240" text-anchor="middle" fill="#a0a0b0" font-family="sans-serif" font-size="11">+ inflammatory neuropeptides</text>
                     <line x1="350" y1="250" x2="350" y2="272" stroke="#d4af37" stroke-width="1.2" marker-end="url(#ah1)"/>
 
-                    <!-- Vasodilation -->
-                    <rect x="220" y="276" width="260" height="50" rx="8" fill="#1a1a25" stroke="#2a2a3a"/>
-                    <text x="350" y="298" text-anchor="middle" fill="#f0f0f5" font-family="sans-serif" font-size="14" font-weight="bold">Vasodilation</text>
-                    <text x="350" y="316" text-anchor="middle" fill="#a0a0b0" font-family="sans-serif" font-size="11">blood vessels expand</text>
-                    <line x1="350" y1="326" x2="350" y2="348" stroke="#d4af37" stroke-width="1.2" marker-end="url(#ah1)"/>
-
-                    <!-- Neurogenic Inflammation -->
-                    <rect x="220" y="352" width="260" height="50" rx="8" fill="#1a1a25" stroke="#2a2a3a"/>
-                    <text x="350" y="374" text-anchor="middle" fill="#f0f0f5" font-family="sans-serif" font-size="14" font-weight="bold">Neurogenic Inflammation</text>
-                    <text x="350" y="392" text-anchor="middle" fill="#a0a0b0" font-family="sans-serif" font-size="11">swelling, sensitization</text>
+                    <!-- Vasodilation & Neurogenic Inflammation (combined) -->
+                    <rect x="220" y="276" width="260" height="58" rx="8" fill="#1a1a25" stroke="#2a2a3a"/>
+                    <text x="350" y="298" text-anchor="middle" fill="#f0f0f5" font-family="sans-serif" font-size="13" font-weight="bold">Vasodilation &amp; Neurogenic</text>
+                    <text x="350" y="314" text-anchor="middle" fill="#f0f0f5" font-family="sans-serif" font-size="13" font-weight="bold">Inflammation</text>
+                    <text x="350" y="330" text-anchor="middle" fill="#a0a0b0" font-family="sans-serif" font-size="10">dilation, swelling, sensitization</text>
 
                     <!-- Fork arrows -->
-                    <line x1="290" y1="402" x2="200" y2="432" stroke="#d4af37" stroke-width="1.2" marker-end="url(#ah1)"/>
-                    <line x1="410" y1="402" x2="500" y2="432" stroke="#d4af37" stroke-width="1.2" marker-end="url(#ah1)"/>
+                    <line x1="290" y1="334" x2="200" y2="368" stroke="#d4af37" stroke-width="1.2" marker-end="url(#ah1)"/>
+                    <line x1="410" y1="334" x2="500" y2="368" stroke="#d4af37" stroke-width="1.2" marker-end="url(#ah1)"/>
 
                     <!-- Pain -->
-                    <rect x="100" y="436" width="200" height="50" rx="8" fill="#1a1a25" stroke="#ef4444" stroke-width="1.2"/>
-                    <text x="200" y="458" text-anchor="middle" fill="#ef4444" font-family="sans-serif" font-size="14" font-weight="bold">Excruciating Pain</text>
-                    <text x="200" y="476" text-anchor="middle" fill="#a0a0b0" font-family="sans-serif" font-size="11">periorbital, unilateral</text>
+                    <rect x="100" y="372" width="200" height="50" rx="8" fill="#1a1a25" stroke="#ef4444" stroke-width="1.2"/>
+                    <text x="200" y="394" text-anchor="middle" fill="#ef4444" font-family="sans-serif" font-size="14" font-weight="bold">Excruciating Pain</text>
+                    <text x="200" y="412" text-anchor="middle" fill="#a0a0b0" font-family="sans-serif" font-size="11">periorbital, unilateral</text>
 
                     <!-- Autonomic -->
-                    <rect x="400" y="436" width="200" height="50" rx="8" fill="#1a1a25" stroke="#2a2a3a"/>
-                    <text x="500" y="458" text-anchor="middle" fill="#f0f0f5" font-family="sans-serif" font-size="14" font-weight="bold">Autonomic Symptoms</text>
-                    <text x="500" y="476" text-anchor="middle" fill="#a0a0b0" font-family="sans-serif" font-size="11">tearing, congestion, ptosis</text>
+                    <rect x="400" y="372" width="200" height="50" rx="8" fill="#1a1a25" stroke="#2a2a3a"/>
+                    <text x="500" y="394" text-anchor="middle" fill="#f0f0f5" font-family="sans-serif" font-size="14" font-weight="bold">Autonomic Symptoms</text>
+                    <text x="500" y="412" text-anchor="middle" fill="#a0a0b0" font-family="sans-serif" font-size="11">tearing, congestion, ptosis</text>
 
                     <!-- Feedback loop -->
                     <path d="M 480 225 Q 560 225 560 149 Q 560 124 510 124" fill="none" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="6,3" marker-end="url(#ah1r)"/>
@@ -597,8 +592,8 @@
                     <text x="608" y="190" fill="#ef4444" font-family="sans-serif" font-size="9" text-anchor="start" transform="rotate(90,608,162)">more neurons</text>
 
                     <!-- Label -->
-                    <rect x="180" y="510" width="340" height="32" rx="6" fill="none" stroke="#ef4444" stroke-width="1" stroke-dasharray="4,3"/>
-                    <text x="350" y="531" text-anchor="middle" fill="#ef4444" font-family="monospace" font-size="10">POSITIVE FEEDBACK LOOP — SELF-REINFORCING</text>
+                    <rect x="180" y="448" width="340" height="32" rx="6" fill="none" stroke="#ef4444" stroke-width="1" stroke-dasharray="4,3"/>
+                    <text x="350" y="469" text-anchor="middle" fill="#ef4444" font-family="monospace" font-size="10">POSITIVE FEEDBACK LOOP — SELF-REINFORCING</text>
                 </svg>
             </div>
         </section>
@@ -975,6 +970,8 @@
             <h3>The D3 Protocol</h3>
             <p>The <span class="q-link" data-q="d3-protocol">Clusterbusters anti-inflammatory regimen</span> reported 81.3% self-reported response rates across 7,000+ participants in an uncontrolled survey (Batcheller, VitaminDWiki, 2022). The target is serum 25(OH)D of ~80 ng/mL with essential cofactors. For non-responders, the <span class="q-link" data-q="full-monty">"Full Monty"</span> adds turmeric, quercetin, resveratrol, and high-dose vitamin C.</p>
 
+            <p>An ethics-board-approved <a href="https://clinicaltrials.gov/study/NCT04570475" target="_blank" rel="noopener">clinical trial</a> using a variation of the Batcheller regimen (vitamin D 10,000 IU + a multivitamin daily for 3 weeks) was conducted at UTHealth Houston starting in 2021. The study was stopped in 2024 due to insufficient enrollment during the pandemic&mdash;not for safety reasons. The outcome was indeterminate: there was not enough data to conclude whether vitamin D was effective, ineffective, dangerous, or safe.</p>
+
             <h3>Acute Abortives</h3>
             <p><span class="q-link" data-q="oxygen">High-flow oxygen</span> (12&ndash;15+ L/min) is the gold standard, effective for ~70% of sufferers within 10&ndash;15 minutes (Cohen et al., <em>JAMA</em>, 2009). <span class="q-link" data-q="cold-method">Cold/brain freeze</span> activates the vagus nerve and can abort attacks in minutes. <span class="q-link" data-q="exercise-abort">Intense exercise</span> works if caught early&mdash;one user tracked 56/60 successful aborts via 90-second treadmill sprints. <span class="q-link" data-q="caffeine-abort">Caffeine</span> (chugged quickly as Red Bull or strong coffee) works as a vasoconstrictor.</p>
 
@@ -1183,6 +1180,7 @@
             <li>Messlinger K, Vogler B, Engel MA. "CGRP and the Trigeminal System in Cluster Headache." <em>Brain Sciences</em> 10.1 (2020): 30.</li>
             <li>Modar KMH, et al. "Vitamin D deficiency in patients with cluster headache: a preliminary study." <em>Cephalalgia</em> (2018). PMC6049846.</li>
             <li>Batcheller P. "Cluster headaches virtually eliminated in 7,000 people with high-dose vitamin D and cofactors." VitaminDWiki (2022).</li>
+            <li>Burish MJ, et al. "Vitamin D for the Treatment of Cluster Headache." ClinicalTrials.gov <a href="https://clinicaltrials.gov/study/NCT04570475" target="_blank" rel="noopener">NCT04570475</a>. UTHealth Houston (2021&ndash;2024). Stopped due to insufficient enrollment.</li>
             <li>Reddy V, Sivakumar B. "Magnesium-dependent vitamin-D-resistant rickets." <em>The Lancet</em> 1.7864 (1974): 963&ndash;965.</li>
             <li>Dai Q, et al. "Magnesium status and supplementation influence vitamin D status and metabolism: results from a randomized trial." <em>American Journal of Clinical Nutrition</em> 108.6 (2018): 1249&ndash;1258.</li>
             <li>Uwitonze AM, Razzaque MS. "Role of Magnesium in Vitamin D Activation and Function." <em>JAOA</em> 118.3 (2018): 181&ndash;189.</li>
@@ -1400,11 +1398,11 @@
                 question: "What is neurogenic inflammation and why does it cause pain?",
                 answer: `<p><strong>Neurogenic inflammation</strong> is inflammation caused by the release of neuropeptides from nerve endings themselves (rather than from immune cells). In cluster headaches, it's the primary pain mechanism—not simply mechanical pressure from dilated vessels.</p>
                 <h4>The old "vascular theory" (outdated):</h4>
-                <p>For decades, headaches were thought to be caused by: dilated vessels → increased volume → mechanical pressure on pain-sensitive structures → pain. But this oversimplifies: many people have vasodilation without pain, and vessel size doesn't always correlate with pain intensity.</p>
+                <p>For decades, headaches were thought to be caused by: dilated vessels → increased volume → mechanical pressure on pain-sensitive structures → pain. The old theory suggested that vasodilation itself causes the neurogenic inflammation. But this oversimplifies: many people have vasodilation without pain, and vessel size doesn't always correlate with pain intensity. The newer understanding is that CGRP release acts on the nerves themselves, and the blood vessel component (vasodilation) may not actually be necessary for the pain.</p>
                 <h4>Current understanding—the inflammatory cascade:</h4>
                 <ol>
                     <li><strong><span class="q-link" data-q="cgrp-release-mechanism">CGRP release</span></strong> from trigeminal <span class="q-link" data-q="c-fiber-activation">C-fibers</span> (triggered by NMDA receptor activation, circadian signals, etc.)</li>
-                    <li><strong>Vasodilation</strong> of meningeal and intracranial arteries (blood vessels widen)</li>
+                    <li><strong>Vasodilation &amp; neurogenic inflammation:</strong> CGRP causes vasodilation of meningeal arteries and directly drives neurogenic inflammation (these occur together; vasodilation alone may not be necessary for the pain)</li>
                     <li><strong>Mast cell activation:</strong> CGRP triggers mast cells in trigeminal ganglion to degranulate → release histamine, bradykinin, prostaglandins</li>
                     <li><strong>Plasma extravasation:</strong> Blood vessel walls become "leaky" → plasma proteins leak into surrounding tissue → sterile inflammatory soup forms around nerve endings (Moskowitz, <em>Ann Neurol</em>, 1984)</li>
                     <li><strong>Peripheral sensitization:</strong> Inflammatory mediators lower the firing threshold of trigeminal nociceptors → nerves become hyperexcitable → respond to normally innocuous stimuli</li>
@@ -1835,7 +1833,9 @@
                     <li>~60% achieved substantial pain-free responses</li>
                     <li>Daily cost: under 50 cents</li>
                 </ul>
-                <p>If no improvement after 5 days of loading, the protocol escalates to the <span class="q-link" data-q="full-monty">"Full Monty"</span>.</p>`
+                <p>If no improvement after 5 days of loading, the protocol escalates to the <span class="q-link" data-q="full-monty">"Full Monty"</span>.</p>
+                <h4>Clinical trial status:</h4>
+                <p>An ethics-board-approved <a href="https://clinicaltrials.gov/study/NCT04570475" target="_blank" rel="noopener">clinical trial (NCT04570475)</a> was started at UTHealth Houston in 2021 using a simplified version of the Batcheller regimen: 2 pills daily (vitamin D 10,000 IU and a multivitamin) for 3 weeks, with blood sampling before and after. The study was stopped in 2024 due to insufficient enrollment (too few recruits during the pandemic)&mdash;not for safety reasons. The outcome was indeterminate: insufficient data to say vitamin D was effective, ineffective, dangerous, or safe.</p>`
             },
             'full-monty': {
                 question: 'What is the "Full Monty"?',
