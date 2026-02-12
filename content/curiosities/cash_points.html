@@ -1,0 +1,132 @@
+---
+title: "Miles vs Cash-back Calculator"
+date: 2026-02-11
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Miles vs Cash-back Calculator</title>
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: system-ui, -apple-system, sans-serif; background: #0d1117; color: #c9d1d9; padding: 24px; max-width: 960px; margin: 0 auto; }
+  h1 { font-size: 1.4rem; margin-bottom: 20px; color: #e6edf3; }
+  .inputs { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-bottom: 24px; }
+  .inputs label { display: flex; flex-direction: column; gap: 4px; font-size: 0.82rem; color: #8b949e; }
+  .inputs input { background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 8px 10px; color: #e6edf3; font-size: 0.9rem; }
+  .inputs input:focus { outline: none; border-color: #58a6ff; }
+  .wide { grid-column: 1 / -1; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 24px; font-size: 0.85rem; }
+  th, td { padding: 8px 12px; text-align: right; border-bottom: 1px solid #21262d; }
+  th { color: #8b949e; font-weight: 600; }
+  td:first-child, th:first-child { text-align: left; }
+  tr:hover td { background: #161b22; }
+  #chart { width: 100%; height: 450px; }
+</style>
+</head>
+<body>
+
+<h1>Miles vs Cash-back Calculator</h1>
+
+<div class="inputs">
+  <label>Miles per dollar
+    <input type="number" id="milesPerDollar" value="3" step="0.5" min="0">
+  </label>
+  <label>Cash-back rate (%)
+    <input type="number" id="cashbackRate" value="2" step="0.5" min="0">
+  </label>
+  <label>Investment return (%)
+    <input type="number" id="investmentReturn" value="8" step="0.5" min="0">
+  </label>
+  <label>Devaluation rate (%)
+    <input type="number" id="devaluation" value="0.01" step="0.01" min="0">
+  </label>
+  <label>Years
+    <input type="number" id="years" value="10" step="1" min="1" max="50">
+  </label>
+  <label class="wide">Redemption rates — CPP (comma-separated)
+    <input type="text" id="cppValues" value="1, 1.5, 1.6, 1.7, 1.8, 2, 4, 8">
+  </label>
+</div>
+
+<table>
+  <thead>
+    <tr><th>CPP</th><th>Devaluation</th><th>Initial Miles Value</th><th>Breakeven Year</th><th>Miles @ End</th><th>Cash @ End</th></tr>
+  </thead>
+  <tbody id="tbody"></tbody>
+</table>
+
+<div id="chart"></div>
+
+<script>
+const $ = id => document.getElementById(id);
+
+function recalc() {
+  const milesPerDollar = parseFloat($('milesPerDollar').value) || 0;
+  const cashbackRate = (parseFloat($('cashbackRate').value) || 0) / 100;
+  const investReturn = (parseFloat($('investmentReturn').value) || 0) / 100;
+  const dev = (parseFloat($('devaluation').value) || 0) / 100;
+  const maxYears = parseInt($('years').value) || 10;
+  const cppList = $('cppValues').value.split(',').map(s => parseFloat(s.trim()) / 100).filter(v => !isNaN(v) && v > 0);
+
+  const years = Array.from({length: maxYears + 1}, (_, i) => i);
+  const cashValues = years.map(y => cashbackRate * Math.pow(1 + investReturn, y));
+
+  const traces = [{
+    x: years, y: cashValues, name: `Cash (${(cashbackRate*100)}% @ ${(investReturn*100)}%)`,
+    mode: 'lines', line: {width: 3, dash: 'dash', color: '#3fb950'}
+  }];
+
+  const rows = [];
+
+  for (const cpp of cppList) {
+    const initVal = milesPerDollar * cpp;
+    const milesValues = years.map(y => initVal * Math.pow(1 - dev, y));
+
+    let breakeven = null;
+    for (let y = 0; y < years.length; y++) {
+      if (cashValues[y] > milesValues[y]) { breakeven = y; break; }
+    }
+
+    rows.push({
+      cpp: (cpp * 100).toFixed(2),
+      dev: (dev * 100).toFixed(2) + '%',
+      initVal: '$' + initVal.toFixed(4),
+      breakeven: breakeven !== null ? breakeven : '>' + maxYears,
+      milesEnd: '$' + milesValues[maxYears].toFixed(4),
+      cashEnd: '$' + cashValues[maxYears].toFixed(4),
+    });
+
+    traces.push({
+      x: years, y: milesValues,
+      name: `${(cpp*100).toFixed(1)}¢ CPP`,
+      mode: 'lines+markers',
+      marker: {size: 4}
+    });
+  }
+
+  // Table
+  $('tbody').innerHTML = rows.map(r =>
+    `<tr><td>${r.cpp}¢</td><td>${r.dev}</td><td>${r.initVal}</td><td>${r.breakeven}</td><td>${r.milesEnd}</td><td>${r.cashEnd}</td></tr>`
+  ).join('');
+
+  // Chart
+  Plotly.newPlot('chart', traces, {
+    title: 'Value per $1 Spent: Miles vs Cash-back Invested',
+    paper_bgcolor: 'rgba(0,0,0,0)',
+    plot_bgcolor: 'rgba(0,0,0,0)',
+    font: {color: '#c9d1d9'},
+    margin: {l: 50, r: 20, t: 40, b: 50},
+    xaxis: {title: 'Years', gridcolor: '#21262d'},
+    yaxis: {title: 'Value ($)', gridcolor: '#21262d'},
+    legend: {orientation: 'h', y: -0.2},
+  }, {responsive: true});
+}
+
+document.querySelectorAll('.inputs input').forEach(el => el.addEventListener('input', recalc));
+recalc();
+</script>
+</body>
+</html>
