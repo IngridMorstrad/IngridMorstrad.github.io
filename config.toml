@@ -37,10 +37,6 @@ name = "Vibes"
 url = "/vibes"
 weight = 6
 
-[[menu.main]]
-name = "TIL"
-url = "http://www.ashwinmenon.com/TIL/"
-weight = 7
 
 
 [markup]
