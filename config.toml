@@ -42,10 +42,6 @@ name = "TIL"
 url = "http://www.ashwinmenon.com/TIL/"
 weight = 7
 
-[[menu.main]]
-name = "Reading List"
-url = "https://read.ashwinmenon.com"
-weight = 8
 
 [markup]
   [markup.goldmark]
