@@ -2,6 +2,7 @@
 layout: post
 title:  "The green card conundrum"
 date:   2026-05-04 13:25:32
+draft: true
 comments: true
 tags: thoughts
 ---
