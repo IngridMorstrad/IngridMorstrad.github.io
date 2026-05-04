@@ -19,7 +19,7 @@ The time taken (by me and "average player"(s)) in the graph below is greatly exa
 ## Thoughts
 Overall, the Codex did a decent job in some areas (including code from modules; parsing; rough logic), and a not-so-decent job in others (getting logic 100% right; tests).
 
-###My process for solving the problems
+### My process for solving the problems
 Since I was interested in how the Codex would do, I would hit "Codex it" even if I knew how to solve the problem. From this point, I usually tried "debugging" the Codex code. This new programming vision that Open AI paints, points to a need for stronger code-reading and debugging skills, with code-writing skills shrinking in importance. However, this will depend a lot on how Codex performs - if Codex feels unreliable, developers may prefer writing code by themselves, as even with the googling & copy-pasting from Stack Overflow, the total time spent would be lower.
 
 Codex is clearly great at parsing problem statements and coming up with code that aims to address the problem. I was caught a little off-guard with how Codex picked methods. Many methods were quite different from those I'd have chosen, and this made it a little harder for me to read and debug the code (more in problem details). 
