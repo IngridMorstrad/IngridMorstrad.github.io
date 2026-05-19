@@ -2,7 +2,6 @@
 layout: post
 title:  "My stint as a manager"
 date:   2025-04-16 16:15:32
-draft: true
 comments: true
 bsky: 3ln24mlvuwk2w
 tags: thoughts
